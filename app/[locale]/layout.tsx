@@ -4,6 +4,7 @@ export const metadata: Metadata = {
   title: "Rimbo — Цифрова платформа лояльності",
   description:
     "Штамп-картки, бонуси, знижки, промокоди та сертифікати для вашого бізнесу. Google Wallet, NFC, QR-коди.",
+  manifest: "/manifest.json",
 };
 
 export function generateStaticParams() {

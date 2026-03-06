@@ -21,6 +21,7 @@
   --spotlight: oklch(0.75 0.15 165 / 0.04);
   --grain-opacity: 0.015;
   --shadow-color: rgba(0, 0, 0, 0.06);
+  --nav-pill-bg: rgba(255, 255, 255, 0.72);
 }
 
 /* ===== Dark theme ===== */
@@ -42,6 +43,7 @@
   --spotlight: oklch(0.75 0.15 165 / 0.06);
   --grain-opacity: 0.03;
   --shadow-color: rgba(0, 0, 0, 0.3);
+  --nav-pill-bg: rgba(10, 26, 26, 0.72);
 }
 
 @theme inline {
@@ -246,6 +248,126 @@ html {
 .btn-glass:hover {
   border-color: oklch(0.75 0.15 165);
   transform: translateY(-1px);
+}
+
+/* ===== Chrome-style nav pill ===== */
+.nav-pill {
+  background: var(--nav-pill-bg);
+  border: 1px solid var(--border-glass);
+  border-radius: 9999px;
+  backdrop-filter: blur(24px) saturate(1.5);
+  -webkit-backdrop-filter: blur(24px) saturate(1.5);
+  box-shadow: 0 4px 30px var(--shadow-color);
+}
+
+.nav-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.nav-tab:hover {
+  background: var(--bg-card-hover);
+  color: var(--text-primary);
+}
+
+/* ===== Rotating pill animation ===== */
+@keyframes charBounceSlideInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-8%);
+  }
+  80% {
+    transform: translateY(3%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes charSlideOutDown {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+}
+
+.rotating-pill {
+  display: inline;
+  background-clip: border-box;
+  border-radius: 0.25em;
+  padding: 0.02em 0.2em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  transition: background 0.3s;
+}
+
+.rotating-pill__icon {
+  display: inline;
+  width: 0.6em;
+  height: 0.6em;
+  vertical-align: -0.05em;
+  margin-right: 0.1em;
+  opacity: 0.7;
+}
+
+.rotating-pill__text {
+  display: inline;
+}
+
+.rotating-pill__char--entering {
+  display: inline-block;
+  animation: charBounceSlideInUp 0.4s ease-out both;
+}
+
+.rotating-pill__char--exiting {
+  display: inline-block;
+  animation: charSlideOutDown 0.3s ease-in both;
+}
+
+/* Color variants */
+.rotating-pill--green {
+  background: var(--primary-dim);
+}
+
+.rotating-pill--yellow {
+  background: var(--secondary-dim);
+}
+
+.rotating-pill--blue {
+  background: oklch(0.75 0.12 220 / 0.1);
+}
+
+.rotating-pill--coral {
+  background: oklch(0.78 0.12 30 / 0.1);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .rotating-pill__char--entering,
+  .rotating-pill__char--exiting {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
 }
 
 /* Section subtitle */

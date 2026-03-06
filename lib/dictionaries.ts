@@ -11,8 +11,11 @@ export const dictionaries = {
     // Hero
     hero: {
       headline: "Платформа лояльності, створена для вас",
+      headlinePrefix: "",
+      headlineSuffix: " створені для вас",
+      rotatingWords: ["Штамп-картки", "Бонуси", "Знижки", "Купони"],
       subtitle:
-        "Штамп-картки, бонуси, знижки та інше — все цифрове, все автоматичне, все в телефоні клієнта.",
+        "Все цифрове, все автоматичне, все в телефоні клієнта",
       ctaPrimary: "Почати безкоштовно",
       ctaSecondary: "Як це працює",
       badges: {
@@ -35,7 +38,7 @@ export const dictionaries = {
         {
           title: "Знайте своїх клієнтів",
           description:
-            "Відстежуйте візити, вподобання та витрати — все в реальному часі.",
+            "Відстежуйте візити, вподобання та витрати в реальному часі.",
         },
         {
           title: "Повна автоматизація",
@@ -51,7 +54,7 @@ export const dictionaries = {
     },
     // Loyalty types
     loyaltyTypes: {
-      title: "Одна платформа. Всі типи лояльності.",
+      title: "Одна платформа. Всі типи лояльності",
       types: [
         {
           title: "Штамп-картки",
@@ -66,7 +69,7 @@ export const dictionaries = {
         {
           title: "Рівні знижок",
           description:
-            "Чим більше візитів — тим більша знижка.",
+            "Чим більше візитів, тим більша знижка.",
         },
         {
           title: "Промокоди",
@@ -87,7 +90,7 @@ export const dictionaries = {
     },
     // Features
     features: {
-      title: "Все, що потрібно — вже вбудовано",
+      title: "Все, що потрібно, вже вбудовано",
       items: [
         {
           title: "Готово для гаманця",
@@ -166,7 +169,7 @@ export const dictionaries = {
     // Pricing
     pricing: {
       title: "Прості та прозорі тарифи",
-      subtitle: "Почніть безкоштовно. Оновіть, коли будете готові.",
+      subtitle: "Почніть безкоштовно. Оновіть, коли будете готові",
       monthly: "Щомісячно",
       annual: "Щорічно",
       annualSave: "до -15%",
@@ -188,7 +191,7 @@ export const dictionaries = {
     },
     // FAQ
     faq: {
-      title: "Запитання? Відповіді.",
+      title: "Запитання? Відповіді",
       items: [
         {
           question: "Як клієнти отримують доступ до карток?",
@@ -247,8 +250,11 @@ export const dictionaries = {
     // Hero
     hero: {
       headline: "The loyalty platform built to be yours",
+      headlinePrefix: "The ",
+      headlineSuffix: " platform built to be yours",
+      rotatingWords: ["Stamp card", "Bonus", "Discount", "Coupon"],
       subtitle:
-        "Stamp cards, bonuses, discounts, and more — all digital, all automatic, all in your customers' phones.",
+        "All digital, all automatic, all in your customers' phones",
       ctaPrimary: "Get Started Free",
       ctaSecondary: "See How It Works",
       badges: {
@@ -271,7 +277,7 @@ export const dictionaries = {
         {
           title: "Know your customers",
           description:
-            "Track visits, preferences, and spending — all in real time.",
+            "Track visits, preferences, and spending, all in real time.",
         },
         {
           title: "Fully automatic",
@@ -287,7 +293,7 @@ export const dictionaries = {
     },
     // Loyalty types
     loyaltyTypes: {
-      title: "One platform. Every loyalty type.",
+      title: "One platform. Every loyalty type",
       types: [
         {
           title: "Stamp Cards",
@@ -402,7 +408,7 @@ export const dictionaries = {
     // Pricing
     pricing: {
       title: "Simple, transparent pricing",
-      subtitle: "Start free. Upgrade when you're ready.",
+      subtitle: "Start free. Upgrade when you're ready",
       monthly: "Monthly",
       annual: "Annual",
       annualSave: "up to -15%",
@@ -424,7 +430,7 @@ export const dictionaries = {
     },
     // FAQ
     faq: {
-      title: "Questions? Answers.",
+      title: "Questions? Answers",
       items: [
         {
           question: "How do customers access their cards?",
