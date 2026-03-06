@@ -6,26 +6,28 @@
 :root {
   --bg-deep: #ffffff;
   --bg-card: rgba(0, 0, 0, 0.03);
-  --border-glass: rgba(0, 0, 0, 0.1);
+  --bg-card-hover: rgba(0, 0, 0, 0.06);
+  --border-glass: rgba(0, 0, 0, 0.08);
   --primary: oklch(0.75 0.15 165);
   --primary-dim: oklch(0.75 0.15 165 / 0.1);
   --secondary: oklch(0.92 0.12 95);
   --secondary-dim: oklch(0.92 0.12 95 / 0.15);
-  --text-primary: #0a1a1a;
-  --text-secondary: rgba(10, 26, 26, 0.6);
-  --text-muted: rgba(10, 26, 26, 0.4);
-  --fog-primary: oklch(0.75 0.15 165 / 0.08);
-  --fog-secondary: oklch(0.92 0.12 95 / 0.06);
-  --fog-tertiary: oklch(0.75 0.15 165 / 0.05);
+  --text-primary: #1a1a1a;
+  --text-secondary: rgba(26, 26, 26, 0.55);
+  --text-muted: rgba(26, 26, 26, 0.35);
+  --fog-primary: oklch(0.75 0.15 165 / 0.06);
+  --fog-secondary: oklch(0.92 0.12 95 / 0.04);
+  --fog-tertiary: oklch(0.75 0.15 165 / 0.03);
   --spotlight: oklch(0.75 0.15 165 / 0.04);
-  --grain-opacity: 0.02;
-  --shadow-color: rgba(0, 0, 0, 0.08);
+  --grain-opacity: 0.015;
+  --shadow-color: rgba(0, 0, 0, 0.06);
 }
 
 /* ===== Dark theme ===== */
 .dark {
   --bg-deep: #0a1a1a;
   --bg-card: rgba(255, 255, 255, 0.05);
+  --bg-card-hover: rgba(255, 255, 255, 0.08);
   --border-glass: rgba(255, 255, 255, 0.08);
   --primary: oklch(0.75 0.15 165);
   --primary-dim: oklch(0.75 0.15 165 / 0.15);
@@ -34,19 +36,17 @@
   --text-primary: #f0fdf4;
   --text-secondary: rgba(240, 253, 244, 0.6);
   --text-muted: rgba(240, 253, 244, 0.4);
-  --fog-primary: oklch(0.75 0.15 165 / 0.15);
-  --fog-secondary: oklch(0.92 0.12 95 / 0.08);
-  --fog-tertiary: oklch(0.75 0.15 165 / 0.08);
+  --fog-primary: oklch(0.75 0.15 165 / 0.12);
+  --fog-secondary: oklch(0.92 0.12 95 / 0.06);
+  --fog-tertiary: oklch(0.75 0.15 165 / 0.06);
   --spotlight: oklch(0.75 0.15 165 / 0.06);
   --grain-opacity: 0.03;
   --shadow-color: rgba(0, 0, 0, 0.3);
 }
 
 @theme inline {
-  /* Rimbo primary — mint green */
   --color-primary: oklch(0.75 0.15 165);
   --color-primary-dim: oklch(0.75 0.15 165 / 0.12);
-  /* Rimbo secondary — warm yellow */
   --color-secondary: oklch(0.92 0.12 95);
   --color-secondary-dim: oklch(0.92 0.12 95 / 0.15);
   --font-sans: var(--font-geist-sans);
@@ -62,22 +62,22 @@ body {
   transition: background 0.3s, color 0.3s;
 }
 
-/* Glass card */
+/* Glass card — softer, Chrome-clean */
 .glass {
   background: var(--bg-card);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--border-glass);
-  border-radius: 16px;
-  transition: background 0.3s, border-color 0.3s;
+  border-radius: 20px;
+  transition: background 0.3s, border-color 0.3s, transform 0.2s, box-shadow 0.3s;
+}
+
+.glass:hover {
+  background: var(--bg-card-hover);
 }
 
 .glass-sm {
   background: var(--bg-card);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border-glass);
-  border-radius: 12px;
+  border-radius: 14px;
   transition: background 0.3s, border-color 0.3s;
 }
 
@@ -137,8 +137,8 @@ body {
 /* Scroll animations */
 .fade-up {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
 }
 
 .fade-up.visible {
@@ -161,12 +161,18 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Section spacing */
+/* Section spacing — Chrome-generous */
 .section-padding {
-  padding: 6rem 1.5rem;
+  padding: 5rem 1.5rem;
 }
 
 @media (min-width: 768px) {
+  .section-padding {
+    padding: 7rem 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
   .section-padding {
     padding: 8rem 2rem;
   }
@@ -194,20 +200,20 @@ html {
   transition: border-color 0.3s;
 }
 
-/* ===== Buttons ===== */
+/* ===== Buttons — Chrome pill style ===== */
 
-/* Primary button — mint green */
+/* Primary button — mint green, pill shape */
 .btn-primary {
   background: oklch(0.75 0.15 165);
   color: #0a1a1a;
   font-weight: 600;
-  border-radius: 12px;
-  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  padding: 0.875rem 2rem;
   transition: box-shadow 0.3s, transform 0.2s;
 }
 
 .btn-primary:hover {
-  box-shadow: 0 0 30px oklch(0.75 0.15 165 / 0.3);
+  box-shadow: 0 4px 24px oklch(0.75 0.15 165 / 0.35);
   transform: translateY(-1px);
 }
 
@@ -216,29 +222,38 @@ html {
   background: oklch(0.92 0.12 95);
   color: #0a1a1a;
   font-weight: 600;
-  border-radius: 12px;
-  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  padding: 0.875rem 2rem;
   transition: box-shadow 0.3s, transform 0.2s;
 }
 
 .btn-secondary:hover {
-  box-shadow: 0 0 30px oklch(0.92 0.12 95 / 0.3);
+  box-shadow: 0 4px 24px oklch(0.92 0.12 95 / 0.35);
   transform: translateY(-1px);
 }
 
-/* Glass outline button */
+/* Glass outline button — pill shape */
 .btn-glass {
   background: var(--bg-card);
-  backdrop-filter: blur(12px);
   border: 1px solid var(--border-glass);
   color: var(--text-primary);
   font-weight: 500;
-  border-radius: 12px;
-  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  padding: 0.875rem 2rem;
   transition: border-color 0.3s, transform 0.2s, background 0.3s, color 0.3s;
 }
 
 .btn-glass:hover {
   border-color: oklch(0.75 0.15 165);
   transform: translateY(-1px);
+}
+
+/* Section subtitle */
+.section-subtitle {
+  color: var(--text-secondary);
+  font-size: 1.125rem;
+  line-height: 1.75;
+  max-width: 36rem;
+  margin: 1rem auto 0;
+  text-align: center;
 }

@@ -10,10 +10,10 @@ export const dictionaries = {
     },
     // Hero
     hero: {
-      headline: "Ваші клієнти заслуговують більше, ніж паперову картку",
+      headline: "Платформа лояльності, створена для вас",
       subtitle:
-        "Rimbo — цифрова платформа лояльності для бізнесу. Штамп-картки, бонуси, знижки, промокоди та сертифікати — все в одному місці.",
-      ctaPrimary: "Спробувати безкоштовно",
+        "Штамп-картки, бонуси, знижки та інше — все цифрове, все автоматичне, все в телефоні клієнта.",
+      ctaPrimary: "Почати безкоштовно",
       ctaSecondary: "Як це працює",
       badges: {
         googleWallet: "Google Wallet",
@@ -25,154 +25,154 @@ export const dictionaries = {
     },
     // Problem
     problem: {
-      title: "Паперові картки лояльності — це проблема",
+      title: "Лояльність, яка дійсно працює",
       cards: [
         {
-          title: "Клієнти гублять картки",
+          title: "Завжди в кишені",
           description:
-            "80% паперових карток губляться або забуваються вдома. Ваші акції просто не працюють.",
+            "Цифрові картки живуть у телефоні клієнта. Жодних загублених паперових карток.",
         },
         {
-          title: "Немає даних про клієнтів",
+          title: "Знайте своїх клієнтів",
           description:
-            "Паперові картки не дають жодної інформації про поведінку та вподобання клієнтів.",
+            "Відстежуйте візити, вподобання та витрати — все в реальному часі.",
         },
         {
-          title: "Ручний облік витрачає час",
+          title: "Повна автоматизація",
           description:
-            "Штампи, записи, підрахунки — персонал витрачає час замість обслуговування клієнтів.",
+            "Жодних ручних штампів, підрахунків чи паперів. Тільки результат.",
         },
         {
-          title: "Неможливо повернути клієнтів",
+          title: "Повертайте клієнтів",
           description:
-            "Без контактних даних ви не можете нагадати клієнтам про себе чи запропонувати щось нове.",
+            "Push-сповіщення та персональні пропозиції, що повертають клієнтів знову.",
         },
       ],
     },
     // Loyalty types
     loyaltyTypes: {
-      title: "Всі типи лояльності в одній платформі",
+      title: "Одна платформа. Всі типи лояльності.",
       types: [
         {
           title: "Штамп-картки",
           description:
-            "Цифрові картки збережені в Google Wallet. Клієнти збирають штампи за кожен візит і отримують винагороду.",
+            "Збирай штампи. Отримуй винагороди. Все в Google Wallet.",
         },
         {
-          title: "Бонусна система",
+          title: "Кешбек та бали",
           description:
-            "Кешбек та бали з гнучкими правилами нарахування та списання. Мотивуйте клієнтів повертатися.",
+            "Гнучкі бали, що змушують клієнтів повертатися.",
         },
         {
-          title: "Рівні лояльності",
+          title: "Рівні знижок",
           description:
-            "Створюйте рівні знижок, які зростають з кожною покупкою. Також можна призначити персональну знижку окремим клієнтам.",
+            "Чим більше візитів — тим більша знижка.",
         },
         {
           title: "Промокоди",
           description:
-            "Кампанійні коди, коди інфлюенсерів, сезонні пропозиції. Відстежуйте ефективність кожного коду.",
+            "Відстежуй кожну кампанію. Вимірюй кожного інфлюенсера.",
         },
         {
           title: "Подарункові сертифікати",
           description:
-            "Клієнти купують цифрові сертифікати та дарують близьким. Ідеальний подарунок на будь-яке свято.",
+            "Цифрові подарунки, якими діляться в один дотик.",
         },
         {
-          title: "Купони",
+          title: "Розумні купони",
           description:
-            "Даруйте купони клієнтам на день народження, особливі події чи просто без приводу. Підвищуйте лояльність персональними пропозиціями.",
+            "Подарунки на день народження. Сюрпризи. Персональні для кожного.",
         },
       ],
     },
     // Features
     features: {
-      title: "Все що потрібно для програми лояльності",
+      title: "Все, що потрібно — вже вбудовано",
       items: [
         {
-          title: "Google Wallet & Apple Wallet",
+          title: "Готово для гаманця",
           description:
-            "Картки автоматично зберігаються в гаманці телефону. Завжди під рукою.",
+            "Картки одразу в Google Wallet та Apple Wallet. Без зайвих кроків.",
           wide: true,
         },
         {
           title: "Push-сповіщення",
           description:
-            "Нагадуйте клієнтам про акції, бонуси та спеціальні пропозиції через push-сповіщення.",
+            "Досягайте клієнтів у потрібний момент.",
         },
         {
           title: "QR-коди",
           description:
-            "Кожен клієнт отримує унікальний QR-код для швидкої ідентифікації.",
+            "Одне сканування. Миттєва ідентифікація.",
         },
         {
-          title: "Аналітика в реальному часі",
+          title: "Аналітика наживо",
           description:
-            "Відстежуйте відвідування, конверсії, середній чек та ефективність програми.",
+            "Бачте, що відбувається на всіх локаціях прямо зараз.",
           wide: true,
         },
         {
           title: "POS інтеграція",
           description:
-            "Підключіть Rimbo до вашої POS-системи для автоматичного нарахування.",
+            "Підключається до систем, які ви вже використовуєте.",
         },
         {
           title: "Мультилокації",
           description:
-            "Керуйте програмою лояльності для всіх ваших закладів з одного кабінету.",
+            "Всі ваші заклади. Одна панель.",
         },
         {
-          title: "Управління персоналом",
+          title: "Управління командою",
           description:
-            "Додавайте співробітників з різними рівнями доступу до системи.",
+            "Дайте команді потрібний рівень доступу.",
         },
         {
-          title: "Дизайн карток",
+          title: "Ваш бренд",
           description:
-            "Налаштовуйте вигляд карток під ваш бренд. Кольори, логотип, стиль.",
+            "Власні кольори, логотип та дизайн карток.",
         },
         {
-          title: "API доступ",
+          title: "Повний API",
           description:
-            "Повний API для інтеграції з вашими існуючими системами та додатками.",
+            "Будуйте будь-що поверх Rimbo.",
           wide: true,
         },
       ],
     },
     // How it works
     howItWorks: {
-      title: "Як це працює",
+      title: "Три кроки до запуску",
       steps: [
         {
           step: "1",
-          title: "Запросіть демо",
+          title: "Поговоріть з нами",
           description:
-            "Залиште заявку — ми зв'яжемося з вами, покажемо платформу та налаштуємо акаунт для вашого бізнесу.",
+            "Замовте демо. Ми все налаштуємо для вас.",
         },
         {
           step: "2",
-          title: "Налаштуйте лояльність",
+          title: "Зробіть своїм",
           description:
-            "Налаштуйте всі типи лояльності — штампи, бонуси, знижки, промокоди — та оформіть картки під ваш бренд.",
+            "Оберіть типи лояльності. Оформіть картки. Встановіть правила.",
         },
         {
           step: "3",
-          title: "Залучайте клієнтів",
+          title: "Спостерігайте за ростом",
           description:
-            "Клієнти додають картку в телефон та збирають бонуси при кожному візиті.",
+            "Клієнти додають картки в телефон і починають збирати бонуси.",
         },
       ],
     },
     // Pricing
     pricing: {
-      title: "Тарифні плани",
-      subtitle: "Оберіть план, який підходить вашому бізнесу",
+      title: "Прості та прозорі тарифи",
+      subtitle: "Почніть безкоштовно. Оновіть, коли будете готові.",
       monthly: "Щомісячно",
       annual: "Щорічно",
       annualSave: "до -15%",
       perMonth: "/міс",
       popular: "Популярний",
-      choosePlan: "Обрати план",
+      choosePlan: "Почати",
       cards: "Карток",
       locations: "Локацій",
       customers: "Клієнтів",
@@ -188,7 +188,7 @@ export const dictionaries = {
     },
     // FAQ
     faq: {
-      title: "Часті запитання",
+      title: "Запитання? Відповіді.",
       items: [
         {
           question: "Як клієнти отримують доступ до карток?",
@@ -224,7 +224,7 @@ export const dictionaries = {
     },
     // Footer
     footer: {
-      copyright: "2025 Rimbo. Всі права захищені.",
+      copyright: "2026 Rimbo. Всі права захищені.",
       links: {
         features: "Можливості",
         pricing: "Тарифи",
@@ -246,10 +246,10 @@ export const dictionaries = {
     },
     // Hero
     hero: {
-      headline: "Your customers deserve more than a paper stamp card",
+      headline: "The loyalty platform built to be yours",
       subtitle:
-        "Rimbo is a digital loyalty platform for businesses. Stamp cards, bonuses, discounts, promo codes, and certificates — all in one place.",
-      ctaPrimary: "Start Free Trial",
+        "Stamp cards, bonuses, discounts, and more — all digital, all automatic, all in your customers' phones.",
+      ctaPrimary: "Get Started Free",
       ctaSecondary: "See How It Works",
       badges: {
         googleWallet: "Google Wallet",
@@ -261,154 +261,154 @@ export const dictionaries = {
     },
     // Problem
     problem: {
-      title: "Paper loyalty cards are broken",
+      title: "Loyalty that actually works",
       cards: [
         {
-          title: "Customers lose cards",
+          title: "Always in their pocket",
           description:
-            "80% of paper cards get lost or forgotten at home. Your promotions simply don't work.",
+            "Digital cards live in your customers' phones. No more lost paper cards.",
         },
         {
-          title: "No customer data",
+          title: "Know your customers",
           description:
-            "Paper cards provide zero insight into customer behavior and preferences.",
+            "Track visits, preferences, and spending — all in real time.",
         },
         {
-          title: "Manual tracking wastes time",
+          title: "Fully automatic",
           description:
-            "Stamps, notes, counting — staff spends time on tracking instead of serving customers.",
+            "No manual stamps, no counting, no paperwork. Just results.",
         },
         {
-          title: "No way to re-engage",
+          title: "Bring them back",
           description:
-            "Without contact data, you can't remind customers about your business or offer something new.",
+            "Push notifications and personalized offers that drive repeat visits.",
         },
       ],
     },
     // Loyalty types
     loyaltyTypes: {
-      title: "Every loyalty type in one platform",
+      title: "One platform. Every loyalty type.",
       types: [
         {
           title: "Stamp Cards",
           description:
-            "Digital cards stored in Google Wallet. Customers collect stamps per visit and earn rewards.",
+            "Collect stamps. Earn rewards. All in Google Wallet.",
         },
         {
-          title: "Bonus System",
+          title: "Cashback & Points",
           description:
-            "Cashback and points with flexible accrual and burn rules. Motivate customers to return.",
+            "Flexible points that keep customers coming back.",
         },
         {
-          title: "Loyalty Levels",
+          title: "Tiered Rewards",
           description:
-            "Create discount tiers that grow with every purchase. You can also assign a personal discount to individual customers.",
+            "The more they visit, the more they save.",
         },
         {
           title: "Promo Codes",
           description:
-            "Campaign codes, influencer codes, seasonal offers. Track performance of every code.",
+            "Track every campaign. Measure every influencer.",
         },
         {
-          title: "Gift Certificates",
+          title: "Gift Cards",
           description:
-            "Customers buy digital certificates and gift them to friends and family. The perfect gift for any occasion.",
+            "Digital gifts your customers share in one tap.",
         },
         {
-          title: "Coupons",
+          title: "Smart Coupons",
           description:
-            "Give coupons to customers for birthdays, special events, or just because. Boost loyalty with personalized offers.",
+            "Birthday treats. Surprise offers. Personalized for each customer.",
         },
       ],
     },
     // Features
     features: {
-      title: "Everything you need for a loyalty program",
+      title: "Built with everything you need",
       items: [
         {
-          title: "Google Wallet & Apple Wallet",
+          title: "Wallet-ready",
           description:
-            "Cards are automatically saved to the phone's wallet. Always at hand.",
+            "Cards land right in Google Wallet and Apple Wallet. Zero friction.",
           wide: true,
         },
         {
           title: "Push Notifications",
           description:
-            "Remind customers about promotions, bonuses, and special offers via push notifications.",
+            "Reach customers at exactly the right moment.",
         },
         {
-          title: "QR Code Support",
+          title: "QR Codes",
           description:
-            "Each customer gets a unique QR code for fast identification.",
+            "One scan. Instant identification.",
         },
         {
-          title: "Real-time Analytics",
+          title: "Live Analytics",
           description:
-            "Track visits, conversions, average check, and program effectiveness.",
+            "See what's happening across all locations, right now.",
           wide: true,
         },
         {
           title: "POS Integration",
           description:
-            "Connect Rimbo to your POS system for automatic bonus accrual.",
+            "Connects to the systems you already use.",
         },
         {
           title: "Multi-location",
           description:
-            "Manage the loyalty program for all your locations from one dashboard.",
+            "All your stores. One dashboard.",
         },
         {
-          title: "Staff Management",
+          title: "Team Access",
           description:
-            "Add employees with different access levels to the system.",
+            "Give your staff the right access levels.",
         },
         {
-          title: "Custom Card Design",
+          title: "Your Brand",
           description:
-            "Customize card appearance to match your brand. Colors, logo, style.",
+            "Custom colors, logo, and card design.",
         },
         {
-          title: "API Access",
+          title: "Full API",
           description:
-            "Full API for integration with your existing systems and applications.",
+            "Build anything on top of Rimbo.",
           wide: true,
         },
       ],
     },
     // How it works
     howItWorks: {
-      title: "How It Works",
+      title: "Up and running in three steps",
       steps: [
         {
           step: "1",
-          title: "Request a Demo",
+          title: "Talk to us",
           description:
-            "Submit a request — we'll reach out, show you the platform, and set up your account.",
+            "Book a demo. We'll set everything up for you.",
         },
         {
           step: "2",
-          title: "Set Up Loyalty",
+          title: "Make it yours",
           description:
-            "Configure all loyalty types — stamps, bonuses, discounts, promo codes — and design cards to match your brand.",
+            "Pick your loyalty types. Design your cards. Set the rules.",
         },
         {
           step: "3",
-          title: "Engage Customers",
+          title: "Watch it grow",
           description:
-            "Customers add the card to their phone and collect bonuses on every visit.",
+            "Customers add cards to their phones and start collecting.",
         },
       ],
     },
     // Pricing
     pricing: {
-      title: "Pricing Plans",
-      subtitle: "Choose the plan that fits your business",
+      title: "Simple, transparent pricing",
+      subtitle: "Start free. Upgrade when you're ready.",
       monthly: "Monthly",
       annual: "Annual",
       annualSave: "up to -15%",
       perMonth: "/mo",
       popular: "Popular",
-      choosePlan: "Choose Plan",
+      choosePlan: "Get Started",
       cards: "Cards",
       locations: "Locations",
       customers: "Customers",
@@ -424,7 +424,7 @@ export const dictionaries = {
     },
     // FAQ
     faq: {
-      title: "Frequently Asked Questions",
+      title: "Questions? Answers.",
       items: [
         {
           question: "How do customers access their cards?",
@@ -460,7 +460,7 @@ export const dictionaries = {
     },
     // Footer
     footer: {
-      copyright: "2025 Rimbo. All rights reserved.",
+      copyright: "2026 Rimbo. All rights reserved.",
       links: {
         features: "Features",
         pricing: "Pricing",

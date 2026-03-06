@@ -19,43 +19,43 @@ export function Pricing({ dict }: { dict: Dictionary }) {
   return (
     <section ref={ref} id="pricing" className="section-padding">
       <div className="mx-auto max-w-6xl">
-        <h2 className="fade-up text-center text-3xl font-bold md:text-4xl themed-text">
+        <h2 className="fade-up text-center text-3xl font-bold tracking-tight md:text-5xl themed-text">
           {dict.pricing.title}
         </h2>
-        <p className="fade-up mt-4 text-center themed-text-secondary">
+        <p className="fade-up mt-4 text-center text-lg themed-text-secondary">
           {dict.pricing.subtitle}
         </p>
 
         {/* Toggle */}
-        <div className="fade-up mt-8 flex items-center justify-center gap-4">
-          <span className={`text-sm ${!annual ? "themed-text" : "themed-text-muted"}`}>
+        <div className="fade-up mt-10 flex items-center justify-center gap-4">
+          <span className={`text-sm font-medium ${!annual ? "themed-text" : "themed-text-muted"}`}>
             {dict.pricing.monthly}
           </span>
           <button
             onClick={() => setAnnual(!annual)}
-            className={`cursor-pointer relative h-7 w-12 rounded-full transition-colors ${
+            className={`cursor-pointer relative h-8 w-14 rounded-full transition-colors ${
               annual ? "bg-primary" : ""
             }`}
             style={{ background: annual ? undefined : "var(--border-glass)" }}
           >
             <div
-              className={`absolute top-0.5 h-6 w-6 rounded-full bg-white transition-transform ${
-                annual ? "translate-x-5.5" : "translate-x-0.5"
+              className={`absolute top-1 h-6 w-6 rounded-full bg-white shadow-sm transition-transform ${
+                annual ? "translate-x-7" : "translate-x-1"
               }`}
             />
           </button>
-          <span className={`text-sm ${annual ? "themed-text" : "themed-text-muted"}`}>
+          <span className={`text-sm font-medium ${annual ? "themed-text" : "themed-text-muted"}`}>
             {dict.pricing.annual}
           </span>
           {annual && (
-            <span className="rounded-full bg-secondary-dim px-3 py-1 text-xs font-medium text-secondary">
+            <span className="rounded-full bg-secondary-dim px-3 py-1 text-xs font-semibold text-secondary">
               {dict.pricing.annualSave}
             </span>
           )}
         </div>
 
         {/* Tiers */}
-        <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {dict.pricing.tiers.map((tier, i) => {
             const limits = planLimits[i];
             const isPopular = "popular" in tier && tier.popular;
@@ -66,7 +66,7 @@ export function Pricing({ dict }: { dict: Dictionary }) {
             return (
               <div
                 key={tier.name}
-                className={`fade-up glass relative flex flex-col p-6 ${
+                className={`fade-up glass relative flex flex-col p-8 ${
                   isPopular ? "ring-2 ring-primary" : "spotlight"
                 }`}
                 style={{ transitionDelay: `${i * 100}ms` }}
@@ -84,7 +84,7 @@ export function Pricing({ dict }: { dict: Dictionary }) {
 
                 <h3 className="text-lg font-semibold themed-text">{tier.name}</h3>
 
-                <div className="mt-4 mb-6">
+                <div className="mt-5 mb-8">
                   <div className="flex items-baseline gap-1">
                     <span className="text-4xl font-bold text-primary">
                       ₴{displayPrice.toLocaleString()}
@@ -95,7 +95,7 @@ export function Pricing({ dict }: { dict: Dictionary }) {
                   </div>
                 </div>
 
-                <ul className="mb-8 flex flex-col gap-3 text-sm">
+                <ul className="mb-8 flex flex-col gap-3.5 text-sm">
                   <PricingRow
                     label={dict.pricing.cards}
                     value={String(limits.cards)}
@@ -132,7 +132,7 @@ export function Pricing({ dict }: { dict: Dictionary }) {
         </div>
 
         {/* Enterprise note */}
-        <p className="fade-up mt-8 text-center text-sm themed-text-muted">
+        <p className="fade-up mt-10 text-center text-sm themed-text-muted">
           {dict.pricing.enterpriseNote}
         </p>
       </div>
@@ -142,7 +142,7 @@ export function Pricing({ dict }: { dict: Dictionary }) {
 
 function PricingRow({ label, value }: { label: string; value: string }) {
   return (
-    <li className="flex items-center gap-2 themed-text-secondary">
+    <li className="flex items-center gap-2.5 themed-text-secondary">
       <Check className="h-4 w-4 shrink-0 text-primary" />
       <span>
         {value} {label}
