@@ -4,11 +4,13 @@ import { useState, useEffect } from "react";
 import { Menu, X, Globe } from "lucide-react";
 import Image from "next/image";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { useContactModal } from "@/contexts/contact-modal-context";
 import type { Dictionary } from "@/lib/dictionaries";
 
 export function Header({ dict }: { dict: Dictionary }) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const { openModal } = useContactModal();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80);
@@ -87,8 +89,8 @@ export function Header({ dict }: { dict: Dictionary }) {
             {dict.langSwitch}
           </a>
           <ThemeToggle />
-          <a
-            href="#pricing"
+          <button
+            onClick={() => openModal()}
             className={`cursor-pointer text-sm font-semibold text-[#0a1a1a] transition-all hover:-translate-y-0.5 hover:shadow-[0_4px_20px_oklch(0.75_0.15_165/0.35)] ${
               scrolled
                 ? "ml-1 inline-flex items-center rounded-full bg-primary px-5 py-2"
@@ -96,7 +98,7 @@ export function Header({ dict }: { dict: Dictionary }) {
             }`}
           >
             {dict.header.getStarted}
-          </a>
+          </button>
         </nav>
 
         {/* Mobile controls */}
@@ -133,9 +135,8 @@ export function Header({ dict }: { dict: Dictionary }) {
             <Globe className="h-3.5 w-3.5" />
             {dict.langSwitch}
           </a>
-          <a
-            href="#pricing"
-            onClick={() => setMenuOpen(false)}
+          <button
+            onClick={() => { setMenuOpen(false); openModal(); }}
             className={`text-center text-sm font-semibold text-[#0a1a1a] transition-all hover:-translate-y-0.5 ${
               scrolled
                 ? "mt-1 rounded-full bg-primary px-5 py-2.5 hover:shadow-[0_4px_20px_oklch(0.75_0.15_165/0.35)]"
@@ -143,7 +144,7 @@ export function Header({ dict }: { dict: Dictionary }) {
             }`}
           >
             {dict.header.getStarted}
-          </a>
+          </button>
         </nav>
       )}
     </header>

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Check } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+import { useContactModal } from "@/contexts/contact-modal-context";
 import type { Dictionary } from "@/lib/dictionaries";
 
 const planLimits = [
@@ -15,6 +16,7 @@ const planLimits = [
 export function Pricing({ dict }: { dict: Dictionary }) {
   const ref = useScrollAnimation();
   const [annual, setAnnual] = useState(true);
+  const { openModal } = useContactModal();
 
   return (
     <section ref={ref} id="pricing" className="section-padding">
@@ -118,14 +120,14 @@ export function Pricing({ dict }: { dict: Dictionary }) {
                   />
                 </ul>
 
-                <a
-                  href="#"
+                <button
+                  onClick={() => openModal(tier.name)}
                   className={`cursor-pointer mt-auto text-center text-sm ${
                     isPopular ? "btn-primary" : "btn-glass"
                   }`}
                 >
                   {dict.pricing.choosePlan}
-                </a>
+                </button>
               </div>
             );
           })}

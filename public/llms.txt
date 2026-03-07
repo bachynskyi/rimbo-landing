@@ -1,0 +1,32 @@
+# Rimbo — Digital Loyalty Platform
+
+> Rimbo is a SaaS loyalty platform for businesses in Ukraine. It provides digital stamp cards, bonuses, cashback, tiered discounts, promo codes, gift cards, and smart coupons — all managed from a single dashboard.
+
+## Key Features
+- Google Wallet & Apple Wallet integration
+- QR-code scanning for stamp/bonus accrual
+- Push notifications
+- Live analytics across multiple locations
+- POS integration (Poster, Checkbox)
+- Team access with role-based permissions
+- Full API for custom integrations
+- White-label card design
+
+## Pricing (UAH/month)
+- Start: 349/mo (299 annual)
+- Growth: 799/mo (699 annual) — most popular
+- Pro: 1399/mo (1199 annual)
+- Custom: 1999/mo (1699 annual)
+- 14-day free trial on all plans
+
+## Pages
+- / — Home (Ukrainian)
+- /en — Home (English)
+- /privacy — Privacy Policy (Ukrainian)
+- /en/privacy — Privacy Policy (English)
+- /terms — Terms of Use (Ukrainian)
+- /en/terms — Terms of Use (English)
+
+## Contact
+- Email: billing@rimbo.io
+- Support: Mon-Fri 10:00-18:00, Sat-Sun 11:00-15:00 (Kyiv time)

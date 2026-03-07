@@ -116,6 +116,7 @@ body {
   opacity: 0.3;
   pointer-events: none;
   transition: opacity 0.5s;
+  will-change: transform;
 }
 
 @keyframes fog-drift-1 {
@@ -367,6 +368,89 @@ html {
     animation: none;
     opacity: 1;
     transform: none;
+  }
+
+  .fog-orb {
+    animation: none !important;
+  }
+
+  .fade-up {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ===== Contact Modal ===== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  opacity: 0;
+  transition: opacity 0.25s ease-out;
+  padding: 1rem;
+}
+
+.modal-overlay.open {
+  opacity: 1;
+}
+
+.modal-card {
+  background: var(--nav-pill-bg);
+  border: 1px solid var(--border-glass);
+  border-radius: 20px;
+  backdrop-filter: blur(24px) saturate(1.5);
+  -webkit-backdrop-filter: blur(24px) saturate(1.5);
+  box-shadow: 0 8px 40px var(--shadow-color);
+  width: 100%;
+  max-width: 28rem;
+  max-height: calc(100vh - 2rem);
+  overflow-y: auto;
+  transform: scale(0.95);
+  opacity: 0;
+  transition: transform 0.25s ease-out, opacity 0.25s ease-out;
+}
+
+.modal-overlay.open .modal-card {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.modal-input {
+  width: 100%;
+  background: transparent;
+  border: 1px solid var(--border-glass);
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  color: var(--text-primary);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+
+.modal-input::placeholder {
+  color: var(--text-muted);
+}
+
+.modal-input:focus {
+  border-color: oklch(0.75 0.15 165);
+  box-shadow: 0 0 0 3px oklch(0.75 0.15 165 / 0.15);
+}
+
+.modal-input.error {
+  border-color: oklch(0.65 0.2 25);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .modal-overlay,
+  .modal-card {
+    transition: none;
   }
 }
 

@@ -10,13 +10,21 @@ import { FAQ } from "@/components/faq";
 import { Footer } from "@/components/footer";
 import { FogBackground } from "@/components/fog-background";
 import { GrainOverlay } from "@/components/grain-overlay";
+import { ContactModalProvider } from "@/contexts/contact-modal-context";
+import {
+  OrganizationSchema,
+  WebSiteSchema,
+  FAQPageSchema,
+} from "@/components/json-ld";
 
-// Root "/" serves Ukrainian content (default locale)
 export default function HomePage() {
   const dict = getDictionary("uk");
 
   return (
-    <>
+    <ContactModalProvider dict={dict}>
+      <OrganizationSchema />
+      <WebSiteSchema />
+      <FAQPageSchema dict={dict} />
       <FogBackground />
       <GrainOverlay />
       <Header dict={dict} />
@@ -30,6 +38,6 @@ export default function HomePage() {
         <FAQ dict={dict} />
       </main>
       <Footer dict={dict} />
-    </>
+    </ContactModalProvider>
   );
 }

@@ -1,7 +1,8 @@
 {
-  "name": "Rimbo",
+  "name": "Rimbo — Цифрова платформа лояльності",
   "short_name": "Rimbo",
-  "description": "Digital loyalty platform for your business",
+  "description": "Штамп-картки, бонуси, знижки, промокоди та сертифікати для вашого бiзнесу. Google Wallet, Apple Wallet, QR-коди.",
+  "lang": "uk",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
