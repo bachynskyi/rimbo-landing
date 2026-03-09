@@ -38,8 +38,11 @@ export default async function PrivacyPage({
         title={dict.privacy.title}
         lastUpdated={dict.privacy.lastUpdated}
         sections={dict.privacy.sections}
-        backLabel={dict.privacy.backLabel}
-        backHref={`/${locale}`}
+        homeHref={`/${locale}`}
+        homeLabel="Home"
+        langSwitch={dict.langSwitch}
+        langSwitchHref={`${dict.langSwitchHref}privacy`}
+        dict={dict}
       />
     </>
   );

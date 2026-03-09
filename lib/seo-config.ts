@@ -1,6 +1,12 @@
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL || "https://rimbo.com.ua";
 
+export const APP_URL =
+  process.env.NEXT_PUBLIC_APP_URL || "https://rimbo.id";
+
+export const SUPPORT_EMAIL =
+  process.env.NEXT_PUBLIC_SUPPORT_EMAIL || "support@rimbo.id";
+
 export const SITE_NAME = "Rimbo";
 
 export const LOCALE_MAP = {

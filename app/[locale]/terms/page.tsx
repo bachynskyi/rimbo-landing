@@ -38,8 +38,11 @@ export default async function TermsPage({
         title={dict.terms.title}
         lastUpdated={dict.terms.lastUpdated}
         sections={dict.terms.sections}
-        backLabel={dict.terms.backLabel}
-        backHref={`/${locale}`}
+        homeHref={`/${locale}`}
+        homeLabel="Home"
+        langSwitch={dict.langSwitch}
+        langSwitchHref={`${dict.langSwitchHref}terms`}
+        dict={dict}
       />
     </>
   );

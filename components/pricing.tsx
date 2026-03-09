@@ -135,7 +135,18 @@ export function Pricing({ dict }: { dict: Dictionary }) {
 
         {/* Enterprise note */}
         <p className="fade-up mt-10 text-center text-sm themed-text-muted">
-          {dict.pricing.enterpriseNote}
+          {dict.pricing.enterpriseNote.split("{link}").map((part, i, arr) =>
+            i < arr.length - 1 ? (
+              <span key={i}>
+                {part}
+                <a href="mailto:support@rimbo.id" className="text-primary underline underline-offset-2 hover:opacity-80 transition-opacity">
+                  {dict.pricing.enterpriseNoteLink}
+                </a>
+              </span>
+            ) : (
+              <span key={i}>{part}</span>
+            )
+          )}
         </p>
       </div>
     </section>

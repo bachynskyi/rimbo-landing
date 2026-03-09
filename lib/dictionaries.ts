@@ -1,3 +1,5 @@
+import { APP_URL, SUPPORT_EMAIL } from "./seo-config";
+
 export const dictionaries = {
   uk: {
     locale: "uk",
@@ -181,7 +183,8 @@ export const dictionaries = {
       customers: "Клієнтів",
       staff: "Персонал",
       extraStaff: "+₴200/додатковий",
-      enterpriseNote: "* Потрібно більше? Зв'яжіться з нами для індивідуального плану з необмеженими можливостями.",
+      enterpriseNote: "* Потрібно більше? {link} для індивідуального плану з необмеженими можливостями.",
+      enterpriseNoteLink: "Зв'яжіться з нами",
       tiers: [
         { name: "Старт", monthlyPrice: 349, annualPrice: 299 },
         { name: "Розвиток", monthlyPrice: 799, annualPrice: 699, popular: true },
@@ -248,7 +251,7 @@ export const dictionaries = {
         },
         {
           heading: "1. Визначення термінів",
-          content: "Платформа — веб-платформа цифрових карток лояльності \"Rimbo\", доступна за адресою www.rimbo.app та/або іншими адресами, визначеними Виконавцем.\n\nЗамовник — фізична особа-підприємець або юридична особа, яка зареєструвалася на Платформі та використовує її для управління програмами лояльності для своїх клієнтів.\n\nКінцевий Клієнт — фізична особа, яка є клієнтом Замовника та користується програмою лояльності через Платформу.\n\nКартка лояльності — цифрова картка, створена Замовником на Платформі для нарахування штампів, бонусів та/або знижок Кінцевим Клієнтам.\n\nБонус (Бонусний бал) — умовна облікова одиниця, що нараховується та списується на Платформі в рамках програми лояльності Замовника. Бонуси не мають грошового вираження, не є засобом платежу, валютою чи цінним папером і не можуть бути отримані в грошовій формі.\n\nБонусний рахунок — сукупність облікових та інформаційних даних Кінцевого Клієнта на Платформі щодо поточного балансу бонусів, нарахованих та списаних бонусних балів. Бонусний рахунок не є банківським рахунком.\n\nТарифний план — набір функціональних можливостей та лімітів, визначених Виконавцем, доступних Замовнику за відповідну оплату.\n\nОсобистий кабінет — захищена область Платформи, доступна Замовнику після авторизації, де здійснюється управління картками лояльності, клієнтами та налаштуваннями.\n\nСпівробітник — особа, якій Замовник надав доступ до Особистого кабінету з відповідною роллю (Адміністратор або Учасник).\n\nQR-код — двовимірний штрих-код, що використовується на Платформі для ідентифікації Кінцевих Клієнтів та нарахування штампів/бонусів.\n\nТранзакція — операція нарахування або списання штампів, бонусних балів чи знижок на Платформі.",
+          content: `Платформа — веб-платформа цифрових карток лояльності \"Rimbo\", доступна за адресою ${APP_URL} та/або іншими адресами, визначеними Виконавцем.\n\nЗамовник — фізична особа-підприємець або юридична особа, яка зареєструвалася на Платформі та використовує її для управління програмами лояльності для своїх клієнтів.\n\nКінцевий Клієнт — фізична особа, яка є клієнтом Замовника та користується програмою лояльності через Платформу.\n\nКартка лояльності — цифрова картка, створена Замовником на Платформі для нарахування штампів, бонусів та/або знижок Кінцевим Клієнтам.\n\nБонус (Бонусний бал) — умовна облікова одиниця, що нараховується та списується на Платформі в рамках програми лояльності Замовника. Бонуси не мають грошового вираження, не є засобом платежу, валютою чи цінним папером і не можуть бути отримані в грошовій формі.\n\nБонусний рахунок — сукупність облікових та інформаційних даних Кінцевого Клієнта на Платформі щодо поточного балансу бонусів, нарахованих та списаних бонусних балів. Бонусний рахунок не є банківським рахунком.\n\nТарифний план — набір функціональних можливостей та лімітів, визначених Виконавцем, доступних Замовнику за відповідну оплату.\n\nОсобистий кабінет — захищена область Платформи, доступна Замовнику після авторизації, де здійснюється управління картками лояльності, клієнтами та налаштуваннями.\n\nСпівробітник — особа, якій Замовник надав доступ до Особистого кабінету з відповідною роллю (Адміністратор або Учасник).\n\nQR-код — двовимірний штрих-код, що використовується на Платформі для ідентифікації Кінцевих Клієнтів та нарахування штампів/бонусів.\n\nТранзакція — операція нарахування або списання штампів, бонусних балів чи знижок на Платформі.`,
         },
         {
           heading: "2. Предмет договору",
@@ -312,7 +315,7 @@ export const dictionaries = {
         },
         {
           heading: "17. Контактна інформація",
-          content: "Виконавець: ФОП Бачинський Олександр Іванович\nРНОКПП: 3424310353\nEmail: billing@rimbo.io\nПлатформа: rimbo.vercel.app\nГодини підтримки: Пн–Пт 10:00–18:00, Сб–Нд 11:00–15:00 (за Київським часом)",
+          content: `Виконавець: ФОП Бачинський Олександр Іванович\nРНОКПП: 3424310353\nEmail: ${SUPPORT_EMAIL}\nПлатформа: ${APP_URL}\nГодини підтримки: Пн–Пт 10:00–18:00, Сб–Нд 11:00–15:00 (за Київським часом)`,
         },
       ],
     },
@@ -340,7 +343,7 @@ export const dictionaries = {
         },
         {
           heading: "Розподіл відповідальності за дані",
-          content: "Замовник є володільцем (контролером) персональних даних своїх Кінцевих Клієнтів та несе повну відповідальність за законність їх збору та обробки.\n\nВиконавець виступає як обробник персональних даних Кінцевих Клієнтів за дорученням Замовника.\n\nЗамовник зобов'язаний самостійно отримати згоду Кінцевих Клієнтів на обробку їхніх персональних даних до їх внесення на Платформу.",
+          content: "Замовник є власником (контролером) персональних даних своїх Кінцевих Клієнтів та несе повну відповідальність за законність їх збору та обробки.\n\nВиконавець виступає як обробник персональних даних Кінцевих Клієнтів за дорученням Замовника.\n\nЗамовник зобов'язаний самостійно отримати згоду Кінцевих Клієнтів на обробку їхніх персональних даних до їх внесення на Платформу.",
         },
         {
           heading: "Треті сторони, що залучаються до обробки",
@@ -352,7 +355,7 @@ export const dictionaries = {
         },
         {
           heading: "Ваші права",
-          content: "Суб'єкт персональних даних має право: знати про джерела збору, місцезнаходження та мету обробки своїх даних; отримати доступ до своїх персональних даних; вимагати виправлення неточних або неповних даних; вимагати видалення своїх персональних даних; відкликати згоду на обробку персональних даних.\n\nДля реалізації цих прав зверніться до нас за адресою: billing@rimbo.io.",
+          content: `Суб'єкт персональних даних має право: знати про джерела збору, місцезнаходження та мету обробки своїх даних; отримати доступ до своїх персональних даних; вимагати виправлення неточних або неповних даних; вимагати видалення своїх персональних даних; відкликати згоду на обробку персональних даних.\n\nДля реалізації цих прав зверніться до нас за адресою: ${SUPPORT_EMAIL}.`,
         },
         {
           heading: "Захист даних",
@@ -364,7 +367,7 @@ export const dictionaries = {
         },
         {
           heading: "Контакти",
-          content: "З питань конфіденційності та захисту персональних даних зверніться до нас:\n\nEmail: billing@rimbo.io\nПлатформа: rimbo.vercel.app\nГодини підтримки: Пн–Пт 10:00–18:00, Сб–Нд 11:00–15:00 (за Київським часом)",
+          content: `З питань конфіденційності та захисту персональних даних зверніться до нас:\n\nEmail: ${SUPPORT_EMAIL}\nПлатформа: ${APP_URL}\nГодини підтримки: Пн–Пт 10:00–18:00, Сб–Нд 11:00–15:00 (за Київським часом)`,
         },
       ],
     },
@@ -576,7 +579,8 @@ export const dictionaries = {
       customers: "Customers",
       staff: "Staff",
       extraStaff: "+₴200/extra",
-      enterpriseNote: "* Need more? Contact us for a custom plan with unlimited capabilities.",
+      enterpriseNote: "* Need more? {link} for a custom plan with unlimited capabilities.",
+      enterpriseNoteLink: "Contact us",
       tiers: [
         { name: "Start", monthlyPrice: 349, annualPrice: 299 },
         { name: "Growth", monthlyPrice: 799, annualPrice: 699, popular: true },
@@ -643,7 +647,7 @@ export const dictionaries = {
         },
         {
           heading: "1. Definitions",
-          content: "Platform — the digital loyalty cards web platform \"Rimbo\", available at www.rimbo.app and/or other addresses designated by the Executor.\n\nCustomer — an individual entrepreneur or legal entity that has registered on the Platform and uses it to manage loyalty programs for their clients.\n\nEnd Client — an individual who is a client of the Customer and participates in a loyalty program through the Platform.\n\nLoyalty Card — a digital card created by the Customer on the Platform for awarding stamps, bonuses, and/or discounts to End Clients.\n\nBonus (Bonus Point) — a conditional accounting unit that is awarded and redeemed on the Platform within the Customer's loyalty program. Bonuses have no monetary value, are not a means of payment, currency, or security, and cannot be received in monetary form.\n\nBonus Account — a collection of accounting and informational data of an End Client on the Platform regarding the current bonus balance, awarded and redeemed bonus points. The Bonus Account is not a bank account.\n\nTariff Plan — a set of functionalities and limits defined by the Executor, available to the Customer for the corresponding fee.\n\nPersonal Account — a protected area of the Platform accessible to the Customer after authorization, where loyalty cards, clients, and settings are managed.\n\nStaff Member — a person to whom the Customer has granted access to the Personal Account with an assigned role (Administrator or Member).\n\nQR Code — a two-dimensional barcode used on the Platform for identification of End Clients and awarding stamps/bonuses.\n\nTransaction — an operation of awarding or redeeming stamps, bonus points, or discounts on the Platform.",
+          content: `Platform — the digital loyalty cards web platform \"Rimbo\", available at ${APP_URL} and/or other addresses designated by the Executor.\n\nCustomer — an individual entrepreneur or legal entity that has registered on the Platform and uses it to manage loyalty programs for their clients.\n\nEnd Client — an individual who is a client of the Customer and participates in a loyalty program through the Platform.\n\nLoyalty Card — a digital card created by the Customer on the Platform for awarding stamps, bonuses, and/or discounts to End Clients.\n\nBonus (Bonus Point) — a conditional accounting unit that is awarded and redeemed on the Platform within the Customer's loyalty program. Bonuses have no monetary value, are not a means of payment, currency, or security, and cannot be received in monetary form.\n\nBonus Account — a collection of accounting and informational data of an End Client on the Platform regarding the current bonus balance, awarded and redeemed bonus points. The Bonus Account is not a bank account.\n\nTariff Plan — a set of functionalities and limits defined by the Executor, available to the Customer for the corresponding fee.\n\nPersonal Account — a protected area of the Platform accessible to the Customer after authorization, where loyalty cards, clients, and settings are managed.\n\nStaff Member — a person to whom the Customer has granted access to the Personal Account with an assigned role (Administrator or Member).\n\nQR Code — a two-dimensional barcode used on the Platform for identification of End Clients and awarding stamps/bonuses.\n\nTransaction — an operation of awarding or redeeming stamps, bonus points, or discounts on the Platform.`,
         },
         {
           heading: "2. Subject of the Agreement",
@@ -707,7 +711,7 @@ export const dictionaries = {
         },
         {
           heading: "17. Contact Information",
-          content: "Executor: Individual Entrepreneur Bachynskyi Oleksandr Ivanovych\nTax ID (RNOKPP): 3424310353\nEmail: billing@rimbo.io\nPlatform: rimbo.vercel.app\nSupport hours: Mon–Fri 10:00–18:00, Sat–Sun 11:00–15:00 (Kyiv time)",
+          content: `Executor: Individual Entrepreneur Bachynskyi Oleksandr Ivanovych\nTax ID (RNOKPP): 3424310353\nEmail: ${SUPPORT_EMAIL}\nPlatform: ${APP_URL}\nSupport hours: Mon–Fri 10:00–18:00, Sat–Sun 11:00–15:00 (Kyiv time)`,
         },
       ],
     },
@@ -747,7 +751,7 @@ export const dictionaries = {
         },
         {
           heading: "Your Rights",
-          content: "Data subjects have the right to: know about the sources of collection, location, and purpose of processing of their data; access their personal data; request correction of inaccurate or incomplete data; request deletion of their personal data; withdraw consent for personal data processing.\n\nTo exercise these rights, contact us at: billing@rimbo.io.",
+          content: `Data subjects have the right to: know about the sources of collection, location, and purpose of processing of their data; access their personal data; request correction of inaccurate or incomplete data; request deletion of their personal data; withdraw consent for personal data processing.\n\nTo exercise these rights, contact us at: ${SUPPORT_EMAIL}.`,
         },
         {
           heading: "Data Security",
@@ -759,7 +763,7 @@ export const dictionaries = {
         },
         {
           heading: "Contact",
-          content: "For privacy and data protection inquiries, contact us:\n\nEmail: billing@rimbo.io\nPlatform: rimbo.vercel.app\nSupport hours: Mon–Fri 10:00–18:00, Sat–Sun 11:00–15:00 (Kyiv time)",
+          content: `For privacy and data protection inquiries, contact us:\n\nEmail: ${SUPPORT_EMAIL}\nPlatform: ${APP_URL}\nSupport hours: Mon–Fri 10:00–18:00, Sat–Sun 11:00–15:00 (Kyiv time)`,
         },
       ],
     },

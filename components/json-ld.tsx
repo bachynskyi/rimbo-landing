@@ -1,4 +1,4 @@
-import { SITE_URL, SITE_NAME } from "@/lib/seo-config";
+import { SITE_URL, SITE_NAME, SUPPORT_EMAIL } from "@/lib/seo-config";
 import type { Dictionary } from "@/lib/dictionaries";
 
 function JsonLdScript({ data }: { data: Record<string, unknown> }) {
@@ -23,7 +23,7 @@ export function OrganizationSchema() {
           "Digital loyalty platform — stamp cards, bonuses, discounts, promo codes for your business.",
         contactPoint: {
           "@type": "ContactPoint",
-          email: "billing@rimbo.io",
+          email: SUPPORT_EMAIL,
           contactType: "customer service",
           availableLanguage: ["Ukrainian", "English"],
         },

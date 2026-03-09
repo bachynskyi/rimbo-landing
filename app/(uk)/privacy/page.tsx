@@ -32,8 +32,11 @@ export default function PrivacyPage() {
         title={dict.privacy.title}
         lastUpdated={dict.privacy.lastUpdated}
         sections={dict.privacy.sections}
-        backLabel={dict.privacy.backLabel}
-        backHref="/"
+        homeHref="/"
+        homeLabel="Головна"
+        langSwitch={dict.langSwitch}
+        langSwitchHref={`${dict.langSwitchHref}/privacy`}
+        dict={dict}
       />
     </>
   );

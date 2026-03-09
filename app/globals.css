@@ -389,7 +389,7 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.75);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   opacity: 0;
@@ -402,7 +402,7 @@ html {
 }
 
 .modal-card {
-  background: var(--nav-pill-bg);
+  background: var(--bg-deep);
   border: 1px solid var(--border-glass);
   border-radius: 20px;
   backdrop-filter: blur(24px) saturate(1.5);
@@ -445,6 +445,81 @@ html {
 
 .modal-input.error {
   border-color: oklch(0.65 0.2 25);
+}
+
+/* Custom select dropdown */
+.modal-select {
+  position: relative;
+}
+
+.modal-select-trigger {
+  width: 100%;
+  background: transparent;
+  border: 1px solid var(--border-glass);
+  border-radius: 12px;
+  padding: 0.75rem 2.5rem 0.75rem 1rem;
+  font-size: 0.875rem;
+  color: var(--text-primary);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+  cursor: pointer;
+  text-align: left;
+  position: relative;
+}
+
+.modal-select-trigger:focus,
+.modal-select-trigger.open {
+  border-color: oklch(0.75 0.15 165);
+  box-shadow: 0 0 0 3px oklch(0.75 0.15 165 / 0.15);
+}
+
+.modal-select-trigger .chevron {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-secondary);
+  pointer-events: none;
+  transition: transform 0.2s;
+}
+
+.modal-select-trigger.open .chevron {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.modal-dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  z-index: 70;
+  background: var(--bg-deep);
+  border: 1px solid var(--border-glass);
+  border-radius: 12px;
+  padding: 4px;
+  box-shadow: 0 8px 24px var(--shadow-color);
+  list-style: none;
+  margin: 0;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.modal-dropdown-item {
+  padding: 0.6rem 1rem;
+  font-size: 0.875rem;
+  color: var(--text-primary);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.modal-dropdown-item:hover {
+  background: var(--bg-card-hover);
+}
+
+.modal-dropdown-item.active {
+  background: var(--primary-dim);
+  font-weight: 500;
 }
 
 @media (prefers-reduced-motion: reduce) {
