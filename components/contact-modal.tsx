@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef, useCallback, type FormEvent } from "react";
 import { createPortal } from "react-dom";
 import { X, CheckCircle } from "lucide-react";
+import { Turnstile, type TurnstileInstance } from "@marsidev/react-turnstile";
 import { useContactModal } from "@/contexts/contact-modal-context";
 import type { Dictionary } from "@/lib/dictionaries";
 
@@ -21,6 +22,8 @@ export function ContactModal({ dict }: { dict: Dictionary }) {
   const [errors, setErrors] = useState<{ name?: string; phone?: string }>({});
   const [submitted, setSubmitted] = useState(false);
   const [visible, setVisible] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  const turnstileRef = useRef<TurnstileInstance | null>(null);
 
   const overlayRef = useRef<HTMLDivElement>(null);
   const firstFocusRef = useRef<HTMLInputElement>(null);
@@ -36,6 +39,8 @@ export function ContactModal({ dict }: { dict: Dictionary }) {
       setNote("");
       setErrors({});
       setSubmitted(false);
+      setTurnstileToken(null);
+      turnstileRef.current?.reset();
       // Trigger open animation on next frame
       requestAnimationFrame(() => setVisible(true));
     }
@@ -111,7 +116,8 @@ export function ContactModal({ dict }: { dict: Dictionary }) {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
-    console.log("Contact form submitted:", { name, phone, email, plan, note });
+    if (!turnstileToken) return;
+    console.log("Contact form submitted:", { name, phone, email, plan, note, turnstileToken });
     setSubmitted(true);
   };
 
@@ -264,7 +270,22 @@ export function ContactModal({ dict }: { dict: Dictionary }) {
                 />
               </div>
 
-              <button type="submit" className="btn-primary mt-2 py-3 text-sm cursor-pointer">
+              {process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY && (
+                <Turnstile
+                  ref={turnstileRef}
+                  siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY}
+                  onSuccess={setTurnstileToken}
+                  onExpire={() => setTurnstileToken(null)}
+                  onError={() => setTurnstileToken(null)}
+                  options={{ theme: "auto", size: "flexible" }}
+                />
+              )}
+
+              <button
+                type="submit"
+                disabled={!!process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY && !turnstileToken}
+                className="btn-primary mt-2 py-3 text-sm cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+              >
                 {t.submit}
               </button>
             </form>
