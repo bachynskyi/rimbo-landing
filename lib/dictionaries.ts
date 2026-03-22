@@ -317,7 +317,7 @@ export const dictionaries = {
         },
         {
           heading: "5. Тарифні плани та вартість послуг",
-          content: `Вартість послуг визначається обраним Тарифним планом. Актуальні тарифи та ціни розміщуються на Платформі: ${SITE_URL}/#pricing. У разі розбіжностей пріоритет мають ціни, опубліковані на Платформі.\n\nВиконавець має право змінювати тарифи з попереднім повідомленням Замовника за 14 календарних днів. Нові тарифи набувають чинності з наступного розрахункового періоду.`,
+          content: `Вартість послуг визначається обраним Тарифним планом. Актуальні тарифи та ціни розміщуються на Платформі: ${SITE_URL}/#pricing. У разі розбіжностей пріоритет мають ціни, опубліковані на Платформі.\n\nВиконавець має право змінювати тарифи з попереднім повідомленням Замовника за 14 календарних днів. Нові тарифи набувають чинності з наступного розрахункового періоду.\n\nВиконавець залишає за собою право переглядати вартість послуг один раз на рік у зв'язку з інфляцією та можливим додаванням нового функціоналу.`,
         },
         {
           heading: "6. Порядок розрахунків",
@@ -765,7 +765,7 @@ export const dictionaries = {
         },
         {
           heading: "5. Tariff Plans and Pricing",
-          content: `The cost of services is determined by the selected Tariff Plan. Current tariffs and prices are published on the Platform: ${SITE_URL}/en#pricing. In case of discrepancies, prices published on the Platform shall prevail.\n\nThe Executor reserves the right to change tariffs with 14 calendar days' prior notice to the Customer. New tariffs take effect from the next billing period.`,
+          content: `The cost of services is determined by the selected Tariff Plan. Current tariffs and prices are published on the Platform: ${SITE_URL}/en#pricing. In case of discrepancies, prices published on the Platform shall prevail.\n\nThe Executor reserves the right to change tariffs with 14 calendar days' prior notice to the Customer. New tariffs take effect from the next billing period.\n\nThe Executor reserves the right to review service pricing once a year due to inflation and possible addition of new functionality.`,
         },
         {
           heading: "6. Payment Terms",
