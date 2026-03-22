@@ -33,9 +33,20 @@ export function BaseLayout({
     <html lang={lang} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
-        <link rel="preload" as="image" type="image/webp" href="/hero-glass-640.webp" media="(max-width: 640px)" />
-        <link rel="preload" as="image" type="image/webp" href="/hero-glass-1024.webp" media="(min-width: 641px) and (max-width: 1024px)" />
-        <link rel="preload" as="image" type="image/webp" href="/hero-glass-1440.webp" media="(min-width: 1025px)" />
+        <link
+          rel="preload"
+          as="image"
+          type="image/webp"
+          href="/hero-glass-1024.webp"
+          media="(max-width: 768px)"
+        />
+        <link
+          rel="preload"
+          as="image"
+          type="image/webp"
+          href="/hero-glass-1440.webp"
+          media="(min-width: 769px)"
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
