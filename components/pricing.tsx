@@ -6,13 +6,6 @@ import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import { useContactModal } from "@/contexts/contact-modal-context";
 import type { Dictionary } from "@/lib/dictionaries";
 
-const planLimits = [
-  { cards: 3, locations: 1, customers: 100, staff: "1" },
-  { cards: 5, locations: 2, customers: 500, staff: "3" },
-  { cards: 20, locations: 4, customers: "1,000", staff: "5" },
-  { cards: 20, locations: 4, customers: "1,000", staff: "5" },
-];
-
 export function Pricing({ dict }: { dict: Dictionary }) {
   const ref = useScrollAnimation();
   const [annual, setAnnual] = useState(true);
@@ -59,7 +52,6 @@ export function Pricing({ dict }: { dict: Dictionary }) {
         {/* Tiers */}
         <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {dict.pricing.tiers.map((tier, i) => {
-            const limits = planLimits[i];
             const isPopular = "popular" in tier && tier.popular;
             const displayPrice = annual
               ? (tier as { annualPrice: number }).annualPrice
@@ -97,27 +89,26 @@ export function Pricing({ dict }: { dict: Dictionary }) {
                   </div>
                 </div>
 
-                <ul className="mb-8 flex flex-col gap-3.5 text-sm">
-                  <PricingRow
-                    label={dict.pricing.cards}
-                    value={String(limits.cards)}
-                  />
-                  <PricingRow
-                    label={dict.pricing.locations}
-                    value={String(limits.locations)}
-                  />
-                  <PricingRow
-                    label={dict.pricing.customers}
-                    value={String(limits.customers)}
-                  />
-                  <PricingRow
-                    label={dict.pricing.staff}
-                    value={
-                      i >= 2
-                        ? `${limits.staff} (${dict.pricing.extraStaff})`
-                        : limits.staff
-                    }
-                  />
+                <ul className="mb-8 flex flex-col gap-3 text-sm">
+                  {i > 0 && (
+                    <li className="text-xs themed-text-muted mb-1">
+                      {dict.pricing.includesPrefix} {dict.pricing.tiers[i - 1].name}{dict.pricing.includesSuffix}
+                    </li>
+                  )}
+                  {tier.features.map((feature, fi) => (
+                    <li key={fi}>
+                      <div className="flex items-start gap-2.5 themed-text-secondary">
+                        <Check className="h-4 w-4 shrink-0 text-primary mt-0.5" />
+                        <span>{feature}</span>
+                      </div>
+                      {fi === 0 && i >= 1 && (
+                        <div className="ml-[26px] mt-1 flex flex-col text-xs themed-text-muted">
+                          <span>{dict.pricing.extraStaff}</span>
+                          <span>{dict.pricing.extraLocation}</span>
+                        </div>
+                      )}
+                    </li>
+                  ))}
                 </ul>
 
                 <button
@@ -150,16 +141,5 @@ export function Pricing({ dict }: { dict: Dictionary }) {
         </p>
       </div>
     </section>
-  );
-}
-
-function PricingRow({ label, value }: { label: string; value: string }) {
-  return (
-    <li className="flex items-center gap-2.5 themed-text-secondary">
-      <Check className="h-4 w-4 shrink-0 text-primary" />
-      <span>
-        {value} {label}
-      </span>
-    </li>
   );
 }
