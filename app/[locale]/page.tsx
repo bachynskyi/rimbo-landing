@@ -10,6 +10,12 @@ import { FAQ } from "@/components/faq";
 import { Footer } from "@/components/footer";
 import { FogBackground } from "@/components/fog-background";
 import { GrainOverlay } from "@/components/grain-overlay";
+import { ContactModalProvider } from "@/contexts/contact-modal-context";
+import {
+  OrganizationSchema,
+  WebSiteSchema,
+  FAQPageSchema,
+} from "@/components/json-ld";
 
 export default async function LandingPage({
   params,
@@ -20,7 +26,10 @@ export default async function LandingPage({
   const dict = getDictionary(locale);
 
   return (
-    <>
+    <ContactModalProvider dict={dict}>
+      <OrganizationSchema />
+      <WebSiteSchema />
+      <FAQPageSchema dict={dict} />
       <FogBackground />
       <GrainOverlay />
       <Header dict={dict} />
@@ -34,6 +43,6 @@ export default async function LandingPage({
         <FAQ dict={dict} />
       </main>
       <Footer dict={dict} />
-    </>
+    </ContactModalProvider>
   );
 }

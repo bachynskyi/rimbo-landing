@@ -12,10 +12,10 @@ export function FAQ({ dict }: { dict: Dictionary }) {
   return (
     <section ref={ref} id="faq" className="section-padding">
       <div className="mx-auto max-w-3xl">
-        <h2 className="fade-up text-center text-3xl font-bold md:text-4xl themed-text">
+        <h2 className="fade-up text-center text-3xl font-bold tracking-tight md:text-5xl themed-text">
           {dict.faq.title}
         </h2>
-        <div className="mt-12 flex flex-col gap-3">
+        <div className="mt-14 flex flex-col gap-3">
           {dict.faq.items.map((item, i) => {
             const isOpen = openIndex === i;
             return (
@@ -26,11 +26,11 @@ export function FAQ({ dict }: { dict: Dictionary }) {
               >
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : i)}
-                  className="cursor-pointer flex w-full items-center justify-between p-5 text-left"
+                  className="cursor-pointer flex w-full items-center justify-between p-6 text-left"
                 >
-                  <span className="pr-4 font-medium themed-text">{item.question}</span>
+                  <span className="pr-4 text-base font-medium themed-text">{item.question}</span>
                   <ChevronDown
-                    className={`h-5 w-5 shrink-0 themed-text-muted transition-transform ${
+                    className={`h-5 w-5 shrink-0 themed-text-muted transition-transform duration-300 ${
                       isOpen ? "rotate-180" : ""
                     }`}
                   />
@@ -41,7 +41,7 @@ export function FAQ({ dict }: { dict: Dictionary }) {
                   }`}
                 >
                   <div className="overflow-hidden">
-                    <p className="px-5 pb-5 text-sm leading-relaxed themed-text-secondary">
+                    <p className="px-6 pb-6 text-sm leading-relaxed themed-text-secondary">
                       {item.answer}
                     </p>
                   </div>
