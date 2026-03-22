@@ -9,6 +9,7 @@ export const dictionaries = {
       pricing: "Тарифи",
       faq: "FAQ",
       getStarted: "Почати",
+      login: "Увійти",
     },
     // Hero
     hero: {
@@ -389,6 +390,8 @@ export const dictionaries = {
       phoneRequired: "Введіть номер телефону",
       phoneInvalid: "Невірний формат телефону",
       submit: "Надіслати заявку",
+      submitting: "Надсилаємо...",
+      submitError: "Не вдалося надіслати. Спробуйте ще раз.",
       successTitle: "Дякуємо!",
       successMessage: "Ми отримали вашу заявку і зв'яжемось з вами найближчим часом.",
       close: "Закрити",
@@ -405,6 +408,7 @@ export const dictionaries = {
       pricing: "Pricing",
       faq: "FAQ",
       getStarted: "Get Started",
+      login: "Log In",
     },
     // Hero
     hero: {
@@ -785,6 +789,8 @@ export const dictionaries = {
       phoneRequired: "Phone number is required",
       phoneInvalid: "Invalid phone number format",
       submit: "Submit Request",
+      submitting: "Sending...",
+      submitError: "Failed to send. Please try again.",
       successTitle: "Thank you!",
       successMessage: "We've received your request and will get back to you shortly.",
       close: "Close",

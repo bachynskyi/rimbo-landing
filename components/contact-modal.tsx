@@ -7,6 +7,17 @@ import { Turnstile, type TurnstileInstance } from "@marsidev/react-turnstile";
 import { useContactModal } from "@/contexts/contact-modal-context";
 import type { Dictionary } from "@/lib/dictionaries";
 
+function normalizeUkrainianPhone(phone: string): string {
+  const digits = phone.replace(/\D/g, "");
+  if (digits.startsWith("0") && digits.length === 10) {
+    return `+380${digits.slice(1)}`;
+  }
+  if (digits.startsWith("380") && digits.length === 12) {
+    return `+${digits}`;
+  }
+  return phone;
+}
+
 export function ContactModal({ dict }: { dict: Dictionary }) {
   const { isOpen, selectedPlan, closeModal } = useContactModal();
   const t = dict.contactModal;
@@ -21,6 +32,8 @@ export function ContactModal({ dict }: { dict: Dictionary }) {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const [errors, setErrors] = useState<{ name?: string; phone?: string }>({});
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
   const [visible, setVisible] = useState(false);
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
   const turnstileRef = useRef<TurnstileInstance | null>(null);
@@ -39,6 +52,8 @@ export function ContactModal({ dict }: { dict: Dictionary }) {
       setNote("");
       setErrors({});
       setSubmitted(false);
+      setSubmitting(false);
+      setError("");
       setTurnstileToken(null);
       turnstileRef.current?.reset();
       // Trigger open animation on next frame
@@ -113,12 +128,34 @@ export function ContactModal({ dict }: { dict: Dictionary }) {
     return Object.keys(errs).length === 0;
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
     if (!turnstileToken) return;
-    console.log("Contact form submitted:", { name, phone, email, plan, note, turnstileToken });
-    setSubmitted(true);
+
+    setSubmitting(true);
+    setError("");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, phone: normalizeUkrainianPhone(phone), email, plan, note, turnstileToken }),
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => null);
+        throw new Error(data?.error || "Request failed");
+      }
+
+      setSubmitted(true);
+    } catch {
+      setError(t.submitError);
+      turnstileRef.current?.reset();
+      setTurnstileToken(null);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   if (!isOpen) return null;
@@ -195,7 +232,7 @@ export function ContactModal({ dict }: { dict: Dictionary }) {
                 <input
                   type="tel"
                   value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
+                  onChange={(e) => setPhone(normalizeUkrainianPhone(e.target.value))}
                   placeholder={t.phonePlaceholder}
                   className={`modal-input ${errors.phone ? "error" : ""}`}
                 />
@@ -281,12 +318,18 @@ export function ContactModal({ dict }: { dict: Dictionary }) {
                 />
               )}
 
+              {error && (
+                <p className="text-sm text-center" style={{ color: "oklch(0.65 0.2 25)" }}>
+                  {error}
+                </p>
+              )}
+
               <button
                 type="submit"
-                disabled={!!process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY && !turnstileToken}
+                disabled={submitting || (!!process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY && !turnstileToken)}
                 className="btn-primary mt-2 py-3 text-sm cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {t.submit}
+                {submitting ? t.submitting : t.submit}
               </button>
             </form>
           </>

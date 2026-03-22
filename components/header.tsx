@@ -5,12 +5,14 @@ import { Menu, X, Globe } from "lucide-react";
 import Image from "next/image";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { useContactModal } from "@/contexts/contact-modal-context";
+import { getLoginUrl } from "@/lib/seo-config";
 import type { Dictionary } from "@/lib/dictionaries";
 
 export function Header({ dict }: { dict: Dictionary }) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const { openModal } = useContactModal();
+  const loginUrl = getLoginUrl();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80);
@@ -89,6 +91,18 @@ export function Header({ dict }: { dict: Dictionary }) {
             {dict.langSwitch}
           </a>
           <ThemeToggle />
+          {loginUrl && (
+            <a
+              href={loginUrl}
+              className={
+                scrolled
+                  ? "nav-tab"
+                  : "cursor-pointer text-sm font-semibold themed-text-secondary transition-colors hover:themed-text"
+              }
+            >
+              {dict.header.login}
+            </a>
+          )}
           <button
             onClick={() => openModal()}
             className={`cursor-pointer text-sm font-semibold text-[#0a1a1a] transition-all hover:-translate-y-0.5 hover:shadow-[0_4px_20px_oklch(0.75_0.15_165/0.35)] ${
@@ -135,6 +149,15 @@ export function Header({ dict }: { dict: Dictionary }) {
             <Globe className="h-3.5 w-3.5" />
             {dict.langSwitch}
           </a>
+          {loginUrl && (
+            <a
+              href={loginUrl}
+              onClick={() => setMenuOpen(false)}
+              className={scrolled ? "nav-tab justify-center" : "cursor-pointer themed-text-secondary text-center"}
+            >
+              {dict.header.login}
+            </a>
+          )}
           <button
             onClick={() => { setMenuOpen(false); openModal(); }}
             className={`text-center text-sm font-semibold text-[#0a1a1a] transition-all hover:-translate-y-0.5 ${

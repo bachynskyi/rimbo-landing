@@ -33,6 +33,13 @@ export function getAlternateLinks(path: string) {
   };
 }
 
+export function getLoginUrl(): string | null {
+  const url = process.env.NEXT_PUBLIC_LOGIN_URL;
+  if (!url) return null;
+  const separator = url.includes("?") ? "&" : "?";
+  return `${url}${separator}utm_source=landing&utm_medium=web&utm_campaign=header`;
+}
+
 export const OG_DEFAULTS = {
   siteName: SITE_NAME,
   type: "website" as const,
