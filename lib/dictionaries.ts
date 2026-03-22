@@ -1,4 +1,4 @@
-import { APP_URL, SUPPORT_EMAIL } from "./seo-config";
+import { APP_URL, SITE_URL, SUPPORT_EMAIL } from "./seo-config";
 
 export const dictionaries = {
   uk: {
@@ -317,7 +317,7 @@ export const dictionaries = {
         },
         {
           heading: "5. Тарифні плани та вартість послуг",
-          content: "Вартість послуг визначається обраним Тарифним планом. Актуальні тарифи та ціни розміщуються на Платформі. У разі розбіжностей пріоритет мають ціни, опубліковані на Платформі.\n\nДодаткові послуги: Мобільний додаток: ₴9 999 (одноразово) + ₴499/міс. Публічний API: ₴499/міс.\n\nВиконавець має право змінювати тарифи з попереднім повідомленням Замовника за 14 календарних днів. Нові тарифи набувають чинності з наступного розрахункового періоду.",
+          content: `Вартість послуг визначається обраним Тарифним планом. Актуальні тарифи та ціни розміщуються на Платформі: ${SITE_URL}/#pricing. У разі розбіжностей пріоритет мають ціни, опубліковані на Платформі.\n\nВиконавець має право змінювати тарифи з попереднім повідомленням Замовника за 14 календарних днів. Нові тарифи набувають чинності з наступного розрахункового періоду.`,
         },
         {
           heading: "6. Порядок розрахунків",
@@ -765,7 +765,7 @@ export const dictionaries = {
         },
         {
           heading: "5. Tariff Plans and Pricing",
-          content: "The cost of services is determined by the selected Tariff Plan. Current tariffs and prices are published on the Platform. In case of discrepancies, prices published on the Platform shall prevail.\n\nAdditional services: Mobile application: UAH 9,999 (one-time) + UAH 499/month. Public API: UAH 499/month.\n\nThe Executor reserves the right to change tariffs with 14 calendar days' prior notice to the Customer. New tariffs take effect from the next billing period.",
+          content: `The cost of services is determined by the selected Tariff Plan. Current tariffs and prices are published on the Platform: ${SITE_URL}/en#pricing. In case of discrepancies, prices published on the Platform shall prevail.\n\nThe Executor reserves the right to change tariffs with 14 calendar days' prior notice to the Customer. New tariffs take effect from the next billing period.`,
         },
         {
           heading: "6. Payment Terms",
