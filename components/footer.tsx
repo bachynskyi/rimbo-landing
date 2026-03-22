@@ -4,9 +4,23 @@ export function Footer({ dict }: { dict: Dictionary }) {
   return (
     <footer className="border-t py-14 px-6 themed-border" style={{ borderColor: "var(--border-glass)" }}>
       <div className="mx-auto flex max-w-6xl flex-col items-center gap-6 sm:flex-row sm:justify-between">
-        <a href={dict.locale === "en" ? "/en" : "/"} className="text-xl font-bold text-primary">
-          Rimbo
-        </a>
+        <a
+          href={dict.locale === "en" ? "/en" : "/"}
+          className="shrink-0 block bg-primary"
+          aria-label="Rimbo"
+          style={{
+            width: 80,
+            height: 22,
+            WebkitMaskImage: "url(/rimbo-logo.png)",
+            maskImage: "url(/rimbo-logo.png)",
+            WebkitMaskSize: "contain",
+            maskSize: "contain",
+            WebkitMaskRepeat: "no-repeat",
+            maskRepeat: "no-repeat",
+            WebkitMaskPosition: "center",
+            maskPosition: "center",
+          }}
+        />
         <nav className="flex flex-wrap justify-center gap-x-8 gap-y-2 text-sm">
           <a href="#features" className="cursor-pointer themed-text-secondary transition-colors hover:themed-text">
             {dict.footer.links.features}
