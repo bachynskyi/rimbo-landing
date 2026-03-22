@@ -314,7 +314,7 @@ export function ContactModal({ dict }: { dict: Dictionary }) {
                   onSuccess={setTurnstileToken}
                   onExpire={() => setTurnstileToken(null)}
                   onError={() => setTurnstileToken(null)}
-                  options={{ theme: "auto", size: "flexible" }}
+                  options={{ theme: "auto", size: "invisible" }}
                 />
               )}
 
