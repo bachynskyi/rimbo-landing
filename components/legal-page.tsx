@@ -46,7 +46,7 @@ export function LegalPage({ title, lastUpdated, sections, homeHref, homeLabel, l
       />
       <FogBackground />
       <GrainOverlay />
-      <div className="section-padding min-h-screen pt-24">
+      <div className="section-padding min-h-screen pt-32 md:pt-24">
         <div className="mx-auto max-w-3xl">
           <h1 className="text-3xl sm:text-4xl font-bold themed-text mb-3">{title}</h1>
           <p className="text-sm themed-text-muted mb-12">{lastUpdated}</p>

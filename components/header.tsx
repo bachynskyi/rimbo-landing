@@ -131,21 +131,18 @@ export function Header({ dict }: { dict: Dictionary }) {
       {/* Mobile dropdown */}
       {menuOpen && (
         <nav
-          className={`mx-4 mt-2 flex flex-col gap-1 p-2 md:hidden ${
-            scrolled ? "nav-pill absolute top-full w-[calc(100%-2rem)] max-w-3xl" : "glass"
-          }`}
-          style={scrolled ? {} : { margin: "0.5rem 1rem", padding: "1.5rem" }}
+          className="nav-pill !rounded-2xl !bg-[rgba(255,255,255,0.96)] dark:!bg-[rgba(10,26,26,0.96)] absolute top-full mx-4 mt-2 w-[calc(100%-2rem)] max-w-3xl flex flex-col gap-1 p-2 md:hidden"
         >
-          <a href="#features" onClick={() => setMenuOpen(false)} className={scrolled ? "nav-tab justify-center" : "cursor-pointer themed-text-secondary"}>
+          <a href="#features" onClick={() => setMenuOpen(false)} className="nav-tab justify-center">
             {dict.header.features}
           </a>
-          <a href="#pricing" onClick={() => setMenuOpen(false)} className={scrolled ? "nav-tab justify-center" : "cursor-pointer themed-text-secondary"}>
+          <a href="#pricing" onClick={() => setMenuOpen(false)} className="nav-tab justify-center">
             {dict.header.pricing}
           </a>
-          <a href="#faq" onClick={() => setMenuOpen(false)} className={scrolled ? "nav-tab justify-center" : "cursor-pointer themed-text-secondary"}>
+          <a href="#faq" onClick={() => setMenuOpen(false)} className="nav-tab justify-center">
             {dict.header.faq}
           </a>
-          <a href={dict.langSwitchHref} className={scrolled ? "nav-tab justify-center" : "cursor-pointer flex items-center gap-1.5 themed-text-secondary"}>
+          <a href={dict.langSwitchHref} className="nav-tab justify-center">
             <Globe className="h-3.5 w-3.5" />
             {dict.langSwitch}
           </a>
@@ -153,18 +150,14 @@ export function Header({ dict }: { dict: Dictionary }) {
             <a
               href={loginUrl}
               onClick={() => setMenuOpen(false)}
-              className={scrolled ? "nav-tab justify-center" : "cursor-pointer themed-text-secondary text-center"}
+              className="nav-tab justify-center"
             >
               {dict.header.login}
             </a>
           )}
           <button
             onClick={() => { setMenuOpen(false); openModal(); }}
-            className={`text-center text-sm font-semibold text-[#0a1a1a] transition-all hover:-translate-y-0.5 ${
-              scrolled
-                ? "mt-1 rounded-full bg-primary px-5 py-2.5 hover:shadow-[0_4px_20px_oklch(0.75_0.15_165/0.35)]"
-                : "btn-primary cursor-pointer mt-2"
-            }`}
+            className="mt-1 rounded-full bg-primary px-5 py-2.5 text-center text-sm font-semibold text-[#0a1a1a] transition-all hover:-translate-y-0.5 hover:shadow-[0_4px_20px_oklch(0.75_0.15_165/0.35)]"
           >
             {dict.header.getStarted}
           </button>
