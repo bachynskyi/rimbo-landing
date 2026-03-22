@@ -9,10 +9,10 @@ function linkify(text: string) {
   const parts = text.split(pattern);
   return parts.map((part, i) => {
     if (part.match(/^https?:\/\//)) {
-      return <a key={i} href={part} target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-2 hover:opacity-80 transition-opacity">{part}</a>;
+      return <a key={i} href={part} target="_blank" rel="noopener noreferrer" className="text-primary-link underline underline-offset-2 hover:opacity-80 transition-opacity">{part}</a>;
     }
     if (part.match(/^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/)) {
-      return <a key={i} href={`mailto:${part}`} className="text-primary underline underline-offset-2 hover:opacity-80 transition-opacity">{part}</a>;
+      return <a key={i} href={`mailto:${part}`} className="text-primary-link underline underline-offset-2 hover:opacity-80 transition-opacity">{part}</a>;
     }
     return part;
   });
@@ -46,7 +46,7 @@ export function LegalPage({ title, lastUpdated, sections, homeHref, homeLabel, l
       />
       <FogBackground />
       <GrainOverlay />
-      <div className="section-padding min-h-screen pt-32 md:pt-24">
+      <main className="section-padding min-h-screen pt-32 md:pt-24">
         <div className="mx-auto max-w-3xl">
           <h1 className="text-3xl sm:text-4xl font-bold themed-text mb-3">{title}</h1>
           <p className="text-sm themed-text-muted mb-12">{lastUpdated}</p>
@@ -66,7 +66,7 @@ export function LegalPage({ title, lastUpdated, sections, homeHref, homeLabel, l
             ))}
           </div>
         </div>
-      </div>
+      </main>
     </ContactModalProvider>
   );
 }

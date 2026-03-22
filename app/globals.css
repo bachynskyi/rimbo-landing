@@ -14,7 +14,7 @@
   --secondary-dim: oklch(0.92 0.12 95 / 0.15);
   --text-primary: #1a1a1a;
   --text-secondary: rgba(26, 26, 26, 0.65);
-  --text-muted: rgba(26, 26, 26, 0.50);
+  --text-muted: rgba(26, 26, 26, 0.62);
   --fog-primary: oklch(0.75 0.15 165 / 0.06);
   --fog-secondary: oklch(0.92 0.12 95 / 0.04);
   --fog-tertiary: oklch(0.75 0.15 165 / 0.03);
@@ -36,7 +36,7 @@
   --secondary-dim: oklch(0.92 0.12 95 / 0.15);
   --text-primary: #f0fdf4;
   --text-secondary: rgba(240, 253, 244, 0.7);
-  --text-muted: rgba(240, 253, 244, 0.4);
+  --text-muted: rgba(240, 253, 244, 0.55);
   --fog-primary: oklch(0.75 0.15 165 / 0.12);
   --fog-secondary: oklch(0.92 0.12 95 / 0.06);
   --fog-tertiary: oklch(0.75 0.15 165 / 0.06);
@@ -62,6 +62,15 @@ body {
   font-family: var(--font-sans), system-ui, sans-serif;
   overflow-x: hidden;
   transition: background 0.3s, color 0.3s;
+}
+
+/* Accessible link color — darker green for WCAG AA on white/glass */
+.text-primary-link {
+  color: oklch(0.55 0.15 165);
+}
+
+.dark .text-primary-link {
+  color: oklch(0.75 0.15 165);
 }
 
 /* Glass card — softer, Chrome-clean */
