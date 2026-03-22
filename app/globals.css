@@ -13,8 +13,8 @@
   --secondary: oklch(0.92 0.12 95);
   --secondary-dim: oklch(0.92 0.12 95 / 0.15);
   --text-primary: #1a1a1a;
-  --text-secondary: rgba(26, 26, 26, 0.55);
-  --text-muted: rgba(26, 26, 26, 0.35);
+  --text-secondary: rgba(26, 26, 26, 0.65);
+  --text-muted: rgba(26, 26, 26, 0.50);
   --fog-primary: oklch(0.75 0.15 165 / 0.06);
   --fog-secondary: oklch(0.92 0.12 95 / 0.04);
   --fog-tertiary: oklch(0.75 0.15 165 / 0.03);
@@ -35,7 +35,7 @@
   --secondary: oklch(0.92 0.12 95);
   --secondary-dim: oklch(0.92 0.12 95 / 0.15);
   --text-primary: #f0fdf4;
-  --text-secondary: rgba(240, 253, 244, 0.6);
+  --text-secondary: rgba(240, 253, 244, 0.7);
   --text-muted: rgba(240, 253, 244, 0.4);
   --fog-primary: oklch(0.75 0.15 165 / 0.12);
   --fog-secondary: oklch(0.92 0.12 95 / 0.06);

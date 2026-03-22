@@ -28,6 +28,7 @@ export function Pricing({ dict }: { dict: Dictionary }) {
           </span>
           <button
             onClick={() => setAnnual(!annual)}
+            aria-label={annual ? dict.pricing.monthly : dict.pricing.annual}
             className={`cursor-pointer relative h-8 w-14 rounded-full transition-colors ${
               annual ? "bg-primary" : ""
             }`}

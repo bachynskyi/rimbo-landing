@@ -49,8 +49,7 @@ export function RotatingPill({ words }: { words: string[] }) {
   return (
     <span
       className={`rotating-pill ${config.colorClass}`}
-      aria-live="polite"
-      aria-label={currentWord}
+      role="status"
     >
       <Icon className="rotating-pill__icon" aria-hidden="true" />
       <span className="rotating-pill__text" aria-hidden="true">

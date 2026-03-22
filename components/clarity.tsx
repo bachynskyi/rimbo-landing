@@ -7,7 +7,12 @@ export function ClarityAnalytics() {
   useEffect(() => {
     const id = process.env.NEXT_PUBLIC_CLARITY_ID;
     if (id) {
-      Clarity.init(id);
+      const init = () => Clarity.init(id);
+      if ("requestIdleCallback" in window) {
+        requestIdleCallback(init);
+      } else {
+        setTimeout(init, 3000);
+      }
     }
   }, []);
 
