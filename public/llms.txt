@@ -26,6 +26,12 @@
 - /en/privacy — Privacy Policy (English)
 - /terms — Terms of Use (Ukrainian)
 - /en/terms — Terms of Use (English)
+- /digital-loyalty-cards — Digital loyalty cards in customers' phones (Ukrainian)
+- /en/digital-loyalty-cards — Digital loyalty cards in customers' phones (English)
+- /customer-analytics — Customer analytics for your business (Ukrainian)
+- /en/customer-analytics — Customer analytics for your business (English)
+- /loyalty-automation — Loyalty program automation (Ukrainian)
+- /en/loyalty-automation — Loyalty program automation (English)
 
 ## Contact
 - Email: billing@rimbo.io

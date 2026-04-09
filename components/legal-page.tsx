@@ -32,9 +32,10 @@ interface LegalPageProps {
   langSwitch: string;
   langSwitchHref: string;
   dict: Dictionary;
+  hideDate?: boolean;
 }
 
-export function LegalPage({ title, lastUpdated, sections, homeHref, homeLabel, langSwitch, langSwitchHref, dict }: LegalPageProps) {
+export function LegalPage({ title, lastUpdated, sections, homeHref, homeLabel, langSwitch, langSwitchHref, dict, hideDate }: LegalPageProps) {
   return (
     <ContactModalProvider dict={dict}>
       <FloatingHeader
@@ -49,7 +50,7 @@ export function LegalPage({ title, lastUpdated, sections, homeHref, homeLabel, l
       <main className="section-padding min-h-screen pt-32 md:pt-24">
         <div className="mx-auto max-w-3xl">
           <h1 className="text-3xl sm:text-4xl font-bold themed-text mb-3">{title}</h1>
-          <p className="text-sm themed-text-muted mb-12">{lastUpdated}</p>
+          <p className={`text-sm themed-text-muted mb-12${hideDate ? " sr-only" : ""}`}>{lastUpdated}</p>
 
           <div className="space-y-10">
             {sections.map((section, i) => (

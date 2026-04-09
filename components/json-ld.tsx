@@ -64,6 +64,53 @@ export function FAQPageSchema({ dict }: { dict: Dictionary }) {
   );
 }
 
+export function ArticleSchema({
+  headline,
+  description,
+  url,
+  datePublished,
+  locale,
+}: {
+  headline: string;
+  description: string;
+  url: string;
+  datePublished: string;
+  locale: string;
+}) {
+  return (
+    <JsonLdScript
+      data={{
+        "@context": "https://schema.org",
+        "@type": "Article",
+        headline,
+        description,
+        url,
+        datePublished,
+        dateModified: datePublished,
+        inLanguage: locale,
+        author: {
+          "@type": "Organization",
+          name: SITE_NAME,
+          url: SITE_URL,
+        },
+        publisher: {
+          "@type": "Organization",
+          name: SITE_NAME,
+          url: SITE_URL,
+          logo: {
+            "@type": "ImageObject",
+            url: `${SITE_URL}/icon-512.png`,
+          },
+        },
+        mainEntityOfPage: {
+          "@type": "WebPage",
+          "@id": url,
+        },
+      }}
+    />
+  );
+}
+
 export function BreadcrumbSchema({
   items,
 }: {

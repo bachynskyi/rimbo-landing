@@ -49,4 +49,52 @@
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
+  <url>
+    <loc>https://rimbo.com.ua/digital-loyalty-cards</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://rimbo.com.ua/digital-loyalty-cards"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rimbo.com.ua/en/digital-loyalty-cards"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rimbo.com.ua/digital-loyalty-cards"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://rimbo.com.ua/en/digital-loyalty-cards</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://rimbo.com.ua/digital-loyalty-cards"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rimbo.com.ua/en/digital-loyalty-cards"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rimbo.com.ua/digital-loyalty-cards"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://rimbo.com.ua/customer-analytics</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://rimbo.com.ua/customer-analytics"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rimbo.com.ua/en/customer-analytics"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rimbo.com.ua/customer-analytics"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://rimbo.com.ua/en/customer-analytics</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://rimbo.com.ua/customer-analytics"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rimbo.com.ua/en/customer-analytics"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rimbo.com.ua/customer-analytics"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://rimbo.com.ua/loyalty-automation</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://rimbo.com.ua/loyalty-automation"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rimbo.com.ua/en/loyalty-automation"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rimbo.com.ua/loyalty-automation"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://rimbo.com.ua/en/loyalty-automation</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://rimbo.com.ua/loyalty-automation"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rimbo.com.ua/en/loyalty-automation"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rimbo.com.ua/loyalty-automation"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>

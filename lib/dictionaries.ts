@@ -445,6 +445,121 @@ export const dictionaries = {
       successMessage: "Ми отримали вашу заявку і зв'яжемось з вами найближчим часом.",
       close: "Закрити",
     },
+    // Articles
+    digitalLoyaltyCards: {
+      title: "Цифрові картки лояльності в телефоні клієнта",
+      metaDescription:
+        "Дізнайтесь, як цифрові картки лояльності в Apple Wallet та Google Wallet замінюють паперові картки та підвищують повторні візити.",
+      lastUpdated: "Опубліковано: 9 квітня 2026 р.",
+      sections: [
+        {
+          heading: "Що таке цифрові картки лояльності?",
+          content:
+            "Цифрові картки лояльності — це електронні версії звичних паперових карток, які зберігаються прямо в телефоні клієнта. Замість фізичної картки, яку легко загубити або забути вдома, клієнт має свою картку завжди під рукою — в Apple Wallet або Google Wallet.\n\nЦе означає, що кожного разу, коли клієнт приходить до вас, він просто показує QR-код з екрана телефону. Жодних паперів, жодних загублених карток.",
+        },
+        {
+          heading: "Як це працює?",
+          content:
+            "Клієнт отримує цифрову картку лояльності одним натисканням кнопки. Картка автоматично додається в Apple Wallet або Google Wallet — залежно від пристрою.\n\nНа картці відображається прогрес збору штампів, бонусний баланс або розмір знижки. Дані оновлюються автоматично після кожної покупки — клієнт бачить актуальну інформацію в реальному часі.\n\nДля нарахування штампу або бонусу достатньо відсканувати QR-код клієнта. Це займає кілька секунд.",
+        },
+        {
+          heading: "Чому паперові картки більше не працюють?",
+          content:
+            "Паперові картки лояльності мають серйозні проблеми. Клієнти їх гублять, забувають вдома або просто викидають. За статистикою, більшість паперових карток не доживає до першої нагороди.\n\nКрім того, паперові картки неможливо відстежити. Ви не знаєте, скільки клієнтів дійсно збирає штампи, хто повертається частіше, а хто перестав приходити.\n\nЦифрові картки вирішують усі ці проблеми. Вони завжди в кишені клієнта, і ви бачите повну аналітику в реальному часі.",
+        },
+        {
+          heading: "Переваги для бізнесу",
+          content:
+            "Більше повторних візитів — клієнт не забуде про свою картку, бо вона завжди в телефоні.\n\nПовна аналітика — ви бачите кількість візитів, середній чек, активність клієнтів та ефективність програми лояльності.\n\nPush-сповіщення — нагадуйте клієнтам про накопичені штампи або спеціальні пропозиції прямо на екран телефону.\n\nЕкономія — жодних витрат на друк паперових карток. Все працює автоматично.",
+        },
+        {
+          heading: "Переваги для клієнтів",
+          content:
+            "Картка завжди під рукою — в Apple Wallet або Google Wallet, поруч з банківськими картками та посадковими талонами.\n\nПрозорий прогрес — клієнт завжди бачить, скільки штампів зібрано та скільки залишилось до нагороди.\n\nШвидке обслуговування — показати QR-код з екрана телефону значно швидше, ніж шукати паперову картку в гаманці.\n\nАвтоматичні оновлення — після кожної покупки картка оновлюється миттєво.",
+        },
+        {
+          heading: "Як Rimbo реалізує цифрові картки?",
+          content:
+            `Rimbo — це платформа лояльності, яка робить перехід на цифрові картки максимально простим.\n\nВаші клієнти додають картку в Apple Wallet або Google Wallet одним натисканням. Картка містить QR-код для ідентифікації, прогрес збору штампів та бонусний баланс.\n\nВи скануєте QR-код клієнта через додаток Rimbo або POS-інтеграцію — штампи та бонуси нараховуються автоматично.\n\nПочніть безкоштовно на ${APP_URL} та переведіть свою програму лояльності в цифровий формат вже сьогодні.`,
+        },
+      ],
+    },
+    customerAnalytics: {
+      title: "Аналітика клієнтів для вашого бізнесу",
+      metaDescription:
+        "Відстежуйте візити, витрати та вподобання клієнтів у реальному часі. Дізнайтесь, як аналітика Rimbo допомагає збільшити повторні продажі.",
+      lastUpdated: "Опубліковано: 9 квітня 2026 р.",
+      sections: [
+        {
+          heading: "Навіщо бізнесу знати своїх клієнтів?",
+          content:
+            "Більшість бізнесів не знають, хто їхні найцінніші клієнти. Паперові картки лояльності не дають жодної інформації — ви не бачите, хто приходить частіше, хто витрачає більше, а хто перестав повертатись.\n\nБез цих даних неможливо приймати правильні рішення. Ви не знаєте, яка акція працює, який продукт найпопулярніший, і чи повертаються клієнти після першого візиту.\n\nАналітика клієнтів змінює це. Ви бачите повну картину в реальному часі та приймаєте рішення на основі даних, а не здогадок.",
+        },
+        {
+          heading: "Які дані можна відстежувати?",
+          content:
+            "Візити — скільки разів клієнт приходив і коли був останній візит.\n\nВитрати — загальна сума покупок, середній чек та історія транзакцій.\n\nПрогрес лояльності — скільки штампів зібрано, які картки активні, завершені або прострочені.\n\nПопулярні продукти — які товари купують найчастіше та який дохід вони приносять.\n\nАктивність — нові клієнти за місяць, активні клієнти за останні 30 днів, відсоток завершених карток.",
+        },
+        {
+          heading: "Як працює аналітика в реальному часі?",
+          content:
+            "Кожна транзакція фіксується миттєво. Коли співробітник сканує QR-код клієнта, дані оновлюються одразу — штампи нараховуються, витрати записуються, аналітика перераховується.\n\nВи бачите актуальні дані щоразу, коли відкриваєте панель аналітики. Жодних затримок, жодного ручного введення даних.",
+        },
+        {
+          heading: "Переваги для бізнесу",
+          content:
+            "Визначайте найцінніших клієнтів — дивіться, хто витрачає найбільше та приходить найчастіше. Встановлюйте персональні знижки для VIP-клієнтів.\n\nОцінюйте ефективність програми лояльності — відстежуйте відсоток завершених карток, кількість нових клієнтів та динаміку доходу.\n\nПриймайте рішення на основі даних — знайте, які продукти найпопулярніші, в які дні найбільше відвідувань, та як змінюється середній чек.\n\nПовертайте клієнтів — побачили, що клієнт давно не приходив? Надішліть push-сповіщення з персональною пропозицією.",
+        },
+        {
+          heading: "Що бачить власник бізнесу?",
+          content:
+            "Панель аналітики Rimbo показує ключові метрики на одному екрані: загальний дохід, кількість транзакцій, середній чек, активні клієнти та нові клієнти.\n\nГрафіки візуалізують динаміку доходу, зростання клієнтської бази та активність QR-сканувань за обраний період — 7, 30, 90 днів або весь час.\n\nДетальна картка кожного клієнта показує контактні дані, історію покупок, улюблені продукти та поточний прогрес лояльності.",
+        },
+        {
+          heading: "Як почати відстежувати клієнтів?",
+          content:
+            `Зареєструйтесь на ${APP_URL} та створіть свою першу програму лояльності. Аналітика починає працювати автоматично з першого сканування QR-коду.\n\nЖодного додаткового налаштування не потрібно. Кожна взаємодія з клієнтом записується та відображається у вашій панелі аналітики в реальному часі.`,
+        },
+      ],
+    },
+    loyaltyAutomation: {
+      title: "Автоматизація програми лояльності",
+      metaDescription:
+        "Жодних ручних штампів, підрахунків чи паперів. Дізнайтесь, як Rimbo автоматизує всю програму лояльності від сканування до нагороди.",
+      lastUpdated: "Опубліковано: 9 квітня 2026 р.",
+      sections: [
+        {
+          heading: "Чому ручна лояльність не працює?",
+          content:
+            "Паперові картки зі штампами потребують постійної уваги персоналу. Хтось забуває поставити штамп, хтось ставить зайвий, хтось губить картку клієнта. Підрахунок штампів вручну — це помилки, суперечки та втрачений час.\n\nКрім того, паперові картки неможливо контролювати. Ви не знаєте, скільки карток в обігу, скільки штампів роздано, і чи не підробляє хтось картки.\n\nАвтоматизація усуває всі ці проблеми. Система робить все сама — точно, швидко та без помилок.",
+        },
+        {
+          heading: "Як працює автоматичне нарахування штампів?",
+          content:
+            "Клієнт показує QR-код з телефону. Співробітник сканує його через додаток Rimbo — штамп додається автоматично. Це займає кілька секунд.\n\nКартка клієнта оновлюється миттєво — він одразу бачить новий штамп на екрані телефону. Жодних ручних записів, жодних паперових карток.",
+        },
+        {
+          heading: "POS-інтеграція: штампи без сканування",
+          content:
+            "Rimbo інтегрується з POS-системами Poster та Alteg. Коли замовлення закривається в касовій системі, штамп додається автоматично — без будь-яких дій персоналу.\n\nСистема сама знаходить клієнта, нараховує штамп і записує деталі покупки. Співробітнику не потрібно навіть відкривати додаток Rimbo.",
+        },
+        {
+          heading: "Автоматичне завершення та видача нових карток",
+          content:
+            "Коли клієнт збирає потрібну кількість штампів, картка автоматично позначається як завершена. Жодних ручних перевірок — система сама рахує штампи.\n\nПісля отримання нагороди нова картка видається автоматично. Клієнт одразу починає збирати штампи знову, без затримок та ручного створення картки.",
+        },
+        {
+          heading: "Автоматичні бонуси та знижки",
+          content:
+            "Бонуси нараховуються автоматично як відсоток від суми покупки. Система сама розраховує суму, додає бонуси на рахунок клієнта та списує їх при використанні.\n\nБонуси з терміном дії автоматично анулюються після закінчення строку. Жодного ручного відстеження — все працює само.",
+        },
+        {
+          heading: "Що це дає вашому бізнесу?",
+          content:
+            `Економія часу — персонал не витрачає час на штампи, підрахунки та паперову роботу.\n\nТочність — жодних помилок у підрахунку штампів, жодних загублених карток.\n\nКонтроль — ви бачите кожну транзакцію та кожен нарахований штамп у системі.\n\nШвидкість обслуговування — сканування QR-коду займає секунди замість хвилин пошуку паперової картки.\n\nПочніть на ${APP_URL} і забудьте про ручну роботу з картками лояльності.`,
+        },
+      ],
+    },
     // Language
     langSwitch: "EN",
     langSwitchHref: "/en",
@@ -892,6 +1007,121 @@ export const dictionaries = {
       successTitle: "Thank you!",
       successMessage: "We've received your request and will get back to you shortly.",
       close: "Close",
+    },
+    // Articles
+    digitalLoyaltyCards: {
+      title: "Digital Loyalty Cards in Your Customers' Phones",
+      metaDescription:
+        "Learn how digital loyalty cards in Apple Wallet and Google Wallet replace paper cards and boost repeat visits.",
+      lastUpdated: "Published: April 9, 2026",
+      sections: [
+        {
+          heading: "What are digital loyalty cards?",
+          content:
+            "Digital loyalty cards are electronic versions of traditional paper cards that live right in your customers' phones. Instead of a physical card that is easy to lose or forget at home, customers have their loyalty card always at hand — in Apple Wallet or Google Wallet.\n\nThis means every time a customer visits your business, they simply show a QR code from their phone screen. No paper, no lost cards.",
+        },
+        {
+          heading: "How does it work?",
+          content:
+            "A customer receives a digital loyalty card with a single tap. The card is automatically added to Apple Wallet or Google Wallet — depending on their device.\n\nThe card displays stamp collection progress, bonus balance, or discount amount. Data updates automatically after each purchase — the customer sees up-to-date information in real time.\n\nTo award a stamp or bonus, you simply scan the customer's QR code. It takes just a few seconds.",
+        },
+        {
+          heading: "Why paper cards no longer work",
+          content:
+            "Paper loyalty cards have serious problems. Customers lose them, forget them at home, or simply throw them away. Statistically, most paper cards never make it to the first reward.\n\nOn top of that, paper cards are impossible to track. You don't know how many customers are actually collecting stamps, who comes back more often, and who stopped visiting.\n\nDigital cards solve all these problems. They are always in the customer's pocket, and you get full analytics in real time.",
+        },
+        {
+          heading: "Benefits for businesses",
+          content:
+            "More repeat visits — customers won't forget their card because it's always in their phone.\n\nFull analytics — see visit counts, average spend, customer activity, and loyalty program performance.\n\nPush notifications — remind customers about collected stamps or special offers right on their phone screen.\n\nCost savings — no printing costs for paper cards. Everything works automatically.",
+        },
+        {
+          heading: "Benefits for customers",
+          content:
+            "Card always at hand — in Apple Wallet or Google Wallet, right next to bank cards and boarding passes.\n\nTransparent progress — customers always see how many stamps they've collected and how many are left until the reward.\n\nFaster service — showing a QR code from the phone screen is much faster than searching for a paper card in a wallet.\n\nAutomatic updates — after each purchase, the card updates instantly.",
+        },
+        {
+          heading: "How Rimbo implements digital cards",
+          content:
+            `Rimbo is a loyalty platform that makes switching to digital cards as simple as possible.\n\nYour customers add a card to Apple Wallet or Google Wallet with a single tap. The card contains a QR code for identification, stamp collection progress, and bonus balance.\n\nYou scan the customer's QR code through the Rimbo app or POS integration — stamps and bonuses are awarded automatically.\n\nGet started for free at ${APP_URL} and take your loyalty program digital today.`,
+        },
+      ],
+    },
+    customerAnalytics: {
+      title: "Customer Analytics for Your Business",
+      metaDescription:
+        "Track visits, spending, and customer preferences in real time. Learn how Rimbo analytics help you increase repeat sales.",
+      lastUpdated: "Published: April 9, 2026",
+      sections: [
+        {
+          heading: "Why does your business need to know its customers?",
+          content:
+            "Most businesses don't know who their most valuable customers are. Paper loyalty cards give you zero insight — you can't see who visits more often, who spends more, or who stopped coming back.\n\nWithout this data, you can't make the right decisions. You don't know which promotion works, which product is the most popular, or whether customers return after their first visit.\n\nCustomer analytics changes this. You see the full picture in real time and make decisions based on data, not guesswork.",
+        },
+        {
+          heading: "What data can you track?",
+          content:
+            "Visits — how many times a customer came and when was their last visit.\n\nSpending — total purchase amount, average transaction value, and full transaction history.\n\nLoyalty progress — how many stamps collected, which cards are active, completed, or expired.\n\nTop products — which items are purchased most often and how much revenue they generate.\n\nActivity — new customers per month, active customers in the last 30 days, card completion rate.",
+        },
+        {
+          heading: "How does real-time analytics work?",
+          content:
+            "Every transaction is recorded instantly. When a staff member scans a customer's QR code, data updates immediately — stamps are awarded, spending is logged, analytics are recalculated.\n\nYou see up-to-date data every time you open the analytics dashboard. No delays, no manual data entry.",
+        },
+        {
+          heading: "Benefits for businesses",
+          content:
+            "Identify your most valuable customers — see who spends the most and visits the most often. Set personal discounts for VIP customers.\n\nMeasure loyalty program performance — track card completion rates, new customer acquisition, and revenue trends.\n\nMake data-driven decisions — know which products are most popular, which days have the most traffic, and how average spend changes over time.\n\nBring customers back — notice a customer hasn't visited in a while? Send a push notification with a personalized offer.",
+        },
+        {
+          heading: "What does a business owner see?",
+          content:
+            "The Rimbo analytics dashboard shows key metrics on one screen: total revenue, transaction count, average spend, active customers, and new customers.\n\nCharts visualize revenue trends, customer base growth, and QR scan activity over a selected period — 7, 30, 90 days, or all time.\n\nA detailed customer card shows contact information, purchase history, favorite products, and current loyalty progress.",
+        },
+        {
+          heading: "How to start tracking customers?",
+          content:
+            `Sign up at ${APP_URL} and create your first loyalty program. Analytics start working automatically from the first QR code scan.\n\nNo additional setup required. Every customer interaction is recorded and displayed in your analytics dashboard in real time.`,
+        },
+      ],
+    },
+    loyaltyAutomation: {
+      title: "Loyalty Program Automation",
+      metaDescription:
+        "No manual stamps, no counting, no paperwork. Learn how Rimbo automates your entire loyalty program from scan to reward.",
+      lastUpdated: "Published: April 9, 2026",
+      sections: [
+        {
+          heading: "Why manual loyalty doesn't work",
+          content:
+            "Paper stamp cards require constant staff attention. Someone forgets to add a stamp, someone adds an extra one, someone loses a customer's card. Counting stamps by hand means errors, disputes, and wasted time.\n\nOn top of that, paper cards are impossible to control. You don't know how many cards are in circulation, how many stamps have been given out, or whether anyone is faking cards.\n\nAutomation eliminates all these problems. The system does everything on its own — accurately, quickly, and without mistakes.",
+        },
+        {
+          heading: "How does automatic stamp accrual work?",
+          content:
+            "The customer shows a QR code from their phone. A staff member scans it through the Rimbo app — the stamp is added automatically. It takes just a few seconds.\n\nThe customer's card updates instantly — they see the new stamp on their phone screen right away. No manual records, no paper cards.",
+        },
+        {
+          heading: "POS integration: stamps without scanning",
+          content:
+            "Rimbo integrates with Poster and Alteg POS systems. When an order is closed in the POS, a stamp is added automatically — without any staff action.\n\nThe system finds the customer, awards the stamp, and records purchase details on its own. Staff don't even need to open the Rimbo app.",
+        },
+        {
+          heading: "Automatic completion and new card issuance",
+          content:
+            "When a customer collects the required number of stamps, the card is automatically marked as completed. No manual checks — the system counts stamps on its own.\n\nAfter the reward is claimed, a new card is issued automatically. The customer starts collecting stamps again immediately, with no delays and no manual card creation.",
+        },
+        {
+          heading: "Automatic bonuses and discounts",
+          content:
+            "Bonuses are awarded automatically as a percentage of the purchase amount. The system calculates the amount, credits bonuses to the customer's account, and deducts them when used.\n\nTime-limited bonuses expire automatically when the deadline passes. No manual tracking — everything runs on its own.",
+        },
+        {
+          heading: "What does this mean for your business?",
+          content:
+            `Time savings — staff don't spend time on stamps, counting, and paperwork.\n\nAccuracy — no stamp counting errors, no lost cards.\n\nControl — you see every transaction and every stamp awarded in the system.\n\nFaster service — scanning a QR code takes seconds instead of minutes searching for a paper card.\n\nGet started at ${APP_URL} and forget about manual loyalty card management.`,
+        },
+      ],
     },
     // Language
     langSwitch: "UA",
