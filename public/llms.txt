@@ -32,6 +32,8 @@
 - /en/customer-analytics — Customer analytics for your business (English)
 - /loyalty-automation — Loyalty program automation (Ukrainian)
 - /en/loyalty-automation — Loyalty program automation (English)
+- /push-notifications — Push notifications and personalized offers (Ukrainian)
+- /en/push-notifications — Push notifications and personalized offers (English)
 
 ## Contact
 - Email: billing@rimbo.io

@@ -560,6 +560,44 @@ export const dictionaries = {
         },
       ],
     },
+    pushNotifications: {
+      title: "Push-сповіщення та персональні пропозиції",
+      metaDescription:
+        "Повертайте клієнтів за допомогою push-сповіщень та персональних знижок. Дізнайтесь, як Rimbo допомагає збільшити повторні візити.",
+      lastUpdated: "Опубліковано: 10 квітня 2026 р.",
+      sections: [
+        {
+          heading: "Чому клієнти перестають приходити?",
+          content:
+            "Клієнти забувають. Навіть якщо їм сподобався ваш заклад, вони просто не згадують про нього, коли планують наступний візит. Без нагадувань та стимулів клієнти поступово переходять до конкурентів.\n\nПаперові картки лояльності не вирішують цю проблему — картка лежить у гаманці, і клієнт про неї не згадує. Потрібен активний інструмент, який нагадає клієнту про ваш бізнес у потрібний момент.",
+        },
+        {
+          heading: "Як працюють push-сповіщення?",
+          content:
+            "Push-сповіщення — це короткі повідомлення, які з'являються на екрані телефону клієнта. Вони працюють навіть коли додаток закритий.\n\nRimbo надсилає сповіщення автоматично у ключові моменти: коли нараховано новий штамп, коли картка заповнена та готова до нагороди, коли клієнт отримує подарунок або спеціальну пропозицію.\n\nСповіщення доставляються через push-повідомлення додатку та через Apple Wallet і Google Wallet — клієнт отримає повідомлення там, де йому зручно.",
+        },
+        {
+          heading: "Геолокаційні сповіщення через гаманець",
+          content:
+            "Цифрові картки в Apple Wallet та Google Wallet підтримують геолокацію. Коли клієнт проходить поруч з вашим закладом, на екрані телефону з'являється нагадування про його картку лояльності.\n\nЦе працює автоматично — вам потрібно лише додати адреси ваших локацій у Rimbo. Система сама додає координати до цифрової картки, і гаманець телефону нагадає клієнту про вас у потрібний момент.",
+        },
+        {
+          heading: "Автоматичні сповіщення у потрібний момент",
+          content:
+            "Кожне сповіщення прив'язане до конкретної події. Клієнт зібрав штамп — отримує повідомлення з поточним прогресом. Картка заповнена — сповіщення запрошує прийти та отримати нагороду.\n\nЦе не масова розсилка, а точкові повідомлення, які актуальні саме для цього клієнта у цей момент. Тому вони працюють значно ефективніше за звичну рекламу.",
+        },
+        {
+          heading: "Персональні знижки та спеціальні пропозиції",
+          content:
+            "Помітили, що постійний клієнт давно не приходив? Створіть для нього персональну знижку з обмеженим терміном дії. Клієнт отримає сповіщення з вашою пропозицією.\n\nВи можете встановити базову знижку для кожного клієнта або створити тимчасову акцію з конкретними датами початку та завершення. Кожна пропозиція супроводжується повідомленням — клієнт точно про неї дізнається.",
+        },
+        {
+          heading: "Як це збільшує повторні візити?",
+          content:
+            `Сповіщення про прогрес — клієнт бачить, що залишилось лише 2 штампи до нагороди, і повертається.\n\nСповіщення про завершення картки — клієнт знає, що його нагорода чекає, і приходить за нею.\n\nГеолокація — клієнт проходить повз ваш заклад і отримує нагадування на екрані телефону.\n\nПерсональні пропозиції — обмежена за часом знижка створює відчуття терміновості.\n\nНакопичені бонуси — клієнт бачить баланс бонусів у своєму гаманці та хоче їх використати.\n\nПочніть на ${APP_URL} і повертайте клієнтів за допомогою розумних сповіщень.`,
+        },
+      ],
+    },
     // Language
     langSwitch: "EN",
     langSwitchHref: "/en",
@@ -1120,6 +1158,44 @@ export const dictionaries = {
           heading: "What does this mean for your business?",
           content:
             `Time savings — staff don't spend time on stamps, counting, and paperwork.\n\nAccuracy — no stamp counting errors, no lost cards.\n\nControl — you see every transaction and every stamp awarded in the system.\n\nFaster service — scanning a QR code takes seconds instead of minutes searching for a paper card.\n\nGet started at ${APP_URL} and forget about manual loyalty card management.`,
+        },
+      ],
+    },
+    pushNotifications: {
+      title: "Push Notifications and Personalized Offers",
+      metaDescription:
+        "Bring customers back with push notifications and personalized discounts. Learn how Rimbo helps you increase repeat visits.",
+      lastUpdated: "Published: April 10, 2026",
+      sections: [
+        {
+          heading: "Why do customers stop coming back?",
+          content:
+            "Customers forget. Even if they loved your business, they simply don't think of it when planning their next outing. Without reminders and incentives, customers gradually drift to competitors.\n\nPaper loyalty cards don't solve this problem — the card sits in a wallet and the customer never thinks about it. You need an active tool that reminds customers about your business at the right moment.",
+        },
+        {
+          heading: "How do push notifications work?",
+          content:
+            "Push notifications are short messages that appear on a customer's phone screen. They work even when the app is closed.\n\nRimbo sends notifications automatically at key moments: when a new stamp is awarded, when a card is full and ready for a reward, when a customer receives a gift or a special offer.\n\nNotifications are delivered via app push messages and through Apple Wallet and Google Wallet — customers receive them wherever is most convenient.",
+        },
+        {
+          heading: "Location-based notifications via wallet",
+          content:
+            "Digital cards in Apple Wallet and Google Wallet support geolocation. When a customer walks near your business, a reminder about their loyalty card appears on their phone screen.\n\nThis works automatically — you just need to add your location addresses in Rimbo. The system adds coordinates to the digital card, and the phone's wallet reminds the customer about you at the right moment.",
+        },
+        {
+          heading: "Automatic notifications at the right moment",
+          content:
+            "Every notification is tied to a specific event. A customer collects a stamp — they get a message with their current progress. A card is full — a notification invites them to come in and claim their reward.\n\nThis isn't mass messaging. These are targeted notifications that are relevant to this specific customer at this specific moment. That's why they work far better than generic advertising.",
+        },
+        {
+          heading: "Personalized discounts and special offers",
+          content:
+            "Noticed a regular customer hasn't visited in a while? Create a personalized discount with a limited time frame. The customer receives a notification with your offer.\n\nYou can set a base discount for each customer or create a temporary promotion with specific start and end dates. Every offer comes with a notification — the customer will definitely know about it.",
+        },
+        {
+          heading: "How does this increase repeat visits?",
+          content:
+            `Progress notifications — a customer sees they're just 2 stamps away from a reward and comes back.\n\nCompletion notifications — a customer knows their reward is waiting and visits to claim it.\n\nGeolocation — a customer walks past your business and gets a reminder on their phone screen.\n\nPersonalized offers — a time-limited discount creates a sense of urgency.\n\nAccumulated bonuses — a customer sees their bonus balance in their wallet and wants to use it.\n\nGet started at ${APP_URL} and bring customers back with smart notifications.`,
         },
       ],
     },

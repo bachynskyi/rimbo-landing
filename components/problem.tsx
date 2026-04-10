@@ -11,6 +11,7 @@ const cardLinks: Record<number, string> = {
   0: "/digital-loyalty-cards",
   1: "/customer-analytics",
   2: "/loyalty-automation",
+  3: "/push-notifications",
 };
 
 export function Problem({ dict }: { dict: Dictionary }) {
