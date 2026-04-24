@@ -397,7 +397,7 @@ export const dictionaries = {
         },
         {
           heading: "Треті сторони, що залучаються до обробки",
-          content: "Supabase (Австрія, EU-central-1) — хостинг бази даних та автентифікація.\n\nGoogle Maps API — сервіс визначення місцезнаходження локацій.\n\nApple Wallet / Google Wallet — генерація цифрових перепусток.\n\nМи не продаємо та не передаємо персональні дані третім сторонам для маркетингових цілей.",
+          content: "Supabase (Австрія, EU-central-1) — хостинг бази даних та автентифікація.\n\nGoogle Maps API — сервіс визначення місцезнаходження локацій.\n\nApple Wallet / Google Wallet — генерація цифрових перепусток.\n\nMicrosoft Clarity (Microsoft Corporation, США) — опціональний інструмент продуктової аналітики, що записує псевдонімізовані повтори сесій, теплові карти кліків та карти прокручування і допомагає нам виявляти проблеми з юзабіліті. Завантажується лише після згоди з cookie-банером, не створює рекламних профілів і не отримує вашу електронну пошту, телефон чи ім'я. Обробка регулюється стандартним Data Processing Addendum Microsoft для Clarity.\n\nМи не продаємо та не передаємо персональні дані третім сторонам для маркетингових цілей.",
         },
         {
           heading: "Зберігання даних",
@@ -998,7 +998,7 @@ export const dictionaries = {
         },
         {
           heading: "Third-Party Processors",
-          content: "Supabase (Austria, EU-central-1) — database hosting and authentication.\n\nGoogle Maps API — location services.\n\nApple Wallet / Google Wallet — digital pass generation.\n\nWe do not sell or share personal data with third parties for marketing purposes.",
+          content: "Supabase (Austria, EU-central-1) — database hosting and authentication.\n\nGoogle Maps API — location services.\n\nApple Wallet / Google Wallet — digital pass generation.\n\nMicrosoft Clarity (Microsoft Corporation, United States) — optional product-analytics tool that records pseudonymised session replays, click heatmaps, and scroll maps to help us identify usability issues. Loaded only after consent via the cookie banner; does not build advertising profiles and does not receive your email, phone, or name. Processing is governed by Microsoft's standard Data Processing Addendum for Clarity.\n\nWe do not sell or share personal data with third parties for marketing purposes.",
         },
         {
           heading: "Data Retention",
