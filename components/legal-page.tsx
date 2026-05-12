@@ -21,6 +21,13 @@ function linkify(text: string) {
 interface LegalSection {
   heading: string;
   content: string;
+  image?: {
+    src: string;
+    alt: string;
+    caption?: string;
+    width: number;
+    height: number;
+  };
 }
 
 interface LegalPageProps {
@@ -63,6 +70,24 @@ export function LegalPage({ title, lastUpdated, sections, homeHref, homeLabel, l
                     <p key={j}>{linkify(paragraph)}</p>
                   ))}
                 </div>
+                {section.image && (
+                  <figure className="mt-6">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={section.image.src}
+                      alt={section.image.alt}
+                      width={section.image.width}
+                      height={section.image.height}
+                      loading="lazy"
+                      className="w-full h-auto rounded-lg border border-white/10"
+                    />
+                    {section.image.caption && (
+                      <figcaption className="mt-2 text-xs themed-text-muted text-center">
+                        {section.image.caption}
+                      </figcaption>
+                    )}
+                  </figure>
+                )}
               </section>
             ))}
           </div>

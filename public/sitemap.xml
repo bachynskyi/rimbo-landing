@@ -113,4 +113,20 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://rimbo.com.ua/integrations/altegio</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://rimbo.com.ua/integrations/altegio"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rimbo.com.ua/en/integrations/altegio"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rimbo.com.ua/integrations/altegio"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rimbo.com.ua/en/integrations/altegio</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://rimbo.com.ua/integrations/altegio"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rimbo.com.ua/en/integrations/altegio"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rimbo.com.ua/integrations/altegio"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>

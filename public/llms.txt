@@ -34,6 +34,8 @@
 - /en/loyalty-automation — Loyalty program automation (English)
 - /push-notifications — Push notifications and personalized offers (Ukrainian)
 - /en/push-notifications — Push notifications and personalized offers (English)
+- /integrations/altegio — Altegio loyalty integration: automated bonuses, discount sync and digital wallet cards (Ukrainian)
+- /en/integrations/altegio — Altegio loyalty integration: automated bonuses, discount sync and digital wallet cards (English)
 
 ## Contact
 - Email: billing@rimbo.io

@@ -6,6 +6,31 @@ import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import { useContactModal } from "@/contexts/contact-modal-context";
 import type { Dictionary } from "@/lib/dictionaries";
 
+function renderFeature(text: string) {
+  const pattern = /\[([^\]]+)\]\(([^)]+)\)/g;
+  const nodes: React.ReactNode[] = [];
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+  let key = 0;
+  while ((match = pattern.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      nodes.push(text.slice(lastIndex, match.index));
+    }
+    nodes.push(
+      <a
+        key={key++}
+        href={match[2]}
+        className="text-primary-link underline underline-offset-2 hover:opacity-80 transition-opacity"
+      >
+        {match[1]}
+      </a>
+    );
+    lastIndex = match.index + match[0].length;
+  }
+  if (lastIndex < text.length) nodes.push(text.slice(lastIndex));
+  return nodes.length > 0 ? nodes : text;
+}
+
 export function Pricing({ dict }: { dict: Dictionary }) {
   const ref = useScrollAnimation();
   const [annual, setAnnual] = useState(true);
@@ -100,7 +125,7 @@ export function Pricing({ dict }: { dict: Dictionary }) {
                     <li key={fi}>
                       <div className="flex items-start gap-2.5 themed-text-secondary">
                         <Check className="h-4 w-4 shrink-0 text-primary mt-0.5" />
-                        <span>{feature}</span>
+                        <span>{renderFeature(feature)}</span>
                       </div>
                       {fi === 0 && i >= 1 && (
                         <div className="ml-[26px] mt-1 flex flex-col text-xs themed-text-muted">

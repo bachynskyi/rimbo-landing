@@ -207,7 +207,7 @@ export const dictionaries = {
           features: [
             "До 2 точок продажу, 3 співробітники",
             "До 5 карток лояльності + кастомний дизайн",
-            "Ліміт: до 1 000 активних користувачів",
+            "Ліміт: до 800 активних користувачів",
             "Бонусний баланс (кешбек)",
             "Geo-Push: автоматичні Push поблизу",
             "Сегментація клієнтів (фільтри за активністю)",
@@ -220,8 +220,8 @@ export const dictionaries = {
           annualPrice: 1199,
           features: [
             "До 3 точок продажу, 4 співробітники",
-            "Необмежена кількість користувачів",
-            "Повна інтеграція з Poster, Alteg.io",
+            "До 2 000 активних користувачів",
+            "Повна інтеграція з Poster, [Alteg.io](/integrations/altegio)",
             "Промокоди, сертифікати та ваучери",
             "Персональні знижки з дедлайном (Trigger-маркетинг)",
             "Персональний домен для PWA",
@@ -234,6 +234,7 @@ export const dictionaries = {
           annualPrice: 1699,
           features: [
             "До 4 точок продажу, 5 співробітників",
+            "До 5 000 активних користувачів",
             "White Label: повний брендинг без згадок Rimbo",
             "Власний домен",
             "API доступ для зв'язку з сайтом чи CRM",
@@ -292,7 +293,7 @@ export const dictionaries = {
     // Terms of Use
     terms: {
       title: "Публічна оферта (Умови використання)",
-      lastUpdated: "Дата публікації: 15 лютого 2026 р.",
+      lastUpdated: "Дата публікації: 25 квітня 2026 р.",
       backLabel: "На головну",
       sections: [
         {
@@ -301,11 +302,11 @@ export const dictionaries = {
         },
         {
           heading: "1. Визначення термінів",
-          content: `Платформа — веб-платформа цифрових карток лояльності \"Rimbo\", доступна за адресою ${APP_URL} та/або іншими адресами, визначеними Виконавцем.\n\nЗамовник — фізична особа-підприємець або юридична особа, яка зареєструвалася на Платформі та використовує її для управління програмами лояльності для своїх клієнтів.\n\nКінцевий Клієнт — фізична особа, яка є клієнтом Замовника та користується програмою лояльності через Платформу.\n\nКартка лояльності — цифрова картка, створена Замовником на Платформі для нарахування штампів, бонусів та/або знижок Кінцевим Клієнтам.\n\nБонус (Бонусний бал) — умовна облікова одиниця, що нараховується та списується на Платформі в рамках програми лояльності Замовника. Бонуси не мають грошового вираження, не є засобом платежу, валютою чи цінним папером і не можуть бути отримані в грошовій формі.\n\nБонусний рахунок — сукупність облікових та інформаційних даних Кінцевого Клієнта на Платформі щодо поточного балансу бонусів, нарахованих та списаних бонусних балів. Бонусний рахунок не є банківським рахунком.\n\nТарифний план — набір функціональних можливостей та лімітів, визначених Виконавцем, доступних Замовнику за відповідну оплату.\n\nОсобистий кабінет — захищена область Платформи, доступна Замовнику після авторизації, де здійснюється управління картками лояльності, клієнтами та налаштуваннями.\n\nСпівробітник — особа, якій Замовник надав доступ до Особистого кабінету з відповідною роллю (Адміністратор або Учасник).\n\nQR-код — двовимірний штрих-код, що використовується на Платформі для ідентифікації Кінцевих Клієнтів та нарахування штампів/бонусів.\n\nТранзакція — операція нарахування або списання штампів, бонусних балів чи знижок на Платформі.`,
+          content: `Платформа — веб-платформа цифрових карток лояльності \"Rimbo\", доступна за адресою ${APP_URL} та/або іншими адресами, визначеними Виконавцем.\n\nЗамовник — фізична особа-підприємець або юридична особа, яка зареєструвалася на Платформі та використовує її для управління програмами лояльності для своїх клієнтів.\n\nКінцевий Клієнт — фізична особа, яка є клієнтом Замовника та користується програмою лояльності через Платформу.\n\nКартка лояльності — цифрова картка, створена Замовником на Платформі для нарахування штампів, бонусів та/або знижок Кінцевим Клієнтам.\n\nБонус (Бонусний бал) — умовна облікова одиниця, що нараховується та списується на Платформі в рамках програми лояльності Замовника. Бонуси не є грошовими коштами, електронними грошима, цінними паперами або будь-яким іншим фінансовим інструментом. Бонуси не мають грошового еквівалента, не підлягають обміну на готівку чи безготівкові кошти та не можуть бути виведені з системи. Бонуси можуть використовуватись виключно як інструмент надання знижок або заохочень у межах програми лояльності конкретного Замовника, який їх нарахував.\n\nБонусний рахунок — сукупність облікових та інформаційних даних Кінцевого Клієнта на Платформі щодо поточного балансу бонусів, нарахованих та списаних бонусних балів. Бонусний рахунок не є банківським рахунком, рахунком електронних грошей або будь-яким іншим фінансовим рахунком.\n\nТарифний план — набір функціональних можливостей та лімітів, визначених Виконавцем, доступних Замовнику за відповідну оплату.\n\nОсобистий кабінет — захищена область Платформи, доступна Замовнику після авторизації, де здійснюється управління картками лояльності, клієнтами та налаштуваннями.\n\nСпівробітник — особа, якій Замовник надав доступ до Особистого кабінету з відповідною роллю (Адміністратор або Учасник).\n\nQR-код — двовимірний штрих-код, що використовується на Платформі для ідентифікації Кінцевих Клієнтів та нарахування штампів/бонусів.\n\nТранзакція — операція нарахування або списання штампів, бонусних балів чи знижок на Платформі.`,
         },
         {
           heading: "2. Предмет договору",
-          content: "Виконавець надає Замовнику доступ до Платформи \"Rimbo\" як програмне забезпечення у формі послуги (SaaS), що включає: створення та управління цифровими картками лояльності; QR-сканування для нарахування штампів та бонусних балів; управління базою Кінцевих Клієнтів; бонусний рахунок та персональні знижки; аналітику та статистику; інтеграцію з Apple Wallet та Google Wallet; створення лендінг-сторінки компанії; управління локаціями (з інтеграцією Google Maps); управління Співробітниками з розмежуванням ролей; технічну підтримку відповідно до обраного Тарифного плану.\n\nЗамовник оплачує послуги відповідно до обраного Тарифного плану.",
+          content: "Сервіс Rimbo є програмним забезпеченням у формі послуги (software-as-a-service, SaaS), що надає бізнесу інструменти для створення та управління програмами лояльності, маркетинговими акціями та обліку взаємодії з клієнтами. Виконавець не є платіжною системою, фінансовою установою або емітентом електронних грошей.\n\nВиконавець надає Замовнику доступ до Платформи \"Rimbo\", що включає: створення та управління цифровими картками лояльності; QR-сканування для нарахування штампів та бонусних балів; управління базою Кінцевих Клієнтів; бонусний рахунок та персональні знижки; аналітику та статистику; інтеграцію з Apple Wallet та Google Wallet; створення лендінг-сторінки компанії; управління локаціями (з інтеграцією Google Maps); управління Співробітниками з розмежуванням ролей; технічну підтримку відповідно до обраного Тарифного плану.\n\nЗамовник оплачує послуги відповідно до обраного Тарифного плану.\n\nВиконавець надає виключно технічну платформу та не бере участі у взаємовідносинах між Замовником та його Кінцевими Клієнтами. Усі правила нарахування, використання та анулювання штампів, бонусів та знижок встановлюються виключно Замовником, який використовує Сервіс. Виконавець не несе відповідальності за зобов'язання Замовника перед його Кінцевими Клієнтами.",
         },
         {
           heading: "3. Акцепт оферти",
@@ -321,7 +322,7 @@ export const dictionaries = {
         },
         {
           heading: "6. Порядок розрахунків",
-          content: "Оплата здійснюється щомісячно на умовах передоплати. Замовник зобов'язаний здійснити оплату протягом 7 (семи) календарних днів з моменту виставлення рахунку.\n\nОплата здійснюється у безготівковій формі в національній валюті України (гривня, UAH). Повернення коштів за сплачені послуги не здійснюється.\n\nУ разі прострочення оплати понад 7 календарних днів Виконавець має право призупинити доступ Замовника до Платформи. У разі прострочення оплати понад 30 календарних днів Виконавець має право повністю видалити дані Замовника та його Кінцевих Клієнтів без можливості відновлення.",
+          content: "Оплата здійснюється щомісячно на умовах передоплати. Замовник зобов'язаний здійснити оплату протягом 7 (семи) календарних днів з моменту виставлення рахунку.\n\nОплата здійснюється у безготівковій формі в національній валюті України (гривня, UAH). Повернення коштів за сплачені послуги не здійснюється.\n\nОплата здійснюється виключно за доступ до програмного забезпечення Rimbo (SaaS-послуга) і не є внеском, депозитом або передплатою будь-якого фінансового інструменту.\n\nУ разі прострочення оплати понад 7 календарних днів Виконавець має право призупинити доступ Замовника до Платформи. У разі прострочення оплати понад 30 календарних днів Виконавець має право повністю видалити дані Замовника та його Кінцевих Клієнтів без можливості відновлення.",
         },
         {
           heading: "7. Права та обов'язки Виконавця",
@@ -333,7 +334,7 @@ export const dictionaries = {
         },
         {
           heading: "9. Обмеження використання",
-          content: "Замовнику та будь-яким третім особам забороняється: здійснювати спроби злому, несанкціонованого доступу або атаки на Платформу; декомпілювати, дизасемблювати або іншим чином намагатися отримати вихідний код Платформи; продавати, передавати, відступати або іншим чином відчужувати доступ до Платформи третім особам; використовувати автоматизовані засоби для масового збору даних з Платформи (скрейпінг); використовувати Платформу для розповсюдження шкідливого програмного забезпечення або спаму; порушувати права інтелектуальної власності Виконавця або третіх осіб.",
+          content: "Замовнику та будь-яким третім особам забороняється: здійснювати спроби злому, несанкціонованого доступу або атаки на Платформу; декомпілювати, дизасемблювати або іншим чином намагатися отримати вихідний код Платформи; продавати, передавати, відступати або іншим чином відчужувати доступ до Платформи третім особам; використовувати автоматизовані засоби для масового збору даних з Платформи (скрейпінг); використовувати Платформу для розповсюдження шкідливого програмного забезпечення або спаму; порушувати права інтелектуальної власності Виконавця або третіх осіб.\n\nЗамовнику та Кінцевим Клієнтам додатково заборонено: обмінювати бонуси на грошові кошти; передавати бонуси між різними обліковими записами або між різними Замовниками; використовувати бонуси поза межами програми лояльності того Замовника, який їх нарахував; трактувати бонуси як депозит або баланс грошових коштів.",
         },
         {
           heading: "10. Інтелектуальна власність",
@@ -341,11 +342,11 @@ export const dictionaries = {
         },
         {
           heading: "11. Персональні дані та конфіденційність",
-          content: "Детальна інформація про обробку персональних даних наведена в нашій Політиці конфіденційності.",
+          content: "Детальна інформація про обробку персональних даних наведена в нашій Політиці конфіденційності.\n\nУ межах обробки персональних даних Кінцевих Клієнтів Замовник, який використовує Сервіс, є контролером даних, а Виконавець виступає як процесор даних, що обробляє такі дані виключно за інструкціями Замовника та в обсязі, необхідному для надання SaaS-послуги.",
         },
         {
           heading: "12. Відповідальність сторін",
-          content: "За невиконання або неналежне виконання зобов'язань Сторони несуть відповідальність згідно з чинним законодавством України та умовами цього Договору.\n\nМаксимальна відповідальність Виконавця за цим Договором обмежується сумою, сплаченою Замовником за останній розрахунковий місяць.\n\nВиконавець не несе відповідальності за: збитки, спричинені діями третіх осіб; втрату даних з вини Замовника; неможливість використання Платформи через проблеми з інтернет-з'єднанням Замовника; контент, розміщений Замовником на Платформі; порушення Замовником законодавства про захист персональних даних Кінцевих Клієнтів.\n\nТехнічні перерви в роботі Платформи тривалістю до 48 годин на місяць не є порушенням умов цього Договору.",
+          content: "За невиконання або неналежне виконання зобов'язань Сторони несуть відповідальність згідно з чинним законодавством України та умовами цього Договору.\n\nМаксимальна відповідальність Виконавця за цим Договором обмежується сумою, сплаченою Замовником за останній розрахунковий місяць.\n\nВиконавець не несе відповідальності за: збитки, спричинені діями третіх осіб; втрату даних з вини Замовника; неможливість використання Платформи через проблеми з інтернет-з'єднанням Замовника; контент, розміщений Замовником на Платформі; порушення Замовником законодавства про захист персональних даних Кінцевих Клієнтів.\n\nТехнічні перерви в роботі Платформи тривалістю до 48 годин на місяць не є порушенням умов цього Договору.\n\nВиконавець не гарантує отримання Замовником будь-якої економічної вигоди від використання бонусних програм або маркетингових інструментів Платформи та не несе відповідальності за рішення Замовника щодо нарахування, зміни або анулювання штампів, бонусів і знижок.",
         },
         {
           heading: "13. Строк дії та припинення договору",
@@ -598,6 +599,122 @@ export const dictionaries = {
         },
       ],
     },
+    altegioIntegration: {
+      title:
+        "Програма лояльності для Altegio: автоматичне нарахування бонусів, знижки та цифрові картки клієнтів",
+      metaDescription:
+        "Rimbo підключається до Altegio за 5 хвилин: автоматичні бонуси після кожного візиту, синхронізація знижок та картки в Apple і Google Wallet.",
+      lastUpdated: "Опубліковано: 12 травня 2026 р.",
+      sections: [
+        {
+          heading: "Чому вбудована лояльність Altegio закриває не всі потреби",
+          content:
+            "Altegio — потужна платформа для онлайн-запису, CRM та фінансів салонів краси, барбершопів і клінік. Її вбудована програма лояльності працює: дисконтні картки, бонусні рахунки, абонементи. Але для зростання бізнесу цього часто замало.\n\nКлієнт не має зручної цифрової картки в Apple Wallet чи Google Wallet, тому забуває про вашу програму. Немає push-сповіщень, коли він поруч або коли картку заповнено. Немає реферальної механіки, купонів з обмеженням за часом, RFM-сегментації клієнтів.\n\nЗалучити нового клієнта в 5 разів дорожче, ніж утримати наявного. Тому власники салонів, перукарень та кав'ярень будують поверх Altegio повноцінну систему утримання — і саме цю задачу закриває інтеграція Rimbo.",
+        },
+        {
+          heading: "Як працює інтеграція Rimbo з Altegio",
+          content:
+            "Rimbo підключається до Altegio через офіційний API та вебхуки. Як тільки візит у журналі Altegio завершується (статус «прийшов»), Altegio миттєво надсилає подію в Rimbo. Бонуси нараховуються на гаманець клієнта, штамп додається до картки, а оновлений баланс надсилається в Apple Wallet і Google Wallet — без жодних дій менеджера.\n\nКоли менеджер зберігає чек у Rimbo, інтеграція робить зворотну роботу: завершує запис у Altegio, проставляє знижку, додає коментар з підсумком (бонуси, штампи, спосіб оплати) і списує бонуси з рідної картки лояльності Altegio, якщо її налаштовано.\n\nВся синхронізація — двостороння, у реальному часі, з ідемпотентністю проти дублів.",
+        },
+        {
+          heading:
+            "Повний набір інструментів лояльності Rimbo, які підключаються до Altegio",
+          content:
+            "Інтеграція активує всі механіки Rimbo одночасно, без окремих налаштувань:\n\n• Бонуси (🪙) — відсоток від суми кожного завершеного візиту з гнучким терміном дії.\n\n• Кешбек — той самий рушій з інтерфейсом «повернення коштів», зручний для кав'ярень і рітейлу.\n\n• Штамп-картки — «N візитів = подарунок», автоматично інкрементуються після кожного візиту.\n\n• Постійні знижки — персональний %, який Rimbo пушить назад у профіль клієнта Altegio.\n\n• Спеціальні знижки — акції з вікнами дії, які перекривають постійні (пріоритет: спеціальна → персональна → рівнева).\n\n• Рівні лояльності — тарифні щаблі, що відкриваються за сумою витрат або кількістю візитів.\n\n• Промокоди — одноразові або кампанійні коди для залучення та реактивації.\n\n• Купони — точкові нагороди з happy-hours, прив'язкою до конкретних позицій і бонусними винагородами.\n\n• Реферальна програма — «приведи друга» з автоматичним нарахуванням.\n\nУсі механіки живуть в одному гаманці клієнта, одному push-каналі та одній картці Apple/Google Wallet.",
+        },
+        {
+          heading: "Автоматичне нарахування бонусів у реальному часі",
+          content:
+            "Як тільки візит у Altegio переходить у статус «завершений», Rimbo отримує вебхук із підписом HMAC і нараховує бонуси за вашою формулою — наприклад, 5% від суми чека. Клієнт бачить нове нарахування в картці Apple Wallet за лічені секунди.\n\nЯкщо чек у Altegio пізніше відредагували — Rimbo перерахує дельту й автоматично скоригує гаманець. Якщо запис скасовано — нараховані бонуси та штамп повернуться назад. Жодних ручних звірок наприкінці зміни.\n\nКожна подія записана з унікальним ідентифікатором, тому повторне надсилання вебхука нічого не дублюватиме. Ваша бонусна каса завжди відповідає касі Altegio до копійки.",
+          image: {
+            src: "/integrations/altegio/01-webhook-events_uk.png",
+            alt: "Журнал подій вебхуків Altegio в адмінці Rimbo з автоматичним обробленням завершених, оновлених і скасованих візитів",
+            caption:
+              "Журнал подій Altegio у Rimbo: кожен вебхук фіксується з результатом обробки",
+            width: 1400,
+            height: 900,
+          },
+        },
+        {
+          heading: "Штамп-картки, купони та промокоди в дії на Altegio",
+          content:
+            "Штамп-картки. Кожен завершений візит автоматично додає штамп до картки клієнта. Заповнили 10 з 10 — клієнт отримує push-сповіщення про подарунок, а нова картка стартує сама.\n\nКупони. Створіть купон «−20% на фарбування у вівторок з 10:00 до 14:00». Купон сам активується у happy-hours вікно, прив'язується до конкретних позицій меню та може нараховувати додаткові бонуси. Клієнт відкриває деталі купона прямо з push-сповіщення.\n\nПромокоди. Видайте код «BEAUTY100» у Instagram-кампанії — клієнт уводить його при скануванні QR-коду, а Rimbo одразу застосовує знижку чи нараховує бонуси. Ідеально для запуску нових послуг або повернення «сплячих» клієнтів.\n\nВсі три механіки живуть поверх вашого журналу Altegio, не змінюючи звичних робочих процесів адміністратора.",
+        },
+        {
+          heading:
+            "Триярусна система знижок: спеціальні → персональні → рівневі",
+          content:
+            "У Altegio клієнту можна виставити одну знижку. У Rimbo — три рівні одночасно, і система сама обирає, яка діє «зараз».\n\nРівнева знижка нараховується автоматично, коли клієнт переходить на новий тариф (наприклад, «Срібло» при 5 візитах). Поверх неї можна задати персональну — для VIP-клієнтів. А зверху — спеціальну, з вікнами дії: «−15% усім перед 1 вересня».\n\nRimbo обчислює ефективну знижку (special > personal > level) і пушить її назад у профіль клієнта в Altegio. Тому коли менеджер створює новий запис у Altegio, він одразу бачить правильний відсоток біля імені — без жодних таблиць чи нагадувань.",
+        },
+        {
+          heading: "Вибір завершеного візиту, коли у клієнта декілька записів",
+          content:
+            "Поширений сценарій у салонах: клієнтка прийшла зранку на манікюр і повернулася ввечері на брови. У Altegio це два окремі записи. У Rimbo при скануванні QR-коду менеджер бачить усі сьогоднішні візити клієнта (активні та вже завершені) і обирає, до якого саме прив'язати чек.\n\nГалочка «Завершити запис» позначає візит як «прийшов» одночасно зі збереженням чека. Менеджер може зняти її, якщо потрібно залишити запис відкритим у журналі Altegio.\n\nПідсумок чека (бонуси, штампи, спосіб оплати) автоматично додається коментарем до запису в Altegio, тому історія клієнта залишається повною з обох боків.",
+          image: {
+            src: "/integrations/altegio/02-scan-modal-appointments_uk.png",
+            alt: "Модальне вікно сканування Rimbo з вибором конкретного запису Altegio та галочкою «Завершити запис»",
+            caption:
+              "Менеджер обирає конкретний запис Altegio та може одразу проставити «прийшов»",
+            width: 1400,
+            height: 900,
+          },
+        },
+        {
+          heading: "Цифрові картки в Apple Wallet та Google Wallet з push-оновленнями",
+          content:
+            "Замість пластикової картки клієнт додає віртуальну картку Rimbo в Apple Wallet або Google Wallet одним дотиком. На картці — баланс бонусів 🪙, прогрес штамп-картки, актуальна знижка та QR-код для сканування.\n\nПісля кожного завершеного візиту в Altegio картка оновлюється сама: телефон показує нове нарахування, а власник Android — навіть отримує push безпосередньо в гаманець. Геолокація працює окремо: коли клієнт проходить біля вашого салону, телефон нагадує про збережену картку.\n\nЦе одна картка для всіх ваших механік — бонусів, штампів, купонів і рівнів. Більше про формат — у статті https://rimbo.com.ua/digital-loyalty-cards.",
+          image: {
+            src: "/integrations/altegio/04-wallet-card_uk.png",
+            alt: "Цифрова картка лояльності Rimbo в Google Wallet з балансом бонусів, рівнем лояльності та QR-кодом",
+            caption:
+              "Цифрова картка клієнта в Google Wallet: бонуси, рівень лояльності та QR-код — усе в одному пасі",
+            width: 720,
+            height: 1560,
+          },
+        },
+        {
+          heading: "Програма лояльності для барбершопу: сценарії застосування",
+          content:
+            "Класична схема барбершопу — «10 стрижок, 11-та безкоштовно» — у Rimbo стає цифровою штамп-карткою, що автоматично росте після кожного завершеного запису в Altegio. Бариста чи адміністратор не ставить штамп вручну — система робить це сама.\n\nПоверх стампів додайте бонуси на додаткові послуги (борода, укладання) та кешбек на товари — віск, шампунь, парфум. Спеціальні знижки покривають денні години низького завантаження («−25% з 11:00 до 14:00 у будні»).\n\nРеферальна програма повертає клієнтів через друзів: майстер може видати персональний код запрошення прямо з кабінету Rimbo. Глибше — у майбутній статті https://rimbo.com.ua/loyalty-program-for-barbershop.",
+        },
+        {
+          heading: "Утримання клієнтів у салоні краси: що змінюється з Rimbo",
+          content:
+            "Звичайний салон краси на Altegio веде журнал записів і базу клієнтів. Проте без активних інструментів утримання 30–40% першовідвідувачів не повертаються вдруге.\n\nRimbo додає поведінкову RFM-сегментацію: бачить, хто був тричі за квартал, а хто «спить» уже 60 днів. Для кожного сегменту можна налаштувати окрему механіку: VIP отримують персональну знижку, «сплячі» — купон на повернення з обмеженим вікном дії, нові клієнти — вітальний бонус.\n\nPush-сповіщення б'ють точково, не як SMS-розсилка по всій базі. Це підвищує повторні візити, не виглядаючи спамом. Детальніше про стратегії — у статті https://rimbo.com.ua/beauty-salon-customer-retention.",
+        },
+        {
+          heading: "Цифрові картки vs паперові штамп-картки",
+          content:
+            "Паперова картка живе в середньому 3 тижні: загубилась у кишені, лишилась у іншій сумці, розмокла під дощем. За даними галузевих досліджень, цифрові штамп-картки дають до 25% більше повторних візитів просто тому, що клієнт завжди має їх під рукою у гаманці телефону.\n\nДодатково ви отримуєте те, чого паперова картка не дає в принципі: повну аналітику (скільки штампів видано, скільки використано, який середній цикл), миттєві push-сповіщення про прогрес та неможливість підробити чи перенести картку іншій людині.\n\nДля Altegio це означає, що дані з журналу записів перетворюються на дієвий маркетинговий канал. Глибше порівняння — у статті https://rimbo.com.ua/digital-vs-paper-loyalty-cards.",
+        },
+        {
+          heading: "Бонуси, кешбек чи знижки: що обрати для сфери послуг",
+          content:
+            "Постійна знижка — найпростіший інструмент: клієнт одразу бачить вигоду, але ви втрачаєте маржу з кожного чека, навіть коли мотивація не потрібна.\n\nБонуси (🪙) працюють інакше: клієнт «заробляє» їх, а використати може лише при наступному візиті. Це створює природний стимул повернутись і утримує грошовий потік. У сегменті послуг бонуси дають кращу окупність програми лояльності, ніж знижки.\n\nКешбек — це бонуси з іншим маркетинговим обгортанням, корисні для рітейлу та HoReCa. Купони — точкові, для запуску нових послуг або вирівнювання завантаження. Найсильніша комбінація: невелика рівнева знижка + бонуси + точкові купони на низькосезонні години. Глибше — у статті https://rimbo.com.ua/bonus-points-vs-discounts.",
+        },
+        {
+          heading: "Налаштування інтеграції за 5 кроків",
+          content:
+            "1. Зайдіть у Rimbo → «Інтеграції» → Altegio, натисніть «Підключити».\n\n2. Введіть email або телефон і пароль вашого облікового запису Altegio. Rimbo обмінює їх на токен доступу (пароль не зберігається).\n\n3. Вкажіть ID салону (company_id) з адмінки Altegio.\n\n4. Опціонально: оберіть тип картки лояльності Altegio, з якою Rimbo синхронізуватиме баланс. Якщо у вас немає рідної картки в Altegio — пропустіть цей крок.\n\n5. Скопіюйте URL вебхука з Rimbo і вставте його в Altegio → Налаштування → Вебхуки. Натисніть «Перевірити з'єднання» — готово.\n\nВся процедура займає 5 хвилин. Після цього бонуси та штампи нараховуватимуться автоматично при кожному завершеному візиті.",
+          image: {
+            src: "/integrations/altegio/03-integration-config-login_uk.png",
+            alt: "Сторінка налаштування інтеграції Altegio в Rimbo: поля логіну, ID салону та статус підключення",
+            caption: "Крок 1–3: підключення облікового запису Altegio",
+            width: 1400,
+            height: 900,
+          },
+        },
+        {
+          heading: "Безпека, GDPR і власність клієнтських даних",
+          content:
+            "Облікові дані Altegio зберігаються лише як токен доступу — пароль ніколи не лишається у Rimbo у відкритому вигляді. Вебхуки підписуються HMAC-секретом, який ви будь-якої миті можете перевипустити.\n\nПісля підключення поля з логіном блокуються від випадкового редагування. ID салону можна змінити окремо, не вводячи пароль повторно. Будь-якої миті можна повністю відключити інтеграцію — Rimbo видалить токен і секрет вебхука.\n\nКлієнтські дані — ваші. Rimbo обробляє їх як виконавець у рамках вашого договору з клієнтом, відповідно до GDPR та українського законодавства про захист персональних даних. Бази клієнтів не змішуються між компаніями, експорт даних доступний у будь-який момент.",
+        },
+        {
+          heading: "Готові почати? Підключіть Rimbo до Altegio безкоштовно",
+          content: `Спробуйте інтеграцію на безкоштовному 14-денному пробному періоді. Налаштування — 5 хвилин, перші бонуси нараховуються після першого ж завершеного візиту в Altegio.\n\nПочніть на ${APP_URL} → «Інтеграції» → Altegio. Потрібна допомога з налаштуванням? Напишіть на ${SUPPORT_EMAIL} — ми проведемо вас за руку.`,
+        },
+      ],
+    },
     // Language
     langSwitch: "EN",
     langSwitchHref: "/en",
@@ -808,7 +925,7 @@ export const dictionaries = {
           features: [
             "Up to 2 points of sale, 3 employees",
             "Up to 5 loyalty cards + custom design",
-            "Limit: up to 1,000 active users",
+            "Limit: up to 800 active users",
             "Cashback (bonus balance)",
             "Geo-Push: automatic Push nearby",
             "Client segmentation (activity filters)",
@@ -821,8 +938,8 @@ export const dictionaries = {
           annualPrice: 1199,
           features: [
             "Up to 3 points of sale, 4 employees",
-            "Unlimited users",
-            "Full integration with Poster, Alteg.io",
+            "Up to 2,000 active users",
+            "Full integration with Poster, [Alteg.io](/en/integrations/altegio)",
             "Promo codes, certificates & vouchers",
             "Personal discounts with deadline (Trigger marketing)",
             "Personal domain for PWA",
@@ -835,6 +952,7 @@ export const dictionaries = {
           annualPrice: 1699,
           features: [
             "Up to 4 points of sale, 5 employees",
+            "Up to 5,000 active users",
             "White Label: full branding without Rimbo mentions",
             "Own domain",
             "API access to connect your site or CRM",
@@ -893,7 +1011,7 @@ export const dictionaries = {
     // Terms of Use
     terms: {
       title: "Public Offer (Terms of Use)",
-      lastUpdated: "Publication date: February 15, 2026",
+      lastUpdated: "Publication date: April 25, 2026",
       backLabel: "Back to home",
       sections: [
         {
@@ -902,11 +1020,11 @@ export const dictionaries = {
         },
         {
           heading: "1. Definitions",
-          content: `Platform — the digital loyalty cards web platform \"Rimbo\", available at ${APP_URL} and/or other addresses designated by the Executor.\n\nCustomer — an individual entrepreneur or legal entity that has registered on the Platform and uses it to manage loyalty programs for their clients.\n\nEnd Client — an individual who is a client of the Customer and participates in a loyalty program through the Platform.\n\nLoyalty Card — a digital card created by the Customer on the Platform for awarding stamps, bonuses, and/or discounts to End Clients.\n\nBonus (Bonus Point) — a conditional accounting unit that is awarded and redeemed on the Platform within the Customer's loyalty program. Bonuses have no monetary value, are not a means of payment, currency, or security, and cannot be received in monetary form.\n\nBonus Account — a collection of accounting and informational data of an End Client on the Platform regarding the current bonus balance, awarded and redeemed bonus points. The Bonus Account is not a bank account.\n\nTariff Plan — a set of functionalities and limits defined by the Executor, available to the Customer for the corresponding fee.\n\nPersonal Account — a protected area of the Platform accessible to the Customer after authorization, where loyalty cards, clients, and settings are managed.\n\nStaff Member — a person to whom the Customer has granted access to the Personal Account with an assigned role (Administrator or Member).\n\nQR Code — a two-dimensional barcode used on the Platform for identification of End Clients and awarding stamps/bonuses.\n\nTransaction — an operation of awarding or redeeming stamps, bonus points, or discounts on the Platform.`,
+          content: `Platform — the digital loyalty cards web platform \"Rimbo\", available at ${APP_URL} and/or other addresses designated by the Executor.\n\nCustomer — an individual entrepreneur or legal entity that has registered on the Platform and uses it to manage loyalty programs for their clients.\n\nEnd Client — an individual who is a client of the Customer and participates in a loyalty program through the Platform.\n\nLoyalty Card — a digital card created by the Customer on the Platform for awarding stamps, bonuses, and/or discounts to End Clients.\n\nBonus (Bonus Point) — a conditional accounting unit that is awarded and redeemed on the Platform within the Customer's loyalty program. Bonuses are not monetary funds, electronic money, securities, or any other financial instrument. Bonuses have no monetary equivalent, cannot be exchanged for cash or non-cash funds, and cannot be withdrawn from the system. Bonuses may be used solely as a discount or reward instrument within the loyalty program of the specific Customer that issued them.\n\nBonus Account — a collection of accounting and informational data of an End Client on the Platform regarding the current bonus balance, awarded and redeemed bonus points. The Bonus Account is not a bank account, an e-money account, or any other type of financial account.\n\nTariff Plan — a set of functionalities and limits defined by the Executor, available to the Customer for the corresponding fee.\n\nPersonal Account — a protected area of the Platform accessible to the Customer after authorization, where loyalty cards, clients, and settings are managed.\n\nStaff Member — a person to whom the Customer has granted access to the Personal Account with an assigned role (Administrator or Member).\n\nQR Code — a two-dimensional barcode used on the Platform for identification of End Clients and awarding stamps/bonuses.\n\nTransaction — an operation of awarding or redeeming stamps, bonus points, or discounts on the Platform.`,
         },
         {
           heading: "2. Subject of the Agreement",
-          content: "The Executor provides the Customer with access to the \"Rimbo\" Platform as Software as a Service (SaaS), which includes: creation and management of digital loyalty cards; QR scanning for awarding stamps and bonus points; management of the End Client database; bonus account and personal discounts; analytics and statistics; Apple Wallet and Google Wallet integration; company landing page creation; location management (with Google Maps integration); Staff Member management with role-based access; technical support in accordance with the selected Tariff Plan.\n\nThe Customer pays for the services according to the selected Tariff Plan.",
+          content: "The Rimbo service is software-as-a-service (SaaS) that provides businesses with tools to create and manage loyalty programs, marketing campaigns, and records of customer interactions. The Executor is not a payment system, a financial institution, or an issuer of electronic money.\n\nThe Executor provides the Customer with access to the \"Rimbo\" Platform, which includes: creation and management of digital loyalty cards; QR scanning for awarding stamps and bonus points; management of the End Client database; bonus account and personal discounts; analytics and statistics; Apple Wallet and Google Wallet integration; company landing page creation; location management (with Google Maps integration); Staff Member management with role-based access; technical support in accordance with the selected Tariff Plan.\n\nThe Customer pays for the services according to the selected Tariff Plan.\n\nThe Executor provides only the technical platform and is not a party to the relationship between the Customer and its End Clients. All rules for awarding, using, and cancelling stamps, bonuses, and discounts are set exclusively by the Customer that uses the Service. The Executor bears no responsibility for the Customer's obligations to its End Clients.",
         },
         {
           heading: "3. Acceptance of the Offer",
@@ -922,7 +1040,7 @@ export const dictionaries = {
         },
         {
           heading: "6. Payment Terms",
-          content: "Payment is made monthly on a prepayment basis. The Customer must make payment within 7 (seven) calendar days from the date of invoice.\n\nPayment is made by bank transfer in the national currency of Ukraine (hryvnia, UAH). No refunds are provided for paid services.\n\nIf payment is overdue by more than 7 calendar days, the Executor may suspend the Customer's access to the Platform. If payment is overdue by more than 30 calendar days, the Executor may permanently delete the Customer's data and their End Clients' data without the possibility of restoration.",
+          content: "Payment is made monthly on a prepayment basis. The Customer must make payment within 7 (seven) calendar days from the date of invoice.\n\nPayment is made by bank transfer in the national currency of Ukraine (hryvnia, UAH). No refunds are provided for paid services.\n\nPayment is made solely for access to the Rimbo software (a SaaS service) and is not a contribution, deposit, or prepayment of any financial instrument.\n\nIf payment is overdue by more than 7 calendar days, the Executor may suspend the Customer's access to the Platform. If payment is overdue by more than 30 calendar days, the Executor may permanently delete the Customer's data and their End Clients' data without the possibility of restoration.",
         },
         {
           heading: "7. Rights and Obligations of the Executor",
@@ -934,7 +1052,7 @@ export const dictionaries = {
         },
         {
           heading: "9. Usage Restrictions",
-          content: "The Customer and any third parties are prohibited from: attempting to hack, gain unauthorized access to, or attack the Platform; decompiling, disassembling, or otherwise attempting to obtain the source code of the Platform; selling, transferring, assigning, or otherwise alienating access to the Platform to third parties; using automated means for mass data collection from the Platform (scraping); using the Platform to distribute malware or spam; infringing on the intellectual property rights of the Executor or third parties.",
+          content: "The Customer and any third parties are prohibited from: attempting to hack, gain unauthorized access to, or attack the Platform; decompiling, disassembling, or otherwise attempting to obtain the source code of the Platform; selling, transferring, assigning, or otherwise alienating access to the Platform to third parties; using automated means for mass data collection from the Platform (scraping); using the Platform to distribute malware or spam; infringing on the intellectual property rights of the Executor or third parties.\n\nThe Customer and End Clients are additionally prohibited from: exchanging bonuses for cash; transferring bonuses between different accounts or between different Customers; using bonuses outside the loyalty program of the Customer that awarded them; or treating bonuses as a deposit or balance of funds.",
         },
         {
           heading: "10. Intellectual Property",
@@ -942,11 +1060,11 @@ export const dictionaries = {
         },
         {
           heading: "11. Personal Data and Privacy",
-          content: "Detailed information about personal data processing is provided in our Privacy Policy.",
+          content: "Detailed information about personal data processing is provided in our Privacy Policy.\n\nIn relation to the processing of End Clients' personal data, the Customer that uses the Service is the data controller, and the Executor acts as the data processor, processing such data only on the Customer's instructions and to the extent necessary to provide the SaaS service.",
         },
         {
           heading: "12. Liability",
-          content: "For failure to perform or improper performance of obligations, the Parties shall be liable in accordance with the current legislation of Ukraine and the terms of this Agreement.\n\nThe maximum liability of the Executor under this Agreement is limited to the amount paid by the Customer for the last billing month.\n\nThe Executor shall not be liable for: losses caused by the actions of third parties; data loss due to the Customer's fault; inability to use the Platform due to the Customer's internet connection issues; content published by the Customer on the Platform; the Customer's violations of personal data protection legislation regarding End Clients.\n\nTechnical interruptions in Platform operation of up to 48 hours per month shall not constitute a breach of this Agreement.",
+          content: "For failure to perform or improper performance of obligations, the Parties shall be liable in accordance with the current legislation of Ukraine and the terms of this Agreement.\n\nThe maximum liability of the Executor under this Agreement is limited to the amount paid by the Customer for the last billing month.\n\nThe Executor shall not be liable for: losses caused by the actions of third parties; data loss due to the Customer's fault; inability to use the Platform due to the Customer's internet connection issues; content published by the Customer on the Platform; the Customer's violations of personal data protection legislation regarding End Clients.\n\nTechnical interruptions in Platform operation of up to 48 hours per month shall not constitute a breach of this Agreement.\n\nThe Executor does not guarantee that the Customer will obtain any economic benefit from operating loyalty programs or marketing tools through the Platform, and is not liable for the Customer's decisions to award, modify, or cancel stamps, bonuses, or discounts.",
         },
         {
           heading: "13. Term and Termination",
@@ -1196,6 +1314,122 @@ export const dictionaries = {
           heading: "How does this increase repeat visits?",
           content:
             `Progress notifications — a customer sees they're just 2 stamps away from a reward and comes back.\n\nCompletion notifications — a customer knows their reward is waiting and visits to claim it.\n\nGeolocation — a customer walks past your business and gets a reminder on their phone screen.\n\nPersonalized offers — a time-limited discount creates a sense of urgency.\n\nAccumulated bonuses — a customer sees their bonus balance in their wallet and wants to use it.\n\nGet started at ${APP_URL} and bring customers back with smart notifications.`,
+        },
+      ],
+    },
+    altegioIntegration: {
+      title:
+        "Altegio Loyalty Integration: Automated Bonuses, Discount Sync & Digital Wallet Cards",
+      metaDescription:
+        "Connect Rimbo to Altegio in 5 minutes. Automate bonuses after each visit, sync discounts to client profiles, and issue Apple & Google Wallet cards.",
+      lastUpdated: "Published: May 12, 2026",
+      sections: [
+        {
+          heading: "Why Altegio's built-in loyalty isn't enough on its own",
+          content:
+            "Altegio is a strong platform for online booking, CRM, and finance in beauty salons, barbershops, and clinics. Its built-in loyalty tools work — discount cards, bonus accounts, memberships. But for growth, that's rarely enough.\n\nCustomers don't get a convenient digital card in Apple Wallet or Google Wallet, so they forget your program exists. There are no push notifications when a customer is nearby or when a card is full. No referral mechanics, no time-windowed coupons, no RFM customer segmentation.\n\nAcquiring a new client is 5× more expensive than keeping an existing one. That's why salon and barbershop owners build a real retention system on top of Altegio — and that's exactly what the Rimbo integration delivers.",
+        },
+        {
+          heading: "How the Rimbo × Altegio integration works",
+          content:
+            "Rimbo connects to Altegio through the official API and webhooks. As soon as a visit in the Altegio schedule is marked completed, Altegio sends an event to Rimbo in real time. Bonuses land in the customer's wallet, a stamp is added to their card, and the updated balance is pushed to Apple Wallet and Google Wallet — with zero manager action.\n\nWhen the manager saves a receipt in Rimbo, the integration does the reverse: it completes the appointment in Altegio, applies the discount, adds a summary comment (bonuses, stamps, payment method), and debits the native Altegio loyalty card if one is configured.\n\nThe sync is two-way, real-time, and idempotent — no duplicates, no manual reconciliation.",
+        },
+        {
+          heading:
+            "Every Rimbo loyalty mechanic that plugs into Altegio",
+          content:
+            "The integration activates all Rimbo mechanics at once, no extra setup required:\n\n• Bonuses (🪙) — percent-of-spend accrual on every completed visit, with flexible expiry.\n\n• Cashback — the same engine reframed as 'money back', perfect for cafés and retail.\n\n• Stamp cards — 'N visits = a reward', auto-incremented after every visit.\n\n• Personal discounts — custom percentages per customer, pushed back to the Altegio client profile.\n\n• Special discounts — time-windowed promotions that override personal and tier discounts (priority: special > personal > level).\n\n• Loyalty tiers — levels unlocked by spend or visit thresholds.\n\n• Promocodes — single-use or campaign codes for acquisition and reactivation.\n\n• Coupons — granular rewards with happy-hours windows, per-item targeting, and bonus payouts.\n\n• Referral program — invite-a-friend mechanics with automatic credit.\n\nEverything lives in one customer wallet, one push channel, and one Apple/Google Wallet pass.",
+        },
+        {
+          heading: "Real-time automated bonus accrual",
+          content:
+            "The moment a visit in Altegio flips to 'completed', Rimbo receives an HMAC-signed webhook and accrues bonuses using your formula — say, 5% of the receipt total. The customer sees the new entry in their Apple Wallet card within seconds.\n\nIf the receipt is later edited in Altegio, Rimbo computes the delta and auto-adjusts the wallet. If the appointment is cancelled, bonuses and stamps are rolled back automatically. No end-of-shift reconciliation.\n\nEvery event is stored with a unique ID, so a re-sent webhook never double-credits. Your bonus ledger stays accurate to the penny against Altegio's.",
+          image: {
+            src: "/integrations/altegio/01-webhook-events_en.png",
+            alt: "Rimbo admin webhook events log showing automatic processing of completed, updated and cancelled Altegio visits",
+            caption:
+              "Altegio webhook events in Rimbo: every event recorded with its processing result",
+            width: 1400,
+            height: 900,
+          },
+        },
+        {
+          heading: "Stamp cards, coupons, and promocodes live on Altegio",
+          content:
+            "Stamp cards. Every completed Altegio visit auto-adds a stamp. Once the customer fills 10 of 10, they get a push notification about their reward and a fresh card starts on its own.\n\nCoupons. Build a coupon like '−20% on coloring, Tuesdays 10:00–14:00'. The happy-hours window activates by itself, the coupon can target specific menu items, and it can pay out extra bonuses on top. Customers open the coupon details straight from the push notification.\n\nPromocodes. Issue a code like 'BEAUTY100' in an Instagram campaign — the customer enters it during the QR scan, and Rimbo applies the discount or credits bonuses instantly. Ideal for launching new services or reactivating dormant clients.\n\nAll three mechanics sit on top of your Altegio schedule without changing the manager's daily workflow.",
+        },
+        {
+          heading:
+            "Three-tier discount stack: special → personal → level",
+          content:
+            "Altegio lets you set one discount per client. Rimbo gives you three layers at once, and the system picks the right one automatically.\n\nA tier discount kicks in when a customer crosses a spend or visit threshold (say, 'Silver' at 5 visits). On top of that you can pin a personal discount for VIPs. And above both — a special promotion with date windows: '−15% to everyone before September 1st'.\n\nRimbo computes the effective discount (special > personal > level) and pushes it back into the Altegio client profile. So when the manager opens a new appointment in Altegio, the right percentage is already shown next to the client's name — no spreadsheets, no reminders.",
+        },
+        {
+          heading: "Pick the right visit when a customer has multiple appointments",
+          content:
+            "Common scenario: a client comes in for a morning manicure and returns in the evening for brows. In Altegio that's two separate appointments. When the manager scans the customer's QR code in Rimbo, the modal shows every visit for today — both active and already completed — and the manager picks which one to attach the receipt to.\n\nA 'Mark appointment as completed' checkbox flips the Altegio visit to 'attended' at the same time the receipt is saved. The manager can uncheck it to leave the slot open in the Altegio calendar.\n\nThe receipt summary (bonuses, stamps, payment method) is added as a comment to the Altegio appointment, so the customer's history stays complete on both sides.",
+          image: {
+            src: "/integrations/altegio/02-scan-modal-appointments_en.png",
+            alt: "Rimbo scan modal letting the manager pick a specific Altegio appointment and toggle 'mark as completed'",
+            caption:
+              "Manager picks the right Altegio appointment and can flip it to 'attended' in one step",
+            width: 1400,
+            height: 900,
+          },
+        },
+        {
+          heading: "Digital cards in Apple Wallet & Google Wallet with push updates",
+          content:
+            "Instead of a plastic card, customers add a virtual Rimbo card to Apple Wallet or Google Wallet with a single tap. The card carries the bonus balance 🪙, stamp progress, the current effective discount, and a scannable QR code.\n\nAfter every completed Altegio visit, the card updates on its own — the phone shows the new accrual, and Android users even get a wallet-level push. Location-based reminders run separately: when the customer walks near your salon, the phone surfaces their saved card.\n\nIt's a single card for all your mechanics — bonuses, stamps, coupons, tiers. More on the format in our article at https://rimbo.com.ua/en/digital-loyalty-cards.",
+          image: {
+            src: "/integrations/altegio/04-wallet-card_en.png",
+            alt: "Rimbo digital loyalty card in Google Wallet showing bonus balance, loyalty level and QR code",
+            caption:
+              "The customer's digital card in Google Wallet: bonuses, loyalty tier, and QR code — all in one pass",
+            width: 720,
+            height: 1560,
+          },
+        },
+        {
+          heading: "Loyalty program for barbershops: practical scenarios",
+          content:
+            "The classic barbershop deal — '10 cuts, 11th free' — becomes a digital stamp card in Rimbo that grows automatically after every Altegio appointment. The barista or admin doesn't tap anything; the system handles it.\n\nLayer bonuses on extra services (beard, styling) and cashback on retail items — wax, shampoo, fragrance. Use special discounts to fill the low-load hours ('−25% on weekdays 11:00–14:00').\n\nA referral program brings clients back via friends: each barber can hand out a personal invite code straight from the Rimbo dashboard. We'll go deeper in our upcoming article at https://rimbo.com.ua/en/loyalty-program-for-barbershop.",
+        },
+        {
+          heading: "Beauty salon retention: what changes with Rimbo",
+          content:
+            "A typical beauty salon on Altegio keeps a clean schedule and a clean client list. But without active retention tools, 30–40% of first-time clients never come back.\n\nRimbo layers in behavioural RFM segmentation: it can see who's been in three times this quarter and who's been dormant for 60 days. Each segment gets its own mechanic — VIPs receive a personal discount, dormant clients get a time-limited reactivation coupon, new clients get a welcome bonus.\n\nPush notifications hit targets precisely, not as a mass SMS blast. The result is more repeat visits without the spam fatigue. Strategy deep-dive in our article at https://rimbo.com.ua/en/beauty-salon-customer-retention.",
+        },
+        {
+          heading: "Digital cards vs paper stamp cards",
+          content:
+            "A paper card lasts on average 3 weeks: lost in a pocket, left in another bag, soaked in the rain. Industry studies show digital stamp cards drive up to 25% more repeat visits — purely because the customer always has the card in their phone's wallet.\n\nYou also get what paper can't deliver at all: full analytics (how many stamps issued, how many redeemed, average cycle length), instant push notifications about progress, and an impossible-to-forge, impossible-to-transfer card.\n\nFor Altegio, this turns your appointment journal into an active marketing channel. Full comparison in our article at https://rimbo.com.ua/en/digital-vs-paper-loyalty-cards.",
+        },
+        {
+          heading: "Bonuses, cashback, or discounts: what works in services",
+          content:
+            "A flat discount is the simplest tool: the client sees the win immediately, but you bleed margin on every receipt — even when no incentive was needed.\n\nBonuses (🪙) work differently: the client earns them but can only spend them on a future visit. That creates a natural pull to return and protects cash flow. In the service segment, bonuses tend to outperform flat discounts on ROI.\n\nCashback is the same engine with retail-friendly framing — useful for cafés and shops. Coupons are precision tools for launching new services or filling low-load hours. The strongest combo: a modest tier discount + bonuses + targeted off-peak coupons. Deep dive at https://rimbo.com.ua/en/bonus-points-vs-discounts.",
+        },
+        {
+          heading: "5-step setup",
+          content:
+            "1. Open Rimbo → Integrations → Altegio and click 'Connect'.\n\n2. Enter the email or phone and password of your Altegio account. Rimbo exchanges them for an access token (the password is never stored).\n\n3. Enter your Altegio salon ID (company_id) from the Altegio admin.\n\n4. Optional: pick the Altegio loyalty card type Rimbo should mirror balances to. Skip if you don't run a native Altegio card.\n\n5. Copy the webhook URL from Rimbo and paste it into Altegio → Settings → Webhooks. Click 'Test connection' — you're done.\n\nThe whole flow takes 5 minutes. After that, bonuses and stamps accrue automatically with every completed visit.",
+          image: {
+            src: "/integrations/altegio/03-integration-config-login_en.png",
+            alt: "Rimbo Altegio integration setup page showing login fields, salon ID and connection status",
+            caption: "Steps 1–3: connect your Altegio account",
+            width: 1400,
+            height: 900,
+          },
+        },
+        {
+          heading: "Security, GDPR, and ownership of customer data",
+          content:
+            "Altegio credentials are stored only as an access token — your password never sits in Rimbo in plaintext. Webhooks are signed with an HMAC secret you can rotate at any time.\n\nAfter connecting, the login fields lock against accidental edits. You can update the salon ID independently without re-entering the password. Disconnecting wipes the token and webhook secret completely.\n\nCustomer data is yours. Rimbo processes it as a data processor under your agreement with your customers, in line with GDPR and Ukrainian personal-data law. Customer bases never mix between companies, and you can export your data at any time.",
+        },
+        {
+          heading: "Ready to start? Connect Rimbo to Altegio for free",
+          content: `Try the integration on a free 14-day trial. Setup takes 5 minutes; the first bonuses accrue right after the first completed Altegio visit.\n\nGet started at ${APP_URL} → Integrations → Altegio. Need a hand with setup? Email ${SUPPORT_EMAIL} and we'll walk you through it.`,
         },
       ],
     },
