@@ -221,7 +221,7 @@ export const dictionaries = {
           features: [
             "До 3 точок продажу, 4 співробітники",
             "До 2 000 активних користувачів",
-            "Повна інтеграція з Poster, [Alteg.io](/integrations/altegio)",
+            "Повна інтеграція з [Poster](/integrations/poster), [Alteg.io](/integrations/altegio)",
             "Промокоди, сертифікати та ваучери",
             "Персональні знижки з дедлайном (Trigger-маркетинг)",
             "Персональний домен для PWA",
@@ -715,6 +715,100 @@ export const dictionaries = {
         },
       ],
     },
+    posterIntegration: {
+      title:
+        "Програма лояльності для Poster POS: автоматичні бонуси, штамп-картки та цифрові гаманці для кав'ярень і ресторанів",
+      metaDescription:
+        "Rimbo підключається до Poster POS через маркетплейс за 5 хвилин: бонуси після кожного чека, списання просто на терміналі та картки в Apple і Google Wallet.",
+      lastUpdated: "Опубліковано: 12 травня 2026 р.",
+      sections: [
+        {
+          heading: "Чому власної лояльності Poster часто недостатньо для зростання",
+          content:
+            "Poster — одна з найпопулярніших POS-систем в Україні для кав'ярень, барів, ресторанів, кондитерських та невеликого рітейлу. Касовий модуль, склад, фінанси, маркетплейс — усе є з коробки. Базова лояльність Poster дозволяє вести дисконтні картки та простий бонусний рахунок, але цього вистачає лише доти, доки бізнес не починає зростати.\n\nВ Poster немає цифрових карток в Apple Wallet та Google Wallet, немає push-сповіщень про прогрес штамп-картки, немає механіки купонів з happy-hours, немає реферальної програми, немає поведінкової RFM-сегментації. Утримання клієнта в HoReCa у 5 разів дешевше за залучення нового, але без інструментів повернення ці клієнти просто перестають приходити.\n\nRimbo розв'язує саме цю задачу: повноцінна лояльність поверх Poster — без зміни звичної каси та без подвійного обліку.",
+        },
+        {
+          heading: "Як працює інтеграція Rimbo з Poster",
+          content:
+            "Підключення відбувається через офіційний маркетплейс Poster: натискаєте «Установити», авторизуєтесь, і Rimbo отримує токен доступу. Далі додаєте URL вебхука Rimbo у налаштування додатку Poster — і двостороння синхронізація вмикається миттєво.\n\nКоли касир закриває чек у Poster, система надсилає до Rimbo подію `transaction.added` з підписом MD5. Rimbo підтверджує підпис, знаходить клієнта (за заздалегідь створеним наміром із терміналу або за полем `client_id`), нараховує бонуси, додає штамп та оновлює картку клієнта в Apple/Google Wallet.\n\nЯкщо чек пізніше відредагували — спрацьовує `transaction.changed`, і Rimbo автоматично коригує бонуси на дельту. Якщо чек видалили — `transaction.removed` повертає всі нарахування та штампи назад. Жодних ручних звірок наприкінці зміни.",
+        },
+        {
+          heading:
+            "Повний набір механік лояльності Rimbo, які активуються поверх Poster",
+          content:
+            "Підключення вмикає всі інструменти Rimbo одночасно:\n\n• Бонуси (🪙) — відсоток від суми кожного закритого чека з гнучким терміном дії.\n\n• Кешбек — той самий рушій, але з інтерфейсом «повернення коштів», звичнішим для рітейлу та кав'ярень.\n\n• Штамп-картки — «N покупок = подарунок», автоматично інкрементуються після кожного закриття чека.\n\n• Постійні знижки — персональний % на клієнта, який Rimbo застосовує перед оплатою.\n\n• Спеціальні знижки — акції з вікнами дії, які перекривають постійні (пріоритет: спеціальна → персональна → рівнева).\n\n• Рівні лояльності — тарифні щаблі, що відкриваються за сумою витрат або кількістю чеків.\n\n• Промокоди — одноразові або кампанійні коди для запуску нових позицій меню та повернення «сплячих» гостей.\n\n• Купони — точкові нагороди з happy-hours, прив'язкою до конкретних позицій меню та бонусними винагородами.\n\n• Реферальна програма — «приведи друга» з автоматичним нарахуванням.\n\nУсі механіки живуть в одному гаманці клієнта, з одним push-каналом і однією карткою Apple/Google Wallet.",
+        },
+        {
+          heading: "Автоматичне нарахування бонусів через вебхуки транзакцій",
+          content:
+            "Закриття чека в Poster триває одну секунду — і за цю ж секунду Rimbo отримує підписаний вебхук, перевіряє підпис, нараховує бонуси за вашою формулою (наприклад, 5% від суми чека) та оновлює гаманець клієнта.\n\nКожна транзакція ідентифікується унікальним ID, тому повторне доставлення тієї самої події нічого не дублюватиме. Якщо інтернет на касі тимчасово зник — Poster повторно надішле вебхук, коли зв'язок відновиться, і Rimbo обробить його коректно.\n\nЖурнал подій у адмінці Rimbo показує кожне отримане повідомлення з прапорцем валідності підпису та результатом — нараховано стільки-то бонусів, додано штамп, повернуто бонуси на видалений чек тощо. Касова звірка з Poster збігається до копійки.",
+        },
+        {
+          heading: "Штамп-картки, купони та промокоди в дії на Poster",
+          content:
+            "Штамп-картки. Кав'ярня налаштовує картку «10 кав = 11-та безкоштовно». Після кожного закритого чека Rimbo сам додає штамп до картки клієнта. Заповнили — клієнт миттєво отримує push-сповіщення, а наступна картка стартує автоматично.\n\nКупони. Створіть купон «−25% на десерти, будні з 15:00 до 17:00». Купон сам активується у happy-hours вікно, прив'язується до конкретних позицій меню та може нараховувати додаткові бонуси. Клієнт відкриває деталі купона прямо з push-сповіщення.\n\nПромокоди. Видайте код «PIZZA50» у Instagram-кампанії — клієнт уводить його при скануванні QR-коду на касі, і Rimbo одразу застосовує знижку чи нараховує бонуси. Ідеально для запуску нового меню чи реактивації клієнтів, які давно не заходили.\n\nВсе це працює без переписування жодного процесу касира — він лише сканує QR-код клієнта.",
+        },
+        {
+          heading: "Списання бонусів просто на терміналі Poster",
+          content:
+            "Найскладніший момент будь-якої POS-інтеграції — як списати бонуси до закриття чека, не змусивши касира відкривати іншу систему. Rimbo розв'язує це через намір (intent): касир сканує QR-код клієнта, бачить його баланс і вибирає суму бонусів до списання. Rimbo створює намір, прив'язаний до поточного замовлення Poster, і чекає на закриття чека.\n\nКоли касир закриває замовлення в Poster, вебхук приходить із тим самим ID замовлення. Rimbo миттєво списує бонуси, перераховує «чисту» суму, на яку нараховуються нові бонуси, та додає штамп. Жодного дубльованого вводу, жодних дзвінків у підтримку.\n\nЯкщо клієнт не пов'язаний з картою Poster — нічого страшного: під час сканування Rimbo автоматично знаходить або створює зв'язок між профілем Rimbo та `client_id` у Poster.",
+        },
+        {
+          heading: "Автоматичні скасування й корекції чеків",
+          content:
+            "У реальній HoReCa чеки часто змінюються після закриття: касир помилився з позицією, гість попросив повернення, менеджер видалив тестовий чек. Кожна така подія приходить у Rimbo окремим вебхуком.\n\nЗміна суми чека (`transaction.changed`) запускає коректну дельту: Rimbo обчислює, скільки бонусів мало бути нараховано на нову суму, порівнює з уже нарахованими — і пише одну транзакцію на різницю. Повторне надсилання тієї самої події дає нуль.\n\nВидалення чека (`transaction.removed`) автоматично повертає бонуси і штампи, прив'язані до цього чека. Клієнт отримує оновлений баланс на картці в гаманці, а ви — чисту аналітику без розбіжностей з Poster.",
+        },
+        {
+          heading: "Цифрові картки в Apple Wallet та Google Wallet з push-оновленнями",
+          content:
+            "Замість пластикової картки гість додає віртуальну картку Rimbo в Apple Wallet або Google Wallet одним дотиком. На картці — баланс бонусів 🪙, прогрес штамп-картки, актуальна знижка та QR-код для сканування на касі.\n\nПісля кожного закритого чека в Poster картка оновлюється сама: телефон показує нове нарахування, а власник Android — навіть отримує push безпосередньо в гаманець. Геолокація працює окремо: коли клієнт проходить біля вашої кав'ярні, телефон нагадує про збережену картку.\n\nЦе одна картка для всіх ваших механік — бонусів, штампів, купонів, рівнів. Більше про формат — у нашій статті [цифрові картки лояльності](/digital-loyalty-cards).",
+        },
+        {
+          heading: "Лояльність для кав'ярні чи ресторану: робочі сценарії",
+          content:
+            "Кав'ярня. Класичний сценарій «купи 9 кав, 10-та безкоштовно» стає цифровою штамп-карткою. Поверх стампів додайте кешбек 3–5% на десерти та сніданки — гість отримує бонуси, які можна витратити лише на наступному візиті, що природно повертає його до вас.\n\nРесторан. Запровадьте рівневу систему: «Гурман» при сумі чеків понад 5 000₴, «Постійний гість» — від 15 000₴. Кожен рівень дає свою постійну знижку, поверх якої адміністратор може вмикати спеціальні акції для тихих годин («−20% на бізнес-ланч до 12:00»).\n\nБар. Купони з happy-hours на конкретні позиції меню («−30% на коктейль тижня щочетверга з 19:00 до 21:00») вирівнюють завантаження без розмивання маржі на основну карту.",
+        },
+        {
+          heading: "Утримання клієнтів у HoReCa: що змінюється з Rimbo",
+          content:
+            "За даними галузевих досліджень, у середньому 30–40% першовідвідувачів кав'ярні чи ресторану не повертаються вдруге протягом 30 днів. Базова статистика Poster добре показує цей факт, але сама по собі його не виправляє.\n\nRimbo додає поведінкову RFM-сегментацію: автоматично групує гостей за давністю, частотою та сумою чеків. На основі цих сегментів запускаються таргетовані механіки — VIP отримують персональну знижку, нові гості — вітальний бонус після першого чека, а «сплячі» (немає чеків понад 60 днів) — купон на повернення з обмеженим вікном дії.\n\nPush-сповіщення працюють точково, не як масова SMS-розсилка, тому конверсія повернень помітно вища, а гість не відчуває спаму.",
+        },
+        {
+          heading: "Цифрові штамп-картки vs паперові у HoReCa",
+          content:
+            "Паперова штамп-картка для кав'ярні в середньому губиться за 3 тижні: лишилась удома, розмокла, опинилась в іншій сумці. Цифрові штамп-картки дають до 25% більше повторних візитів просто тому, що гість завжди має картку у гаманці телефону.\n\nДо цього додаються переваги, недоступні паперу: повна аналітика (скільки штампів видано, скільки використано, який середній цикл повернення), миттєві push-сповіщення про прогрес, неможливість підробити чи передати картку іншій людині.\n\nДля закладу на Poster це означає, що кожен закритий чек одразу перетворюється на дієвий маркетинговий контакт, а не лишається записом у журналі.",
+        },
+        {
+          heading: "Бонуси, кешбек чи знижки: що обирати для кафе й ресторанів",
+          content:
+            "Постійна знижка — найпростіший інструмент, але найдорожчий: ви втрачаєте маржу з кожного чека, навіть коли гість прийшов би і без мотивації.\n\nБонуси (🪙) працюють інакше: гість «заробляє» їх з кожного чека, а використати може лише при наступному візиті. Це створює природний стимул повернутись, не вимиваючи готівку з каси одразу. У HoReCa бонуси майже завжди дають кращу окупність, ніж знижки.\n\nКешбек — це бонуси з рітейл-обгорткою, які звично читаються гостями кав'ярні чи маркету. Купони з happy-hours — точковий інструмент для вирівнювання тихих годин або запуску нових позицій меню. Найсильніша комбінація: невелика рівнева знижка + бонуси з кожного чека + купони на низькосезонні години.",
+        },
+        {
+          heading: "Мультилокаційна лояльність для мереж на Poster Connect",
+          content:
+            "Якщо у вас мережа з кількома закладами на Poster Connect, Rimbo працює як єдиний бонусний контур для всієї мережі. Гість, який отримав бонуси у вашій кав'ярні на Подолі, може витратити їх у точці на Печерську — баланс один, картка в Apple/Google Wallet одна.\n\nПри цьому аналітика в Rimbo показує і загальну картину по мережі, і розріз по конкретних точках: де нараховуються бонуси, де витрачаються, який середній чек і коефіцієнт повернення в кожній локації. Адмінам ресторанної групи можна видати ролі з доступом лише до своїх точок.\n\nКупони та промокоди налаштовуються або на всю мережу одразу, або лише на обрані заклади — зручно для тестових кампаній.",
+        },
+        {
+          heading: "Чим Rimbo відрізняється від inCust, UDS і Boomerangme на Poster",
+          content:
+            "inCust — потужний CRM-комбайн, але вимагає тривалого впровадження та технічної команди для базових налаштувань. Rimbo вмикається за 5 хвилин через маркетплейс і не потребує ІТ-партнера.\n\nUDS пропонує власну споживчу мобільну застосунок, у який треба «затягнути» вашого гостя. Rimbo не вимагає від клієнта встановлювати ще один застосунок — картка живе в Apple Wallet або Google Wallet, які вже є на телефоні.\n\nBoomerangme сфокусований на штамп-картках в одній мові інтерфейсу. Rimbo підтримує українську й англійську з коробки, а поверх штампів дає бонуси, кешбек, рівні, купони, промокоди й реферальну програму одним пакетом.\n\nЯкщо ви вже використовуєте одну з цих систем — міграція не складна: ми переносимо ваші бази клієнтів і бонусні баланси в Rimbo, зберігаючи історичну прив'язку до `client_id` у Poster.",
+        },
+        {
+          heading: "Налаштування інтеграції за 5 кроків",
+          content:
+            "1. Зайдіть у Rimbo → «Інтеграції» → Poster і натисніть «Підключити через маркетплейс».\n\n2. У маркетплейсі Poster установіть додаток Rimbo та авторизуйтесь — Poster поверне токен доступу автоматично.\n\n3. Перевірте, що в Rimbo з'явились account ID і access token. Натисніть «Перевірити з'єднання» — Rimbo надішле тестовий запит до API Poster і покаже статус.\n\n4. Скопіюйте URL вебхука з Rimbo (він показується одразу після збереження конфігу).\n\n5. У налаштуваннях додатку Rimbo в адмінці Poster вставте цей URL у поле вебхука та збережіть. Готово — наступний же закритий чек прийде до Rimbo автоматично.\n\nВся процедура займає 5 хвилин. Картка лояльності Poster (за бажанням) синхронізується з бонусним балансом Rimbo автоматично.",
+        },
+        {
+          heading: "Безпека, GDPR і власність клієнтських даних",
+          content:
+            "Токен доступу Poster зберігається в зашифрованому вигляді й використовується лише сервером Rimbo — у браузер ніколи не потрапляє. Вебхуки підписуються глобальним application_secret Poster, який Rimbo перевіряє MD5-підписом на кожному запиті: невалідні події одразу відхиляються.\n\nБудь-якої миті ви можете вимкнути або повністю видалити інтеграцію — Rimbo відкине токен і припинить слухати вебхуки.\n\nКлієнтські дані — ваші. Rimbo обробляє їх як виконавець у рамках вашого договору з клієнтом, відповідно до GDPR та українського законодавства про захист персональних даних. Бази клієнтів не змішуються між компаніями, експорт даних доступний у будь-який момент.",
+        },
+        {
+          heading: "Готові почати? Підключіть Rimbo до Poster безкоштовно",
+          content: `Спробуйте інтеграцію на безкоштовному 14-денному пробному періоді. Налаштування — 5 хвилин через маркетплейс Poster, перші бонуси нараховуються після першого ж закритого чека.\n\nПочніть на ${APP_URL} → «Інтеграції» → Poster. Потрібна допомога з налаштуванням? Напишіть на ${SUPPORT_EMAIL} — ми проведемо вас за руку.`,
+        },
+      ],
+    },
     // Language
     langSwitch: "EN",
     langSwitchHref: "/en",
@@ -939,7 +1033,7 @@ export const dictionaries = {
           features: [
             "Up to 3 points of sale, 4 employees",
             "Up to 2,000 active users",
-            "Full integration with Poster, [Alteg.io](/en/integrations/altegio)",
+            "Full integration with [Poster](/en/integrations/poster), [Alteg.io](/en/integrations/altegio)",
             "Promo codes, certificates & vouchers",
             "Personal discounts with deadline (Trigger marketing)",
             "Personal domain for PWA",
@@ -1430,6 +1524,99 @@ export const dictionaries = {
         {
           heading: "Ready to start? Connect Rimbo to Altegio for free",
           content: `Try the integration on a free 14-day trial. Setup takes 5 minutes; the first bonuses accrue right after the first completed Altegio visit.\n\nGet started at ${APP_URL} → Integrations → Altegio. Need a hand with setup? Email ${SUPPORT_EMAIL} and we'll walk you through it.`,
+        },
+      ],
+    },
+    posterIntegration: {
+      title:
+        "Poster POS Loyalty Integration: Automated Bonuses, Stamp Cards & Digital Wallets for Cafés and Restaurants",
+      metaDescription:
+        "Connect Rimbo to Poster POS via the marketplace in 5 minutes. Automate bonuses after every receipt, redeem at the terminal, and issue Apple & Google Wallet cards.",
+      lastUpdated: "Published: May 12, 2026",
+      sections: [
+        {
+          heading: "Why Poster's built-in loyalty rarely scales with the business",
+          content:
+            "Poster is one of the most widely used POS systems in Ukraine for cafés, bars, restaurants, bakeries, and small retail. It ships with a strong cashier module, inventory, finance, and a marketplace. Its built-in loyalty handles discount cards and a simple bonus account — enough for the first stage, but not for growth.\n\nPoster doesn't issue Apple Wallet or Google Wallet cards, doesn't push notifications about stamp progress, doesn't run happy-hours coupons, has no referral mechanic, and offers no behavioural RFM segmentation. In HoReCa, retaining a customer is 5× cheaper than acquiring a new one — yet without the right tools, returning visitors quietly drop off.\n\nRimbo plugs that gap: a full loyalty stack on top of Poster, with no double bookkeeping and no changes to the cashier's daily workflow.",
+        },
+        {
+          heading: "How the Rimbo × Poster integration works",
+          content:
+            "Connection runs through the official Poster Marketplace: click 'Install', authorize, and Rimbo receives an access token. Then drop Rimbo's webhook URL into the app settings inside Poster — and the two-way sync is live.\n\nWhen a cashier closes a check in Poster, the system sends Rimbo a `transaction.added` event signed with MD5. Rimbo verifies the signature, finds the customer (via a pre-created terminal intent or the `client_id` field), accrues bonuses, adds a stamp, and updates the customer's Apple/Google Wallet card.\n\nIf the check is later edited, `transaction.changed` fires and Rimbo auto-adjusts bonuses by the delta. If the check is removed, `transaction.removed` rolls every accrual and stamp back. No end-of-shift reconciliation required.",
+        },
+        {
+          heading: "Every Rimbo loyalty mechanic that plugs into Poster",
+          content:
+            "Connecting Poster activates every Rimbo mechanic at once, with no extra setup:\n\n• Bonuses (🪙) — percent-of-spend accrual on every closed check, with flexible expiry.\n\n• Cashback — the same engine reframed as 'money back', friendlier for retail and cafés.\n\n• Stamp cards — 'N purchases = a reward', auto-incremented after every closed check.\n\n• Personal discounts — per-customer percentages, applied before payment.\n\n• Special discounts — time-windowed promotions that override personal and tier discounts (priority: special > personal > level).\n\n• Loyalty tiers — levels unlocked by spend or visit count.\n\n• Promocodes — single-use or campaign codes for launching new menu items or bringing dormant guests back.\n\n• Coupons — granular rewards with happy-hours windows, per-item targeting, and bonus payouts.\n\n• Referral program — invite-a-friend mechanics with automatic credit.\n\nEverything lives in one customer wallet, with one push channel and one Apple/Google Wallet pass.",
+        },
+        {
+          heading: "Real-time bonus accrual via transaction webhooks",
+          content:
+            "Closing a check in Poster takes a second — and during that same second Rimbo receives a signed webhook, verifies the signature, accrues bonuses using your formula (say, 5% of the receipt total), and refreshes the customer's wallet.\n\nEvery transaction carries a unique ID, so redelivering the same event never double-credits. If the cashier's internet briefly dropped, Poster will retry the webhook and Rimbo will still process it correctly.\n\nThe event log in the Rimbo admin shows every incoming message with the signature-validity flag and the result — bonuses awarded, stamp added, rollback on a deleted check, and so on. Reconciling against Poster's books matches to the penny.",
+        },
+        {
+          heading: "Stamp cards, coupons, and promocodes live on Poster",
+          content:
+            "Stamp cards. A café sets up '10 coffees, 11th free'. After every closed check, Rimbo adds a stamp automatically. Fill the card and the customer instantly gets a push notification — the next card starts on its own.\n\nCoupons. Create '−25% on desserts, weekdays 15:00–17:00'. The happy-hours window activates by itself, the coupon can target specific menu items, and it can pay out extra bonuses on top. Customers open coupon details straight from the push notification.\n\nPromocodes. Issue a code like 'PIZZA50' in an Instagram campaign — the guest enters it at the POS during the QR scan, and Rimbo applies the discount or credits bonuses instantly. Perfect for launching a new menu or reactivating long-gone visitors.\n\nNothing changes in the cashier's workflow — they just scan the customer's QR code.",
+        },
+        {
+          heading: "Redeem bonuses right at the Poster terminal",
+          content:
+            "The hardest part of any POS integration is letting the cashier debit bonuses before the check closes, without forcing them to open another system. Rimbo solves this with an intent: the cashier scans the customer's QR code, sees the bonus balance, and picks how many to redeem. Rimbo creates an intent linked to the current Poster order and waits for the close event.\n\nWhen the cashier closes the order in Poster, the webhook arrives with the same order ID. Rimbo debits the bonuses, recomputes the 'net' amount the new accrual is based on, and adds a stamp. No duplicate entry, no support calls.\n\nIf the customer isn't yet linked to a Poster client card — no problem: during the scan Rimbo automatically finds or creates the link between the Rimbo profile and Poster's `client_id`.",
+        },
+        {
+          heading: "Automatic reversals and adjustments on edited checks",
+          content:
+            "In real-world HoReCa, checks change after they close: a wrong item, a guest refund, a manager deleting a test order. Each of those events arrives in Rimbo as its own webhook.\n\nAn amount change (`transaction.changed`) triggers a precise delta: Rimbo computes how many bonuses should have been credited at the new total, compares against what's already been issued, and writes a single transaction for the difference. Resending the same event yields zero.\n\nA deletion (`transaction.removed`) rolls back every bonus and stamp tied to that check. The customer sees the updated balance on their wallet card, and you keep a clean ledger that matches Poster exactly.",
+        },
+        {
+          heading: "Digital cards in Apple Wallet & Google Wallet with push updates",
+          content:
+            "Instead of a plastic card, the guest adds a virtual Rimbo card to Apple Wallet or Google Wallet with a single tap. The card carries the bonus balance 🪙, stamp progress, the current effective discount, and a scannable QR code for the POS.\n\nAfter every closed check in Poster, the card updates on its own — the phone shows the new accrual, and Android users even get a wallet-level push. Location-based reminders run separately: when the customer walks near your café, the phone surfaces their saved card.\n\nIt's a single card for every mechanic — bonuses, stamps, coupons, tiers. More on the format in our article on [digital loyalty cards](/en/digital-loyalty-cards).",
+        },
+        {
+          heading: "Loyalty for a café or restaurant: practical scenarios",
+          content:
+            "Café. The classic 'buy 9, get the 10th free' becomes a digital stamp card. Layer cashback of 3–5% on desserts and breakfasts on top — the guest earns bonuses they can only spend on the next visit, which naturally pulls them back.\n\nRestaurant. Introduce tiers: 'Gourmet' at ₴5 000 in cumulative receipts, 'Regular' from ₴15 000. Each tier carries its own permanent discount, and the manager can layer special promos on top for slow hours ('−20% on business lunch before 12:00').\n\nBar. Happy-hours coupons targeting specific menu items ('−30% on the cocktail of the week, Thursdays 19:00–21:00') flatten demand without diluting margin on the rest of the menu.",
+        },
+        {
+          heading: "HoReCa customer retention: what changes with Rimbo",
+          content:
+            "Industry studies show 30–40% of first-time café and restaurant guests never come back within 30 days. Poster's built-in stats can surface that fact — but on their own, they don't fix it.\n\nRimbo layers in behavioural RFM segmentation: it automatically groups guests by recency, frequency, and monetary value. Each segment gets its own mechanic — VIPs receive a personal discount, new guests get a welcome bonus after their first check, and dormant guests (no checks in 60+ days) receive a time-limited reactivation coupon.\n\nPush notifications hit precisely instead of blasting the entire base by SMS, so return conversion is meaningfully higher and the guest never feels spammed.",
+        },
+        {
+          heading: "Digital stamp cards vs paper in HoReCa",
+          content:
+            "A paper café stamp card lasts on average 3 weeks: left at home, soaked in coffee, lost in another bag. Digital stamp cards drive up to 25% more repeat visits — purely because the guest always has the card in their phone's wallet.\n\nOn top of that you get what paper can't deliver at all: full analytics (stamps issued, stamps redeemed, average return cycle), instant push notifications about progress, and a card that can't be forged or transferred.\n\nFor a Poster-powered venue, every closed check turns into a live marketing touchpoint instead of just a row in the journal.",
+        },
+        {
+          heading: "Bonuses, cashback, or discounts: what works for cafés and restaurants",
+          content:
+            "A flat discount is the simplest tool and also the most expensive: you bleed margin on every receipt, even when the guest would have visited anyway.\n\nBonuses (🪙) work differently: the guest earns them with every check but can only spend them on a future visit. That creates a natural pull to return and protects your cash. In HoReCa, bonuses almost always outperform flat discounts on ROI.\n\nCashback is the same engine wrapped in retail-friendly language, which reads well to café and shop guests. Happy-hours coupons are precision tools for filling slow hours or launching new menu items. The strongest combo: a modest tier discount + bonuses on every check + targeted off-peak coupons.",
+        },
+        {
+          heading: "Multi-location loyalty for chains on Poster Connect",
+          content:
+            "Running a chain on Poster Connect? Rimbo acts as a single bonus loop across every location. A guest who earned bonuses at your Podil café can spend them at the Pechersk venue — one balance, one Apple/Google Wallet card.\n\nAnalytics in Rimbo show both the network-wide picture and a per-location breakdown: where bonuses are accrued, where they're redeemed, average check, return rate per venue. Group admins can have roles limited to specific locations.\n\nCoupons and promocodes can target the whole chain or a hand-picked subset — handy for piloting a campaign in one location before rolling out.",
+        },
+        {
+          heading: "How Rimbo differs from inCust, UDS, and Boomerangme on Poster",
+          content:
+            "inCust is a heavy CRM suite — powerful, but it needs a long onboarding and an integrator partner to configure the basics. Rimbo turns on in 5 minutes through the marketplace, with no IT partner needed.\n\nUDS pushes its own consumer mobile app that you have to convince the guest to install. Rimbo skips that friction entirely — the card lives in Apple Wallet or Google Wallet, which the guest already has on their phone.\n\nBoomerangme is focused on stamp cards in a single UI language. Rimbo ships Ukrainian and English out of the box, and on top of stamps it gives you bonuses, cashback, tiers, coupons, promocodes, and a referral program in one bundle.\n\nIf you're already on one of these — migrating isn't hard: we import your customer base and bonus balances into Rimbo, preserving the historical link to `client_id` in Poster.",
+        },
+        {
+          heading: "5-step setup",
+          content:
+            "1. Open Rimbo → Integrations → Poster and click 'Connect via Marketplace'.\n\n2. In the Poster Marketplace install the Rimbo app and authorize — Poster returns the access token automatically.\n\n3. Confirm the account ID and access token appear in Rimbo. Click 'Test connection' — Rimbo will ping Poster's API and report the status.\n\n4. Copy the webhook URL from Rimbo (it's shown right after the config is saved).\n\n5. In the Rimbo app settings inside the Poster admin, paste that URL into the webhook field and save. Done — the next closed check will reach Rimbo automatically.\n\nThe full flow takes 5 minutes. The Poster loyalty card (if you run one) syncs balances with the Rimbo bonus wallet automatically.",
+        },
+        {
+          heading: "Security, GDPR, and ownership of customer data",
+          content:
+            "The Poster access token is stored encrypted and only used by the Rimbo server — it never reaches the browser. Webhooks are signed with Poster's global application_secret, which Rimbo verifies with an MD5 signature on every request: invalid events are rejected immediately.\n\nYou can disconnect or fully remove the integration at any time — Rimbo drops the token and stops listening to webhooks.\n\nCustomer data is yours. Rimbo processes it as a data processor under your agreement with the customer, in line with GDPR and Ukrainian personal-data law. Customer bases never mix between companies, and you can export your data whenever you need.",
+        },
+        {
+          heading: "Ready to start? Connect Rimbo to Poster for free",
+          content: `Try the integration on a free 14-day trial. Setup takes 5 minutes through the Poster Marketplace; the first bonuses accrue right after the first closed check.\n\nGet started at ${APP_URL} → Integrations → Poster. Need a hand with setup? Email ${SUPPORT_EMAIL} and we'll walk you through it.`,
         },
       ],
     },

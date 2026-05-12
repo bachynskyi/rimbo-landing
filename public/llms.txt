@@ -36,6 +36,8 @@
 - /en/push-notifications — Push notifications and personalized offers (English)
 - /integrations/altegio — Altegio loyalty integration: automated bonuses, discount sync and digital wallet cards (Ukrainian)
 - /en/integrations/altegio — Altegio loyalty integration: automated bonuses, discount sync and digital wallet cards (English)
+- /integrations/poster — Poster POS loyalty integration: automated bonuses, stamp cards and digital wallet cards for cafés and restaurants (Ukrainian)
+- /en/integrations/poster — Poster POS loyalty integration: automated bonuses, stamp cards and digital wallet cards for cafés and restaurants (English)
 
 ## Contact
 - Email: billing@rimbo.io
