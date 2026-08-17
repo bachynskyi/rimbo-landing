@@ -338,38 +338,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://rimbo.com.ua/for/pizzeria-sushi</loc>
-    <xhtml:link rel="alternate" hreflang="uk" href="https://rimbo.com.ua/for/pizzeria-sushi"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://rimbo.com.ua/en/for/pizzeria-sushi"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://rimbo.com.ua/for/pizzeria-sushi"/>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://rimbo.com.ua/en/for/pizzeria-sushi</loc>
-    <xhtml:link rel="alternate" hreflang="uk" href="https://rimbo.com.ua/for/pizzeria-sushi"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://rimbo.com.ua/en/for/pizzeria-sushi"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://rimbo.com.ua/for/pizzeria-sushi"/>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://rimbo.com.ua/for/hotel-tourism</loc>
-    <xhtml:link rel="alternate" hreflang="uk" href="https://rimbo.com.ua/for/hotel-tourism"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://rimbo.com.ua/en/for/hotel-tourism"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://rimbo.com.ua/for/hotel-tourism"/>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://rimbo.com.ua/en/for/hotel-tourism</loc>
-    <xhtml:link rel="alternate" hreflang="uk" href="https://rimbo.com.ua/for/hotel-tourism"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://rimbo.com.ua/en/for/hotel-tourism"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://rimbo.com.ua/for/hotel-tourism"/>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://rimbo.com.ua/for/barbershop</loc>
     <xhtml:link rel="alternate" hreflang="uk" href="https://rimbo.com.ua/for/barbershop"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://rimbo.com.ua/en/for/barbershop"/>

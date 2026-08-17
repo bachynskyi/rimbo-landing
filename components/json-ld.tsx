@@ -107,8 +107,8 @@ export function SoftwareApplicationSchema({
           "@type": "BusinessAudience",
           name:
             locale === "en"
-              ? "Small and medium businesses: coffee shops, bakeries, restaurants, barbershops, beauty salons, fitness studios, pet services, auto services, hotels"
-              : "Малий та середній бізнес: кав'ярні, пекарні, ресторани, барбершопи, салони краси, фітнес-студії, зоосервіси, автосервіси, готелі",
+              ? "Small and medium businesses: coffee shops, bakeries, restaurants, barbershops, beauty salons, fitness studios, pet services, auto services"
+              : "Малий та середній бізнес: кав'ярні, пекарні, ресторани, барбершопи, салони краси, фітнес-студії, зоосервіси, автосервіси",
         },
         offers: {
           "@type": "AggregateOffer",

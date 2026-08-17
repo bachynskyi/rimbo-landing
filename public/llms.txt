@@ -1,6 +1,6 @@
 # Rimbo — Digital Loyalty Platform
 
-> Rimbo is a SaaS loyalty platform for small and medium businesses in Ukraine — coffee shops, bakeries, restaurants, barbershops, beauty salons, fitness studios, pet services, auto services and hotels. It provides digital stamp cards, bonuses, cashback, tiered discounts, promo codes, gift cards, and smart coupons — all managed from a single dashboard.
+> Rimbo is a SaaS loyalty platform for small and medium businesses in Ukraine — coffee shops, bakeries, restaurants, barbershops, beauty salons, fitness studios, pet services and auto services. It provides digital stamp cards, bonuses, cashback, tiered discounts, promo codes, gift cards, and smart coupons — all managed from a single dashboard.
 
 ## Key Features
 - Google Wallet & Apple Wallet integration
@@ -64,10 +64,6 @@
 - /en/for/bakery — Loyalty program for bakeries and pastry shops: digital punch cards without an app (English)
 - /for/restaurant — Loyalty program for restaurants: tiers, bonuses and coupons instead of discount cards (Ukrainian)
 - /en/for/restaurant — Loyalty program for restaurants: tiers, bonuses and coupons instead of discount cards (English)
-- /for/pizzeria-sushi — Loyalty program for food delivery: cashback for direct pizza and sushi orders (Ukrainian)
-- /en/for/pizzeria-sushi — Loyalty program for food delivery: cashback for direct pizza and sushi orders (English)
-- /for/hotel-tourism — Loyalty program for hotels: direct booking bonuses and gift certificates, no app (Ukrainian)
-- /en/for/hotel-tourism — Loyalty program for hotels: direct booking bonuses and gift certificates, no app (English)
 - /for/barbershop — Loyalty program for barbershops: a digital stamp card instead of manual counting (Ukrainian)
 - /en/for/barbershop — Loyalty program for barbershops: a digital stamp card instead of manual counting (English)
 - /for/beauty-salon — Loyalty program for beauty salons: tiers and bonuses instead of plastic cards (Ukrainian)

@@ -1496,125 +1496,37 @@ export const dictionaries = {
         },
       ],
     },
-    forPizzeriaSushi: {
-      title:
-        "Програма лояльності для доставки їжі: кешбек за прямі замовлення піци та суші",
-      metaDescription:
-        "Програма лояльності для доставки їжі: кешбек 🪙 за прямі замовлення замість комісій агрегаторів, промокоди й push за 0 ₴ замість SMS. 14 днів безкоштовно.",
-      lastUpdated: "Опубліковано: 17 серпня 2026 р.",
-      sections: [
-        {
-          heading: "Яка програма лояльності потрібна піцерії та доставці суші",
-          content:
-            `Піцерії й доставці суші потрібна програма, яка переводить повторні замовлення з агрегаторів у прямий канал. Рішення — кешбек бонусами 🪙 за замовлення на вашому сайті чи по телефону: картка лояльності в Apple Wallet або Google Wallet, яку клієнт додає за 30 секунд без застосунку й реєстрації. Rimbo дає повний набір: кешбек за прямі замовлення, промокоди для відстеження кампаній, безкоштовні push-сповіщення про акції та RFM-аналітику, яка показує, хто замовляє часто, а хто зник. Логіка проста: клієнт, який отримує бонуси лише за пряме замовлення, наступного разу відкриє ваш сайт, а не Glovo. Важливо, що механіка не вимагає зусиль від клієнта — 65% людей відмовляються від програм із реєстрацією, 71% чекають миттєвої вигоди (Devlight 2025). Вартість — від ${FROM_PRICE} ₴/міс, 14 днів безкоштовно.`,
-        },
-        {
-          heading: "Чому агрегатори з'їдають ваш прибуток і базу клієнтів",
-          content:
-            "Glovo й Bolt Food приводять замовлення, але забирають двічі: спершу комісію з кожного чека, потім — найцінніше, клієнтську базу. Людина, яка вже тричі замовляла вашу піцу, четвертий раз знову замовить через агрегатор, бо саме там збережена її адреса й історія — і ви знову заплатите комісію за «нового» клієнта, який давно ваш. Контактів у вас немає: ні нагадати про себе, ні запропонувати акцію, ні повернути того, хто перестав замовляти. Другий біль — маркетинг наосліп: промокоди з флаєрів у коробках із піцою ніяк не відстежуються, і ви не знаєте, чи спрацювала кампанія взагалі. Третій — вартість комунікації: SMS-розсилка по базі коштує 0,32–0,35 ₴ за повідомлення, тож про регулярні нагадування без болю в бюджеті можна забути. Разом це замкнене коло, в якому канал продажів належить не вам.",
-        },
-        {
-          heading: "Бонуси за замовлення піци й суші: механіки Rimbo",
-          content:
-            "Ключова механіка — [кешбек 🪙 за прямі замовлення](/cashback-loyalty): бонуси нараховуються лише за замовлення на вашому сайті чи по телефону, і клієнт має фінансову причину оминути агрегатор — а ви економите комісію з кожного чека. Друга — [промокоди](/promo-codes): унікальні коди на флаєрах у коробках, у соцмережах чи в блогерів нарешті стають вимірюваними — в кабінеті Rimbo видно, скільки активацій дала кожна кампанія. Третя — push-сповіщення за 0 ₴ замість SMS по 0,32–0,35 ₴: «Піца дня −30%» або «Ваші 250 🪙 згоряють за тиждень» прилітають на екран блокування без витрат на розсилку. Картка [працює без застосунку](/loyalty-without-app) — це критично для доставки, де клієнт не буде ставити окремий додаток заради однієї піцерії. Усі механіки поєднуються: промокод приводить, кешбек утримує, push повертає.",
-        },
-        {
-          heading: "Як це виглядає для клієнта доставки",
-          content:
-            "Сценарій від імені власника піцерії. У кожну коробку ми кладемо флаєр: «Замовляй напряму — повертаємо 10% бонусами». Клієнт, який досі замовляв через Glovo, сканує QR — картка в його Google Wallet, на ній вітальні 🪙 за перше пряме замовлення. Наступного разу він відкриває наш сайт, вводить промокод із флаєра, замовляє два сети ролів — кешбек падає на картку, а ми не платимо комісію агрегатору. За два тижні тиші надсилаємо push: «Скучили? Подвійні бонуси на замовлення сьогодні» — це коштує нам 0 ₴. Клієнт бачить сповіщення на екрані блокування ввечері п'ятниці — саме коли вирішує, що на вечерю. В аналітиці я бачу: цей клієнт замовляє щоп'ятниці, середній чек зріс, канал — прямий. Один флаєр перетворив орендованого клієнта агрегатора на власного постійного.",
-        },
-        {
-          heading: "Запуск програми лояльності для доставки за 1 день",
-          content:
-            "Крок 1: зареєструйтеся на https://rimbo.id, створіть картку з кешбеком за прямі замовлення — брендинг і відсоток налаштовуються за 20 хвилин. Крок 2: згенеруйте промокоди під канали: окремий код для флаєрів у коробках, окремий для Instagram, окремий для блогера — так ви побачите, що реально працює. Крок 3: роздрукуйте флаєри з QR-кодом картки й промокодом і почніть класти в кожне замовлення — і в прямі, і в ті, що йдуть через агрегатор: саме так база переливається до вас. Крок 4: налаштуйте вітальний бонус 🪙 за перше пряме замовлення — миттєва вигода, якої очікує 71% користувачів (Devlight 2025). Крок 5: заплануйте перший push на п'ятничний вечір — пік замовлень. Оператор або кухня нічого не змінюють у процесах: нарахування йдуть за QR або через інтеграцію.",
-        },
-        {
-          heading: "Часті питання про бонуси за доставку їжі",
-          content:
-            "**Чи можна класти флаєри з QR у замовлення з Glovo?** Так, і це головний трюк: агрегатор привів клієнта один раз, а флаєр із кешбеком 🪙 за пряме замовлення перетягує його наступні замовлення у ваш канал — без порушення правил майданчика, це ваша упаковка.\n\n**Клієнт має щось встановлювати?** Ні. Картка додається в Apple Wallet чи Google Wallet за одне сканування, без реєстрації — 65% людей відмовляються від програм, які вимагають зайвих дій (Devlight 2025).\n\n**Як зрозуміти, який канал реклами працює?** Через промокоди: кожній кампанії — свій код, а в кабінеті Rimbo видно кількість активацій і замовлень за кожним. Флаєр, сторіс чи блогер — ви порівнюєте цифри, а не відчуття.",
-        },
-        {
-          heading: "Спробуйте Rimbo для своєї доставки безкоштовно",
-          content:
-            `Порахуйте, скільки комісії агрегаторам ви заплатили минулого місяця за повторні замовлення постійних клієнтів — і порівняйте з ${FROM_PRICE} ₴/міс за власну програму лояльності. Rimbo дає 14 днів повного доступу безкоштовно: запустіть кешбек 🪙 за прямі замовлення, розкладіть флаєри з QR по коробках і подивіться в аналітиці, скільки клієнтів перейшло у прямий канал. У тариф входять промокоди з відстеженням кампаній, безлімітні push за 0 ₴ (замість SMS по 0,32–0,35 ₴), RFM-аналітика й робота на кількох точках. База клієнтів, адреси замовлень і статистика — ваші, а не агрегатора. Реєструйтеся на https://rimbo.id — запуск займає один день, а з питаннями про механіку під вашу піцерію чи суші-доставку пишіть на support@rimbo.id.`,
-        },
-      ],
-    },
-    forHotelTourism: {
-      title:
-        "Програма лояльності для готелю: бонуси за пряме бронювання та подарункові сертифікати",
-      metaDescription:
-        "Програма лояльності для готелю: бонуси 🪙 за пряме бронювання замість комісії Booking, подарункові сертифікати й push перед сезоном. 14 днів безкоштовно.",
-      lastUpdated: "Опубліковано: 17 серпня 2026 р.",
-      sections: [
-        {
-          heading: "Яка програма лояльності потрібна готелю",
-          content:
-            `Готелю чи апартаментам потрібна програма, яка перетворює разового гостя з Booking.com на постійного прямого клієнта. Рішення — картка лояльності в Apple Wallet або Google Wallet із бонусами 🪙 за пряме бронювання: гість додає її за 30 секунд при заселенні, без застосунку й анкет, а бонуси з кожного проживання стають знижкою на наступний прямий візит. Rimbo додає до цього подарункові сертифікати на проживання та push-сповіщення за 0 ₴ — канал, яким ви нагадуєте про себе перед сезоном. Математика проста: комісія Booking — 15% і більше з кожного бронювання, тож навіть щедрий кешбек за прямий візит коштує вам менше, ніж повернення гостя через посередника. Бар'єрів для гостя немає — а це критично, бо 65% людей відмовляються від програм із реєстрацією (Devlight 2025). Вартість — від ${FROM_PRICE} ₴/міс, 14 днів безкоштовно.`,
-        },
-        {
-          heading: "Як повернути гостей готелю, а не віддавати їх Booking",
-          content:
-            "Перший біль — посередник володіє вашим гостем. Booking.com бере комісію 15%+ з кожного бронювання і не віддає вам канал зв'язку: гість, якому сподобалося, наступного разу знову шукатиме через агрегатор — і ви знову заплатите за «нового» клієнта, який уже спав у вашому ліжку. Другий біль — повернення в місто, але не у ваш готель: турист приїздить у Львів чи Буковель щороку, та через рік просто не згадає назву закладу серед десятків схожих у видачі. Третій — простої в низький сезон, коли номерний фонд стоїть порожнім, а нагадати колишнім гостям про акцію нема як: контактів немає або є лише маскована пошта від агрегатора. Усі три проблеми зводяться до одного: у готелю немає власної бази гостей і власного каналу комунікації. Програма лояльності будує і те, й інше з першого заселення.",
-        },
-        {
-          heading: "Бонуси за пряме бронювання: механіки Rimbo для готелю",
-          content:
-            "Перша механіка — [кешбек 🪙 за пряме бронювання](/cashback-loyalty): гість отримує бонуси лише коли бронює через ваш сайт чи телефон, і на наступному візиті витрачає їх на проживання або послуги. Ви віддаєте кілька відсотків бонусами замість 15%+ комісії посереднику — і залишаєте контакт гостя собі. Друга — [подарункові сертифікати на проживання](/gift-certificates): електронний сертифікат «вікенд на двох» купують як подарунок на річницю чи день народження, і він приводить вам нових гостей із нульовою вартістю залучення, ще й із передоплатою. Третя — [вітальний бонус](/welcome-bonus) при заселенні: гість сканує QR на рецепції, одразу бачить 🪙 на картці — миттєву вигоду, якої очікує 71% користувачів (Devlight 2025). А перед сезоном ви надсилаєте push за 0 ₴ усій базі — замість SMS по 0,32–0,35 ₴ чи листів, що падають у спам.",
-        },
-        {
-          heading: "Як це виглядає для гостя готелю",
-          content:
-            "Сценарій від імені власника невеликого готелю в Карпатах. Гість заселяється — приїхав через Booking. На рецепції адміністратор каже: «Скануйте QR — нараховуємо бонуси за проживання, наступного разу бронюйте напряму й платіть ними». Гість сканує, картка в Apple Wallet, на ній вітальні 🪙. Виїжджаючи, він бачить на картці накопичені бонуси й номер нашої рецепції. У листопаді, перед лижним сезоном, ми надсилаємо push: «Сезон відкривається 15 грудня — для власників картки раннє бронювання й подвійні бонуси». Гість не мусить згадувати назву готелю чи гортати Booking — картка з нашим лого лежить у його Wallet весь рік. Він телефонує напряму, ми не платимо комісію, а його дружина купує на сайті сертифікат на вікенд — подарунок батькам. Один гість з агрегатора перетворився на трьох прямих.",
-        },
-        {
-          heading: "Запуск програми лояльності готелю за 1 день",
-          content:
-            "Крок 1: зареєструйтеся на https://rimbo.id і створіть картку з брендингом готелю — фото, кольори, відсоток кешбеку за пряме бронювання; це до 30 хвилин. Крок 2: налаштуйте вітальний бонус 🪙 за приєднання при заселенні та правила списання — наприклад, бонусами можна оплатити до 30% проживання. Крок 3: додайте подарункові сертифікати з номіналами під ваші тарифи — «ніч на двох», «вікенд зі сніданками». Крок 4: поставте QR-код на рецепції та в номерах (табличка біля чайника працює чудово) — макети Rimbo генерує сам. Крок 5: проінструктуйте адміністраторів — одна фраза при заселенні й одна при виїзді. Крок 6: імпортуйте контакти минулих гостей, якщо вони у вас є, і заплануйте перший push перед сезоном. Того ж дня картка працює, а RFM-аналітика починає збирати базу повернень.",
-        },
-        {
-          heading: "Часті питання про програму лояльності для готелю",
-          content:
-            `**Чи не порушує це правила Booking.com?** Ні. Ви не переманюєте гостя на майданчику — ви спілкуєтеся з людиною, яка фізично живе у вашому готелі. Картка лояльності, QR на рецепції та бонуси за майбутні прямі бронювання — це ваш сервіс і ваша територія.\n\n**Гість приїздить раз на рік — чи не згорять його бонуси?** Термін дії налаштовуєте ви: для готелів радимо 12–18 місяців, бо 56% користувачів дратує згоряння балів (Devlight 2025). Push-нагадування перед згорянням за 0 ₴ саме по собі повертає гостя.\n\n**Підходить для апартаментів і невеликих садиб?** Так. Rimbo не вимагає PMS чи інтеграцій: бонуси нараховуються сканом QR з телефону адміністратора або власника, а тариф від ${FROM_PRICE} ₴/міс порівнянний з комісією посередника за одне-два бронювання.`,
-        },
-        {
-          heading: "Спробуйте Rimbo у своєму готелі безкоштовно",
-          content:
-            `Порахуйте комісію, яку ви віддали посередникам за минулий сезон, — і порівняйте з ${FROM_PRICE} ₴/міс за інструмент, що робить гостей прямими. Rimbo дає 14 днів повного доступу безкоштовно: створіть картку, поставте QR на рецепції, нарахуйте перші бонуси 🪙 гостям цього тижня — і подивіться в аналітиці, скільки з них залишили вам прямий канал зв'язку. У тариф входять кешбек за прямі бронювання, подарункові сертифікати, безлімітні push за 0 ₴ (SMS коштували б 0,32–0,35 ₴ за кожне), RFM-аналітика й підтримка кількох локацій, якщо у вас більше ніж один об'єкт. Реєструйтеся на https://rimbo.id — запуск займає один день без програмістів та інтеграцій, а з питаннями про механіку під ваш готель чи апартаменти пишіть на support@rimbo.id.`,
-        },
-      ],
-    },
     forBarbershop: {
       title:
         "Програма лояльності для барбершопу: цифрова штамп-картка замість підрахунку вручну",
       metaDescription:
-        "Програма лояльності для барбершопу: кожна 10-та стрижка безкоштовно рахується автоматично, картка в Apple Wallet, push за 0 ₴, інтеграція з Altegio. 14 днів безкоштовно.",
+        "Програма лояльності для барбершопу: 10 стрижок — шампунь у подарунок, штампи рахуються автоматично, картка в Apple Wallet, push за 0 ₴, інтеграція з Altegio. 14 днів безкоштовно.",
       lastUpdated: "Опубліковано: 17 серпня 2026 р.",
       sections: [
         {
           heading: "Яка програма лояльності потрібна барбершопу",
           content:
-            `Барбершопу потрібна цифрова накопичувальна програма з карткою в Apple Wallet або Google Wallet: клієнт отримує штамп за кожну стрижку, бачить прогрес до безкоштовної десятої послуги прямо в телефоні, а система сама нагадує push-сповіщенням, коли час записатися знову. Жодного додатку встановлювати не треба — за даними Devlight 2025, 65% українців відмовляються реєструватися в мобільних застосунках закладів, тому картка має додаватися у гаманець телефону за 30 секунд. Ідентифікація — за QR-кодом на касі, без диктування номера телефону вголос. Rimbo — українська платформа, що закриває саме цей сценарій: штамп-картки, бонуси 🪙, подарункові сертифікати і push-сповіщення за 0 ₴, з інтеграцією з Altegio і роботою поверх будь-якої системи запису. Запуск займає один день, тариф — від ${FROM_PRICE} ₴/міс, перші 14 днів безкоштовні.`,
+            `Барбершопу потрібна цифрова накопичувальна програма з карткою в Apple Wallet або Google Wallet: клієнт отримує штамп за кожну стрижку, бачить прогрес до подарунка — шампуня за 10 стрижок — прямо в телефоні, а система сама нагадує push-сповіщенням, коли час записатися знову. Жодного додатку встановлювати не треба — за даними Devlight 2025, 65% українців відмовляються реєструватися в мобільних застосунках закладів, тому картка має додаватися у гаманець телефону за 30 секунд. Ідентифікація — за QR-кодом на касі, без диктування номера телефону вголос. Rimbo — українська платформа, що закриває саме цей сценарій: штамп-картки, бонуси 🪙, подарункові сертифікати і push-сповіщення за 0 ₴, з інтеграцією з Altegio і роботою поверх будь-якої системи запису. Запуск займає один день, тариф — від ${FROM_PRICE} ₴/міс, перші 14 днів безкоштовні.`,
         },
         {
           heading: "Як утримати клієнтів барбершопу: три типові проблеми",
           content:
-            "Перша проблема — паперова картка «10-та стрижка безкоштовна». Її рахують вручну, штампи ставлять різні адміністратори, картки губляться, і на касі виникають суперечки: «мені казали, що ця стрижка вже безкоштовна». Друга — цикл візитів. Клієнт барбершопу ходить раз на 3–4 тижні; якщо він пропустив свій цикл, він, найімовірніше, вже підстригся в іншому місці, а ви про це навіть не дізнаєтесь. За даними Poster 2025 трафік закладів у середньому просів на 8%, тож кожен тихий відтік коштує дорого. Третя — майстер. Лояльність часто прив'язана до конкретного барбера: він звільняється — і забирає клієнтів через особисті месенджери. Програма лояльності має прив'язувати клієнта до закладу, а не до людини, рахувати все автоматично і зберігати базу у власника, а не в записнику майстра.",
+            "Перша проблема — паперова картка «10 стрижок — шампунь у подарунок». Її рахують вручну, штампи ставлять різні адміністратори, картки губляться, і на касі виникають суперечки: «мені казали, що мені вже належить подарунок». Друга — цикл візитів. Клієнт барбершопу ходить раз на 3–4 тижні; якщо він пропустив свій цикл, він, найімовірніше, вже підстригся в іншому місці, а ви про це навіть не дізнаєтесь. За даними Poster 2025 трафік закладів у середньому просів на 8%, тож кожен тихий відтік коштує дорого. Третя — майстер. Лояльність часто прив'язана до конкретного барбера: він звільняється — і забирає клієнтів через особисті месенджери. Програма лояльності має прив'язувати клієнта до закладу, а не до людини, рахувати все автоматично і зберігати базу у власника, а не в записнику майстра.",
         },
         {
           heading: "Бонусна система для барбершопу: які механіки Rimbo працюють",
           content:
-            "Основа — [цифрова штамп-картка](/stamp-cards): правило «кожна 10-та стрижка безкоштовно» рахує система, а не адміністратор, прогрес видно клієнту в Apple Wallet чи Google Wallet, суперечки на касі зникають. Для допродажів — борода, догляд, воски — підключіть [бонуси-кешбек](/cashback-loyalty): відсоток від чека повертається 🪙 і витрачається на наступні візити. За Devlight 2025, 71% клієнтів очікують миттєву вигоду — нараховані одразу бонуси її дають. Третя механіка — [подарункові сертифікати](/gift-certificates): «подарунок чоловіку» стабільно продається перед святами і приводить нових клієнтів, які вже заплатили наперед. Окремо про запис: якщо ви на Altegio — у Rimbo є пряма інтеграція. Але пам'ятайте: Altegio — міжнародний бренд російського YCLIENTS з екосистеми VK, тоді як Rimbo — українська розробка, дані зберігаються в Україні, а лояльність працює поверх будь-якої системи запису. Push-нагадування коштують 0 ₴ проти 0,32–0,35 ₴ за SMS.",
+            "Основа — [цифрова штамп-картка](/stamp-cards): правило «10 стрижок — шампунь у подарунок» рахує система, а не адміністратор, прогрес видно клієнту в Apple Wallet чи Google Wallet, суперечки на касі зникають. Для допродажів — борода, догляд, воски — підключіть [бонуси-кешбек](/cashback-loyalty): відсоток від чека повертається 🪙 і витрачається на наступні візити. За Devlight 2025, 71% клієнтів очікують миттєву вигоду — нараховані одразу бонуси її дають. Третя механіка — [подарункові сертифікати](/gift-certificates): «подарунок чоловіку» стабільно продається перед святами і приводить нових клієнтів, які вже заплатили наперед. Окремо про запис: якщо ви на Altegio — у Rimbo є пряма інтеграція. Але пам'ятайте: Altegio — міжнародний бренд російського YCLIENTS з екосистеми VK, тоді як Rimbo — українська розробка, дані зберігаються в Україні, а лояльність працює поверх будь-якої системи запису. Push-нагадування коштують 0 ₴ проти 0,32–0,35 ₴ за SMS.",
         },
         {
           heading: "Як це виглядає для клієнта барбершопу",
           content:
-            "Клієнт стрижеться у вас уперше. Адміністратор каже одну фразу: «Скануйте QR — десята стрижка буде безкоштовною». Клієнт наводить камеру, картка додається в Apple Wallet за пів хвилини, перший штамп уже на ній. Через три тижні йому приходить push: «Час освіжити стрижку — у вас 6 штампів із 10». Записується він у звичний спосіб — телефоном, через Altegio чи Instagram, Rimbo нічого тут не ламає. На касі адміністратор сканує QR з картки: система додає штамп і показує історію — коли був, у кого стригся, на яку суму. На десятому візиті каса сама підсвічує «безкоштовна стрижка» — без підрахунку паперових карток і сперечань. А якщо майстер звільнився, база клієнтів, їхні штампи і бонуси 🪙 залишаються у закладу, і push-сповіщення надсилаєте ви, а не колишній працівник.",
+            "Клієнт стрижеться у вас уперше. Адміністратор каже одну фразу: «Скануйте QR — за десяту стрижку він отримає шампунь у подарунок». Клієнт наводить камеру, картка додається в Apple Wallet за пів хвилини, перший штамп уже на ній. Через три тижні йому приходить push: «Час освіжити стрижку — у вас 6 штампів із 10». Записується він у звичний спосіб — телефоном, через Altegio чи Instagram, Rimbo нічого тут не ламає. На касі адміністратор сканує QR з картки: система додає штамп і показує історію — коли був, у кого стригся, на яку суму. На десятому візиті каса сама підсвічує «шампунь у подарунок» — без підрахунку паперових карток і сперечань. А якщо майстер звільнився, база клієнтів, їхні штампи і бонуси 🪙 залишаються у закладу, і push-сповіщення надсилаєте ви, а не колишній працівник.",
         },
         {
-          heading: "Кожна 10-та стрижка безкоштовно: запуск за 1 день",
+          heading: "Кожна 10 стрижок — шампунь у подарунок: запуск за 1 день",
           content:
-            "Крок 1. Зареєструйтеся на rimbo.com.ua й активуйте 14 безкоштовних днів — банківська картка не потрібна.\nКрок 2. Створіть штамп-картку в конструкторі: правило «кожна 10-та стрижка безкоштовно», ваш логотип і кольори — приблизно 15 хвилин.\nКрок 3. Додайте бонуси 🪙 за додаткові послуги і сертифікат «подарунок чоловіку».\nКрок 4. Роздрукуйте QR-код на касу та біля дзеркал робочих місць.\nКрок 5. Підключіть інтеграцію з Altegio, якщо ведете запис там; якщо ні — Rimbo працює поверх будь-якої системи.\nКрок 6. Проведіть п'ятихвилинний інструктаж для адміністраторів: пропонувати картку кожному клієнту на касі.\nКрок 7. Увімкніть push-нагадування для тих, хто не з'являвся 30 днів — адже 30–40% першовідвідувачів не повертаються протягом місяця, якщо їм не дати приводу. Увечері того ж дня перші картки вже будуть у телефонах клієнтів.",
+            "Крок 1. Зареєструйтеся на rimbo.com.ua й активуйте 14 безкоштовних днів — банківська картка не потрібна.\nКрок 2. Створіть штамп-картку в конструкторі: правило «10 стрижок — шампунь у подарунок», ваш логотип і кольори — приблизно 15 хвилин.\nКрок 3. Додайте бонуси 🪙 за додаткові послуги і сертифікат «подарунок чоловіку».\nКрок 4. Роздрукуйте QR-код на касу та біля дзеркал робочих місць.\nКрок 5. Підключіть інтеграцію з Altegio, якщо ведете запис там; якщо ні — Rimbo працює поверх будь-якої системи.\nКрок 6. Проведіть п'ятихвилинний інструктаж для адміністраторів: пропонувати картку кожному клієнту на касі.\nКрок 7. Увімкніть push-нагадування для тих, хто не з'являвся 30 днів — адже 30–40% першовідвідувачів не повертаються протягом місяця, якщо їм не дати приводу. Увечері того ж дня перші картки вже будуть у телефонах клієнтів.",
         },
         {
           heading: "Міні-FAQ: програма лояльності в барбершопі",
@@ -1811,8 +1723,6 @@ export const dictionaries = {
         { label: "Кав'ярня", href: "/for/coffee-shop" },
         { label: "Пекарня", href: "/for/bakery" },
         { label: "Ресторан", href: "/for/restaurant" },
-        { label: "Доставка їжі", href: "/for/pizzeria-sushi" },
-        { label: "Готель", href: "/for/hotel-tourism" },
         { label: "Барбершоп", href: "/for/barbershop" },
         { label: "Салон краси", href: "/for/beauty-salon" },
         { label: "Фітнес", href: "/for/fitness" },
@@ -3301,125 +3211,37 @@ export const dictionaries = {
         },
       ],
     },
-    forPizzeriaSushi: {
-      title:
-        "Loyalty program for food delivery: cashback for direct pizza and sushi orders",
-      metaDescription:
-        "Loyalty program for food delivery: 🪙 cashback for direct pizza and sushi orders instead of aggregator fees, promo codes and free push. 14 days free trial.",
-      lastUpdated: "Published: August 17, 2026",
-      sections: [
-        {
-          heading: "What loyalty program a pizzeria or sushi delivery needs",
-          content:
-            `A pizzeria or sushi delivery needs a program that moves repeat orders from aggregators into a direct channel. The solution is 🪙 bonus cashback for orders placed on your website or by phone: a loyalty card in Apple Wallet or Google Wallet that a customer adds in 30 seconds, with no app and no registration. Rimbo provides the full toolkit: cashback for direct orders, promo codes to track campaigns, free push notifications about deals and RFM analytics showing who orders often and who has gone quiet. The logic is simple: a customer who earns bonuses only on direct orders opens your website next time, not Glovo. Crucially, the mechanic demands zero effort from the customer — 65% of people refuse programs with registration, and 71% expect an instant benefit (Devlight 2025). Pricing starts at ${FROM_PRICE} ₴/mo, with 14 days free.`,
-        },
-        {
-          heading: "Why aggregators eat your profit and your customer base",
-          content:
-            "Glovo and Bolt Food bring orders but take twice: first a commission from every check, then the most valuable thing — your customer base. Someone who has ordered your pizza three times will order the fourth time through the aggregator again, because that's where their address and history live — and you pay commission again for a customer who has long been yours. You hold no contacts: no way to remind them about you, offer a deal, or win back someone who stopped ordering. Pain two — blind marketing: promo flyers in pizza boxes are untrackable, so you never know whether a campaign worked at all. Pain three — the cost of communication: SMS to your base runs 0.32–0.35 ₴ per message, so regular reminders hurt the budget. Together it's a closed loop in which the sales channel doesn't belong to you.",
-        },
-        {
-          heading: "Bonuses for pizza and sushi orders: Rimbo mechanics",
-          content:
-            "The key mechanic is [🪙 cashback for direct orders](/en/cashback-loyalty): bonuses accrue only for orders placed on your website or by phone, giving the customer a financial reason to skip the aggregator — while you save the commission on every check. Second, [promo codes](/en/promo-codes): unique codes on box flyers, in social media or with bloggers finally become measurable — the Rimbo dashboard shows how many activations each campaign produced. Third, push notifications at 0 ₴ instead of SMS at 0.32–0.35 ₴: pizza-of-the-day deals or a reminder that 250 🪙 expire in a week land on the lock screen at zero sending cost. The card [works without an app](/en/loyalty-without-app) — critical for delivery, where no one installs a separate app for a single pizzeria. The mechanics chain together: a promo code acquires, cashback retains, push brings back.",
-        },
-        {
-          heading: "How it looks for your delivery customer",
-          content:
-            "A scene in a pizzeria owner's words. We put a flyer in every box: order direct and get 10% back in bonuses. A customer who always ordered via Glovo scans the QR — the card lands in his Google Wallet with welcome 🪙 for the first direct order. Next time he opens our website, enters the promo code from the flyer, orders two roll sets — cashback hits his card, and we pay no aggregator commission. After two quiet weeks we send a push: missed you, double bonuses on today's order — it costs us 0 ₴. He sees the notification on his lock screen on Friday evening, exactly when he's deciding what's for dinner. In analytics I can see it: this customer orders every Friday, the average check has grown, the channel is direct. One flyer turned a rented aggregator customer into our own regular.",
-        },
-        {
-          heading: "Launch a delivery loyalty program in 1 day",
-          content:
-            "Step 1: sign up at https://rimbo.id and create a card with cashback for direct orders — branding and the percentage take about 20 minutes. Step 2: generate promo codes per channel: one code for box flyers, one for Instagram, one for a blogger — that's how you learn what actually works. Step 3: print flyers with the card's QR code and a promo code, and start putting them into every order — both direct ones and those coming through aggregators: that's exactly how the base flows over to you. Step 4: set a welcome 🪙 bonus for the first direct order — the instant benefit that 71% of customers expect (Devlight 2025). Step 5: schedule your first push for Friday evening, the ordering peak. Operators and the kitchen change nothing in their process: accruals run via QR or through the integration.",
-        },
-        {
-          heading: "FAQ about food delivery bonuses",
-          content:
-            "**Can we put QR flyers into Glovo orders?** Yes — and that's the core trick: the aggregator brought the customer once, and a flyer with 🪙 cashback for direct orders pulls their next orders into your channel. It's your packaging, so no platform rules are broken.\n\n**Does the customer have to install anything?** No. The card is added to Apple Wallet or Google Wallet with one scan, no registration — 65% of people abandon programs that demand extra steps (Devlight 2025).\n\n**How do we know which ad channel works?** Through promo codes: each campaign gets its own code, and the Rimbo dashboard shows activations and orders per code. Flyer, story or blogger — you compare numbers, not gut feelings.",
-        },
-        {
-          heading: "Try Rimbo for your delivery business for free",
-          content:
-            `Add up the aggregator commissions you paid last month on repeat orders from regular customers — and compare that with ${FROM_PRICE} ₴/mo for a loyalty program of your own. Rimbo gives 14 days of full access free: launch 🪙 cashback for direct orders, put QR flyers into your boxes and watch in analytics how many customers move to the direct channel. The plan includes promo codes with campaign tracking, unlimited push at 0 ₴ (instead of SMS at 0.32–0.35 ₴), RFM analytics and multi-location support. The customer base, delivery addresses and statistics belong to you, not the aggregator. Sign up at https://rimbo.id — launch takes one day, and for advice on mechanics for your pizzeria or sushi delivery write to support@rimbo.id.`,
-        },
-      ],
-    },
-    forHotelTourism: {
-      title:
-        "Loyalty program for hotels: direct booking bonuses and gift certificates, no app",
-      metaDescription:
-        "Loyalty program for hotels: 🪙 bonuses for direct bookings instead of Booking commission, gift certificates for stays and free pre-season push. 14 days free.",
-      lastUpdated: "Published: August 17, 2026",
-      sections: [
-        {
-          heading: "What loyalty program a hotel needs",
-          content:
-            `A hotel or apartment business needs a program that turns a one-time Booking.com guest into a returning direct customer. The solution is a loyalty card in Apple Wallet or Google Wallet with 🪙 bonuses for direct bookings: the guest adds it in 30 seconds at check-in, with no app and no forms, and bonuses from every stay become a discount on the next direct visit. Rimbo adds gift certificates for stays and push notifications at 0 ₴ — the channel you use to reach guests before the season. The math is simple: Booking takes a 15%+ commission on every reservation, so even generous cashback on a direct stay costs you less than getting the same guest back through a middleman. There are zero barriers for the guest — critical, since 65% of people refuse programs that require registration (Devlight 2025). Pricing starts at ${FROM_PRICE} ₴/mo, with 14 days free.`,
-        },
-        {
-          heading: "How to get hotel guests back instead of handing them to Booking",
-          content:
-            "Pain one — the middleman owns your guest. Booking.com charges 15%+ per reservation and keeps the communication channel: a guest who loved the stay will search through the aggregator again next time — and you'll pay again for a customer who has already slept in your beds. Pain two — returning to the city, but not to your hotel: a traveler visits Lviv or Bukovel every year, yet twelve months later simply can't recall your name among dozens of similar listings. Pain three — low-season vacancy, when rooms sit empty and there's no way to tell past guests about an offer: you have no contacts, or only a masked aggregator email. All three problems reduce to one: the hotel owns neither its guest base nor its communication channel. A loyalty program builds both, starting from the very first check-in.",
-        },
-        {
-          heading: "Direct booking bonuses: Rimbo mechanics for hotels",
-          content:
-            "The first mechanic is [🪙 cashback for direct bookings](/en/cashback-loyalty): the guest earns bonuses only when booking via your website or phone, and spends them on the next stay or on services. You give away a few percent in bonuses instead of a 15%+ commission to a middleman — and you keep the guest's contact. The second is [gift certificates for stays](/en/gift-certificates): a digital weekend-for-two certificate is bought as an anniversary or birthday present, bringing you brand-new guests at zero acquisition cost — prepaid, no less. The third is a [welcome bonus](/en/welcome-bonus) at check-in: the guest scans a QR at reception and instantly sees 🪙 on the card — the immediate value that 71% of customers expect (Devlight 2025). And before the season you send a push to your whole base at 0 ₴ — instead of SMS at 0.32–0.35 ₴ or emails that land in spam.",
-        },
-        {
-          heading: "How it looks for your hotel guest",
-          content:
-            "A scene in the words of a small Carpathian hotel owner. A guest checks in — he came via Booking. At reception the administrator says: scan this QR — you earn bonuses for your stay, and next time you can book direct and pay with them. He scans, the card lands in Apple Wallet with welcome 🪙 on it. At checkout he sees his accumulated bonuses and our reception number right on the card. In November, before ski season, we send a push: the season opens December 15 — cardholders get early booking and double bonuses. The guest doesn't need to recall our name or scroll Booking — a card with our logo has been sitting in his Wallet all year. He calls us directly, we pay no commission, and his wife buys a weekend gift certificate on our site for her parents. One aggregator guest became three direct ones.",
-        },
-        {
-          heading: "Launch a hotel loyalty program in 1 day",
-          content:
-            "Step 1: sign up at https://rimbo.id and create a card with your hotel's branding — photos, colors, the cashback percentage for direct bookings; up to 30 minutes. Step 2: configure a welcome 🪙 bonus for joining at check-in and redemption rules — for example, bonuses can cover up to 30% of a stay. Step 3: add gift certificates with denominations matching your rates — a night for two, a weekend with breakfast. Step 4: place QR codes at reception and in rooms (a small sign by the kettle works great) — Rimbo generates the layouts. Step 5: brief the administrators — one phrase at check-in and one at checkout. Step 6: import past guest contacts if you have them, and schedule the first pre-season push. The card works the same day, and RFM analytics starts building your returns base.",
-        },
-        {
-          heading: "FAQ about loyalty programs for hotels",
-          content:
-            `**Doesn't this violate Booking.com rules?** No. You're not poaching guests on the platform — you're talking to a person physically staying in your hotel. A loyalty card, a QR at reception and bonuses for future direct bookings are your service on your territory.\n\n**A guest visits once a year — won't their bonuses expire?** You set the validity term: for hotels we recommend 12–18 months, since 56% of customers are annoyed by expiring points (Devlight 2025). A free push reminder before expiry is itself a reason for the guest to return.\n\n**Does it suit apartments and small guesthouses?** Yes. Rimbo requires no PMS or integrations: bonuses are added by scanning a QR with the administrator's or owner's phone, and the plan from ${FROM_PRICE} ₴/mo is comparable to the middleman's commission on one or two bookings.`,
-        },
-        {
-          heading: "Try Rimbo in your hotel for free",
-          content:
-            `Add up the commission you handed to intermediaries last season — and compare it with ${FROM_PRICE} ₴/mo for a tool that makes guests book direct. Rimbo gives 14 days of full access free: create the card, place a QR at reception, award the first 🪙 bonuses to this week's guests — and see in analytics how many of them left you a direct communication channel. The plan includes cashback for direct bookings, gift certificates, unlimited push at 0 ₴ (SMS would cost 0.32–0.35 ₴ each), RFM analytics and multi-location support if you run more than one property. Sign up at https://rimbo.id — launch takes one day with no developers or integrations, and for advice on mechanics for your hotel or apartments write to support@rimbo.id.`,
-        },
-      ],
-    },
     forBarbershop: {
       title:
         "Loyalty program for barbershops: a digital stamp card instead of manual counting",
       metaDescription:
-        "Loyalty program for barbershops: every 10th haircut free, counted automatically in Apple Wallet, push reminders at 0 ₴, Altegio integration. 14-day free trial.",
+        "Loyalty program for barbershops: 10 haircuts earn a shampoo gift, counted automatically in Apple Wallet, push reminders at 0 ₴, Altegio integration. 14-day free trial.",
       lastUpdated: "Published: August 17, 2026",
       sections: [
         {
           heading: "What loyalty program does a barbershop need",
           content:
-            `A barbershop needs a digital stamp-card program that lives in Apple Wallet or Google Wallet: the client earns a stamp for every haircut, sees progress toward a free tenth visit right on their phone, and the system itself sends a push reminder when it is time to book again. No app to install — according to Devlight 2025, 65% of Ukrainians refuse to register in venue mobile apps, so the card must be added to the phone wallet in about 30 seconds. Identification happens via a QR code at the front desk, with no phone number read out loud. Rimbo is a Ukrainian platform built for exactly this scenario: stamp cards, 🪙 bonuses, gift certificates and push notifications at 0 ₴, with an Altegio integration and the ability to run on top of any booking system. Launch takes one day, plans start at ${FROM_PRICE} ₴/month, with the first 14 days free.`,
+            `A barbershop needs a digital stamp-card program that lives in Apple Wallet or Google Wallet: the client earns a stamp for every haircut, sees progress toward a shampoo gift after the tenth visit right on their phone, and the system itself sends a push reminder when it is time to book again. No app to install — according to Devlight 2025, 65% of Ukrainians refuse to register in venue mobile apps, so the card must be added to the phone wallet in about 30 seconds. Identification happens via a QR code at the front desk, with no phone number read out loud. Rimbo is a Ukrainian platform built for exactly this scenario: stamp cards, 🪙 bonuses, gift certificates and push notifications at 0 ₴, with an Altegio integration and the ability to run on top of any booking system. Launch takes one day, plans start at ${FROM_PRICE} ₴/month, with the first 14 days free.`,
         },
         {
           heading: "How to retain barbershop clients: three typical problems",
           content:
-            "Problem one is the paper card that promises \"the 10th haircut is free.\" Stamps are counted by hand, different admins stamp differently, cards get lost, and arguments start at the counter: \"I was told this cut is already free.\" Problem two is the visit cycle. A barbershop client comes every 3–4 weeks; if he skips his cycle, he has most likely already had a haircut somewhere else — and you will never know. Poster's 2025 data shows venue traffic down 8% on average, so every silent churn is expensive. Problem three is the barber himself. Loyalty is often tied to a specific master: when he leaves, he takes clients with him through personal messengers. A proper loyalty program ties the client to the shop, not the person, counts everything automatically and keeps the database with the owner, not in the barber's contact list.",
+            "Problem one is the paper card that promises \"after 10 haircuts the client gets a shampoo as a gift.\" Stamps are counted by hand, different admins stamp differently, cards get lost, and arguments start at the counter: \"I was told I'm already owed the gift.\" Problem two is the visit cycle. A barbershop client comes every 3–4 weeks; if he skips his cycle, he has most likely already had a haircut somewhere else — and you will never know. Poster's 2025 data shows venue traffic down 8% on average, so every silent churn is expensive. Problem three is the barber himself. Loyalty is often tied to a specific master: when he leaves, he takes clients with him through personal messengers. A proper loyalty program ties the client to the shop, not the person, counts everything automatically and keeps the database with the owner, not in the barber's contact list.",
         },
         {
           heading: "A bonus system for a barbershop: which Rimbo mechanics work",
           content:
-            "The foundation is a [digital stamp card](/en/stamp-cards): the rule \"every 10th haircut free\" is counted by the system, not the admin, the client sees progress in Apple Wallet or Google Wallet, and counter disputes disappear. For upsells — beard trims, care products, waxing — add [cashback bonuses](/en/cashback-loyalty): a percentage of each bill comes back as 🪙 and is spent on future visits. Per Devlight 2025, 71% of customers expect an instant benefit, and immediately credited bonuses deliver exactly that. The third mechanic is [gift certificates](/en/gift-certificates): a \"gift for him\" sells reliably before holidays and brings in new clients who have already paid upfront. About booking: if you run on Altegio, Rimbo has a direct integration. Keep in mind, though: Altegio is the international brand of Russia's YCLIENTS from the VK ecosystem, while Rimbo is Ukrainian-built, stores data in Ukraine, and works on top of any booking tool. Push reminders cost 0 ₴ versus 0.32–0.35 ₴ per SMS.",
+            "The foundation is a [digital stamp card](/en/stamp-cards): the rule \"a shampoo gift after every 10 haircuts\" is counted by the system, not the admin, the client sees progress in Apple Wallet or Google Wallet, and counter disputes disappear. For upsells — beard trims, care products, waxing — add [cashback bonuses](/en/cashback-loyalty): a percentage of each bill comes back as 🪙 and is spent on future visits. Per Devlight 2025, 71% of customers expect an instant benefit, and immediately credited bonuses deliver exactly that. The third mechanic is [gift certificates](/en/gift-certificates): a \"gift for him\" sells reliably before holidays and brings in new clients who have already paid upfront. About booking: if you run on Altegio, Rimbo has a direct integration. Keep in mind, though: Altegio is the international brand of Russia's YCLIENTS from the VK ecosystem, while Rimbo is Ukrainian-built, stores data in Ukraine, and works on top of any booking tool. Push reminders cost 0 ₴ versus 0.32–0.35 ₴ per SMS.",
         },
         {
           heading: "What it looks like for the barbershop client",
           content:
-            "A client gets his first haircut with you. The admin says one sentence: \"Scan the QR — your tenth haircut will be free.\" The client points his camera, the card lands in Apple Wallet in half a minute, and the first stamp is already on it. Three weeks later he gets a push: \"Time to freshen up — you have 6 stamps out of 10.\" He books the way he always does — by phone, via Altegio or Instagram; Rimbo does not break your booking flow. At checkout the admin scans the QR from the card: the system adds a stamp and shows the history — when he came, which barber cut his hair, how much he spent. On the tenth visit the screen itself flags \"free haircut\" — no paper counting, no arguing. And if a barber quits, the client base, stamps and 🪙 bonuses stay with the shop, and push messages come from you, not from a former employee.",
+            "A client gets his first haircut with you. The admin says one sentence: \"Scan the QR — your tenth haircut comes with a shampoo gift.\" The client points his camera, the card lands in Apple Wallet in half a minute, and the first stamp is already on it. Three weeks later he gets a push: \"Time to freshen up — you have 6 stamps out of 10.\" He books the way he always does — by phone, via Altegio or Instagram; Rimbo does not break your booking flow. At checkout the admin scans the QR from the card: the system adds a stamp and shows the history — when he came, which barber cut his hair, how much he spent. On the tenth visit the screen itself flags \"shampoo gift\" — no paper counting, no arguing. And if a barber quits, the client base, stamps and 🪙 bonuses stay with the shop, and push messages come from you, not from a former employee.",
         },
         {
-          heading: "Every 10th haircut free: launching in one day",
+          heading: "A shampoo gift after 10 haircuts: launching in one day",
           content:
-            "Step 1. Sign up at rimbo.com.ua and activate the 14-day free trial — no bank card required.\nStep 2. Build a stamp card in the constructor: the \"every 10th haircut free\" rule, your logo and brand colors — about 15 minutes.\nStep 3. Add 🪙 bonuses for extra services and a \"gift for him\" certificate.\nStep 4. Print the QR code for the front desk and the mirrors at each station.\nStep 5. Connect the Altegio integration if that is where you book; if not, Rimbo runs on top of any system.\nStep 6. Give admins a five-minute briefing: offer the card to every client at checkout.\nStep 7. Turn on push reminders for anyone absent for 30 days — 30–40% of first-time visitors never return within a month unless you give them a reason. By the evening of the same day, the first cards will already be in clients' phones.",
+            "Step 1. Sign up at rimbo.com.ua and activate the 14-day free trial — no bank card required.\nStep 2. Build a stamp card in the constructor: the \"a shampoo gift after every 10 haircuts\" rule, your logo and brand colors — about 15 minutes.\nStep 3. Add 🪙 bonuses for extra services and a \"gift for him\" certificate.\nStep 4. Print the QR code for the front desk and the mirrors at each station.\nStep 5. Connect the Altegio integration if that is where you book; if not, Rimbo runs on top of any system.\nStep 6. Give admins a five-minute briefing: offer the card to every client at checkout.\nStep 7. Turn on push reminders for anyone absent for 30 days — 30–40% of first-time visitors never return within a month unless you give them a reason. By the evening of the same day, the first cards will already be in clients' phones.",
         },
         {
           heading: "Mini-FAQ: loyalty in a barbershop",
@@ -3616,8 +3438,6 @@ export const dictionaries = {
         { label: "Coffee shop", href: "/for/coffee-shop" },
         { label: "Bakery", href: "/for/bakery" },
         { label: "Restaurant", href: "/for/restaurant" },
-        { label: "Food delivery", href: "/for/pizzeria-sushi" },
-        { label: "Hotel", href: "/for/hotel-tourism" },
         { label: "Barbershop", href: "/for/barbershop" },
         { label: "Beauty salon", href: "/for/beauty-salon" },
         { label: "Fitness", href: "/for/fitness" },
