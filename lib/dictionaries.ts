@@ -425,7 +425,7 @@ export const dictionaries = {
         },
         {
           heading: "17. Контактна інформація",
-          content: `Виконавець: ФОП Бачинський Олександр Іванович\nРНОКПП: 3424310353\nEmail: ${SUPPORT_EMAIL}\nПлатформа: ${APP_URL}\nГодини підтримки: Пн–Пт 10:00–18:00, Сб–Нд 11:00–15:00 (за Київським часом)`,
+          content: `Виконавець: ФОП Бачинський Олександр Іванович\nРНОКПП: 3424310353\nEmail: ${SUPPORT_EMAIL}\nТелефон: +380 (68) 009 60 60\nПлатформа: ${APP_URL}\nГодини підтримки: Пн–Пт 10:00–18:00, Сб–Нд 11:00–15:00 (за Київським часом)`,
         },
       ],
     },
@@ -477,7 +477,7 @@ export const dictionaries = {
         },
         {
           heading: "Контакти",
-          content: `З питань конфіденційності та захисту персональних даних зверніться до нас:\n\nEmail: ${SUPPORT_EMAIL}\nПлатформа: ${APP_URL}\nГодини підтримки: Пн–Пт 10:00–18:00, Сб–Нд 11:00–15:00 (за Київським часом)`,
+          content: `З питань конфіденційності та захисту персональних даних зверніться до нас:\n\nEmail: ${SUPPORT_EMAIL}\nТелефон: +380 (68) 009 60 60\nПлатформа: ${APP_URL}\nГодини підтримки: Пн–Пт 10:00–18:00, Сб–Нд 11:00–15:00 (за Київським часом)`,
         },
       ],
     },
@@ -485,6 +485,7 @@ export const dictionaries = {
     contactModal: {
       title: "Зв'яжіться з нами",
       subtitle: "Залиште заявку і ми відповімо протягом 24 годин",
+      orCall: "або зателефонуйте:",
       name: "Ім'я",
       namePlaceholder: "Ваше ім'я",
       phone: "Телефон",
@@ -2141,7 +2142,7 @@ export const dictionaries = {
         },
         {
           heading: "17. Contact Information",
-          content: `Executor: Individual Entrepreneur Bachynskyi Oleksandr Ivanovych\nTax ID (RNOKPP): 3424310353\nEmail: ${SUPPORT_EMAIL}\nPlatform: ${APP_URL}\nSupport hours: Mon–Fri 10:00–18:00, Sat–Sun 11:00–15:00 (Kyiv time)`,
+          content: `Executor: Individual Entrepreneur Bachynskyi Oleksandr Ivanovych\nTax ID (RNOKPP): 3424310353\nEmail: ${SUPPORT_EMAIL}\nPhone: +380 (68) 009 60 60\nPlatform: ${APP_URL}\nSupport hours: Mon–Fri 10:00–18:00, Sat–Sun 11:00–15:00 (Kyiv time)`,
         },
       ],
     },
@@ -2193,7 +2194,7 @@ export const dictionaries = {
         },
         {
           heading: "Contact",
-          content: `For privacy and data protection inquiries, contact us:\n\nEmail: ${SUPPORT_EMAIL}\nPlatform: ${APP_URL}\nSupport hours: Mon–Fri 10:00–18:00, Sat–Sun 11:00–15:00 (Kyiv time)`,
+          content: `For privacy and data protection inquiries, contact us:\n\nEmail: ${SUPPORT_EMAIL}\nPhone: +380 (68) 009 60 60\nPlatform: ${APP_URL}\nSupport hours: Mon–Fri 10:00–18:00, Sat–Sun 11:00–15:00 (Kyiv time)`,
         },
       ],
     },
@@ -2201,6 +2202,7 @@ export const dictionaries = {
     contactModal: {
       title: "Get in Touch",
       subtitle: "Leave a request and we'll get back to you within 24 hours",
+      orCall: "or call us:",
       name: "Name",
       namePlaceholder: "Your name",
       phone: "Phone",

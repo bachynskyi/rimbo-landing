@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback, type FormEvent } from "react";
+import { SUPPORT_PHONE, SUPPORT_PHONE_DISPLAY } from "@/lib/seo-config";
 import { createPortal } from "react-dom";
 import { X, CheckCircle } from "lucide-react";
 import { Turnstile, type TurnstileInstance } from "@marsidev/react-turnstile";
@@ -202,6 +203,15 @@ export function ContactModal({ dict }: { dict: Dictionary }) {
           <>
             <h3 className="text-2xl font-bold themed-text pr-8">{t.title}</h3>
             <p className="mt-2 text-sm themed-text-secondary">{t.subtitle}</p>
+            <p className="mt-1 text-sm themed-text-secondary">
+              {t.orCall}{" "}
+              <a
+                href={`tel:${SUPPORT_PHONE}`}
+                className="text-primary-link underline underline-offset-2 hover:opacity-80 transition-opacity"
+              >
+                {SUPPORT_PHONE_DISPLAY}
+              </a>
+            </p>
 
             <form onSubmit={handleSubmit} className="mt-6 flex flex-col gap-4">
               {/* Name */}

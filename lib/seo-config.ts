@@ -7,6 +7,11 @@ export const APP_URL =
 export const SUPPORT_EMAIL =
   process.env.NEXT_PUBLIC_SUPPORT_EMAIL || "support@rimbo.id";
 
+export const SUPPORT_PHONE =
+  process.env.NEXT_PUBLIC_SUPPORT_PHONE || "+380680096060";
+
+export const SUPPORT_PHONE_DISPLAY = "+380 (68) 009 60 60";
+
 export const SITE_NAME = "Rimbo";
 
 export const LOCALE_MAP = {

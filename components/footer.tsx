@@ -1,3 +1,4 @@
+import { SUPPORT_PHONE, SUPPORT_PHONE_DISPLAY } from "@/lib/seo-config";
 import type { Dictionary } from "@/lib/dictionaries";
 
 export function Footer({ dict }: { dict: Dictionary }) {
@@ -30,6 +31,9 @@ export function Footer({ dict }: { dict: Dictionary }) {
           </a>
           <a href="#faq" className="cursor-pointer themed-text-secondary transition-colors hover:themed-text">
             {dict.footer.links.faq}
+          </a>
+          <a href={`tel:${SUPPORT_PHONE}`} className="cursor-pointer themed-text-secondary transition-colors hover:themed-text">
+            {SUPPORT_PHONE_DISPLAY}
           </a>
           <a href={dict.locale === "en" ? "/en/terms" : "/terms"} className="cursor-pointer themed-text-secondary transition-colors hover:themed-text">
             {dict.footer.links.terms}

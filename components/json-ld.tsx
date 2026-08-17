@@ -1,4 +1,4 @@
-import { SITE_URL, APP_URL, SITE_NAME, SUPPORT_EMAIL } from "@/lib/seo-config";
+import { SITE_URL, APP_URL, SITE_NAME, SUPPORT_EMAIL, SUPPORT_PHONE } from "@/lib/seo-config";
 import type { Dictionary } from "@/lib/dictionaries";
 
 const ORG_ID = `${SITE_URL}/#organization`;
@@ -39,6 +39,7 @@ export function OrganizationSchema() {
           "Digital loyalty platform — stamp cards, bonuses, cashback, discount tiers, promo codes, gift certificates and smart coupons in Apple Wallet and Google Wallet. Made in Ukraine.",
         slogan: "Все цифрове, все автоматичне, все в телефоні клієнта",
         email: SUPPORT_EMAIL,
+        telephone: SUPPORT_PHONE,
         areaServed: {
           "@type": "Country",
           name: "Ukraine",
@@ -47,6 +48,7 @@ export function OrganizationSchema() {
         contactPoint: {
           "@type": "ContactPoint",
           email: SUPPORT_EMAIL,
+          telephone: SUPPORT_PHONE,
           contactType: "customer service",
           availableLanguage: ["Ukrainian", "English"],
         },
