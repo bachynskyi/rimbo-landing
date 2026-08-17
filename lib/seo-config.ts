@@ -1,5 +1,5 @@
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://rimbo.com.ua";
+  process.env.NEXT_PUBLIC_SITE_URL || "https://www.rimbo.com.ua";
 
 export const APP_URL =
   process.env.NEXT_PUBLIC_APP_URL || "https://rimbo.id";

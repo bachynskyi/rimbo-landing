@@ -722,7 +722,7 @@ export const dictionaries = {
         {
           heading: "Цифрові картки в Apple Wallet та Google Wallet з push-оновленнями",
           content:
-            "Замість пластикової картки клієнт додає віртуальну картку Rimbo в Apple Wallet або Google Wallet одним дотиком. На картці — баланс бонусів 🪙, прогрес штамп-картки, актуальна знижка та QR-код для сканування.\n\nПісля кожного завершеного візиту в Altegio картка оновлюється сама: телефон показує нове нарахування, а власник Android — навіть отримує push безпосередньо в гаманець. Геолокація працює окремо: коли клієнт проходить біля вашого салону, телефон нагадує про збережену картку.\n\nЦе одна картка для всіх ваших механік — бонусів, штампів, купонів і рівнів. Більше про формат — у статті https://rimbo.com.ua/digital-loyalty-cards.",
+            "Замість пластикової картки клієнт додає віртуальну картку Rimbo в Apple Wallet або Google Wallet одним дотиком. На картці — баланс бонусів 🪙, прогрес штамп-картки, актуальна знижка та QR-код для сканування.\n\nПісля кожного завершеного візиту в Altegio картка оновлюється сама: телефон показує нове нарахування, а власник Android — навіть отримує push безпосередньо в гаманець. Геолокація працює окремо: коли клієнт проходить біля вашого салону, телефон нагадує про збережену картку.\n\nЦе одна картка для всіх ваших механік — бонусів, штампів, купонів і рівнів. Більше про формат — у статті https://www.rimbo.com.ua/digital-loyalty-cards.",
           image: {
             src: "/integrations/altegio/04-wallet-card_uk.png",
             alt: "Цифрова картка лояльності Rimbo в Google Wallet з балансом бонусів, рівнем лояльності та QR-кодом",
@@ -2439,7 +2439,7 @@ export const dictionaries = {
         {
           heading: "Digital cards in Apple Wallet & Google Wallet with push updates",
           content:
-            "Instead of a plastic card, customers add a virtual Rimbo card to Apple Wallet or Google Wallet with a single tap. The card carries the bonus balance 🪙, stamp progress, the current effective discount, and a scannable QR code.\n\nAfter every completed Altegio visit, the card updates on its own — the phone shows the new accrual, and Android users even get a wallet-level push. Location-based reminders run separately: when the customer walks near your salon, the phone surfaces their saved card.\n\nIt's a single card for all your mechanics — bonuses, stamps, coupons, tiers. More on the format in our article at https://rimbo.com.ua/en/digital-loyalty-cards.",
+            "Instead of a plastic card, customers add a virtual Rimbo card to Apple Wallet or Google Wallet with a single tap. The card carries the bonus balance 🪙, stamp progress, the current effective discount, and a scannable QR code.\n\nAfter every completed Altegio visit, the card updates on its own — the phone shows the new accrual, and Android users even get a wallet-level push. Location-based reminders run separately: when the customer walks near your salon, the phone surfaces their saved card.\n\nIt's a single card for all your mechanics — bonuses, stamps, coupons, tiers. More on the format in our article at https://www.rimbo.com.ua/en/digital-loyalty-cards.",
           image: {
             src: "/integrations/altegio/04-wallet-card_en.png",
             alt: "Rimbo digital loyalty card in Google Wallet showing bonus balance, loyalty level and QR code",
