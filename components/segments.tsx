@@ -1,8 +1,29 @@
 "use client";
 
 import Link from "next/link";
+import {
+  Coffee,
+  Croissant,
+  UtensilsCrossed,
+  Scissors,
+  Sparkles,
+  Dumbbell,
+  PawPrint,
+  Car,
+} from "lucide-react";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import type { Dictionary } from "@/lib/dictionaries";
+
+const segmentIcons = [
+  Coffee,
+  Croissant,
+  UtensilsCrossed,
+  Scissors,
+  Sparkles,
+  Dumbbell,
+  PawPrint,
+  Car,
+];
 
 export function Segments({ dict }: { dict: Dictionary }) {
   const ref = useScrollAnimation();
@@ -17,17 +38,35 @@ export function Segments({ dict }: { dict: Dictionary }) {
         <p className="fade-up mt-4 text-center text-lg themed-text-secondary">
           {dict.segments.subtitle}
         </p>
-        <div className="fade-up mt-10 flex flex-wrap justify-center gap-3">
-          {dict.segments.items.map((item, i) => (
-            <Link
-              key={i}
-              href={`${localePrefix}${item.href}`}
-              className="glass cursor-pointer rounded-full px-5 py-2.5 text-sm font-medium themed-text-secondary transition-colors hover:themed-text"
-              style={{ transitionDelay: `${i * 40}ms` }}
-            >
-              {item.label}
-            </Link>
-          ))}
+        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {dict.segments.items.map((item, i) => {
+            const Icon = segmentIcons[i];
+            return (
+              <Link
+                key={item.href}
+                href={`${localePrefix}${item.href}`}
+                className="fade-up glass spotlight group flex flex-col p-6 transition-transform hover:-translate-y-0.5"
+                style={{ transitionDelay: `${i * 60}ms` }}
+                onMouseMove={(e) => {
+                  const rect = e.currentTarget.getBoundingClientRect();
+                  e.currentTarget.style.setProperty("--mouse-x", `${e.clientX - rect.left}px`);
+                  e.currentTarget.style.setProperty("--mouse-y", `${e.clientY - rect.top}px`);
+                }}
+              >
+                <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-primary-dim">
+                  {Icon && <Icon className="h-5 w-5 text-primary" />}
+                </div>
+                <h3 className="text-base font-semibold themed-text group-hover:text-primary transition-colors">
+                  {item.label}
+                </h3>
+                {"hint" in item && item.hint && (
+                  <p className="mt-1.5 text-sm leading-relaxed themed-text-secondary">
+                    {item.hint}
+                  </p>
+                )}
+              </Link>
+            );
+          })}
         </div>
       </div>
     </section>
