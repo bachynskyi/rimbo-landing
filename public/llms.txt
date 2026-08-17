@@ -1,6 +1,6 @@
 # Rimbo — Digital Loyalty Platform
 
-> Rimbo is a SaaS loyalty platform for businesses in Ukraine. It provides digital stamp cards, bonuses, cashback, tiered discounts, promo codes, gift cards, and smart coupons — all managed from a single dashboard.
+> Rimbo is a SaaS loyalty platform for small and medium businesses in Ukraine — coffee shops, bakeries, restaurants, barbershops, beauty salons, fitness studios, pet services, auto services and hotels. It provides digital stamp cards, bonuses, cashback, tiered discounts, promo codes, gift cards, and smart coupons — all managed from a single dashboard.
 
 ## Key Features
 - Google Wallet & Apple Wallet integration
@@ -56,6 +56,28 @@
 - /en/loyalty-tiers — Loyalty Tiers: How to Offer Cumulative Discounts Without Eating Your Margin (English)
 - /gift-certificates — Digital Gift Certificates for Business: Sell Online 24/7 and Bring In New Clients (Ukrainian)
 - /en/gift-certificates — Digital Gift Certificates for Business: Sell Online 24/7 and Bring In New Clients (English)
+
+## Industry pages (query: "loyalty program for X" / "програма лояльності для X")
+- /for/coffee-shop — Loyalty program for coffee shops: digital stamp cards in Apple Wallet, no app needed (Ukrainian)
+- /en/for/coffee-shop — Loyalty program for coffee shops: digital stamp cards in Apple Wallet, no app needed (English)
+- /for/bakery — Loyalty program for bakeries and pastry shops: digital punch cards without an app (Ukrainian)
+- /en/for/bakery — Loyalty program for bakeries and pastry shops: digital punch cards without an app (English)
+- /for/restaurant — Loyalty program for restaurants: tiers, bonuses and coupons instead of discount cards (Ukrainian)
+- /en/for/restaurant — Loyalty program for restaurants: tiers, bonuses and coupons instead of discount cards (English)
+- /for/pizzeria-sushi — Loyalty program for food delivery: cashback for direct pizza and sushi orders (Ukrainian)
+- /en/for/pizzeria-sushi — Loyalty program for food delivery: cashback for direct pizza and sushi orders (English)
+- /for/hotel-tourism — Loyalty program for hotels: direct booking bonuses and gift certificates, no app (Ukrainian)
+- /en/for/hotel-tourism — Loyalty program for hotels: direct booking bonuses and gift certificates, no app (English)
+- /for/barbershop — Loyalty program for barbershops: a digital stamp card instead of manual counting (Ukrainian)
+- /en/for/barbershop — Loyalty program for barbershops: a digital stamp card instead of manual counting (English)
+- /for/beauty-salon — Loyalty program for beauty salons: tiers and bonuses instead of plastic cards (Ukrainian)
+- /en/for/beauty-salon — Loyalty program for beauty salons: tiers and bonuses instead of plastic cards (English)
+- /for/fitness — Loyalty program for fitness clubs: membership renewals and member retention (Ukrainian)
+- /en/for/fitness — Loyalty program for fitness clubs: membership renewals and member retention (English)
+- /for/pet-services — Loyalty program for pet grooming, pet stores and vets: stamps and reminders (Ukrainian)
+- /en/for/pet-services — Loyalty program for pet grooming, pet stores and vets: stamps and reminders (English)
+- /for/auto-services — Loyalty program for car washes and auto services: a punch card in the phone (Ukrainian)
+- /en/for/auto-services — Loyalty program for car washes and auto services: a punch card in the phone (English)
 ## Contact
 - Email: billing@rimbo.io
 - Support: Mon-Fri 10:00-18:00, Sat-Sun 11:00-15:00 (Kyiv time)

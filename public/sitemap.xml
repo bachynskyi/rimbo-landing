@@ -289,4 +289,164 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://rimbo.com.ua/for/coffee-shop</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://rimbo.com.ua/for/coffee-shop"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rimbo.com.ua/en/for/coffee-shop"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rimbo.com.ua/for/coffee-shop"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rimbo.com.ua/en/for/coffee-shop</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://rimbo.com.ua/for/coffee-shop"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rimbo.com.ua/en/for/coffee-shop"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rimbo.com.ua/for/coffee-shop"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rimbo.com.ua/for/bakery</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://rimbo.com.ua/for/bakery"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rimbo.com.ua/en/for/bakery"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rimbo.com.ua/for/bakery"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rimbo.com.ua/en/for/bakery</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://rimbo.com.ua/for/bakery"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rimbo.com.ua/en/for/bakery"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rimbo.com.ua/for/bakery"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rimbo.com.ua/for/restaurant</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://rimbo.com.ua/for/restaurant"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rimbo.com.ua/en/for/restaurant"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rimbo.com.ua/for/restaurant"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rimbo.com.ua/en/for/restaurant</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://rimbo.com.ua/for/restaurant"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rimbo.com.ua/en/for/restaurant"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rimbo.com.ua/for/restaurant"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rimbo.com.ua/for/pizzeria-sushi</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://rimbo.com.ua/for/pizzeria-sushi"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rimbo.com.ua/en/for/pizzeria-sushi"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rimbo.com.ua/for/pizzeria-sushi"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rimbo.com.ua/en/for/pizzeria-sushi</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://rimbo.com.ua/for/pizzeria-sushi"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rimbo.com.ua/en/for/pizzeria-sushi"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rimbo.com.ua/for/pizzeria-sushi"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rimbo.com.ua/for/hotel-tourism</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://rimbo.com.ua/for/hotel-tourism"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rimbo.com.ua/en/for/hotel-tourism"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rimbo.com.ua/for/hotel-tourism"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rimbo.com.ua/en/for/hotel-tourism</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://rimbo.com.ua/for/hotel-tourism"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rimbo.com.ua/en/for/hotel-tourism"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rimbo.com.ua/for/hotel-tourism"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rimbo.com.ua/for/barbershop</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://rimbo.com.ua/for/barbershop"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rimbo.com.ua/en/for/barbershop"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rimbo.com.ua/for/barbershop"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rimbo.com.ua/en/for/barbershop</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://rimbo.com.ua/for/barbershop"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rimbo.com.ua/en/for/barbershop"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rimbo.com.ua/for/barbershop"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rimbo.com.ua/for/beauty-salon</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://rimbo.com.ua/for/beauty-salon"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rimbo.com.ua/en/for/beauty-salon"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rimbo.com.ua/for/beauty-salon"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rimbo.com.ua/en/for/beauty-salon</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://rimbo.com.ua/for/beauty-salon"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rimbo.com.ua/en/for/beauty-salon"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rimbo.com.ua/for/beauty-salon"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rimbo.com.ua/for/fitness</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://rimbo.com.ua/for/fitness"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rimbo.com.ua/en/for/fitness"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rimbo.com.ua/for/fitness"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rimbo.com.ua/en/for/fitness</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://rimbo.com.ua/for/fitness"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rimbo.com.ua/en/for/fitness"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rimbo.com.ua/for/fitness"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rimbo.com.ua/for/pet-services</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://rimbo.com.ua/for/pet-services"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rimbo.com.ua/en/for/pet-services"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rimbo.com.ua/for/pet-services"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rimbo.com.ua/en/for/pet-services</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://rimbo.com.ua/for/pet-services"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rimbo.com.ua/en/for/pet-services"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rimbo.com.ua/for/pet-services"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rimbo.com.ua/for/auto-services</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://rimbo.com.ua/for/auto-services"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rimbo.com.ua/en/for/auto-services"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rimbo.com.ua/for/auto-services"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rimbo.com.ua/en/for/auto-services</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://rimbo.com.ua/for/auto-services"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rimbo.com.ua/en/for/auto-services"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rimbo.com.ua/for/auto-services"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>

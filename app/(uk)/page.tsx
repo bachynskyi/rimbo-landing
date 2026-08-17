@@ -6,6 +6,7 @@ import { LoyaltyTypes } from "@/components/loyalty-types";
 import { Features } from "@/components/features";
 import { HowItWorks } from "@/components/how-it-works";
 import { Pricing } from "@/components/pricing";
+import { Segments } from "@/components/segments";
 import { FAQ } from "@/components/faq";
 import { Footer } from "@/components/footer";
 import { FogBackground } from "@/components/fog-background";
@@ -38,6 +39,7 @@ export default function HomePage() {
         <LoyaltyTypes dict={dict} />
         <Features dict={dict} />
         <HowItWorks dict={dict} />
+        <Segments dict={dict} />
         <Pricing dict={dict} />
         <FAQ dict={dict} />
       </main>

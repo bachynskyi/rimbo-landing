@@ -103,6 +103,13 @@ export function SoftwareApplicationSchema({
         publisher: { "@id": ORG_ID },
         provider: { "@id": ORG_ID },
         featureList: dict.features.items.map((f) => plain(f.title)),
+        audience: {
+          "@type": "BusinessAudience",
+          name:
+            locale === "en"
+              ? "Small and medium businesses: coffee shops, bakeries, restaurants, barbershops, beauty salons, fitness studios, pet services, auto services, hotels"
+              : "Малий та середній бізнес: кав'ярні, пекарні, ресторани, барбершопи, салони краси, фітнес-студії, зоосервіси, автосервіси, готелі",
+        },
         offers: {
           "@type": "AggregateOffer",
           priceCurrency: "UAH",
