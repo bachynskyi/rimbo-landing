@@ -13,10 +13,9 @@
 - White-label card design
 
 ## Pricing (UAH/month)
-- Start: 349/mo (299 annual)
-- Growth: 799/mo (699 annual) — most popular
-- Pro: 1399/mo (1199 annual)
-- Custom: 1999/mo (1699 annual)
+- Growth: 799/mo (699 annual)
+- Pro: 1399/mo (1199 annual) — most popular
+- Business: 1999/mo (1699 annual)
 - 14-day free trial on all plans
 
 ## Pages
@@ -39,6 +38,24 @@
 - /integrations/poster — Poster POS loyalty integration: automated bonuses, stamp cards and digital wallet cards for cafés and restaurants (Ukrainian)
 - /en/integrations/poster — Poster POS loyalty integration: automated bonuses, stamp cards and digital wallet cards for cafés and restaurants (English)
 
+- /stamp-cards — Paper Stamp Card Problems and How a Digital Stamp Card in Apple Wallet Works (Ukrainian)
+- /en/stamp-cards — Paper Stamp Card Problems and How a Digital Stamp Card in Apple Wallet Works (English)
+- /loyalty-without-app — Loyalty Program Without an App: Why Customers Refuse Downloads and What Works (Ukrainian)
+- /en/loyalty-without-app — Loyalty Program Without an App: Why Customers Refuse Downloads and What Works (English)
+- /qr-loyalty — Loyalty Program Without a Phone Number: QR Code Identification at the Counter (Ukrainian)
+- /en/qr-loyalty — Loyalty Program Without a Phone Number: QR Code Identification at the Counter (English)
+- /welcome-bonus — Welcome Bonus: How to Turn a First Visit Into a Second and Stop Losing New Customers (Ukrainian)
+- /en/welcome-bonus — Welcome Bonus: How to Turn a First Visit Into a Second and Stop Losing New Customers (English)
+- /promo-codes — Promo Codes for Business: Common Problems and How to Make Every Campaign Trackable (Ukrainian)
+- /en/promo-codes — Promo Codes for Business: Common Problems and How to Make Every Campaign Trackable (English)
+- /smart-coupons — Smart Coupons: Happy Hours, Birthday Offers and Personal Deals That Fill Slow Hours (Ukrainian)
+- /en/smart-coupons — Smart Coupons: Happy Hours, Birthday Offers and Personal Deals That Fill Slow Hours (English)
+- /cashback-loyalty — Cashback vs Discounts: Which Loyalty Program Is More Profitable for Your Business (Ukrainian)
+- /en/cashback-loyalty — Cashback vs Discounts: Which Loyalty Program Is More Profitable for Your Business (English)
+- /loyalty-tiers — Loyalty Tiers: How to Offer Cumulative Discounts Without Eating Your Margin (Ukrainian)
+- /en/loyalty-tiers — Loyalty Tiers: How to Offer Cumulative Discounts Without Eating Your Margin (English)
+- /gift-certificates — Digital Gift Certificates for Business: Sell Online 24/7 and Bring In New Clients (Ukrainian)
+- /en/gift-certificates — Digital Gift Certificates for Business: Sell Online 24/7 and Bring In New Clients (English)
 ## Contact
 - Email: billing@rimbo.io
 - Support: Mon-Fri 10:00-18:00, Sat-Sun 11:00-15:00 (Kyiv time)

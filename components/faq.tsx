@@ -41,9 +41,19 @@ export function FAQ({ dict }: { dict: Dictionary }) {
                   }`}
                 >
                   <div className="overflow-hidden">
-                    <p className="px-6 pb-6 text-sm leading-relaxed themed-text-secondary">
-                      {item.answer}
-                    </p>
+                    <div className="px-6 pb-6">
+                      <p className="text-sm leading-relaxed themed-text-secondary">
+                        {item.answer}
+                      </p>
+                      {"link" in item && item.link && (
+                        <a
+                          href={`${dict.locale === "en" ? "/en" : ""}${item.link.href}`}
+                          className="mt-3 inline-block text-sm text-primary-link underline underline-offset-2 hover:opacity-80 transition-opacity"
+                        >
+                          {item.link.label} →
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>

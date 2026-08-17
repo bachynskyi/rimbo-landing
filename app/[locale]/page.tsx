@@ -15,6 +15,8 @@ import {
   OrganizationSchema,
   WebSiteSchema,
   FAQPageSchema,
+  SoftwareApplicationSchema,
+  LoyaltyTypesItemListSchema,
 } from "@/components/json-ld";
 
 export default async function LandingPage({
@@ -29,6 +31,8 @@ export default async function LandingPage({
     <ContactModalProvider dict={dict}>
       <OrganizationSchema />
       <WebSiteSchema />
+      <SoftwareApplicationSchema dict={dict} locale={locale} />
+      <LoyaltyTypesItemListSchema dict={dict} locale={locale} />
       <FAQPageSchema dict={dict} />
       <FogBackground />
       <GrainOverlay />

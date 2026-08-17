@@ -76,7 +76,7 @@ export function Pricing({ dict }: { dict: Dictionary }) {
         </div>
 
         {/* Tiers */}
-        <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {dict.pricing.tiers.map((tier, i) => {
             const isPopular = "popular" in tier && tier.popular;
             const displayPrice = annual
@@ -127,7 +127,7 @@ export function Pricing({ dict }: { dict: Dictionary }) {
                         <Check className="h-4 w-4 shrink-0 text-primary mt-0.5" />
                         <span>{renderFeature(feature)}</span>
                       </div>
-                      {fi === 0 && i >= 1 && (
+                      {fi === 0 && (
                         <div className="ml-[26px] mt-1 flex flex-col text-xs themed-text-muted">
                           <span>{dict.pricing.extraStaff}</span>
                           <span>{dict.pricing.extraLocation}</span>

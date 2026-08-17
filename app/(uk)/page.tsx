@@ -15,6 +15,8 @@ import {
   OrganizationSchema,
   WebSiteSchema,
   FAQPageSchema,
+  SoftwareApplicationSchema,
+  LoyaltyTypesItemListSchema,
 } from "@/components/json-ld";
 
 export default function HomePage() {
@@ -24,6 +26,8 @@ export default function HomePage() {
     <ContactModalProvider dict={dict}>
       <OrganizationSchema />
       <WebSiteSchema />
+      <SoftwareApplicationSchema dict={dict} locale="uk" />
+      <LoyaltyTypesItemListSchema dict={dict} locale="uk" />
       <FAQPageSchema dict={dict} />
       <FogBackground />
       <GrainOverlay />

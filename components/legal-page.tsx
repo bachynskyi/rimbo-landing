@@ -1,21 +1,53 @@
+import type { ReactNode } from "react";
 import { FogBackground } from "@/components/fog-background";
 import { GrainOverlay } from "@/components/grain-overlay";
 import { FloatingHeader } from "@/components/floating-header";
 import { ContactModalProvider } from "@/contexts/contact-modal-context";
 import type { Dictionary } from "@/lib/dictionaries";
 
-function linkify(text: string) {
+function linkify(text: string, keyPrefix = "") {
   const pattern = /(https?:\/\/[^\s,)]+|[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,})/g;
   const parts = text.split(pattern);
   return parts.map((part, i) => {
     if (part.match(/^https?:\/\//)) {
-      return <a key={i} href={part} target="_blank" rel="noopener noreferrer" className="text-primary-link underline underline-offset-2 hover:opacity-80 transition-opacity">{part}</a>;
+      return <a key={`${keyPrefix}u${i}`} href={part} target="_blank" rel="noopener noreferrer" className="text-primary-link underline underline-offset-2 hover:opacity-80 transition-opacity">{part}</a>;
     }
     if (part.match(/^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/)) {
-      return <a key={i} href={`mailto:${part}`} className="text-primary-link underline underline-offset-2 hover:opacity-80 transition-opacity">{part}</a>;
+      return <a key={`${keyPrefix}m${i}`} href={`mailto:${part}`} className="text-primary-link underline underline-offset-2 hover:opacity-80 transition-opacity">{part}</a>;
     }
     return part;
   });
+}
+
+// Renders inline markdown links [text](/path) plus bare URLs and emails
+function renderInline(text: string) {
+  const md = /\[([^\]]+)\]\(([^)\s]+)\)/g;
+  const nodes: ReactNode[] = [];
+  let last = 0;
+  let match: RegExpExecArray | null;
+  let k = 0;
+  while ((match = md.exec(text)) !== null) {
+    if (match.index > last) {
+      nodes.push(...linkify(text.slice(last, match.index), `t${k++}-`));
+    }
+    const href = match[2];
+    const external = /^https?:\/\//.test(href);
+    nodes.push(
+      <a
+        key={`md${k++}`}
+        href={href}
+        {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+        className="text-primary-link underline underline-offset-2 hover:opacity-80 transition-opacity"
+      >
+        {match[1]}
+      </a>
+    );
+    last = match.index + match[0].length;
+  }
+  if (last < text.length) {
+    nodes.push(...linkify(text.slice(last), `t${k++}-`));
+  }
+  return nodes;
 }
 
 interface LegalSection {
@@ -32,6 +64,7 @@ interface LegalSection {
 
 interface LegalPageProps {
   title: string;
+  cover?: { src: string; alt: string };
   lastUpdated: string;
   sections: LegalSection[];
   homeHref: string;
@@ -42,7 +75,7 @@ interface LegalPageProps {
   hideDate?: boolean;
 }
 
-export function LegalPage({ title, lastUpdated, sections, homeHref, homeLabel, langSwitch, langSwitchHref, dict, hideDate }: LegalPageProps) {
+export function LegalPage({ title, cover, lastUpdated, sections, homeHref, homeLabel, langSwitch, langSwitchHref, dict, hideDate }: LegalPageProps) {
   return (
     <ContactModalProvider dict={dict}>
       <FloatingHeader
@@ -59,6 +92,17 @@ export function LegalPage({ title, lastUpdated, sections, homeHref, homeLabel, l
           <h1 className="text-3xl sm:text-4xl font-bold themed-text mb-3">{title}</h1>
           <p className={`text-sm themed-text-muted mb-12${hideDate ? " sr-only" : ""}`}>{lastUpdated}</p>
 
+          {cover && (
+            /* eslint-disable-next-line @next/next/no-img-element */
+            <img
+              src={cover.src}
+              alt={cover.alt}
+              width={1200}
+              height={630}
+              className="w-full h-auto rounded-2xl border border-white/10 mb-12"
+            />
+          )}
+
           <div className="space-y-10">
             {sections.map((section, i) => (
               <section key={i} className="glass p-6 sm:p-8">
@@ -67,7 +111,7 @@ export function LegalPage({ title, lastUpdated, sections, homeHref, homeLabel, l
                 )}
                 <div className="themed-text-secondary text-sm leading-relaxed space-y-3">
                   {section.content.split("\n\n").map((paragraph, j) => (
-                    <p key={j}>{linkify(paragraph)}</p>
+                    <p key={j} className="whitespace-pre-line">{renderInline(paragraph)}</p>
                   ))}
                 </div>
                 {section.image && (

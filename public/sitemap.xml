@@ -145,4 +145,148 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://rimbo.com.ua/stamp-cards</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://rimbo.com.ua/stamp-cards"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rimbo.com.ua/en/stamp-cards"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rimbo.com.ua/stamp-cards"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://rimbo.com.ua/en/stamp-cards</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://rimbo.com.ua/stamp-cards"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rimbo.com.ua/en/stamp-cards"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rimbo.com.ua/stamp-cards"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://rimbo.com.ua/loyalty-without-app</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://rimbo.com.ua/loyalty-without-app"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rimbo.com.ua/en/loyalty-without-app"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rimbo.com.ua/loyalty-without-app"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://rimbo.com.ua/en/loyalty-without-app</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://rimbo.com.ua/loyalty-without-app"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rimbo.com.ua/en/loyalty-without-app"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rimbo.com.ua/loyalty-without-app"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://rimbo.com.ua/qr-loyalty</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://rimbo.com.ua/qr-loyalty"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rimbo.com.ua/en/qr-loyalty"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rimbo.com.ua/qr-loyalty"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://rimbo.com.ua/en/qr-loyalty</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://rimbo.com.ua/qr-loyalty"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rimbo.com.ua/en/qr-loyalty"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rimbo.com.ua/qr-loyalty"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://rimbo.com.ua/welcome-bonus</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://rimbo.com.ua/welcome-bonus"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rimbo.com.ua/en/welcome-bonus"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rimbo.com.ua/welcome-bonus"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://rimbo.com.ua/en/welcome-bonus</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://rimbo.com.ua/welcome-bonus"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rimbo.com.ua/en/welcome-bonus"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rimbo.com.ua/welcome-bonus"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://rimbo.com.ua/promo-codes</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://rimbo.com.ua/promo-codes"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rimbo.com.ua/en/promo-codes"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rimbo.com.ua/promo-codes"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://rimbo.com.ua/en/promo-codes</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://rimbo.com.ua/promo-codes"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rimbo.com.ua/en/promo-codes"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rimbo.com.ua/promo-codes"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://rimbo.com.ua/smart-coupons</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://rimbo.com.ua/smart-coupons"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rimbo.com.ua/en/smart-coupons"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rimbo.com.ua/smart-coupons"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://rimbo.com.ua/en/smart-coupons</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://rimbo.com.ua/smart-coupons"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rimbo.com.ua/en/smart-coupons"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rimbo.com.ua/smart-coupons"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://rimbo.com.ua/cashback-loyalty</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://rimbo.com.ua/cashback-loyalty"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rimbo.com.ua/en/cashback-loyalty"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rimbo.com.ua/cashback-loyalty"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://rimbo.com.ua/en/cashback-loyalty</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://rimbo.com.ua/cashback-loyalty"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rimbo.com.ua/en/cashback-loyalty"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rimbo.com.ua/cashback-loyalty"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://rimbo.com.ua/loyalty-tiers</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://rimbo.com.ua/loyalty-tiers"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rimbo.com.ua/en/loyalty-tiers"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rimbo.com.ua/loyalty-tiers"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://rimbo.com.ua/en/loyalty-tiers</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://rimbo.com.ua/loyalty-tiers"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rimbo.com.ua/en/loyalty-tiers"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rimbo.com.ua/loyalty-tiers"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://rimbo.com.ua/gift-certificates</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://rimbo.com.ua/gift-certificates"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rimbo.com.ua/en/gift-certificates"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rimbo.com.ua/gift-certificates"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://rimbo.com.ua/en/gift-certificates</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://rimbo.com.ua/gift-certificates"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rimbo.com.ua/en/gift-certificates"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rimbo.com.ua/gift-certificates"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>
