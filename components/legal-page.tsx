@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { FogBackground } from "@/components/fog-background";
 import { GrainOverlay } from "@/components/grain-overlay";
 import { FloatingHeader } from "@/components/floating-header";
+import { ContactLink } from "@/components/contact-link";
 import { ContactModalProvider } from "@/contexts/contact-modal-context";
 import type { Dictionary } from "@/lib/dictionaries";
 
@@ -19,6 +20,20 @@ function linkify(text: string, keyPrefix = "") {
   });
 }
 
+// Renders **bold** spans, with bare URLs/emails linkified inside plain parts
+function boldify(text: string, keyPrefix = "") {
+  const parts = text.split(/\*\*([^*]+)\*\*/g);
+  const nodes: ReactNode[] = [];
+  parts.forEach((part, i) => {
+    if (i % 2 === 1) {
+      nodes.push(<strong key={`${keyPrefix}b${i}`} className="font-semibold themed-text">{part}</strong>);
+    } else if (part) {
+      nodes.push(...linkify(part, `${keyPrefix}p${i}-`));
+    }
+  });
+  return nodes;
+}
+
 // Renders inline markdown links [text](/path) plus bare URLs and emails
 function renderInline(text: string) {
   const md = /\[([^\]]+)\]\(([^)\s]+)\)/g;
@@ -28,9 +43,14 @@ function renderInline(text: string) {
   let k = 0;
   while ((match = md.exec(text)) !== null) {
     if (match.index > last) {
-      nodes.push(...linkify(text.slice(last, match.index), `t${k++}-`));
+      nodes.push(...boldify(text.slice(last, match.index), `t${k++}-`));
     }
     const href = match[2];
+    if (href === "#contact") {
+      nodes.push(<ContactLink key={`md${k++}`} label={match[1]} />);
+      last = match.index + match[0].length;
+      continue;
+    }
     const external = /^https?:\/\//.test(href);
     nodes.push(
       <a
@@ -45,7 +65,7 @@ function renderInline(text: string) {
     last = match.index + match[0].length;
   }
   if (last < text.length) {
-    nodes.push(...linkify(text.slice(last), `t${k++}-`));
+    nodes.push(...boldify(text.slice(last), `t${k++}-`));
   }
   return nodes;
 }
