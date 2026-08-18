@@ -7,7 +7,7 @@ import { ContactModalProvider } from "@/contexts/contact-modal-context";
 import type { Dictionary } from "@/lib/dictionaries";
 
 function linkify(text: string, keyPrefix = "") {
-  const pattern = /(https?:\/\/[^\s,)]+|[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,})/g;
+  const pattern = /(https?:\/\/[^\s,)]+|[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}|\+380[\d\s()\-]{8,}\d)/g;
   const parts = text.split(pattern);
   return parts.map((part, i) => {
     if (part.match(/^https?:\/\//)) {
@@ -15,6 +15,9 @@ function linkify(text: string, keyPrefix = "") {
     }
     if (part.match(/^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/)) {
       return <a key={`${keyPrefix}m${i}`} href={`mailto:${part}`} className="text-primary-link underline underline-offset-2 hover:opacity-80 transition-opacity">{part}</a>;
+    }
+    if (part.match(/^\+380/)) {
+      return <a key={`${keyPrefix}t${i}`} href={`tel:${part.replace(/[^\d+]/g, "")}`} className="text-primary-link underline underline-offset-2 hover:opacity-80 transition-opacity whitespace-nowrap">{part}</a>;
     }
     return part;
   });
