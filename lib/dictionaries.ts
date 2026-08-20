@@ -197,11 +197,9 @@ export const dictionaries = {
       perMonth: "/міс",
       popular: "Популярний",
       choosePlan: "Почати",
-      extraStaff: "+₴199/дод. співробітник",
-      extraLocation: "+₴499/дод. точка продажу",
       includesPrefix: "Включає можливості плану",
       includesSuffix: ", а також:",
-      enterpriseNote: "* Потрібно більше? {link} для індивідуального плану з необмеженими можливостями.",
+      enterpriseNote: "* Від 5 точок продажу або 10 000+ активних користувачів {link}, підберемо індивідуальні умови.",
       enterpriseNoteLink: "Зв'яжіться з нами",
       tiers: [
         /* Приховано на запит власника — план тимчасово не продається
@@ -223,9 +221,9 @@ export const dictionaries = {
           monthlyPrice: PLAN_PRICES.growth.monthly,
           annualPrice: PLAN_PRICES.growth.annual,
           features: [
-            "До 2 точок продажу, 3 співробітники",
+            "До 2 точок продажу, 5 співробітників",
             "До 5 карток лояльності + кастомний дизайн",
-            "Ліміт: до 800 активних користувачів",
+            "Ліміт: до 1 000 активних користувачів на місяць",
             "Бонусний баланс (кешбек)",
             "Geo-Push: автоматичні Push поблизу",
             "Сегментація клієнтів (фільтри за активністю)",
@@ -237,9 +235,11 @@ export const dictionaries = {
           monthlyPrice: PLAN_PRICES.pro.monthly,
           annualPrice: PLAN_PRICES.pro.annual,
           popular: true,
+          extraStaff: "+₴199/дод. співробітник",
+          extraLocation: "+₴999/дод. точка продажу",
           features: [
-            "До 3 точок продажу, 4 співробітники",
-            "До 2 000 активних користувачів",
+            "До 3 точок продажу, 10 співробітників",
+            "До 3 000 активних користувачів на місяць",
             "Повна інтеграція з [Poster](/integrations/poster), [Alteg.io](/integrations/altegio)",
             "Промокоди, сертифікати та ваучери",
             "Персональні знижки з дедлайном (Trigger-маркетинг)",
@@ -251,9 +251,11 @@ export const dictionaries = {
           name: "Бізнес",
           monthlyPrice: PLAN_PRICES.business.monthly,
           annualPrice: PLAN_PRICES.business.annual,
+          extraStaff: "+₴199/дод. співробітник",
+          extraLocation: "+₴999/дод. точка продажу",
           features: [
-            "До 4 точок продажу, 5 співробітників",
-            "До 5 000 активних користувачів",
+            "До 4 точок продажу, 20 співробітників",
+            "До 10 000 активних користувачів на місяць",
             "White Label: повний брендинг без згадок Rimbo",
             "Власний домен",
             "API доступ для зв'язку з сайтом чи CRM",
@@ -646,6 +648,11 @@ export const dictionaries = {
           heading: "Автоматичні сповіщення у потрібний момент",
           content:
             "Кожне сповіщення прив'язане до конкретної події. Клієнт зібрав штамп і одразу отримує повідомлення з поточним прогресом. Картка заповнена, і сповіщення запрошує прийти та отримати нагороду.\n\nЦе не масова розсилка, а точкові повідомлення, які актуальні саме для цього клієнта у цей момент. Тому вони працюють значно ефективніше за звичну рекламу.",
+        },
+        {
+          heading: "Геолокаційні сповіщення поблизу закладу",
+          content:
+            "Картки в Apple Wallet і Google Wallet підтримують геолокацію, тож Rimbo вміє нагадувати про заклад у момент, коли клієнт поруч. Людина проходить повз вашу кав'ярню, і на екрані телефону з'являється її картка лояльності з поточним балансом.\n\nНалаштування зводиться до одного кроку: ви додаєте адреси своїх локацій у кабінеті, а координати до цифрової картки Rimbo підставляє сам. Нічого програмувати не треба.\n\nЦе працює краще за звичайну розсилку, бо повідомлення приходить не тоді, коли зручно вам, а тоді, коли до дверей лишилося сто метрів. Для кав'ярень, пекарень і барбершопів у центрі міста це один з найсильніших тригерів повторного візиту.",
         },
         {
           heading: "Персональні знижки та спеціальні пропозиції",
@@ -1896,25 +1903,23 @@ export const dictionaries = {
       perMonth: "/mo",
       popular: "Popular",
       choosePlan: "Get Started",
-      extraStaff: "+₴199/extra employee",
-      extraLocation: "+₴499/extra location",
       includesPrefix: "Includes",
       includesSuffix: " features, plus:",
-      enterpriseNote: "* Need more? {link} for a custom plan with unlimited capabilities.",
+      enterpriseNote: "* From 5 locations or 10,000+ active users {link} and we will put together custom terms.",
       enterpriseNoteLink: "Contact us",
       tiers: [
-        /* Приховано на запит власника — план тимчасово не продається
+        /* Hidden at the owner's request, this plan is temporarily not sold
         {
           name: "Start",
           monthlyPrice: 349,
           annualPrice: 299,
           features: [
-            "1 point of sale, 1 employee",
+            "1 location, 1 staff member",
             "Up to 2 loyalty cards (stamps)",
             "Limit: up to 250 active users",
             "Apple & Google Wallet + PWA",
-            "Manual accrual only (scan QR)",
-            "Loyalty levels & transaction history",
+            "Manual accrual only (QR scan)",
+            "Loyalty tiers and transaction history",
           ],
         }, */
         {
@@ -1922,12 +1927,12 @@ export const dictionaries = {
           monthlyPrice: PLAN_PRICES.growth.monthly,
           annualPrice: PLAN_PRICES.growth.annual,
           features: [
-            "Up to 2 points of sale, 3 employees",
+            "Up to 2 locations, 5 staff members",
             "Up to 5 loyalty cards + custom design",
-            "Limit: up to 800 active users",
-            "Cashback (bonus balance)",
-            "Geo-Push: automatic Push nearby",
-            "Client segmentation (activity filters)",
+            "Limit: up to 1,000 active users per month",
+            "Bonus balance (cashback)",
+            "Geo-Push: automatic push nearby",
+            "Customer segmentation (activity filters)",
             "Basic analytics (LTV, average check)",
           ],
         },
@@ -1936,27 +1941,31 @@ export const dictionaries = {
           monthlyPrice: PLAN_PRICES.pro.monthly,
           annualPrice: PLAN_PRICES.pro.annual,
           popular: true,
+          extraStaff: "+₴199/extra employee",
+          extraLocation: "+₴999/extra location",
           features: [
-            "Up to 3 points of sale, 4 employees",
-            "Up to 2,000 active users",
+            "Up to 3 locations, 10 staff members",
+            "Up to 3,000 active users per month",
             "Full integration with [Poster](/en/integrations/poster), [Alteg.io](/en/integrations/altegio)",
-            "Promo codes, certificates & vouchers",
-            "Personal discounts with deadline (Trigger marketing)",
-            "Personal domain for PWA",
-            "Extended RFM analytics",
+            "Promo codes, gift certificates and vouchers",
+            "Personal discounts with deadlines (trigger marketing)",
+            "Custom domain for PWA",
+            "Advanced RFM analytics",
           ],
         },
         {
           name: "Business",
           monthlyPrice: PLAN_PRICES.business.monthly,
           annualPrice: PLAN_PRICES.business.annual,
+          extraStaff: "+₴199/extra employee",
+          extraLocation: "+₴999/extra location",
           features: [
-            "Up to 4 points of sale, 5 employees",
-            "Up to 5,000 active users",
-            "White Label: full branding without Rimbo mentions",
-            "Own domain",
+            "Up to 4 locations, 20 staff members",
+            "Up to 10,000 active users per month",
+            "White Label: full branding with no Rimbo mentions",
+            "Custom domain",
             "API access to connect your site or CRM",
-            "Priority support & setup assistance",
+            "Priority support and setup assistance",
           ],
         },
       ],
@@ -2345,6 +2354,11 @@ export const dictionaries = {
           heading: "Automatic notifications at the right moment",
           content:
             "Every notification is tied to a specific event. A customer collects a stamp and gets a message with their current progress. A card is full, and a notification invites them to come in and claim their reward.\n\nThis isn't mass messaging. These are targeted notifications that are relevant to this specific customer at this specific moment. That's why they work far better than generic advertising.",
+        },
+        {
+          heading: "Geolocation reminders near your venue",
+          content:
+            "Cards in Apple Wallet and Google Wallet support geolocation, so Rimbo can remind customers about your venue exactly when they are nearby. Someone walks past your coffee shop and their loyalty card surfaces on the phone screen with the current balance.\n\nSetup takes one step: you add your venue addresses in the dashboard, and Rimbo attaches the coordinates to the digital card itself. Nothing to program.\n\nThis beats an ordinary broadcast, because the message arrives not when it suits you but when the customer is a hundred meters from the door. For coffee shops, bakeries and barbershops in the city center it is one of the strongest repeat-visit triggers.",
         },
         {
           heading: "Personalized discounts and special offers",

@@ -127,10 +127,10 @@ export function Pricing({ dict }: { dict: Dictionary }) {
                         <Check className="h-4 w-4 shrink-0 text-primary mt-0.5" />
                         <span>{renderFeature(feature)}</span>
                       </div>
-                      {fi === 0 && (
+                      {fi === 0 && ("extraStaff" in tier || "extraLocation" in tier) && (
                         <div className="ml-[26px] mt-1 flex flex-col text-xs themed-text-muted">
-                          <span>{dict.pricing.extraStaff}</span>
-                          <span>{dict.pricing.extraLocation}</span>
+                          {"extraStaff" in tier && <span>{(tier as { extraStaff?: string }).extraStaff}</span>}
+                          {"extraLocation" in tier && <span>{(tier as { extraLocation?: string }).extraLocation}</span>}
                         </div>
                       )}
                     </li>
