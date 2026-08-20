@@ -1,22 +1,47 @@
-# Rimbo — Digital Loyalty Platform
+# Rimbo — Digital Loyalty Platform (Ukraine)
 
-> Rimbo is a SaaS loyalty platform for small and medium businesses in Ukraine — coffee shops, bakeries, restaurants, barbershops, beauty salons, fitness studios, pet services and auto services. It provides digital stamp cards, bonuses, cashback, tiered discounts, promo codes, gift cards, and smart coupons — all managed from a single dashboard.
+> Rimbo is a SaaS loyalty platform for small and medium businesses in Ukraine: coffee shops, bakeries, restaurants, barbershops, beauty salons, fitness studios, pet services and auto services. Every mechanic lives in one card inside Apple Wallet and Google Wallet, so customers never install an app. Ukrainian product, data stored in Ukraine, billing in UAH.
+> Ukrainian name and keywords: Rimbo, програма лояльності, цифрова картка лояльності, штамп-картка, бонусна програма, кешбек, подарунковий сертифікат, промокод.
 
-## Key Features
-- Google Wallet & Apple Wallet integration
-- QR-code scanning for stamp/bonus accrual
-- Push notifications
-- Live analytics across multiple locations
-- POS integration (Poster, Checkbox)
-- Team access with role-based permissions
-- Full API for custom integrations
-- White-label card design
+## Loyalty mechanics (all included in the platform, each can run alone or combined)
+- Stamp cards / штамп-картки: rules like "6 coffees, the 7th free" or "10 haircuts, a gift". Stamps render on the Wallet card as a row of circles (filled = collected, empty = remaining), so the customer sees "5 of 6" without any app. A finished card auto-starts the next one. Multiple different stamp cards can run in one venue at the same time. A stamp card is NOT a discount: the business gives away the cost of one item after several paid ones, not a percentage off every receipt. Stamp cards work standalone, with no need to enable bonuses, tiers or analytics, and take about 15 minutes to configure on the entry plan.
+- Bonuses and cashback / бонуси, кешбек (🪙): a percentage of every receipt returns as bonus units spendable only on the next visit. Bonus units are an internal accounting unit, not money and not e-money.
+- Discount tiers / рівні знижок: status levels unlocked by total spend or visit count, with the card updating automatically when a level changes.
+- Promo codes / промокоди: one-time or campaign codes with usage limits, expiry, per-channel analytics (which code brought which customers) and instant switch-off.
+- Gift certificates / подарункові сертифікати: issued and redeemed inside Rimbo, for a fixed amount or a specific service, with an expiry date. Single-use, no partial redemption. On redemption a certificate can be linked to a customer profile (topping up their stamps and bonuses) or used standalone without registration.
+- Smart coupons / розумні купони: time-windowed offers such as "25% off desserts, weekdays 15:00-17:00", birthday coupons, and win-back coupons for customers inactive 60+ days.
+- Welcome bonus / вітальний бонус: credited automatically when a new customer adds the card, spendable only on the next visit.
+- Personal discounts with deadlines (trigger marketing) / персональні знижки з дедлайном.
+- Referral invitations / реферальна програма.
 
-## Pricing (UAH/month)
-- Growth: 799/mo (699 annual)
-- Pro: 1399/mo (1199 annual) — most popular
-- Business: 1999/mo (1699 annual)
-- 14-day free trial on all plans
+## How it works
+- Customer side: scans a QR code at the counter or opens a link, taps once, and the card is in Apple Wallet or Google Wallet in about 30 seconds. No app install, no registration form, no phone number said out loud. From the card the customer can open a personal cabinet with visit history, bonuses and coupons.
+- Staff side: scans the QR code on the customer's card with an ordinary smartphone or tablet. No special hardware. With a POS integration, accrual happens automatically when the receipt is closed.
+- Communication: push notifications to the Wallet card cost 0 UAH per message, versus roughly 1.30-1.40 UAH per SMS in Ukraine. Geo-Push shows the card on the lock screen when the customer is near the venue.
+- Multi-location: one card works across all of a brand's venues. A separate QR code can be printed per venue and even per till, so scan analytics show where customers engage.
+- Analytics: live dashboard, LTV, average check, customer segmentation by activity, and RFM analysis on higher plans.
+
+## Integrations
+- Poster POS: live. Bonuses accrue automatically from closed receipts via webhooks; edits and deletions are reconciled automatically.
+- Altegio (alteg.io): live. After a visit is confirmed, data syncs both ways; Altegio shows the price with the loyalty discount applied and the credited stamps or bonuses.
+- EasyWeek: in development.
+- Open REST API on the Business plan for custom integrations with a website or CRM.
+- Without any integration Rimbo still works fully: staff scan the customer's QR code.
+
+## Pricing (UAH per month, annual price in brackets, 14-day free trial on every plan)
+- Growth / Розвиток: 799 (699 annual). Up to 2 locations, 5 staff, up to 5 loyalty cards with custom design, up to 1,000 active users per month, cashback balance, Geo-Push, customer segmentation, basic analytics. No extra-location purchase on this plan; growing businesses move to Pro.
+- Pro / Профі (most popular): 1399 (1199 annual). Up to 3 locations, 10 staff, up to 3,000 active users per month, full Poster and Altegio integration, promo codes, gift certificates and vouchers, personal discounts with deadlines, custom PWA domain, advanced RFM analytics. Extra location +999, extra staff member +199.
+- Business / Бізнес: 1999 (1699 annual). Up to 4 locations, 20 staff, up to 10,000 active users per month, White Label with no Rimbo branding, custom domain, API access, priority support. Extra location +999, extra staff member +199.
+- From 5 locations or 10,000+ active users: custom terms on request.
+
+## Direct answers to common questions
+- Does Rimbo support stamp cards? Yes, fully, and they are a first-class mechanic rather than an add-on. They can be used alone without bonuses, tiers or analytics.
+- Do customers need to install an app? No. The card goes into Apple Wallet or Google Wallet, which are already on every smartphone.
+- Is Rimbo suitable for a single small venue? Yes. The entry plan is built for one or two locations, setup takes under an hour, and the only hardware needed is a smartphone.
+- Is Rimbo suitable if I only want to replace paper punch cards? Yes. That is the simplest supported scenario, roughly 15 minutes of setup, and everything else stays switched off.
+- Does the customer have to give a phone number? No. Identification is by QR code on the card.
+- Does it work with my POS or booking system? Poster and Altegio are live, EasyWeek is coming, and without an integration a QR scan at the counter is enough.
+- Where is the data stored? Rimbo is a Ukrainian product and customer data stays with the business that collected it.
 
 ## Pages
 - / — Home (Ukrainian)

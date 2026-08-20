@@ -339,6 +339,25 @@ export const dictionaries = {
           answer:
             "Так, Rimbo створений саме для малого та середнього бізнесу: кав'ярень, салонів, барбершопів, пекарень, студій. Запуск займає до однієї години, спеціальне обладнання не потрібне, достатньо смартфона, а тарифи розраховані на один заклад із можливістю розширення.",
         },
+        {
+          question:
+            "Чи можна користуватись лише штамп-картками, без бонусів і аналітики?",
+          answer:
+            "Так. Штамп-картка це самостійна механіка: вмикаєте правило «шість кав, сьома в подарунок», і більше нічого налаштовувати не треба. Кешбек, рівні, купони, промокоди та RFM-аналітика доступні, але вмикати їх необов'язково. Найпростіший сценарій запускається приблизно за 15 хвилин на базовому тарифі.",
+          link: { label: "Як працює цифрова штамп-картка", href: "/stamp-cards" },
+        },
+        {
+          question:
+            "Як штампи виглядають на картці в телефоні?",
+          answer:
+            "У Apple Wallet і Google Wallet штампи намальовані рядом кружечків: заповнені показують зібрані візити, порожні залишок до подарунка. Клієнт бачить «5 з 6» без жодного застосунку, а коли картка заповнена, наступна стартує автоматично.",
+        },
+        {
+          question:
+            "Які механіки лояльності підтримує Rimbo?",
+          answer:
+            "Штамп-картки, бонуси і кешбек 🪙, рівні знижок, промокоди, подарункові сертифікати, розумні купони з вікнами дії, вітальні бонуси, персональні знижки з дедлайном і Geo-Push поблизу закладу. Усі механіки живуть в одній картці Wallet і вмикаються окремо або разом.",
+        },
       ],
     },
     // Footer
@@ -882,6 +901,11 @@ export const dictionaries = {
             "Клієнт сканує QR-код на касі або переходить за посиланням, тисне одну кнопку, і картка з'являється в Apple Wallet чи Google Wallet. Жодного додатку встановлювати не треба, жодної анкети з паролем заповнювати не потрібно.\n\nПри наступному візиті клієнт показує картку з телефона, персонал сканує QR-код, і штамп додається миттєво. Клієнт одразу бачить оновлений прогрес: 5 з 6 кав. Коли до винагороди лишається один крок, картка сама нагадує про себе.\n\nОкрема перевага стосується комунікації. [Push-сповіщення](/push-notifications) у Wallet коштують 0 ₴ за повідомлення, тоді як SMS коштує 1,30–1,40 ₴ за штуку, а реєстрація Viber-відправника стартує приблизно від 10 000 ₴ на місяць. Нагадування про неповну картку або акцію ви надсилаєте безкоштовно.",
         },
         {
+          heading: "Штамп-картки працюють самостійно, без інших механік",
+          content:
+            `Штамп-картка це повноцінна механіка Rimbo, а не доповнення до бонусів. Її можна запустити окремо, не вмикаючи ні кешбек, ні рівні, ні тригерні розсилки: у клієнта на екрані буде картка з правилом «шість кав, сьома в подарунок» і нічого зайвого.\n\nНалаштування займає приблизно 15 хвилин на найдешевшому тарифі за ${FROM_PRICE} ₴/міс. Ви обираєте кількість штампів, пишете, що отримує клієнт, завантажуєте логотип і кольори. Аналітика, сегментація і push уже включені, але користуватись ними необов'язково.\n\nНа самій картці штампи намальовані рядом кружечків: заповнені показують зібрані візити, порожні залишок до подарунка. Клієнт бачить «5 з 6» просто у Wallet, без жодного застосунку. Коли картка заповнюється, винагорода підсвічується на касі, а нова картка стартує автоматично, тож серія візитів не переривається.\n\nОдин заклад може вести кілька різних штамп-карток одночасно, наприклад окремо на каву і окремо на десерти. Важливо для розрахунків: штамп-картка не є знижкою. Ви віддаєте собівартість однієї позиції після кількох оплачених, а не відсоток з кожного чека.`,
+        },
+        {
           heading: "Що це дає кав'ярні: до 25% більше повторних візитів",
           content:
             "Цифрові штамп-картки дають до 25% більше повторних візитів. Механіка проста: клієнт постійно бачить прогрес у телефоні, push нагадує про майже заповнену картку, а візит зараховується завжди, незалежно від настрою персоналу і наявності картонки в гаманці.\n\nДля мережі це ще й єдина програма для всіх точок: клієнт збирає штампи в будь-якій локації, а ви бачите зведену статистику. За даними [Devlight 2025](https://devlight.io/loyalty-research-2025/), 71,7% українців приєднуються до програм лояльності заради миттєвої вигоди, а цифрова картка показує її з першого візиту.",
@@ -1188,7 +1212,7 @@ export const dictionaries = {
         {
           heading: "Бонуси чи знижки: коротка відповідь",
           content:
-            "Для більшості закладів бонуси вигідніші за знижки. Постійна знижка втрачає маржу з кожного чека, навіть коли гість прийшов би і без неї. Бонус 🪙 «заробляється» з чека, а витрачається лише на наступному візиті: він створює природний стимул повернутися і не вимиває касу одразу. Кешбек працює як ті самі бонуси у звичній рітейл-обгортці: «повертаємо 5% з кожної покупки».\n\nЦе не означає, що знижки завжди погані. Але як базова механіка програми лояльності бонусна модель майже завжди дає кращу економіку. Нижче показуємо розрахунок і пояснюємо, де ховається різниця.",
+            "Для більшості закладів бонуси вигідніші за знижки. Постійна знижка втрачає маржу з кожного чека, навіть коли гість прийшов би і без неї. Бонус 🪙 «заробляється» з чека, а витрачається лише на наступному візиті: він створює природний стимул повернутися і не вимиває касу одразу. Кешбек працює як ті самі бонуси у звичній рітейл-обгортці: «повертаємо 5% з кожної покупки».\n\nЦе не означає, що знижки завжди погані. Але як базова механіка програми лояльності бонусна модель майже завжди дає кращу економіку. Нижче показуємо розрахунок і пояснюємо, де ховається різниця.\n\nШтамп-картки стоять поза цим порівнянням. Вони не знижка: ви віддаєте собівартість однієї позиції після кількох оплачених, а не відсоток з кожного чека. У Rimbo штампи, бонуси і рівні це рівноправні механіки, які вмикаються окремо або разом, тож обирати щось одне не обов'язково.",
         },
         {
           heading: "Чому постійна знижка з'їдає маржу",
@@ -2045,6 +2069,25 @@ export const dictionaries = {
           answer:
             "Yes. Rimbo is built for small and medium businesses: coffee shops, salons, barbershops, bakeries, studios. Launch takes under an hour, no special hardware is needed beyond a smartphone, and plans are priced for a single venue with room to grow.",
         },
+        {
+          question:
+            "Can I use stamp cards only, without bonuses and analytics?",
+          answer:
+            "Yes. A stamp card is a standalone mechanic: switch on a rule like \"six coffees, the seventh free\" and there is nothing else to configure. Cashback, tiers, coupons, promo codes and RFM analytics are available but entirely optional. The simplest setup takes about 15 minutes on the entry plan.",
+          link: { label: "How a digital stamp card works", href: "/stamp-cards" },
+        },
+        {
+          question:
+            "What do the stamps look like on the phone?",
+          answer:
+            "In Apple Wallet and Google Wallet the stamps are drawn as a row of circles: filled ones show collected visits, empty ones show what is left before the reward. The customer sees \"5 of 6\" with no app at all, and once the card is full the next one starts automatically.",
+        },
+        {
+          question:
+            "Which loyalty mechanics does Rimbo support?",
+          answer:
+            "Stamp cards, bonuses and 🪙 cashback, discount tiers, promo codes, gift certificates, smart coupons with time windows, welcome bonuses, personal discounts with deadlines, and Geo-Push near your venue. Every mechanic lives in one Wallet card and can be enabled separately or together.",
+        },
       ],
     },
     // Footer
@@ -2588,6 +2631,11 @@ export const dictionaries = {
             "The customer scans a QR code at the counter or opens a link, taps one button, and the card appears in Apple Wallet or Google Wallet. No app to install, no sign-up form with a password.\n\nOn the next visit the customer shows the card on their phone, staff scan the QR code, and the stamp is added instantly. The customer immediately sees updated progress: 5 out of 6 coffees. When one step remains before the reward, the card itself reminds them.\n\nCommunication is a separate advantage. [Push notifications](/en/push-notifications) in Wallet cost 0 ₴ per message, while SMS costs about 1.30–1.40 ₴ each and registering a Viber sender starts at roughly 10,000 ₴ per month. Reminders about an almost-full card or a promotion go out for free.",
         },
         {
+          heading: "Stamp cards work on their own, with no other mechanics required",
+          content:
+            `A stamp card is a first-class Rimbo mechanic, not an add-on to bonuses. You can run it alone without enabling cashback, tiers or trigger campaigns: the customer simply gets a card with the rule \"six coffees, the seventh is on us\" and nothing else.\n\nSetup takes about 15 minutes on the cheapest plan at ${FROM_PRICE} ₴/month. You pick the number of stamps, write what the customer receives, and upload your logo and colors. Analytics, segmentation and push are already included, but using them is optional.\n\nOn the card itself the stamps are drawn as a row of circles: filled ones show collected visits, empty ones show what is left before the reward. The customer sees \"5 of 6\" right in Wallet, with no app at all. When the card fills up, the reward is highlighted at the counter and a fresh card starts automatically, so the streak never breaks.\n\nOne venue can run several different stamp cards at once, for example one for coffee and another for desserts. Worth noting for the math: a stamp card is not a discount. You give away the cost of a single item after several paid ones, instead of a percentage off every receipt.`,
+        },
+        {
           heading: "What it gives a coffee shop: up to 25% more repeat visits",
           content:
             "Digital stamp cards deliver up to 25% more repeat visits. The mechanics are simple: the customer constantly sees progress on their phone, push notifications remind them about a nearly full card, and every visit counts, regardless of staff mood or whether a piece of cardboard survived in a wallet.\n\nFor a chain it also means one program for all venues: the customer collects stamps at any location, and you see consolidated statistics. According to [Devlight 2025](https://devlight.io/loyalty-research-2025/), 71.7% of Ukrainians join loyalty programs for an instant benefit, and a digital card shows it from the very first visit.",
@@ -2894,7 +2942,7 @@ export const dictionaries = {
         {
           heading: "Cashback or Discounts: The Short Answer",
           content:
-            "For most venues, bonuses beat discounts. A permanent discount loses margin on every single receipt, even when the guest would have come anyway. A bonus 🪙 is earned from the current purchase but can only be spent on the next visit: it creates a natural incentive to return and does not drain your revenue immediately. Cashback is simply the same bonus mechanic in a familiar retail wrapper: 'get 5% back on every purchase'.\n\nThis does not mean discounts are always wrong. But as the core mechanic of a loyalty program, the bonus model almost always delivers better economics. Below is the math and the reasoning.",
+            "For most venues, bonuses beat discounts. A permanent discount loses margin on every single receipt, even when the guest would have come anyway. A bonus 🪙 is earned from the current purchase but can only be spent on the next visit: it creates a natural incentive to return and does not drain your revenue immediately. Cashback is simply the same bonus mechanic in a familiar retail wrapper: 'get 5% back on every purchase'.\n\nThis does not mean discounts are always wrong. But as the core mechanic of a loyalty program, the bonus model almost always delivers better economics. Below is the math and the reasoning.\n\nStamp cards sit outside this comparison. They are not a discount: you give away the cost of one item after several paid ones, instead of a percentage off every receipt. In Rimbo, stamps, bonuses and tiers are equal mechanics that run separately or together, so you never have to pick just one.",
         },
         {
           heading: "Why a Permanent Discount Eats Your Margin",

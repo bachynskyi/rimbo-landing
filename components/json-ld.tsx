@@ -104,7 +104,10 @@ export function SoftwareApplicationSchema({
         installUrl: APP_URL,
         publisher: { "@id": ORG_ID },
         provider: { "@id": ORG_ID },
-        featureList: dict.features.items.map((f) => plain(f.title)),
+        featureList: [
+          ...dict.loyaltyTypes.types.map((t) => plain(t.title)),
+          ...dict.features.items.map((f) => plain(f.title)),
+        ],
         audience: {
           "@type": "BusinessAudience",
           name:
