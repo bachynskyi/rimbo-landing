@@ -45,7 +45,7 @@ export default async function LandingPage({
         <Features dict={dict} />
         <HowItWorks dict={dict} />
         <Segments dict={dict} />
-        <Pricing dict={dict} />
+        <Pricing dict={dict} locale={locale} />
         <FAQ dict={dict} />
       </main>
       <Footer dict={dict} />

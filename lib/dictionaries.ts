@@ -3,11 +3,23 @@ import { APP_URL, SITE_URL, SUPPORT_EMAIL } from "./seo-config";
 // ЄДИНЕ джерело цін тарифів (₴/міс).
 // Тарифна сітка (pricing.tiers) і всі згадки цін у текстах статей тягнуться звідси —
 // змінюєте ціну тут, вона оновлюється всюди, включно зі schema.org розміткою.
+//
+// ВИНЯТОК: public/llms.txt — статичний файл, він не може імпортувати ці
+// константи, тому ціни там продубльовані вручну. Змінюючи ціну тут,
+// оновіть і його (розділ "## Pricing").
 export const PLAN_PRICES = {
   start: { monthly: 349, annual: 299 }, // план приховано, ціни збережено для повернення
   growth: { monthly: 799, annual: 699 },
   pro: { monthly: 1399, annual: 1199 },
   business: { monthly: 1999, annual: 1699 },
+} as const;
+
+// Ціна додаткової точки продажу (₴/міс). Однакова для місячної та річної оплати:
+// річна знижка — поступка на тарифі, а не на додатковій послузі.
+export const EXTRA_LOCATION_PRICES = {
+  growth: 299,
+  pro: 499,
+  business: 699,
 } as const;
 
 // Мінімальна ціна серед видимих планів — для текстів "від X ₴/міс".
@@ -208,8 +220,8 @@ export const dictionaries = {
         /* Приховано на запит власника — план тимчасово не продається
         {
           name: "Старт",
-          monthlyPrice: 349,
-          annualPrice: 299,
+          monthlyPrice: PLAN_PRICES.start.monthly,
+          annualPrice: PLAN_PRICES.start.annual,
           features: [
             "1 точка продажу, 1 співробітник",
             "До 2 карток лояльності (штампи)",
@@ -223,7 +235,7 @@ export const dictionaries = {
           name: "Розвиток",
           monthlyPrice: PLAN_PRICES.growth.monthly,
           annualPrice: PLAN_PRICES.growth.annual,
-          extraLocation: "+₴299/дод. точка продажу",
+          extraLocation: `+₴${EXTRA_LOCATION_PRICES.growth}/дод. точка продажу`,
           features: [
             "До 2 точок продажу, 5 співробітників",
             "До 5 карток лояльності + кастомний дизайн",
@@ -239,10 +251,9 @@ export const dictionaries = {
           monthlyPrice: PLAN_PRICES.pro.monthly,
           annualPrice: PLAN_PRICES.pro.annual,
           popular: true,
-          extraLocation: "+₴499/дод. точка продажу",
+          extraLocation: `+₴${EXTRA_LOCATION_PRICES.pro}/дод. точка продажу`,
           features: [
             "До 3 точок продажу, 10 співробітників",
-            "Без обмежень за кількістю активних клієнтів",
             "Повна інтеграція з [Poster](/integrations/poster), [Alteg.io](/integrations/altegio)",
             "Промокоди, сертифікати та ваучери",
             "Персональні знижки з дедлайном (Trigger-маркетинг)",
@@ -254,12 +265,10 @@ export const dictionaries = {
           name: "Бізнес",
           monthlyPrice: PLAN_PRICES.business.monthly,
           annualPrice: PLAN_PRICES.business.annual,
-          extraLocation: "+₴699/дод. точка продажу",
+          extraLocation: `+₴${EXTRA_LOCATION_PRICES.business}/дод. точка продажу`,
           features: [
             "До 4 точок продажу, 20 співробітників",
-            "Без обмежень за кількістю активних клієнтів",
             "White Label: повний брендинг без згадок Rimbo",
-            "Власний домен",
             "API доступ для зв'язку з сайтом чи CRM",
             "Пріоритетна підтримка та допомога з налаштуванням",
           ],
@@ -354,7 +363,7 @@ export const dictionaries = {
           question:
             "Чи підходить Rimbo невеликому закладу з однією точкою?",
           answer:
-            "Так, Rimbo створений саме для малого та середнього бізнесу: кав'ярень, салонів, барбершопів, пекарень, студій. Запуск займає до однієї години, спеціальне обладнання не потрібне, достатньо смартфона, а тарифи розраховані на один заклад із можливістю розширення.",
+            "Так, Rimbo створений саме для малого та середнього бізнесу: кав'ярень, салонів, барбершопів, пекарень, студій. Запуск займає до однієї години, спеціальне обладнання не потрібне, достатньо смартфона, а початковий тариф розрахований на дві точки продажу з можливістю розширення.",
         },
         {
           question:
@@ -1970,7 +1979,7 @@ export const dictionaries = {
           name: "Growth",
           monthlyPrice: PLAN_PRICES.growth.monthly,
           annualPrice: PLAN_PRICES.growth.annual,
-          extraLocation: "+₴299/extra location",
+          extraLocation: `+₴${EXTRA_LOCATION_PRICES.growth}/extra location`,
           features: [
             "Up to 2 locations, 5 staff members",
             "Up to 5 loyalty cards + custom design",
@@ -1986,10 +1995,9 @@ export const dictionaries = {
           monthlyPrice: PLAN_PRICES.pro.monthly,
           annualPrice: PLAN_PRICES.pro.annual,
           popular: true,
-          extraLocation: "+₴499/extra location",
+          extraLocation: `+₴${EXTRA_LOCATION_PRICES.pro}/extra location`,
           features: [
             "Up to 3 locations, 10 staff members",
-            "No limits on active customers",
             "Full integration with [Poster](/en/integrations/poster), [Alteg.io](/en/integrations/altegio)",
             "Promo codes, gift certificates and vouchers",
             "Personal discounts with deadlines (trigger marketing)",
@@ -2001,12 +2009,10 @@ export const dictionaries = {
           name: "Business",
           monthlyPrice: PLAN_PRICES.business.monthly,
           annualPrice: PLAN_PRICES.business.annual,
-          extraLocation: "+₴699/extra location",
+          extraLocation: `+₴${EXTRA_LOCATION_PRICES.business}/extra location`,
           features: [
             "Up to 4 locations, 20 staff members",
-            "No limits on active customers",
             "White Label: full branding with no Rimbo mentions",
-            "Custom domain",
             "API access to connect your site or CRM",
             "Priority support and setup assistance",
           ],
@@ -2101,7 +2107,7 @@ export const dictionaries = {
           question:
             "Is Rimbo a good fit for a small single-location business?",
           answer:
-            "Yes. Rimbo is built for small and medium businesses: coffee shops, salons, barbershops, bakeries, studios. Launch takes under an hour, no special hardware is needed beyond a smartphone, and plans are priced for a single venue with room to grow.",
+            "Yes. Rimbo is built for small and medium businesses: coffee shops, salons, barbershops, bakeries, studios. Launch takes under an hour, no special hardware is needed beyond a smartphone, and the entry plan covers two locations with room to grow.",
         },
         {
           question:

@@ -31,10 +31,21 @@ function renderFeature(text: string) {
   return nodes.length > 0 ? nodes : text;
 }
 
-export function Pricing({ dict }: { dict: Dictionary }) {
+export function Pricing({
+  dict,
+  locale = "uk",
+}: {
+  dict: Dictionary;
+  locale?: string;
+}) {
   const ref = useScrollAnimation();
   const [annual, setAnnual] = useState(true);
   const { openModal } = useContactModal();
+
+  // Explicit, or the grouping separator comes from whatever locale the browser
+  // happens to be in — so the Ukrainian page could render "₴1,399" instead of
+  // "₴1 399", and the server and the client could disagree and trip hydration.
+  const priceLocale = locale === "en" ? "en-US" : "uk-UA";
 
   return (
     <section ref={ref} id="pricing" className="section-padding">
@@ -107,7 +118,7 @@ export function Pricing({ dict }: { dict: Dictionary }) {
                 <div className="mt-5 mb-8">
                   <div className="flex items-baseline gap-1">
                     <span className="text-4xl font-bold text-primary">
-                      ₴{displayPrice.toLocaleString()}
+                      ₴{displayPrice.toLocaleString(priceLocale)}
                     </span>
                     <span className="text-sm themed-text-muted">
                       {dict.pricing.perMonth}

@@ -40,7 +40,7 @@ export default function HomePage() {
         <Features dict={dict} />
         <HowItWorks dict={dict} />
         <Segments dict={dict} />
-        <Pricing dict={dict} />
+        <Pricing dict={dict} locale="uk" />
         <FAQ dict={dict} />
       </main>
       <Footer dict={dict} />

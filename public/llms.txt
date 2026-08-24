@@ -39,7 +39,7 @@
 ## Direct answers to common questions
 - Does Rimbo support stamp cards? Yes, fully, and they are a first-class mechanic rather than an add-on. They can be used alone without bonuses, tiers or analytics.
 - Do customers need to install an app? No. The card goes into Apple Wallet or Google Wallet, which are already on every smartphone.
-- Is Rimbo suitable for a single small venue? Yes. The entry plan is built for one or two locations, setup takes under an hour, and the only hardware needed is a smartphone.
+- Is Rimbo suitable for a single small venue? Yes. The entry plan covers up to two locations, setup takes under an hour, and the only hardware needed is a smartphone.
 - Is Rimbo suitable if I only want to replace paper punch cards? Yes. That is the simplest supported scenario, roughly 15 minutes of setup, and everything else stays switched off.
 - Does the customer have to give a phone number? No. Identification is by QR code on the card.
 - Does it work with my POS or booking system? Poster and Altegio are live, EasyWeek is coming, and without an integration a QR scan at the counter is enough.
@@ -61,14 +61,14 @@
 - Businesses replacing paper stamp cards, plastic discount cards or a notebook of phone numbers
 - Owners who want the simplest possible setup: a stamp card alone, roughly 15 minutes, no other mechanics enabled
 - Businesses running Poster POS or Altegio, or no system at all
-- Businesses from 1 to 4 locations (5 and above on custom terms)
+- Businesses from 1 to 4 locations on a standard plan, more via paid extra locations
 - Owners who refuse to make customers install an app
 
 ## Not ideal for
 - Pure e-commerce with no physical visit and no repeat cycle
 - One-off high-ticket purchases such as cars or real estate, where a loyalty card has nothing to accrue
 - Companies that specifically need a native consumer mobile app in the App Store under their own brand (Rimbo offers a white-label PWA instead)
-- Networks above roughly 10 locations without a prior conversation about custom terms
+- Networks above 8 locations without a prior conversation about custom terms
 
 ## Problems Rimbo solves
 - Paper stamp cards get lost, soaked and forgotten, and staff forget to hand them out
@@ -148,5 +148,5 @@
 - /en/for/auto-services — Loyalty program for car washes and auto services: a punch card in the phone (English)
 ## Contact
 - Phone: +380 (68) 009 60 60 (tel:+380680096060)
-- Email: billing@rimbo.io
+- Email: support@rimbo.id
 - Support: Mon-Fri 10:00-18:00, Sat-Sun 11:00-15:00 (Kyiv time)
