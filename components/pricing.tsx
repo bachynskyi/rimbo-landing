@@ -127,10 +127,9 @@ export function Pricing({ dict }: { dict: Dictionary }) {
                         <Check className="h-4 w-4 shrink-0 text-primary mt-0.5" />
                         <span>{renderFeature(feature)}</span>
                       </div>
-                      {fi === 0 && ("extraStaff" in tier || "extraLocation" in tier) && (
+                      {fi === 0 && "extraLocation" in tier && (
                         <div className="ml-[26px] mt-1 flex flex-col text-xs themed-text-muted">
-                          {"extraStaff" in tier && <span>{(tier as { extraStaff?: string }).extraStaff}</span>}
-                          {"extraLocation" in tier && <span>{(tier as { extraLocation?: string }).extraLocation}</span>}
+                          <span>{(tier as { extraLocation?: string }).extraLocation}</span>
                         </div>
                       )}
                     </li>
@@ -150,21 +149,25 @@ export function Pricing({ dict }: { dict: Dictionary }) {
           })}
         </div>
 
-        {/* Enterprise note */}
-        <p className="fade-up mt-10 text-center text-sm themed-text-muted">
-          {dict.pricing.enterpriseNote.split("{link}").map((part, i, arr) =>
-            i < arr.length - 1 ? (
-              <span key={i}>
-                {part}
-                <a href="mailto:support@rimbo.id" className="text-primary underline underline-offset-2 hover:opacity-80 transition-opacity">
-                  {dict.pricing.enterpriseNoteLink}
-                </a>
-              </span>
-            ) : (
-              <span key={i}>{part}</span>
-            )
-          )}
-        </p>
+        {/* Notes under the pricing grid */}
+        <div className="fade-up mt-10 flex flex-col gap-3 text-center text-sm themed-text-muted">
+          {dict.pricing.enterpriseNotes.map((note, ni) => (
+            <p key={ni}>
+              {note.split("{link}").map((part, i, arr) =>
+                i < arr.length - 1 ? (
+                  <span key={i}>
+                    {part}
+                    <a href="mailto:support@rimbo.id" className="text-primary underline underline-offset-2 hover:opacity-80 transition-opacity">
+                      {dict.pricing.enterpriseNoteLink}
+                    </a>
+                  </span>
+                ) : (
+                  <span key={i}>{part}</span>
+                )
+              )}
+            </p>
+          ))}
+        </div>
       </div>
     </section>
   );

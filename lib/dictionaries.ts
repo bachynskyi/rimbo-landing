@@ -199,8 +199,11 @@ export const dictionaries = {
       choosePlan: "Почати",
       includesPrefix: "Включає можливості плану",
       includesSuffix: ", а також:",
-      enterpriseNote: "* Від 5 точок продажу або 10 000+ активних користувачів {link}, підберемо індивідуальні умови.",
-      enterpriseNoteLink: "Зв'яжіться з нами",
+      enterpriseNotes: [
+        "Без обмежень за кількістю активних клієнтів на всіх тарифах. Умови вашої підписки зафіксовані на момент оформлення й не змінюються при подальших оновленнях тарифів.",
+        "Акаунти для команди безкоштовні на всіх тарифах. Каса входить у точку продажу. Потрібно більше акаунтів або понад 8 точок — {link}, зробимо індивідуальні умови.",
+      ],
+      enterpriseNoteLink: "напишіть нам",
       tiers: [
         /* Приховано на запит власника — план тимчасово не продається
         {
@@ -220,10 +223,11 @@ export const dictionaries = {
           name: "Розвиток",
           monthlyPrice: PLAN_PRICES.growth.monthly,
           annualPrice: PLAN_PRICES.growth.annual,
+          extraLocation: "+₴299/дод. точка продажу",
           features: [
             "До 2 точок продажу, 5 співробітників",
             "До 5 карток лояльності + кастомний дизайн",
-            "Ліміт: до 1 000 активних користувачів на місяць",
+            "Без обмежень за кількістю активних клієнтів",
             "Бонусний баланс (кешбек)",
             "Geo-Push: автоматичні Push поблизу",
             "Сегментація клієнтів (фільтри за активністю)",
@@ -235,11 +239,10 @@ export const dictionaries = {
           monthlyPrice: PLAN_PRICES.pro.monthly,
           annualPrice: PLAN_PRICES.pro.annual,
           popular: true,
-          extraStaff: "+₴199/дод. співробітник",
-          extraLocation: "+₴999/дод. точка продажу",
+          extraLocation: "+₴499/дод. точка продажу",
           features: [
             "До 3 точок продажу, 10 співробітників",
-            "До 3 000 активних користувачів на місяць",
+            "Без обмежень за кількістю активних клієнтів",
             "Повна інтеграція з [Poster](/integrations/poster), [Alteg.io](/integrations/altegio)",
             "Промокоди, сертифікати та ваучери",
             "Персональні знижки з дедлайном (Trigger-маркетинг)",
@@ -251,11 +254,10 @@ export const dictionaries = {
           name: "Бізнес",
           monthlyPrice: PLAN_PRICES.business.monthly,
           annualPrice: PLAN_PRICES.business.annual,
-          extraStaff: "+₴199/дод. співробітник",
-          extraLocation: "+₴999/дод. точка продажу",
+          extraLocation: "+₴699/дод. точка продажу",
           features: [
             "До 4 точок продажу, 20 співробітників",
-            "До 10 000 активних користувачів на місяць",
+            "Без обмежень за кількістю активних клієнтів",
             "White Label: повний брендинг без згадок Rimbo",
             "Власний домен",
             "API доступ для зв'язку з сайтом чи CRM",
@@ -292,6 +294,21 @@ export const dictionaries = {
           question: "Які способи оплати підтримуються?",
           answer:
             "Ми приймаємо оплату банківськими картками Visa та Mastercard, а також банківський переказ для річних планів.",
+        },
+        {
+          question: "Скільки коштує підключити ще одну точку?",
+          answer:
+            "Від 299 ₴ на місяць — залежно від тарифу. Каса входить у точку, окремо платити за неї не потрібно. Акаунти для адміністраторів і працівників безкоштовні на всіх тарифах.",
+        },
+        {
+          question: "Чи є обмеження за кількістю клієнтів у базі?",
+          answer:
+            "Ні, на всіх тарифах база клієнтів не обмежена. Якщо ми колись змінимо тарифну політику, умови вашої підписки залишаться незмінними — зміни діють лише для нових підписок і завжди вказані в прайсі до моменту оплати.",
+        },
+        {
+          question: "У нас мережа з 10 закладів. Скільки це коштує?",
+          answer:
+            "Для мереж понад 8 точок ми готуємо індивідуальну пропозицію: узгоджуємо ліміти, рівні доступу для керівників і франчайзі, зведену аналітику по мережі. Напишіть нам — порахуємо під ваш формат.",
         },
         {
           question: "Як працює інтеграція з POS?",
@@ -374,7 +391,7 @@ export const dictionaries = {
     // Terms of Use
     terms: {
       title: "Публічна оферта (Умови використання)",
-      lastUpdated: "Дата публікації: 25 квітня 2026 р.",
+      lastUpdated: "Дата публікації: 24 серпня 2026 р.",
       backLabel: "На головну",
       sections: [
         {
@@ -399,7 +416,7 @@ export const dictionaries = {
         },
         {
           heading: "5. Тарифні плани та вартість послуг",
-          content: `Вартість послуг визначається обраним Тарифним планом. Актуальні тарифи та ціни розміщуються на Платформі: ${SITE_URL}/#pricing. У разі розбіжностей пріоритет мають ціни, опубліковані на Платформі.\n\nВиконавець має право змінювати тарифи з попереднім повідомленням Замовника за 14 календарних днів. Нові тарифи набувають чинності з наступного розрахункового періоду.\n\nВиконавець залишає за собою право переглядати вартість послуг один раз на рік у зв'язку з інфляцією та можливим додаванням нового функціоналу.`,
+          content: `Вартість послуг визначається обраним Тарифним планом. Актуальні тарифи та ціни розміщуються на Платформі: ${SITE_URL}/#pricing. У разі розбіжностей пріоритет мають ціни, опубліковані на Платформі.\n\n5.1. Точка продажу та акаунти. Точка продажу — окрема фізична адреса ведення діяльності Замовника, підключена до Сервісу. До кожної точки продажу входить одне робоче місце каси (термінал) без додаткової оплати. Акаунт — персональний доступ працівника Замовника до адміністративної панелі або застосунку сканування. Кількість акаунтів, включених до тарифного плану, зазначена в описі відповідного плану на Сайті. Акаунти в межах цієї кількості надаються без додаткової оплати. Підключення точок продажу понад кількість, включену до тарифного плану, здійснюється за окрему плату згідно з прайсом, розміщеним на Сайті.\n\n5.2. Обмеження тарифних планів. Виконавець має право встановлювати кількісні обмеження тарифних планів (зокрема за кількістю активних клієнтів у базі, точок продажу, карток лояльності, акаунтів). Актуальні обмеження зазначаються в описі тарифного плану на Сайті та є доступними Замовнику до моменту оформлення підписки. Обмеження, встановлені після оформлення підписки, не застосовуються до вже активних підписок до моменту їх переоформлення на інший тарифний план за ініціативою Замовника.\n\n5.3. Фіксація умов підписки. Обсяг послуг та кількісні обмеження, що діяли на момент оформлення підписки, зберігаються за Замовником протягом усього періоду її безперервної дії та не змінюються при подальших змінах тарифної політики Виконавця. Зокрема, для підписок, оформлених до 31 жовтня 2026 року, не застосовуються обмеження за кількістю активних клієнтів у базі, запроваджені після цієї дати. Зафіксовані умови припиняють дію в разі переривання підписки на строк понад 60 календарних днів або переходу Замовника на інший тарифний план.\n\n5.4. Зміна тарифів. Виконавець має право змінювати тарифи та склад тарифних планів. Зміни набувають чинності: для нових підписок — з моменту публікації нового прайсу на Сайті; для діючих підписок — не раніше ніж через 30 календарних днів з дати повідомлення Замовника на електронну адресу, зазначену при реєстрації, та не раніше закінчення оплаченого періоду. Оплачений період обслуговування не підлягає перерахунку у зв'язку зі зміною тарифів. У разі незгоди зі зміною тарифів Замовник має право припинити користування Сервісом до дати набуття змінами чинності; невикористаний залишок оплаченого періоду повертається пропорційно.\n\n5.5. Індексація вартості. Вартість послуг визначається в гривні. Оскільки частина витрат Виконавця на надання послуг має валютну складову (інфраструктура, сервіси Apple та Google), Виконавець має право індексувати вартість послуг у порядку, передбаченому пунктом 5.4 цієї Оферти.\n\n5.6. Індивідуальні умови. Для Замовників з кількістю точок продажу понад 8, а також у разі потреби в обсягах послуг, що перевищують обмеження публічних тарифних планів, умови обслуговування визначаються окремою письмовою домовленістю Сторін.`,
         },
         {
           heading: "6. Порядок розрахунків",
@@ -1929,8 +1946,11 @@ export const dictionaries = {
       choosePlan: "Get Started",
       includesPrefix: "Includes",
       includesSuffix: " features, plus:",
-      enterpriseNote: "* From 5 locations or 10,000+ active users {link} and we will put together custom terms.",
-      enterpriseNoteLink: "Contact us",
+      enterpriseNotes: [
+        "No limits on the number of active customers on any plan. Your subscription terms are locked in at sign-up and do not change with future pricing updates.",
+        "Team accounts are free on all plans. A till is included with every location. Need more accounts or more than 8 locations — {link} and we will put together custom terms.",
+      ],
+      enterpriseNoteLink: "contact us",
       tiers: [
         /* Hidden at the owner's request, this plan is temporarily not sold
         {
@@ -1950,10 +1970,11 @@ export const dictionaries = {
           name: "Growth",
           monthlyPrice: PLAN_PRICES.growth.monthly,
           annualPrice: PLAN_PRICES.growth.annual,
+          extraLocation: "+₴299/extra location",
           features: [
             "Up to 2 locations, 5 staff members",
             "Up to 5 loyalty cards + custom design",
-            "Limit: up to 1,000 active users per month",
+            "No limits on active customers",
             "Bonus balance (cashback)",
             "Geo-Push: automatic push nearby",
             "Customer segmentation (activity filters)",
@@ -1965,11 +1986,10 @@ export const dictionaries = {
           monthlyPrice: PLAN_PRICES.pro.monthly,
           annualPrice: PLAN_PRICES.pro.annual,
           popular: true,
-          extraStaff: "+₴199/extra employee",
-          extraLocation: "+₴999/extra location",
+          extraLocation: "+₴499/extra location",
           features: [
             "Up to 3 locations, 10 staff members",
-            "Up to 3,000 active users per month",
+            "No limits on active customers",
             "Full integration with [Poster](/en/integrations/poster), [Alteg.io](/en/integrations/altegio)",
             "Promo codes, gift certificates and vouchers",
             "Personal discounts with deadlines (trigger marketing)",
@@ -1981,11 +2001,10 @@ export const dictionaries = {
           name: "Business",
           monthlyPrice: PLAN_PRICES.business.monthly,
           annualPrice: PLAN_PRICES.business.annual,
-          extraStaff: "+₴199/extra employee",
-          extraLocation: "+₴999/extra location",
+          extraLocation: "+₴699/extra location",
           features: [
             "Up to 4 locations, 20 staff members",
-            "Up to 10,000 active users per month",
+            "No limits on active customers",
             "White Label: full branding with no Rimbo mentions",
             "Custom domain",
             "API access to connect your site or CRM",
@@ -2022,6 +2041,21 @@ export const dictionaries = {
           question: "What payment methods are accepted?",
           answer:
             "We accept Visa and Mastercard payments, as well as bank transfer for annual plans.",
+        },
+        {
+          question: "How much does it cost to connect another location?",
+          answer:
+            "From ₴299 per month, depending on your plan. A till is included with each location, so there is no separate charge for it. Accounts for admins and staff are free on all plans.",
+        },
+        {
+          question: "Is there a limit on the number of customers in the database?",
+          answer:
+            "No, the customer base is unlimited on all plans. If we ever change our pricing policy, your subscription terms stay the same: changes apply only to new subscriptions and are always shown in the price list before payment.",
+        },
+        {
+          question: "We run a chain of 10 venues. How much does it cost?",
+          answer:
+            "For chains with more than 8 locations we prepare an individual offer: we agree on limits, access levels for managers and franchisees, and network-wide analytics. Contact us and we will price it for your format.",
         },
         {
           question: "How does POS integration work?",
@@ -2104,7 +2138,7 @@ export const dictionaries = {
     // Terms of Use
     terms: {
       title: "Public Offer (Terms of Use)",
-      lastUpdated: "Publication date: April 25, 2026",
+      lastUpdated: "Publication date: August 24, 2026",
       backLabel: "Back to home",
       sections: [
         {
@@ -2129,7 +2163,7 @@ export const dictionaries = {
         },
         {
           heading: "5. Tariff Plans and Pricing",
-          content: `The cost of services is determined by the selected Tariff Plan. Current tariffs and prices are published on the Platform: ${SITE_URL}/en#pricing. In case of discrepancies, prices published on the Platform shall prevail.\n\nThe Executor reserves the right to change tariffs with 14 calendar days' prior notice to the Customer. New tariffs take effect from the next billing period.\n\nThe Executor reserves the right to review service pricing once a year due to inflation and possible addition of new functionality.`,
+          content: `The cost of services is determined by the selected Tariff Plan. Current tariffs and prices are published on the Platform: ${SITE_URL}/en#pricing. In case of discrepancies, prices published on the Platform shall prevail.\n\n5.1. Points of Sale and Accounts. A Point of Sale is a separate physical address where the Customer conducts business, connected to the Service. Each Point of Sale includes one till (terminal) workstation at no additional charge. An Account is a personal access granted to the Customer's employee to the administrative panel or the scanning application. The number of Accounts included in a Tariff Plan is specified in the description of the respective plan on the Site. Accounts within this number are provided at no additional charge. Connecting Points of Sale beyond the number included in the Tariff Plan is subject to a separate fee according to the price list published on the Site.\n\n5.2. Tariff Plan Limits. The Executor has the right to set quantitative limits for Tariff Plans (including limits on the number of active clients in the database, points of sale, loyalty cards, and accounts). Current limits are specified in the Tariff Plan description on the Site and are available to the Customer before the subscription is placed. Limits introduced after a subscription is placed do not apply to already active subscriptions until the Customer switches to another Tariff Plan on their own initiative.\n\n5.3. Locking of Subscription Terms. The scope of services and the quantitative limits in effect at the moment the subscription was placed remain with the Customer for the entire period of its uninterrupted validity and do not change with subsequent changes to the Executor's pricing policy. In particular, for subscriptions placed before October 31, 2026, no limits on the number of active clients in the database introduced after that date shall apply. The locked terms cease to apply if the subscription is interrupted for more than 60 calendar days or if the Customer switches to another Tariff Plan.\n\n5.4. Tariff Changes. The Executor has the right to change tariffs and the composition of Tariff Plans. Changes take effect: for new subscriptions — from the moment the new price list is published on the Site; for existing subscriptions — no earlier than 30 calendar days from the date the Customer is notified at the email address provided at registration, and no earlier than the end of the paid period. The paid service period is not subject to recalculation due to tariff changes. If the Customer disagrees with a tariff change, they have the right to stop using the Service before the change takes effect; the unused remainder of the paid period is refunded proportionally.\n\n5.5. Price Indexation. The cost of services is set in hryvnia (UAH). Since part of the Executor's costs of providing the services has a foreign-currency component (infrastructure, Apple and Google services), the Executor has the right to index the cost of services in the manner provided by clause 5.4 of this Offer.\n\n5.6. Individual Terms. For Customers with more than 8 points of sale, as well as where the required volume of services exceeds the limits of the public Tariff Plans, the terms of service are determined by a separate written agreement between the Parties.`,
         },
         {
           heading: "6. Payment Terms",

@@ -29,10 +29,11 @@
 - Without any integration Rimbo still works fully: staff scan the customer's QR code.
 
 ## Pricing (UAH per month, annual price in brackets, 14-day free trial on every plan)
-- Growth / Розвиток: 799 (699 annual). Up to 2 locations, 5 staff, up to 5 loyalty cards with custom design, up to 1,000 active users per month, cashback balance, Geo-Push, customer segmentation, basic analytics. No extra-location purchase on this plan; growing businesses move to Pro.
-- Pro / Профі (most popular): 1399 (1199 annual). Up to 3 locations, 10 staff, up to 3,000 active users per month, full Poster and Altegio integration, promo codes, gift certificates and vouchers, personal discounts with deadlines, custom PWA domain, advanced RFM analytics. Extra location +999, extra staff member +199.
-- Business / Бізнес: 1999 (1699 annual). Up to 4 locations, 20 staff, up to 10,000 active users per month, White Label with no Rimbo branding, custom domain, API access, priority support. Extra location +999, extra staff member +199.
-- From 5 locations or 10,000+ active users: custom terms on request.
+- Growth / Розвиток: 799 (699 annual). Up to 2 locations, 5 staff, up to 5 loyalty cards with custom design, no limits on active customers, cashback balance, Geo-Push, customer segmentation, basic analytics. Extra location +299.
+- Pro / Профі (most popular): 1399 (1199 annual). Up to 3 locations, 10 staff, no limits on active customers, full Poster and Altegio integration, promo codes, gift certificates and vouchers, personal discounts with deadlines, custom PWA domain, advanced RFM analytics. Extra location +499.
+- Business / Бізнес: 1999 (1699 annual). Up to 4 locations, 20 staff, no limits on active customers, White Label with no Rimbo branding, custom domain, API access, priority support. Extra location +699.
+- Staff accounts are free on all plans; a till is included with every location, with no separate charge for it. Subscription terms are locked in at sign-up and do not change with later pricing updates.
+- Chains with more than 8 locations: custom terms on request.
 
 ## Direct answers to common questions
 - Does Rimbo support stamp cards? Yes, fully, and they are a first-class mechanic rather than an add-on. They can be used alone without bonuses, tiers or analytics.
@@ -52,7 +53,7 @@
 - Billing currency: UAH
 - Phone: +380 (68) 009 60 60
 - Email: support@rimbo.id
-- Last updated: 2026-08-18
+- Last updated: 2026-08-24
 
 ## Best fit for
 - Venues where customers come back regularly: coffee shops, bakeries, restaurants, barbershops, beauty and nail salons, grooming, car washes, fitness studios
