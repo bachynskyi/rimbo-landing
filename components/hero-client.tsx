@@ -21,7 +21,7 @@ export function HeroClient({
 
   return (
     <div ref={ref}>
-      <h1 className="text-5xl font-bold leading-[1.2] tracking-tight md:text-7xl themed-text">
+      <h1 className="min-h-[2.4em] text-5xl font-bold leading-[1.2] tracking-tight md:text-7xl themed-text">
         {dict.hero.headlinePrefix}
         <RotatingPill words={dict.hero.rotatingWords} />
         {dict.hero.headlineSuffix}
