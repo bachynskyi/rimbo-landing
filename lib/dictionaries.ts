@@ -293,7 +293,7 @@ export const dictionaries = {
         {
           question: "Які способи оплати підтримуються?",
           answer:
-            "Ми приймаємо оплату банківськими картками Visa та Mastercard, а також банківський переказ для річних планів.",
+            "Є три способи оплати: онлайн-підписка банківською карткою на сайті (платежі проходять через monobank), оплата за рахунком на IBAN або готівкою. Якщо потрібен рахунок на ФОП чи компанію — напишіть нам, і ми його виставимо.",
         },
         {
           question: "Скільки коштує підключити ще одну точку?",
@@ -420,7 +420,7 @@ export const dictionaries = {
         },
         {
           heading: "6. Порядок розрахунків",
-          content: "Оплата здійснюється щомісячно на умовах передоплати. Замовник зобов'язаний здійснити оплату протягом 7 (семи) календарних днів з моменту виставлення рахунку.\n\nОплата здійснюється у безготівковій формі в національній валюті України (гривня, UAH). Повернення коштів за сплачені послуги не здійснюється.\n\nОплата здійснюється виключно за доступ до програмного забезпечення Rimbo (SaaS-послуга) і не є внеском, депозитом або передплатою будь-якого фінансового інструменту.\n\nУ разі прострочення оплати понад 7 календарних днів Виконавець має право призупинити доступ Замовника до Платформи. У разі прострочення оплати понад 30 календарних днів Виконавець має право повністю видалити дані Замовника та його Кінцевих Клієнтів без можливості відновлення.",
+          content: "Оплата здійснюється на умовах передоплати за обраний період (місяць або рік). У разі оплати за рахунком Замовник зобов'язаний здійснити оплату протягом 7 (семи) календарних днів з моменту його виставлення.\n\nОплата здійснюється в національній валюті України (гривня, UAH) одним із таких способів: онлайн-підписка банківською карткою на Сайті з регулярними автоматичними списаннями (платежі обробляються платіжним сервісом monobank); безготівковий переказ на банківський рахунок Виконавця (IBAN) на підставі виставленого рахунку; готівкою з оформленням розрахункового документа відповідно до вимог законодавства України. Повернення коштів за сплачені послуги не здійснюється, крім випадків, прямо передбачених цією Офертою.\n\nОплата здійснюється виключно за доступ до програмного забезпечення Rimbo (SaaS-послуга) і не є внеском, депозитом або передплатою будь-якого фінансового інструменту.\n\nУ разі прострочення оплати понад 7 календарних днів Виконавець має право призупинити доступ Замовника до Платформи. У разі прострочення оплати понад 30 календарних днів Виконавець має право повністю видалити дані Замовника та його Кінцевих Клієнтів без можливості відновлення.",
         },
         {
           heading: "7. Права та обов'язки Виконавця",
@@ -2040,7 +2040,7 @@ export const dictionaries = {
         {
           question: "What payment methods are accepted?",
           answer:
-            "We accept Visa and Mastercard payments, as well as bank transfer for annual plans.",
+            "There are three ways to pay: an online card subscription on the website (payments are processed via monobank), payment by invoice to our IBAN, or cash. If you need an invoice issued to your company or sole proprietorship, just contact us.",
         },
         {
           question: "How much does it cost to connect another location?",
@@ -2167,7 +2167,7 @@ export const dictionaries = {
         },
         {
           heading: "6. Payment Terms",
-          content: "Payment is made monthly on a prepayment basis. The Customer must make payment within 7 (seven) calendar days from the date of invoice.\n\nPayment is made by bank transfer in the national currency of Ukraine (hryvnia, UAH). No refunds are provided for paid services.\n\nPayment is made solely for access to the Rimbo software (a SaaS service) and is not a contribution, deposit, or prepayment of any financial instrument.\n\nIf payment is overdue by more than 7 calendar days, the Executor may suspend the Customer's access to the Platform. If payment is overdue by more than 30 calendar days, the Executor may permanently delete the Customer's data and their End Clients' data without the possibility of restoration.",
+          content: "Payment is made on a prepayment basis for the selected period (month or year). When paying by invoice, the Customer must make payment within 7 (seven) calendar days from the date of invoice.\n\nPayment is made in the national currency of Ukraine (hryvnia, UAH) by one of the following methods: an online card subscription on the Site with recurring automatic charges (payments are processed by the monobank payment service); a bank transfer to the Executor's bank account (IBAN) based on an issued invoice; or cash with a settlement document issued in accordance with the legislation of Ukraine. No refunds are provided for paid services, except in cases expressly provided for by this Offer.\n\nPayment is made solely for access to the Rimbo software (a SaaS service) and is not a contribution, deposit, or prepayment of any financial instrument.\n\nIf payment is overdue by more than 7 calendar days, the Executor may suspend the Customer's access to the Platform. If payment is overdue by more than 30 calendar days, the Executor may permanently delete the Customer's data and their End Clients' data without the possibility of restoration.",
         },
         {
           heading: "7. Rights and Obligations of the Executor",
