@@ -34,7 +34,7 @@
 - Business / Бізнес: 1999 (1699 annual). Up to 4 locations, 20 staff, no limits on active customers, White Label with no Rimbo branding, custom domain, API access, priority support. Extra location +699.
 - Staff accounts are free on all plans; a till is included with every location, with no separate charge for it. Subscription terms are locked in at sign-up and do not change with later pricing updates.
 - Chains with more than 8 locations: custom terms on request.
-- Three ways to pay: online card subscription on the website (processed via monobank), invoice to IBAN, or cash.
+- Two ways to pay: online card subscription on the website (processed via monobank) or invoice to IBAN.
 
 ## Direct answers to common questions
 - Does Rimbo support stamp cards? Yes, fully, and they are a first-class mechanic rather than an add-on. They can be used alone without bonuses, tiers or analytics.
