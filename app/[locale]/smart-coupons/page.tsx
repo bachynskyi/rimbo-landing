@@ -9,7 +9,7 @@ const metaDict = getDictionary("en");
 export const metadata: Metadata = {
   title: metaDict.smartCoupons.title,
   description: metaDict.smartCoupons.metaDescription,
-  alternates: getAlternateLinks("/smart-coupons"),
+  alternates: getAlternateLinks("/smart-coupons", "en"),
   openGraph: {
     title: metaDict.smartCoupons.title,
     description: metaDict.smartCoupons.metaDescription,

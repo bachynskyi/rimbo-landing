@@ -9,7 +9,7 @@ const dict = getDictionary("en");
 export const metadata: Metadata = {
   title: dict.altegioIntegration.title,
   description: dict.altegioIntegration.metaDescription,
-  alternates: getAlternateLinks("/integrations/altegio"),
+  alternates: getAlternateLinks("/integrations/altegio", "en"),
   openGraph: {
     title: dict.altegioIntegration.title,
     description: dict.altegioIntegration.metaDescription,

@@ -9,7 +9,7 @@ const dict = getDictionary("en");
 export const metadata: Metadata = {
   title: dict.loyaltyAutomation.title,
   description: dict.loyaltyAutomation.metaDescription,
-  alternates: getAlternateLinks("/loyalty-automation"),
+  alternates: getAlternateLinks("/loyalty-automation", "en"),
   openGraph: {
     title: dict.loyaltyAutomation.title,
     description: dict.loyaltyAutomation.metaDescription,

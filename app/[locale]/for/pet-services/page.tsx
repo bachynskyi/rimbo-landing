@@ -9,7 +9,7 @@ const metaDict = getDictionary("en");
 export const metadata: Metadata = {
   title: metaDict.forPetServices.title,
   description: metaDict.forPetServices.metaDescription,
-  alternates: getAlternateLinks("/for/pet-services"),
+  alternates: getAlternateLinks("/for/pet-services", "en"),
   openGraph: {
     title: metaDict.forPetServices.title,
     description: metaDict.forPetServices.metaDescription,

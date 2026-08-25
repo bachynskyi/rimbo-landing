@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   description: dict.hero.subtitle,
   manifest: "/manifest.json",
   metadataBase: new URL(SITE_URL),
-  alternates: getAlternateLinks("/"),
+  alternates: getAlternateLinks("/", "en"),
   openGraph: {
     ...OG_DEFAULTS,
     title: `${SITE_NAME} — Digital Loyalty Platform`,

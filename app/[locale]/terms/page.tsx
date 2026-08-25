@@ -9,7 +9,7 @@ const dict = getDictionary("en");
 export const metadata: Metadata = {
   title: dict.terms.title,
   description: `${dict.terms.title} — ${SITE_NAME}`,
-  alternates: getAlternateLinks("/terms"),
+  alternates: getAlternateLinks("/terms", "en"),
   openGraph: {
     title: dict.terms.title,
     description: `${dict.terms.title} — ${SITE_NAME}`,

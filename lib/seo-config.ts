@@ -24,12 +24,14 @@ export function getCanonicalUrl(path: string): string {
   return `${SITE_URL}${normalized}`;
 }
 
-export function getAlternateLinks(path: string) {
+export function getAlternateLinks(path: string, locale: "uk" | "en" = "uk") {
   // path is the locale-agnostic path, e.g. "/" or "/privacy"
   const ukPath = path === "/" ? "" : path;
   const enPath = `/en${path === "/" ? "" : path}`;
   return {
-    canonical: `${SITE_URL}${ukPath}`,
+    // Canonical must be self-referential per locale, otherwise Google
+    // treats /en/* as duplicates of the uk pages and never indexes them.
+    canonical: `${SITE_URL}${locale === "en" ? enPath : ukPath}`,
     languages: {
       uk: `${SITE_URL}${ukPath}`,
       en: `${SITE_URL}${enPath}`,

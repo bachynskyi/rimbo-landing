@@ -9,7 +9,7 @@ const dict = getDictionary("en");
 export const metadata: Metadata = {
   title: dict.pushNotifications.title,
   description: dict.pushNotifications.metaDescription,
-  alternates: getAlternateLinks("/push-notifications"),
+  alternates: getAlternateLinks("/push-notifications", "en"),
   openGraph: {
     title: dict.pushNotifications.title,
     description: dict.pushNotifications.metaDescription,

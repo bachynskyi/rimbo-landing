@@ -9,7 +9,7 @@ const metaDict = getDictionary("en");
 export const metadata: Metadata = {
   title: metaDict.cashbackLoyalty.title,
   description: metaDict.cashbackLoyalty.metaDescription,
-  alternates: getAlternateLinks("/cashback-loyalty"),
+  alternates: getAlternateLinks("/cashback-loyalty", "en"),
   openGraph: {
     title: metaDict.cashbackLoyalty.title,
     description: metaDict.cashbackLoyalty.metaDescription,
