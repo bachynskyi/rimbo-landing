@@ -49,6 +49,8 @@ export const dictionaries = {
       rotatingWords: ["Штамп-картки", "Бонуси", "Знижки", "Купони"],
       subtitle:
         "Все цифрове, все автоматичне, все в телефоні клієнта",
+      metaDescription:
+        "Rimbo — платформа лояльності для вашого бізнесу: картки в Apple Wallet і Google Wallet, бонуси, штампи, купони, подарункові сертифікати та push-сповіщення.",
       ctaPrimary: "Почати безкоштовно",
       ctaSecondary: "Як це працює",
       badges: {
@@ -1805,6 +1807,8 @@ export const dictionaries = {
       rotatingWords: ["Stamp card", "Bonus", "Discount", "Coupon"],
       subtitle:
         "All digital, all automatic, all in your customers' phones",
+      metaDescription:
+        "Rimbo is a digital loyalty platform for your business: Apple Wallet and Google Wallet cards, stamps, cashback, coupons, gift certificates and push notifications.",
       ctaPrimary: "Get Started Free",
       ctaSecondary: "See How It Works",
       badges: {

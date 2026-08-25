@@ -17,14 +17,14 @@ export const metadata: Metadata = {
     default: `${SITE_NAME} — Цифрова платформа лояльності`,
     template: `%s | ${SITE_NAME}`,
   },
-  description: dict.hero.subtitle,
+  description: dict.hero.metaDescription,
   manifest: "/manifest.json",
   metadataBase: new URL(SITE_URL),
   alternates: getAlternateLinks("/"),
   openGraph: {
     ...OG_DEFAULTS,
     title: `${SITE_NAME} — Цифрова платформа лояльності`,
-    description: dict.hero.subtitle,
+    description: dict.hero.metaDescription,
     url: SITE_URL,
     locale: LOCALE_MAP.uk,
     alternateLocale: LOCALE_MAP.en,
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: `${SITE_NAME} — Цифрова платформа лояльності`,
-    description: dict.hero.subtitle,
+    description: dict.hero.metaDescription,
     images: OG_DEFAULTS.images,
   },
 };
