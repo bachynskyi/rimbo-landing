@@ -22,7 +22,12 @@ function normalizeUkrainianPhone(phone: string): string {
 export function ContactModal({ dict }: { dict: Dictionary }) {
   const { isOpen, selectedPlan, closeModal } = useContactModal();
   const t = dict.contactModal;
-  const tierNames = dict.pricing.tiers.map((tier) => tier.name);
+  // The plans, plus custom work — which is not a tier and so cannot come from
+  // dict.pricing.tiers without inventing a pricing card for it.
+  const tierNames = [
+    ...dict.pricing.tiers.map((tier) => tier.name),
+    t.customSolution,
+  ];
 
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");

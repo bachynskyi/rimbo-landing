@@ -216,6 +216,9 @@ export const dictionaries = {
         "Акаунти для команди безкоштовні на всіх тарифах. Каса входить у точку продажу. Потрібно більше акаунтів або понад 8 точок — {link}, зробимо індивідуальні умови.",
       ],
       enterpriseNoteLink: "напишіть нам",
+      customSolutionNote:
+        "Хочете мобільний застосунок лояльності чи іншу інтеграцію? {link}",
+      customSolutionNoteLink: "Замовте індивідуальне рішення",
       tiers: [
         /* Приховано на запит власника — план тимчасово не продається
         {
@@ -328,7 +331,7 @@ export const dictionaries = {
           question:
             "Чи потрібно клієнтам встановлювати додаток?",
           answer:
-            "Ні. Картка лояльності додається в Apple Wallet або Google Wallet одним дотиком, бо ці застосунки вже є на кожному смартфоні. За даними [Devlight 2025](https://devlight.io/loyalty-research-2025/), 51% українців хоч раз відмовлялися від реєстрації у програмі лояльності, і найчастіша виправна причина це довга анкета (51,9%), тому ми прибрали її повністю. А з картки у Wallet клієнт одним дотиком відкриває власний кабінет: історія візитів, бонуси, купони.",
+            "Ні. Картка лояльності додається в Apple Wallet або Google Wallet одним дотиком, бо ці застосунки вже є на кожному смартфоні. За даними дослідження Devlight 2025, 51% українців хоч раз відмовлялися від реєстрації у програмі лояльності, і найчастіша виправна причина це довга анкета (51,9%), тому ми прибрали її повністю. А з картки у Wallet клієнт одним дотиком відкриває власний кабінет: історія візитів, бонуси, купони.",
           link: { label: "Чому клієнти не встановлюють додатки лояльності", href: "/loyalty-without-app" },
         },
         {
@@ -383,6 +386,12 @@ export const dictionaries = {
             "Які механіки лояльності підтримує Rimbo?",
           answer:
             "Штамп-картки, бонуси і кешбек 🪙, рівні знижок, промокоди, подарункові сертифікати, розумні купони з вікнами дії, вітальні бонуси, персональні знижки з дедлайном і Geo-Push поблизу закладу. Усі механіки живуть в одній картці Wallet і вмикаються окремо або разом.",
+        },
+        {
+          question:
+            "Чи можете ви зробити мобільний застосунок або інтеграцію під нас?",
+          answer:
+            "Так. Крім тарифів ми беремо індивідуальні проєкти: власний мобільний застосунок під вашим брендом, інтеграцію з вашою POS, CRM чи системою бронювання, нестандартну механіку лояльності або доопрацювання під ваш процес. Poster і Alteg.io уже підключені, на тарифі Бізнес є відкритий API, а якщо готового рішення немає — зробимо. Опишіть задачу, і ми оцінимо терміни та вартість.",
         },
       ],
     },
@@ -553,6 +562,9 @@ export const dictionaries = {
       successTitle: "Дякуємо!",
       successMessage: "Ми отримали вашу заявку і зв'яжемось з вами найближчим часом.",
       close: "Закрити",
+      // Приєднується до списку тарифів у випадному списку, щоб індивідуальні
+      // запити було видно окремо. Це саме значення передається в openModal().
+      customSolution: "Індивідуальне рішення",
     },
     // Articles
     digitalLoyaltyCards: {
@@ -1960,6 +1972,9 @@ export const dictionaries = {
         "Team accounts are free on all plans. A till is included with every location. Need more accounts or more than 8 locations — {link} and we will put together custom terms.",
       ],
       enterpriseNoteLink: "contact us",
+      customSolutionNote:
+        "Want a mobile loyalty app or any other integration? {link}",
+      customSolutionNoteLink: "Ask for a custom solution",
       tiers: [
         /* Hidden at the owner's request, this plan is temporarily not sold
         {
@@ -2072,7 +2087,7 @@ export const dictionaries = {
           question:
             "Do customers need to install an app?",
           answer:
-            "No. The loyalty card is added to Apple Wallet or Google Wallet in one tap, and these apps are already on every smartphone. Per [Devlight 2025](https://devlight.io/loyalty-research-2025/), 51% of Ukrainians have refused a loyalty sign-up at least once, with a long form as the top fixable reason (51.9%), so we removed it entirely. And from the Wallet card the customer can open their personal cabinet in one tap: visit history, bonuses, coupons.",
+            "No. The loyalty card is added to Apple Wallet or Google Wallet in one tap, and these apps are already on every smartphone. Per the Devlight 2025 study, 51% of Ukrainians have refused a loyalty sign-up at least once, with a long form as the top fixable reason (51.9%), so we removed it entirely. And from the Wallet card the customer can open their personal cabinet in one tap: visit history, bonuses, coupons.",
           link: { label: "Why customers refuse loyalty apps", href: "/loyalty-without-app" },
         },
         {
@@ -2127,6 +2142,12 @@ export const dictionaries = {
             "Which loyalty mechanics does Rimbo support?",
           answer:
             "Stamp cards, bonuses and 🪙 cashback, discount tiers, promo codes, gift certificates, smart coupons with time windows, welcome bonuses, personal discounts with deadlines, and Geo-Push near your venue. Every mechanic lives in one Wallet card and can be enabled separately or together.",
+        },
+        {
+          question:
+            "Can you build a mobile app or a custom integration for us?",
+          answer:
+            "Yes. Beyond the plans we take on custom projects: a branded mobile app of your own, an integration with your POS, CRM or booking system, a non-standard loyalty mechanic, or changes built around how you already work. Poster and Alteg.io are already connected and the Business plan includes an open API — and where no ready-made option exists, we build it. Describe what you need and we will scope the timeline and cost.",
         },
       ],
     },
@@ -2297,6 +2318,9 @@ export const dictionaries = {
       successTitle: "Thank you!",
       successMessage: "We've received your request and will get back to you shortly.",
       close: "Close",
+      // Appended to the tier list in the dropdown so custom enquiries stand out.
+      // The same value is what openModal() preselects.
+      customSolution: "Custom solution",
     },
     // Articles
     digitalLoyaltyCards: {

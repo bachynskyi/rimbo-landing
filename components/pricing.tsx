@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Check } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import { useContactModal } from "@/contexts/contact-modal-context";
+import { ContactLink } from "@/components/contact-link";
 import type { Dictionary } from "@/lib/dictionaries";
 
 function renderFeature(text: string) {
@@ -178,6 +179,27 @@ export function Pricing({
               )}
             </p>
           ))}
+
+          {/* Custom work. Unlike the notes above, this link opens the contact
+              modal rather than a mail client, with the plan dropdown already on
+              "custom solution" so the enquiry arrives tagged. */}
+          <p>
+            {dict.pricing.customSolutionNote
+              .split("{link}")
+              .map((part, i, arr) =>
+                i < arr.length - 1 ? (
+                  <span key={i}>
+                    {part}
+                    <ContactLink
+                      label={dict.pricing.customSolutionNoteLink}
+                      plan={dict.contactModal.customSolution}
+                    />
+                  </span>
+                ) : (
+                  <span key={i}>{part}</span>
+                )
+              )}
+          </p>
         </div>
       </div>
     </section>
