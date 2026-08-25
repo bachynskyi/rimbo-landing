@@ -242,7 +242,7 @@ export const dictionaries = {
           annualPrice: PLAN_PRICES.growth.annual,
           extraLocation: `+₴${EXTRA_LOCATION_PRICES.growth}/дод. точка продажу`,
           features: [
-            "До 2 точок продажу, 5 співробітників",
+            "Включено 2 точки продажу, 5 співробітників",
             "До 5 карток лояльності + кастомний дизайн",
             "Без обмежень за кількістю активних клієнтів",
             "Бонусний баланс (кешбек)",
@@ -258,7 +258,7 @@ export const dictionaries = {
           popular: true,
           extraLocation: `+₴${EXTRA_LOCATION_PRICES.pro}/дод. точка продажу`,
           features: [
-            "До 3 точок продажу, 10 співробітників",
+            "Включено 3 точки продажу, 10 співробітників",
             "Повна інтеграція з [Poster](/integrations/poster), [Alteg.io](/integrations/altegio)",
             "Промокоди, сертифікати та ваучери",
             "Персональні знижки з дедлайном (Trigger-маркетинг)",
@@ -272,7 +272,7 @@ export const dictionaries = {
           annualPrice: PLAN_PRICES.business.annual,
           extraLocation: `+₴${EXTRA_LOCATION_PRICES.business}/дод. точка продажу`,
           features: [
-            "До 4 точок продажу, 20 співробітників",
+            "Включено 4 точки продажу, 20 співробітників",
             "White Label: повний брендинг без згадок Rimbo",
             "API доступ для зв'язку з сайтом чи CRM",
             "Пріоритетна підтримка та допомога з налаштуванням",
@@ -2000,7 +2000,7 @@ export const dictionaries = {
           annualPrice: PLAN_PRICES.growth.annual,
           extraLocation: `+₴${EXTRA_LOCATION_PRICES.growth}/extra location`,
           features: [
-            "Up to 2 locations, 5 staff members",
+            "2 locations included, 5 staff members",
             "Up to 5 loyalty cards + custom design",
             "No limits on active customers",
             "Bonus balance (cashback)",
@@ -2016,7 +2016,7 @@ export const dictionaries = {
           popular: true,
           extraLocation: `+₴${EXTRA_LOCATION_PRICES.pro}/extra location`,
           features: [
-            "Up to 3 locations, 10 staff members",
+            "3 locations included, 10 staff members",
             "Full integration with [Poster](/en/integrations/poster), [Alteg.io](/en/integrations/altegio)",
             "Promo codes, gift certificates and vouchers",
             "Personal discounts with deadlines (trigger marketing)",
@@ -2030,7 +2030,7 @@ export const dictionaries = {
           annualPrice: PLAN_PRICES.business.annual,
           extraLocation: `+₴${EXTRA_LOCATION_PRICES.business}/extra location`,
           features: [
-            "Up to 4 locations, 20 staff members",
+            "4 locations included, 20 staff members",
             "White Label: full branding with no Rimbo mentions",
             "API access to connect your site or CRM",
             "Priority support and setup assistance",
