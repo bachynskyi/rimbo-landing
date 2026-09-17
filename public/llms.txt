@@ -39,7 +39,7 @@
 Prices are set locally per currency, not converted from one base currency at a daily rate. The pricing section preselects the currency matching the visitor's country and lets them switch it.
 
 - Growth / Розвиток: up to 2 locations, 5 staff, up to 5 loyalty cards with custom design, no limits on active customers, cashback balance, Geo-Push, customer segmentation, basic analytics.
-  EUR 19 (16), PLN 79 (69), CZK 499 (429), RON 89 (79), SEK 249 (209), GBP 19 (16), USD 21 (18), UAH 799 (699).
+  EUR 19 (16), PLN 79 (69), CZK 499 (429), RON 89 (79), SEK 249 (209), GBP 16 (14), USD 21 (18), UAH 799 (699).
   Extra location: EUR 9, PLN 39, CZK 229, RON 45, SEK 119, GBP 8, USD 10, UAH 299.
 - Pro / Профі (most popular): up to 3 locations, 10 staff, no limits on active customers, full Poster and Altegio integration, promo codes, gift certificates and vouchers, personal discounts with deadlines, custom PWA domain, advanced RFM analytics.
   EUR 39 (33), PLN 149 (129), CZK 999 (849), RON 179 (149), SEK 499 (429), GBP 35 (29), USD 45 (39), UAH 1399 (1199).

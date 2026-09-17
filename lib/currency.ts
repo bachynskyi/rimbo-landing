@@ -75,7 +75,7 @@ export const PLAN_PRICES_BY_CURRENCY: Record<
     business: { monthly: 899, annual: 769 },
   },
   GBP: {
-    growth: { monthly: 19, annual: 16 },
+    growth: { monthly: 16, annual: 14 },
     pro: { monthly: 35, annual: 29 },
     business: { monthly: 59, annual: 49 },
   },
