@@ -1,34 +1,43 @@
 import { APP_URL, SITE_URL, SUPPORT_EMAIL } from "./seo-config";
+import {
+  EXTRA_LOCATION_BY_CURRENCY,
+  PLAN_PRICES_BY_CURRENCY,
+} from "./currency";
 
-// ЄДИНЕ джерело цін тарифів (₴/міс).
-// Тарифна сітка (pricing.tiers) і всі згадки цін у текстах статей тягнуться звідси —
-// змінюєте ціну тут, вона оновлюється всюди, включно зі schema.org розміткою.
+// Гривневий зріз прайсу. Повна сітка по всіх валютах живе в lib/currency.ts —
+// сюди тягнемо лише UAH, бо українські тексти статей і юридичні розділи
+// написані в гривні.
 //
-// ВИНЯТОК: public/llms.txt — статичний файл, він не може імпортувати ці
-// константи, тому ціни там продубльовані вручну. Змінюючи ціну тут,
-// оновіть і його (розділ "## Pricing").
+// Картки тарифів (pricing.tiers) цін більше не містять: компонент бере їх з
+// lib/currency.ts за ключем tier.plan, у валюті, яку обрав відвідувач.
 export const PLAN_PRICES = {
   start: { monthly: 349, annual: 299 }, // план приховано, ціни збережено для повернення
-  growth: { monthly: 799, annual: 699 },
-  pro: { monthly: 1399, annual: 1199 },
-  business: { monthly: 1999, annual: 1699 },
-} as const;
+  ...PLAN_PRICES_BY_CURRENCY.UAH,
+};
 
-// Ціна додаткової точки продажу (₴/міс). Однакова для місячної та річної оплати:
-// річна знижка — поступка на тарифі, а не на додатковій послузі.
-export const EXTRA_LOCATION_PRICES = {
-  growth: 299,
-  pro: 499,
-  business: 699,
-} as const;
-
-// Мінімальна ціна серед видимих планів — для текстів "від X ₴/міс".
+// Мінімальна ціна серед видимих планів — для текстів "від X /міс".
 // Використовуємо РІЧНЕ значення (менше) за рішенням власника.
-const FROM_PRICE = Math.min(
-  PLAN_PRICES.growth.annual,
-  PLAN_PRICES.pro.annual,
-  PLAN_PRICES.business.annual
-);
+//
+// Дві валюти, бо статті localized: українські тексти рахують у гривні,
+// англійські — в євро (вони адресовані європейському ринку).
+function fromPrice(table: { annual: number }[]) {
+  return Math.min(...table.map((plan) => plan.annual));
+}
+
+const FROM_PRICE = fromPrice([
+  PLAN_PRICES.growth,
+  PLAN_PRICES.pro,
+  PLAN_PRICES.business,
+]);
+
+const FROM_PRICE_EUR = fromPrice([
+  PLAN_PRICES_BY_CURRENCY.EUR.growth,
+  PLAN_PRICES_BY_CURRENCY.EUR.pro,
+  PLAN_PRICES_BY_CURRENCY.EUR.business,
+]);
+
+// Додаткова точка продажу на стартовому тарифі — для тексту FAQ "від X/міс".
+const EXTRA_LOCATION_FROM_EUR = EXTRA_LOCATION_BY_CURRENCY.EUR.growth;
 
 export const dictionaries = {
   uk: {
@@ -211,6 +220,7 @@ export const dictionaries = {
       perMonth: "/міс",
       popular: "Популярний",
       choosePlan: "Почати",
+      currencyLabel: "Валюта",
       includesPrefix: "Включає можливості плану",
       includesSuffix: ", а також:",
       enterpriseNotes: [
@@ -222,11 +232,12 @@ export const dictionaries = {
         "Хочете мобільний застосунок лояльності чи іншу інтеграцію? {link}",
       customSolutionNoteLink: "Замовте індивідуальне рішення",
       tiers: [
-        /* Приховано на запит власника — план тимчасово не продається
+        /* Приховано на запит власника — план тимчасово не продається.
+           Щоб повернути, додайте "start" у PLAN_PRICES_BY_CURRENCY та
+           EXTRA_LOCATION_BY_CURRENCY (lib/currency.ts) по всіх валютах.
         {
           name: "Старт",
-          monthlyPrice: PLAN_PRICES.start.monthly,
-          annualPrice: PLAN_PRICES.start.annual,
+          plan: "start",
           features: [
             "1 точка продажу, 1 співробітник",
             "До 2 карток лояльності (штампи)",
@@ -238,9 +249,8 @@ export const dictionaries = {
         }, */
         {
           name: "Розвиток",
-          monthlyPrice: PLAN_PRICES.growth.monthly,
-          annualPrice: PLAN_PRICES.growth.annual,
-          extraLocation: `+₴${EXTRA_LOCATION_PRICES.growth}/дод. точка продажу`,
+          plan: "growth",
+          extraLocationSuffix: "/дод. точка продажу",
           features: [
             "Включено 2 точки продажу, 5 співробітників",
             "До 5 карток лояльності (штампи) + кастомний дизайн",
@@ -254,10 +264,9 @@ export const dictionaries = {
         },
         {
           name: "Профі",
-          monthlyPrice: PLAN_PRICES.pro.monthly,
-          annualPrice: PLAN_PRICES.pro.annual,
+          plan: "pro",
           popular: true,
-          extraLocation: `+₴${EXTRA_LOCATION_PRICES.pro}/дод. точка продажу`,
+          extraLocationSuffix: "/дод. точка продажу",
           features: [
             "Включено 3 точки продажу, 10 співробітників",
             "Повна інтеграція з [Poster](/integrations/poster), [Alteg.io](/integrations/altegio)",
@@ -270,9 +279,8 @@ export const dictionaries = {
         },
         {
           name: "Бізнес",
-          monthlyPrice: PLAN_PRICES.business.monthly,
-          annualPrice: PLAN_PRICES.business.annual,
-          extraLocation: `+₴${EXTRA_LOCATION_PRICES.business}/дод. точка продажу`,
+          plan: "business",
+          extraLocationSuffix: "/дод. точка продажу",
           features: [
             "Включено 4 точки продажу, 20 співробітників",
             "White Label: повний брендинг без згадок Rimbo",
@@ -1971,6 +1979,7 @@ export const dictionaries = {
       perMonth: "/mo",
       popular: "Popular",
       choosePlan: "Get Started",
+      currencyLabel: "Currency",
       includesPrefix: "Includes",
       includesSuffix: " features, plus:",
       enterpriseNotes: [
@@ -1982,11 +1991,12 @@ export const dictionaries = {
         "Want a mobile loyalty app or any other integration? {link}",
       customSolutionNoteLink: "Ask for a custom solution",
       tiers: [
-        /* Hidden at the owner's request, this plan is temporarily not sold
+        /* Hidden at the owner's request, this plan is temporarily not sold.
+           To bring it back, add "start" to PLAN_PRICES_BY_CURRENCY and
+           EXTRA_LOCATION_BY_CURRENCY (lib/currency.ts) for every currency.
         {
           name: "Start",
-          monthlyPrice: 349,
-          annualPrice: 299,
+          plan: "start",
           features: [
             "1 location, 1 staff member",
             "Up to 2 loyalty cards (stamps)",
@@ -1998,9 +2008,8 @@ export const dictionaries = {
         }, */
         {
           name: "Growth",
-          monthlyPrice: PLAN_PRICES.growth.monthly,
-          annualPrice: PLAN_PRICES.growth.annual,
-          extraLocation: `+₴${EXTRA_LOCATION_PRICES.growth}/extra location`,
+          plan: "growth",
+          extraLocationSuffix: "/extra location",
           features: [
             "2 locations included, 5 staff members",
             "Up to 5 loyalty cards (stamps) + custom design",
@@ -2014,10 +2023,9 @@ export const dictionaries = {
         },
         {
           name: "Pro",
-          monthlyPrice: PLAN_PRICES.pro.monthly,
-          annualPrice: PLAN_PRICES.pro.annual,
+          plan: "pro",
           popular: true,
-          extraLocation: `+₴${EXTRA_LOCATION_PRICES.pro}/extra location`,
+          extraLocationSuffix: "/extra location",
           features: [
             "3 locations included, 10 staff members",
             "Full integration with [Poster](/en/integrations/poster), [Alteg.io](/en/integrations/altegio)",
@@ -2030,9 +2038,8 @@ export const dictionaries = {
         },
         {
           name: "Business",
-          monthlyPrice: PLAN_PRICES.business.monthly,
-          annualPrice: PLAN_PRICES.business.annual,
-          extraLocation: `+₴${EXTRA_LOCATION_PRICES.business}/extra location`,
+          plan: "business",
+          extraLocationSuffix: "/extra location",
           features: [
             "4 locations included, 20 staff members",
             "White Label: full branding with no Rimbo mentions",
@@ -2074,7 +2081,7 @@ export const dictionaries = {
         {
           question: "How much does it cost to connect another location?",
           answer:
-            "From ₴299 per month, depending on your plan. A till is included with each location, so there is no separate charge for it. Accounts for admins and staff are free on all plans.",
+            `From €${EXTRA_LOCATION_FROM_EUR} per month, depending on your plan. A till is included with each location, so there is no separate charge for it. Accounts for admins and staff are free on all plans.`,
         },
         {
           question: "Is there a limit on the number of customers in the database?",
@@ -2621,7 +2628,7 @@ export const dictionaries = {
         {
           heading: "Loyalty for a café or restaurant: practical scenarios",
           content:
-            "Café. The classic 'buy 9, get the 10th free' becomes a digital stamp card. Layer cashback of 3–5% on desserts and breakfasts on top. The guest earns bonuses they can only spend on the next visit, which naturally pulls them back.\n\nRestaurant. Introduce tiers: 'Gourmet' at ₴5 000 in cumulative receipts, 'Regular' from ₴15 000. Each tier carries its own permanent discount, and the manager can layer special promos on top for slow hours ('−20% on business lunch before 12:00').\n\nBar. Happy-hours coupons targeting specific menu items ('−30% on the cocktail of the week, Thursdays 19:00–21:00') flatten demand without diluting margin on the rest of the menu.",
+            "Café. The classic 'buy 9, get the 10th free' becomes a digital stamp card. Layer cashback of 3–5% on desserts and breakfasts on top. The guest earns bonuses they can only spend on the next visit, which naturally pulls them back.\n\nRestaurant. Introduce tiers: 'Regular' from €250 in cumulative receipts, 'Gourmet' from €750. Each tier carries its own permanent discount, and the manager can layer special promos on top for slow hours ('−20% on business lunch before 12:00').\n\nBar. Happy-hours coupons targeting specific menu items ('−30% on the cocktail of the week, Thursdays 19:00–21:00') flatten demand without diluting margin on the rest of the menu.",
         },
         {
           heading: "HoReCa customer retention: what changes with Rimbo",
@@ -2695,17 +2702,17 @@ export const dictionaries = {
         {
           heading: "Paper vs digital stamp card: comparison",
           content:
-            `• Medium: a paper card is lost within ~3 weeks, a digital one lives on the phone in Wallet\n• Issuing a stamp: paper depends on staff memory, digital is added on a QR scan\n• Fraud protection: a rubber stamp is easy to fake, a digital stamp is recorded in the system\n• Analytics: paper gives zero data, digital gives full visit and customer statistics\n• Multiple locations: paper works at one venue, one digital card across all locations\n• Costs: paper means printing and reprints, digital has none, plans from ${FROM_PRICE} ₴/month\n• Reminders: paper has none, digital sends progress push at 0 ₴\n\nThe only advantage of paper is familiarity. But adding a card to Wallet is easier than carrying cardboard: one tap, no app to install.`,
+            `• Medium: a paper card is lost within ~3 weeks, a digital one lives on the phone in Wallet\n• Issuing a stamp: paper depends on staff memory, digital is added on a QR scan\n• Fraud protection: a rubber stamp is easy to fake, a digital stamp is recorded in the system\n• Analytics: paper gives zero data, digital gives full visit and customer statistics\n• Multiple locations: paper works at one venue, one digital card across all locations\n• Costs: paper means printing and reprints, digital has none, plans from €${FROM_PRICE_EUR}/month\n• Reminders: paper has none, digital sends progress push at €0\n\nThe only advantage of paper is familiarity. But adding a card to Wallet is easier than carrying cardboard: one tap, no app to install.`,
         },
         {
           heading: "How a digital stamp card in Wallet works",
           content:
-            "The customer scans a QR code at the counter or opens a link, taps one button, and the card appears in Apple Wallet or Google Wallet. No app to install, no sign-up form with a password.\n\nOn the next visit the customer shows the card on their phone, staff scan the QR code, and the stamp is added instantly. The customer immediately sees updated progress: 5 out of 6 coffees. When one step remains before the reward, the card itself reminds them.\n\nCommunication is a separate advantage. [Push notifications](/en/push-notifications) in Wallet cost 0 ₴ per message, while SMS costs about 1.30–1.40 ₴ each and registering a Viber sender starts at roughly 10,000 ₴ per month. Reminders about an almost-full card or a promotion go out for free.",
+            "The customer scans a QR code at the counter or opens a link, taps one button, and the card appears in Apple Wallet or Google Wallet. No app to install, no sign-up form with a password.\n\nOn the next visit the customer shows the card on their phone, staff scan the QR code, and the stamp is added instantly. The customer immediately sees updated progress: 5 out of 6 coffees. When one step remains before the reward, the card itself reminds them.\n\nCommunication is a separate advantage. [Push notifications](/en/push-notifications) in Wallet cost €0 per message, while every SMS is billed per message and a branded business-messaging sender carries a monthly fee. Reminders about an almost-full card or a promotion go out for free.",
         },
         {
           heading: "Stamp cards work on their own, with no other mechanics required",
           content:
-            `A stamp card is a first-class Rimbo mechanic, not an add-on to bonuses. You can run it alone without enabling cashback, tiers or trigger campaigns: the customer simply gets a card with the rule \"six coffees, the seventh is on us\" and nothing else.\n\nSetup takes about 15 minutes on the cheapest plan at ${FROM_PRICE} ₴/month. You pick the number of stamps, write what the customer receives, and upload your logo and colors. Analytics, segmentation and push are already included, but using them is optional.\n\nOn the card itself the stamps are drawn as a row of circles: filled ones show collected visits, empty ones show what is left before the reward. The customer sees \"5 of 6\" right in Wallet, with no app at all. When the card fills up, the reward is highlighted at the counter and a fresh card starts automatically, so the streak never breaks.\n\nOne venue can run several different stamp cards at once, for example one for coffee and another for desserts. Worth noting for the math: a stamp card is not a discount. You give away the cost of a single item after several paid ones, instead of a percentage off every receipt.`,
+            `A stamp card is a first-class Rimbo mechanic, not an add-on to bonuses. You can run it alone without enabling cashback, tiers or trigger campaigns: the customer simply gets a card with the rule \"six coffees, the seventh is on us\" and nothing else.\n\nSetup takes about 15 minutes on the cheapest plan at €${FROM_PRICE_EUR}/month. You pick the number of stamps, write what the customer receives, and upload your logo and colors. Analytics, segmentation and push are already included, but using them is optional.\n\nOn the card itself the stamps are drawn as a row of circles: filled ones show collected visits, empty ones show what is left before the reward. The customer sees \"5 of 6\" right in Wallet, with no app at all. When the card fills up, the reward is highlighted at the counter and a fresh card starts automatically, so the streak never breaks.\n\nOne venue can run several different stamp cards at once, for example one for coffee and another for desserts. Worth noting for the math: a stamp card is not a discount. You give away the cost of a single item after several paid ones, instead of a percentage off every receipt.`,
         },
         {
           heading: "What it gives a coffee shop: up to 25% more repeat visits",
@@ -2715,12 +2722,12 @@ export const dictionaries = {
         {
           heading: "How to launch a digital stamp card: 5 steps for an owner",
           content:
-            `• [Leave a request](#contact): the first 14 days are free, plans start at ${FROM_PRICE} ₴/month\n• Set the rule: for example, 6 coffees and the 7th free, or 5 haircuts and the 6th at a discount\n• Design the card with your colors and logo, so it looks like a branded card in Wallet\n• Place the QR code for adding the card at the counter, on tables and in social media\n• Train staff to do one thing: scan the customer's QR code when handing over the order\n\nLaunch takes under an hour and no special hardware is needed: a regular smartphone or tablet scans the stamps. Then watch the statistics: how many cards were added, how many visits are repeat ones, how many rewards were issued.`,
+            `• [Leave a request](#contact): the first 14 days are free, plans start at €${FROM_PRICE_EUR}/month\n• Set the rule: for example, 6 coffees and the 7th free, or 5 haircuts and the 6th at a discount\n• Design the card with your colors and logo, so it looks like a branded card in Wallet\n• Place the QR code for adding the card at the counter, on tables and in social media\n• Train staff to do one thing: scan the customer's QR code when handing over the order\n\nLaunch takes under an hour and no special hardware is needed: a regular smartphone or tablet scans the stamps. Then watch the statistics: how many cards were added, how many visits are repeat ones, how many rewards were issued.`,
         },
         {
           heading: "Try a digital stamp card for free",
           content:
-            `Rimbo gives you 14 days of free access to all features: stamp cards, push notifications at 0 ₴, customer analytics, multi-location support. Plans after the trial start at ${FROM_PRICE} ₴/month, which is less than one print run of paper cards.\n\n[Leave a request](#contact), then create a card, add it to your own Wallet and test the mechanics yourself before launching for customers. If you have setup questions, write to support@rimbo.id and we will help you pick the right mechanics for your venue.`,
+            `Rimbo gives you 14 days of free access to all features: stamp cards, push notifications at €0, customer analytics, multi-location support. Plans after the trial start at €${FROM_PRICE_EUR}/month, which is less than one print run of paper cards.\n\n[Leave a request](#contact), then create a card, add it to your own Wallet and test the mechanics yourself before launching for customers. If you have setup questions, write to support@rimbo.id and we will help you pick the right mechanics for your venue.`,
         },
       ],
     },
@@ -2759,12 +2766,12 @@ export const dictionaries = {
         {
           heading: "Custom app vs aggregator vs Wallet card: comparison",
           content:
-            `• Launch: custom app (months of development), aggregator (a few days), Wallet card (under an hour)\n• Cost: app (thousands of dollars plus maintenance), aggregator (commission on every deal), Wallet (from ${FROM_PRICE} ₴/month)\n• Customer effort: app (download, registration, permissions), aggregator (signing up for a third-party service), Wallet (one tap)\n• Customer base: app (yours but small), aggregator (owned by the platform), Wallet (fully yours)\n• Communication: app (push only if permitted), aggregator (through the platform), Wallet (push at 0 ₴ with no extra permission prompts)\n\nA Wallet card combines the key advantages: fast launch, your own customer base and a direct communication channel, all with zero development.`,
+            `• Launch: custom app (months of development), aggregator (a few days), Wallet card (under an hour)\n• Cost: app (thousands of dollars plus maintenance), aggregator (commission on every deal), Wallet (from €${FROM_PRICE_EUR}/month)\n• Customer effort: app (download, registration, permissions), aggregator (signing up for a third-party service), Wallet (one tap)\n• Customer base: app (yours but small), aggregator (owned by the platform), Wallet (fully yours)\n• Communication: app (push only if permitted), aggregator (through the platform), Wallet (push at €0 with no extra permission prompts)\n\nA Wallet card combines the key advantages: fast launch, your own customer base and a direct communication channel, all with zero development.`,
         },
         {
-          heading: "Wallet push instead of SMS and Viber",
+          heading: "Wallet push instead of SMS and messengers",
           content:
-            "Count the cost of the communication channel. SMS costs about 1.30–1.40 ₴ per message: one campaign to a base of 3,000 customers is roughly four thousand hryvnias every time. Registering a Viber sender starts at around 10,000 ₴ per month, before a single message is sent.\n\n[Push notifications](/en/push-notifications) to a Wallet card cost 0 ₴ per message. Reminders about a promotion, a new product or bonuses about to expire go out for free, as often as you need. Notably, [Devlight 2025](https://devlight.io/loyalty-research-2025/) found that expiring bonuses are the top irritant for 56% of Ukrainians, and a free push saying «your bonuses 🪙 are valid for 5 more days» turns that irritation into a repeat visit.",
+            "Count the cost of the communication channel. SMS is billed per message: one campaign to a base of 3,000 customers means paying for three thousand messages, every time. A branded business-messaging sender adds a monthly fee on top, before a single message is sent.\n\n[Push notifications](/en/push-notifications) to a Wallet card cost €0 per message. Reminders about a promotion, a new product or bonuses about to expire go out for free, as often as you need. Notably, [Devlight 2025](https://devlight.io/loyalty-research-2025/) found that expiring bonuses are the top irritant for 56% of Ukrainians, and a free push saying «your bonuses 🪙 are valid for 5 more days» turns that irritation into a repeat visit.",
         },
         {
           heading: "How to launch loyalty without an app: a step-by-step plan",
@@ -2774,7 +2781,7 @@ export const dictionaries = {
         {
           heading: "Start without an app: free for 14 days",
           content:
-            `Rimbo is a Ukrainian digital loyalty platform: cards in Apple Wallet and Google Wallet, stamps, bonuses, discounts, push at 0 ₴ and customer analytics. Plans start at ${FROM_PRICE} ₴/month, with the first 14 days free.\n\n[Leave a request](#contact) and create your first card in minutes and see through your customer's eyes how short the path into your program can be. Launch questions go to support@rimbo.id.`,
+            `Rimbo is a Ukrainian digital loyalty platform: cards in Apple Wallet and Google Wallet, stamps, bonuses, discounts, push at €0 and customer analytics. Plans start at €${FROM_PRICE_EUR}/month, with the first 14 days free.\n\n[Leave a request](#contact) and create your first card in minutes and see through your customer's eyes how short the path into your program can be. Launch questions go to support@rimbo.id.`,
         },
       ],
     },
@@ -2808,12 +2815,12 @@ export const dictionaries = {
         {
           heading: "Phone-number form vs QR code: comparison",
           content:
-            "• Time at the counter: form 2–3 minutes, dictating a number 30–60 seconds, QR scan 1–2 seconds\n• Privacy: the whole queue hears the number, while a QR reveals nothing out loud\n• Errors: cashiers mishear digits and duplicates pile up, while a QR scans unambiguously\n• Spam: the customer expects unwanted SMS, while communication happens only with consent given when adding the card\n• Security: a phone-number database is a leak target, while a card identifier is useless outside your program\n• Communication cost: SMS at 1.30–1.40 ₴ each, Wallet push at 0 ₴\n\nThe only thing a business loses without a form is the birth-date field, and you can ask for it optionally when the card is issued, when the customer fills it in themselves with no queue behind them.",
+            "• Time at the counter: form 2–3 minutes, dictating a number 30–60 seconds, QR scan 1–2 seconds\n• Privacy: the whole queue hears the number, while a QR reveals nothing out loud\n• Errors: cashiers mishear digits and duplicates pile up, while a QR scans unambiguously\n• Spam: the customer expects unwanted SMS, while communication happens only with consent given when adding the card\n• Security: a phone-number database is a leak target, while a card identifier is useless outside your program\n• Communication cost: SMS billed per message, Wallet push at €0\n\nThe only thing a business loses without a form is the birth-date field, and you can ask for it optionally when the card is issued, when the customer fills it in themselves with no queue behind them.",
         },
         {
           heading: "Consent to communication: a conscious choice, not a forced one",
           content:
-            "When a customer adds a card to Wallet, they decide for themselves whether to leave contact details. That is informed consent given in a calm setting, not a checkbox ticked under the pressure of a queue. The approach is GDPR-friendly: you collect the minimum of data, and every piece of it comes with explicit permission.\n\nA phone number isn't needed for communication anyway: [push notifications](/en/push-notifications) arrive on the Wallet card itself and cost 0 ₴, unlike SMS at 1.30–1.40 ₴ each or a Viber sender from about 10,000 ₴/month. You message customers about promotions and bonuses without storing a phone database that could ever leak.",
+            "When a customer adds a card to Wallet, they decide for themselves whether to leave contact details. That is informed consent given in a calm setting, not a checkbox ticked under the pressure of a queue. The approach is GDPR-friendly: you collect the minimum of data, and every piece of it comes with explicit permission.\n\nA phone number isn't needed for communication anyway: [push notifications](/en/push-notifications) arrive on the Wallet card itself and cost €0, unlike SMS, which is billed per message, or a branded business-messaging sender with a monthly fee. You message customers about promotions and bonuses without storing a phone database that could ever leak.",
         },
         {
           heading: "No extra hardware: a smartphone or tablet does the scanning",
@@ -2823,12 +2830,12 @@ export const dictionaries = {
         {
           heading: "How to launch QR loyalty in a coffee shop or salon: step by step",
           content:
-            `• [Leave a request](#contact): the first 14 days are free\n• Pick the mechanics: bonuses, cashback, stamps or discount tiers; plans from ${FROM_PRICE} ₴/month\n• Create a card with your logo and place the QR code for adding it at the counter and on tables\n• Connect your checkout: integrations with Poster POS and Altegio, or scanning with a staff smartphone\n• Teach the team one phrase: «Show the card on your phone, and bonuses will be credited automatically»\n• After two weeks, check the statistics: the share of repeat visits will show whether the mechanics work\n\nLaunch takes under an hour. Customers who used to refuse to give their number now join the program, because nothing is required of them beyond one tap.`,
+            `• [Leave a request](#contact): the first 14 days are free\n• Pick the mechanics: bonuses, cashback, stamps or discount tiers; plans from €${FROM_PRICE_EUR}/month\n• Create a card with your logo and place the QR code for adding it at the counter and on tables\n• Connect your checkout: integrations with Poster POS and Altegio, or scanning with a staff smartphone\n• Teach the team one phrase: «Show the card on your phone, and bonuses will be credited automatically»\n• After two weeks, check the statistics: the share of repeat visits will show whether the mechanics work\n\nLaunch takes under an hour. Customers who used to refuse to give their number now join the program, because nothing is required of them beyond one tap.`,
         },
         {
           heading: "Try loyalty without forms: 14 days free",
           content:
-            `Rimbo gives you full access for 14 days: QR identification at the counter, cards in Apple Wallet and Google Wallet, push at 0 ₴, analytics and multi-location support. After the trial, plans start from ${FROM_PRICE} ₴/month.\n\n[Leave a request](#contact), then create a card, scan it with your own phone and see for yourself that identification really takes a second. Questions go to support@rimbo.id, we answer to the point.`,
+            `Rimbo gives you full access for 14 days: QR identification at the counter, cards in Apple Wallet and Google Wallet, push at €0, analytics and multi-location support. After the trial, plans start from €${FROM_PRICE_EUR}/month.\n\n[Leave a request](#contact), then create a card, scan it with your own phone and see for yourself that identification really takes a second. Questions go to support@rimbo.id, we answer to the point.`,
         },
       ],
     },
@@ -2857,7 +2864,7 @@ export const dictionaries = {
         {
           heading: "How Many 🪙 to Give: Benchmarks by Average Check",
           content:
-            "The universal range is 30–100 🪙 (where 1 🪙 = 1 ₴). The bonus should noticeably reduce the next check without covering it entirely: the customer should still pay a normal amount on top.\n\n• Average check up to 200 ₴ (coffee shop, bakery): 30–50 🪙\n• Average check 200–500 ₴ (café, fast food): 50–80 🪙\n• Average check 500 ₴ and above (beauty salon, restaurant): 80–100 🪙\n\nA practical rule: welcome bonus ≈ 15–25% of your average check. Less than that and the benefit is not felt; more and the second visit becomes unprofitable for you. Start in the middle of the range and adjust after a month based on real [customer analytics](/en/customer-analytics).",
+            "The universal range is 15–50 🪙 (where 1 🪙 = €0.10). The bonus should noticeably reduce the next check without covering it entirely: the customer should still pay a normal amount on top.\n\n• Average check up to €10 (coffee shop, bakery): 15–25 🪙\n• Average check €10–25 (café, fast food): 25–40 🪙\n• Average check €25 and above (beauty salon, restaurant): 40–50 🪙\n\nA practical rule: welcome bonus ≈ 15–25% of your average check. Less than that and the benefit is not felt; more and the second visit becomes unprofitable for you. Start in the middle of the range and adjust after a month based on real [customer analytics](/en/customer-analytics).",
         },
         {
           heading: "Anti-Patterns: Mistakes That Kill a Welcome Bonus",
@@ -2867,12 +2874,12 @@ export const dictionaries = {
         {
           heading: "How the Welcome Bonus Works in Rimbo: QR → Wallet → Push",
           content:
-            "In Rimbo the whole mechanic is automated and requires nothing from your staff. The customer scans a QR code at the counter or on the table, adds the card to Apple Wallet or Google Wallet in seconds ([no app required](/en/loyalty-without-app)), and the welcome 🪙 are credited automatically at the moment of registration.\n\nThen the most important part kicks in: [push notifications](/en/push-notifications). A few days later the customer gets a reminder that, say, 50 🪙 are waiting on their card, and every such message costs you 0 ₴. For comparison: SMS costs about 1.30–1.40 ₴ per message, and a branded Viber sender starts at roughly 10 000 ₴ per month.\n\nAt checkout it is just as simple: the customer shows the Wallet card, the cashier scans the QR, and bonuses are redeemed or earned with no manual entry. If you run Poster POS or Altegio, transactions flow straight through your point of sale via ready-made integrations.",
+            "In Rimbo the whole mechanic is automated and requires nothing from your staff. The customer scans a QR code at the counter or on the table, adds the card to Apple Wallet or Google Wallet in seconds ([no app required](/en/loyalty-without-app)), and the welcome 🪙 are credited automatically at the moment of registration.\n\nThen the most important part kicks in: [push notifications](/en/push-notifications). A few days later the customer gets a reminder that, say, 50 🪙 are waiting on their card, and every such message costs you €0. For comparison: SMS is billed per message, and a branded business-messaging sender carries a monthly fee on top.\n\nAt checkout it is just as simple: the customer shows the Wallet card, the cashier scans the QR, and bonuses are redeemed or earned with no manual entry. If you run Poster POS or Altegio, transactions flow straight through your point of sale via ready-made integrations.",
         },
         {
           heading: "Step-by-Step Setup for a Coffee Shop, Salon, or Bakery",
           content:
-            "Launching a welcome bonus in Rimbo takes about 10–15 minutes. Here is a working scenario for a small-business owner.\n\n• Step 1. Create a bonus card in Rimbo and set the welcome bonus amount, for example 50 🪙 for a coffee shop with a 180 ₴ average check\n• Step 2. Set the bonus validity to 45 days, long enough to avoid the expiry irritation\n• Step 3. Print the QR code and place it by the register, on tables, or at the salon reception\n• Step 4. Teach your team one phrase: scan the QR and 50 🪙 toward your next visit are already on your card\n• Step 5. Schedule a push reminder for day 5–7 after sign-up, targeting those who have not returned yet\n• Step 6. If you use [Poster POS](/en/integrations/poster) or [Altegio](/en/integrations/altegio), connect the integration so bonuses accrue automatically from receipts\n\nThat is a complete launch. From there, just watch the numbers and tune the bonus size.",
+            "Launching a welcome bonus in Rimbo takes about 10–15 minutes. Here is a working scenario for a small-business owner.\n\n• Step 1. Create a bonus card in Rimbo and set the welcome bonus amount, for example 25 🪙 for a coffee shop with a €10 average check\n• Step 2. Set the bonus validity to 45 days, long enough to avoid the expiry irritation\n• Step 3. Print the QR code and place it by the register, on tables, or at the salon reception\n• Step 4. Teach your team one phrase: scan the QR and 25 🪙 toward your next visit are already on your card\n• Step 5. Schedule a push reminder for day 5–7 after sign-up, targeting those who have not returned yet\n• Step 6. If you use [Poster POS](/en/integrations/poster) or [Altegio](/en/integrations/altegio), connect the integration so bonuses accrue automatically from receipts\n\nThat is a complete launch. From there, just watch the numbers and tune the bonus size.",
         },
         {
           heading: "How to Measure the Effect: Second-Visit Rate",
@@ -2882,7 +2889,7 @@ export const dictionaries = {
         {
           heading: "Start With a Welcome Bonus Today",
           content:
-            `A welcome bonus is the fastest way to stop losing 30–40% of new customers: the mechanic is simple, the cost occurs only when a customer actually returns, and setup takes one evening.\n\nRimbo offers a 14-day free trial, enough time to launch the bonus, collect your first customers into Wallet, and see the first repeat visits before your first payment. Plans start at ${FROM_PRICE} ₴/month.\n\n[Leave a request](#contact). Questions about setup? Write to support@rimbo.id and we will help you pick the right bonus size for your average check.`,
+            `A welcome bonus is the fastest way to stop losing 30–40% of new customers: the mechanic is simple, the cost occurs only when a customer actually returns, and setup takes one evening.\n\nRimbo offers a 14-day free trial, enough time to launch the bonus, collect your first customers into Wallet, and see the first repeat visits before your first payment. Plans start at €${FROM_PRICE_EUR}/month.\n\n[Leave a request](#contact). Questions about setup? Write to support@rimbo.id and we will help you pick the right bonus size for your average check.`,
         },
       ],
     },
@@ -2921,7 +2928,7 @@ export const dictionaries = {
         {
           heading: "Paper Promo Code vs Managed Digital Code: A Comparison",
           content:
-            "Let us compare the two formats on the parameters that matter.\n\n• Tracking: a flyer gives you none; digital logs every redemption with customer and channel attribution\n• Leak protection: on a flyer the code is public forever; digital uses single-use codes bound to a card\n• Limits: impossible on a flyer; digital has usage caps and validity windows\n• Stopping a campaign: impossible with a flyer; digital deactivates instantly\n• Redemption at checkout: a flyer means manual entry and errors; digital applies automatically at QR scan\n• Follow-up communication: after a flyer the customer is gone forever; with digital the customer is in your base, reachable via [push notifications at 0 ₴](/en/push-notifications)\n\nThe last row is often the most important: a paper code brings a person in once at best. A digital one turns an anonymous passerby into a customer in your database who can receive the next offer for free, while SMS costs 1.30–1.40 ₴ per message and a branded Viber sender starts at roughly 10 000 ₴ per month.",
+            "Let us compare the two formats on the parameters that matter.\n\n• Tracking: a flyer gives you none; digital logs every redemption with customer and channel attribution\n• Leak protection: on a flyer the code is public forever; digital uses single-use codes bound to a card\n• Limits: impossible on a flyer; digital has usage caps and validity windows\n• Stopping a campaign: impossible with a flyer; digital deactivates instantly\n• Redemption at checkout: a flyer means manual entry and errors; digital applies automatically at QR scan\n• Follow-up communication: after a flyer the customer is gone forever; with digital the customer is in your base, reachable via [push notifications at €0](/en/push-notifications)\n\nThe last row is often the most important: a paper code brings a person in once at best. A digital one turns an anonymous passerby into a customer in your database who can receive the next offer for free, while SMS is billed per message and a branded business-messaging sender carries a monthly fee.",
         },
         {
           heading: "Promo Codes for Instagram Campaigns and Influencers",
@@ -2936,12 +2943,12 @@ export const dictionaries = {
         {
           heading: "Step by Step: Launching a Promo Code Campaign in a Coffee Shop",
           content:
-            "A scenario for a coffee shop that wants new customers from Instagram and nearby offices.\n\n• Step 1. Create two promo codes in Rimbo: INSTA (for stories) and OFFICE (for leaflets in the business center), both granting 50 🪙 of welcome bonuses to new customers\n• Step 2. Set limits: 150 redemptions per code, valid for 3 weeks\n• Step 3. Make the codes single-use per customer so the benefit does not multiply\n• Step 4. Launch the stories and place the leaflets; the customer scans the QR, adds the card to Wallet, and the code applies automatically\n• Step 5. After a week, compare channels in analytics: redemptions, new customers, revenue\n• Step 6. Kill the weak channel instantly, add budget to the strong one, and send the collected base a push with the next offer at 0 ₴\n\nThe entire campaign is measurable from the first redemption to the last, and the collected base keeps working after it ends, together with [smart coupons](/en/smart-coupons).",
+            "A scenario for a coffee shop that wants new customers from Instagram and nearby offices.\n\n• Step 1. Create two promo codes in Rimbo: INSTA (for stories) and OFFICE (for leaflets in the business center), both granting 50 🪙 of welcome bonuses to new customers\n• Step 2. Set limits: 150 redemptions per code, valid for 3 weeks\n• Step 3. Make the codes single-use per customer so the benefit does not multiply\n• Step 4. Launch the stories and place the leaflets; the customer scans the QR, adds the card to Wallet, and the code applies automatically\n• Step 5. After a week, compare channels in analytics: redemptions, new customers, revenue\n• Step 6. Kill the weak channel instantly, add budget to the strong one, and send the collected base a push with the next offer at €0\n\nThe entire campaign is measurable from the first redemption to the last, and the collected base keeps working after it ends, together with [smart coupons](/en/smart-coupons).",
         },
         {
           heading: "Make Your Promo Codes Manageable: 14 Days Free",
           content:
-            `An unmanaged promo code is a discount you give to nobody knows whom. A managed one is a tool that shows the cost of every acquired customer and stops in one second when needed.\n\nRimbo offers a 14-day free trial: enough to create your first codes, run a test campaign, and see each channel's conversion in numbers. Plans start at ${FROM_PRICE} ₴/month.\n\n[Leave a request](#contact). Questions about promo code setup go to support@rimbo.id.`,
+            `An unmanaged promo code is a discount you give to nobody knows whom. A managed one is a tool that shows the cost of every acquired customer and stops in one second when needed.\n\nRimbo offers a 14-day free trial: enough to create your first codes, run a test campaign, and see each channel's conversion in numbers. Plans start at €${FROM_PRICE_EUR}/month.\n\n[Leave a request](#contact). Questions about promo code setup go to support@rimbo.id.`,
         },
       ],
     },
@@ -2955,7 +2962,7 @@ export const dictionaries = {
         {
           heading: "What Are Smart Coupons and How Do They Differ From a Storewide Discount",
           content:
-            "A smart coupon is a digital offer on a customer's loyalty card that activates itself under preset conditions: during specific hours, on specific menu items, for a specific customer segment, or automatically before a birthday. Unlike a discount on everything, a smart coupon solves a concrete business problem: filling empty hours, winning back a lapsed customer, lifting sales of one category. And it does all that without cutting margin where no incentive is needed.\n\nThe coupon is delivered via [push notification](/en/push-notifications) straight to the card in Apple Wallet or Google Wallet, at 0 ₴ per message. The customer needs no app, and you need no messaging budget: for comparison, SMS costs 1.30–1.40 ₴ per message, and a branded Viber sender starts at roughly 10 000 ₴ per month.\n\nFor cafés, salons, and bakeries this is the most flexible loyalty tool after basic [stamp cards](/en/stamp-cards): coupons work with precision and are fully measurable.",
+            "A smart coupon is a digital offer on a customer's loyalty card that activates itself under preset conditions: during specific hours, on specific menu items, for a specific customer segment, or automatically before a birthday. Unlike a discount on everything, a smart coupon solves a concrete business problem: filling empty hours, winning back a lapsed customer, lifting sales of one category. And it does all that without cutting margin where no incentive is needed.\n\nThe coupon is delivered via [push notification](/en/push-notifications) straight to the card in Apple Wallet or Google Wallet, at €0 per message. The customer needs no app, and you need no messaging budget: for comparison, SMS is billed per message, and a branded business-messaging sender carries a monthly fee.\n\nFor cafés, salons, and bakeries this is the most flexible loyalty tool after basic [stamp cards](/en/stamp-cards): coupons work with precision and are fully measurable.",
         },
         {
           heading: "A Happy Hours Promo Customers Actually Remember",
@@ -2980,7 +2987,7 @@ export const dictionaries = {
         {
           heading: "Paper Flyer vs Push Coupon: Channel Comparison",
           content:
-            "The flyer is the most common way to deliver a promo, and the least effective. Let us compare honestly.\n\n• Cost per contact: a flyer means printing plus a promoter for every run; a push coupon costs 0 ₴ to deliver\n• Targeting: a flyer reaches random passersby; a push reaches your own customers, down to the right segment\n• Measurability: with a flyer you have no idea who came; with a push coupon every redemption is logged\n• Lifespan: a flyer is binned in 30 seconds; a coupon sits on the Wallet card until it expires\n• Launch speed: a flyer takes days for print and distribution; a push takes minutes\n• Stopping a promo: a flyer cannot be recalled; a coupon switches off instantly\n\nFor one-off reach to a brand-new audience a flyer can still make sense, but then with a QR code and a [promo code](/en/promo-codes) so the passerby lands in your base immediately. For working with existing customers, the push coupon wins on every line.",
+            "The flyer is the most common way to deliver a promo, and the least effective. Let us compare honestly.\n\n• Cost per contact: a flyer means printing plus a promoter for every run; a push coupon costs €0 to deliver\n• Targeting: a flyer reaches random passersby; a push reaches your own customers, down to the right segment\n• Measurability: with a flyer you have no idea who came; with a push coupon every redemption is logged\n• Lifespan: a flyer is binned in 30 seconds; a coupon sits on the Wallet card until it expires\n• Launch speed: a flyer takes days for print and distribution; a push takes minutes\n• Stopping a promo: a flyer cannot be recalled; a coupon switches off instantly\n\nFor one-off reach to a brand-new audience a flyer can still make sense, but then with a QR code and a [promo code](/en/promo-codes) so the passerby lands in your base immediately. For working with existing customers, the push coupon wins on every line.",
         },
         {
           heading: "Binding Coupons to Menu Items: Margin Under Control",
@@ -2990,7 +2997,7 @@ export const dictionaries = {
         {
           heading: "Step by Step: Happy Hours for a Coffee Shop in 30 Minutes",
           content:
-            "A scenario for a coffee shop with a weekday traffic dip between lunch and evening.\n\n• Step 1. In Rimbo, create a coupon for 25% off desserts with an activity window: Monday–Friday, 3:00–5:00 pm\n• Step 2. Bind the coupon to the Desserts category so the discount does not touch the rest of the menu\n• Step 3. Schedule a push at 2:45 pm on promo days, delivered at 0 ₴ to the whole base or a chosen segment\n• Step 4. Narrow the audience if needed: for example, only customers seen at least once in the last 90 days\n• Step 5. Nothing changes at the register: the customer shows the card, the cashier scans the QR, and the coupon applies automatically\n• Step 6. After two weeks, compare receipts in the 3–5 pm window before and after launch, then adjust the discount or the hours\n\nThe same template works for a salon (weekday-morning discount) or a bakery (an evening pastry coupon instead of writing off leftovers).",
+            "A scenario for a coffee shop with a weekday traffic dip between lunch and evening.\n\n• Step 1. In Rimbo, create a coupon for 25% off desserts with an activity window: Monday–Friday, 3:00–5:00 pm\n• Step 2. Bind the coupon to the Desserts category so the discount does not touch the rest of the menu\n• Step 3. Schedule a push at 2:45 pm on promo days, delivered at €0 to the whole base or a chosen segment\n• Step 4. Narrow the audience if needed: for example, only customers seen at least once in the last 90 days\n• Step 5. Nothing changes at the register: the customer shows the card, the cashier scans the QR, and the coupon applies automatically\n• Step 6. After two weeks, compare receipts in the 3–5 pm window before and after launch, then adjust the discount or the hours\n\nThe same template works for a salon (weekday-morning discount) or a bakery (an evening pastry coupon instead of writing off leftovers).",
         },
         {
           heading: "How to Evaluate a Coupon Campaign",
@@ -3000,7 +3007,7 @@ export const dictionaries = {
         {
           heading: "Launch Your First Smart Coupon: 14 Days Free",
           content:
-            `Smart coupons turn promos from a lottery into a managed tool: the offer reaches the right people at the right time, costs 0 ₴ to deliver, and is measurable down to the last receipt.\n\nRimbo offers a 14-day free trial, enough to set up happy hours or a birthday coupon and see the first redemptions before your first payment. Plans start at ${FROM_PRICE} ₴/month, with Poster POS and Altegio integrations and multi-location support.\n\n[Leave a request](#contact). Questions about coupon scenarios go to support@rimbo.id, and we will suggest the right mechanic for your venue format.`,
+            `Smart coupons turn promos from a lottery into a managed tool: the offer reaches the right people at the right time, costs €0 to deliver, and is measurable down to the last receipt.\n\nRimbo offers a 14-day free trial, enough to set up happy hours or a birthday coupon and see the first redemptions before your first payment. Plans start at €${FROM_PRICE_EUR}/month, with Poster POS and Altegio integrations and multi-location support.\n\n[Leave a request](#contact). Questions about coupon scenarios go to support@rimbo.id, and we will suggest the right mechanic for your venue format.`,
         },
       ],
     },
@@ -3008,7 +3015,7 @@ export const dictionaries = {
       title:
         "Cashback vs Discounts: Which Loyalty Program Is More Profitable for Your Business",
       metaDescription:
-        "Cashback or discounts for your business? We calculate a 200 ₴ example, explain why bonus points bring guests back, and show how to launch cashback with Rimbo.",
+        "Cashback or discounts for your business? We calculate a €10 example, explain why bonus points bring guests back, and show how to launch cashback with Rimbo.",
       lastUpdated: "Published: August 17, 2026",
       sections: [
         {
@@ -3027,9 +3034,9 @@ export const dictionaries = {
             "The mechanic is simple: with every receipt, the guest earns a percentage in bonuses, for example 5% as 🪙 on their loyalty card. They can only be spent on the next purchase. The guest sees the balance in a card in Apple Wallet or Google Wallet with no app to install: the card is added via a link or QR code.\n\nThe psychology differs: a discount is 'paid less and forgot', while bonuses are 'I have 40 🪙 sitting there, I should come back'. The accumulated balance works like a magnet. This is critical, because 30–40% of first-time visitors never return within 30 days, and a bonus balance gives them a concrete reason for a second visit.\n\nIt also satisfies a key expectation from the [Devlight 2025](https://devlight.io/loyalty-research-2025/) study: 71.7% of Ukrainians join loyalty programs for an instant benefit. Bonuses are credited immediately on the first receipt: the benefit is instant, but it 'monetizes' on the next visit. Reinforce this with a [welcome bonus](/en/welcome-bonus) for joining the program.",
         },
         {
-          heading: "10% Discount vs 5% Bonus: The Math on a 200 ₴ Receipt",
+          heading: "10% Discount vs 5% Bonus: The Math on a €10 Receipt",
           content:
-            "Let's calculate on a typical coffee shop receipt of 200 ₴:\n\n• 10% discount: you give away 20 ₴ instantly, on every receipt, to every cardholder. 100 receipts a day = 2,000 ₴ of lost revenue daily, regardless of whether the discount influenced anyone's decision.\n• 5% bonus: the guest earns 10 🪙. You lose nothing at the moment of sale: it is a deferred liability that only activates if the guest returns.\n• When the guest comes back and redeems 10 🪙 against a new 200 ₴ receipt, you have effectively given a 5% discount, but in exchange for an extra visit that might never have happened.\n\nBottom line: the bonus model costs half as much at face value (5% vs 10%), triggers only upon an actual repeat visit, and generates exactly what a market with falling traffic lacks: returning guests.",
+            "Let's calculate on a typical coffee shop receipt of €10:\n\n• 10% discount: you give away €1 instantly, on every receipt, to every cardholder. 100 receipts a day = €100 of lost revenue daily, regardless of whether the discount influenced anyone's decision.\n• 5% bonus: the guest earns 5 🪙. You lose nothing at the moment of sale: it is a deferred liability that only activates if the guest returns.\n• When the guest comes back and redeems 5 🪙 against a new €10 receipt, you have effectively given a 5% discount, but in exchange for an extra visit that might never have happened.\n\nBottom line: the bonus model costs half as much at face value (5% vs 10%), triggers only upon an actual repeat visit, and generates exactly what a market with falling traffic lacks: returning guests.",
         },
         {
           heading: "Breakage: Why Some Bonuses Are Never Redeemed",
@@ -3039,7 +3046,7 @@ export const dictionaries = {
         {
           heading: "The Biggest Mistake: Short Bonus Expiration",
           content:
-            "According to the [Devlight 2025](https://devlight.io/loyalty-research-2025/) study, expiring bonuses are the single most irritating thing for 56% of Ukrainians. A guest whose 150 🪙 'burned' is not just disappointed: they feel cheated and will likely tell others.\n\nSo the bonus lifetime must be long and honest: 6–12 months or more. And before expiration, send a mandatory reminder. In Rimbo this is handled by [push notifications](/en/push-notifications) sent straight to the Wallet card: 'You have 120 🪙, use them before they expire'. Each push costs 0 ₴ versus roughly 1.30–1.40 ₴ per SMS, so you can remind guests regularly with zero messaging budget.",
+            "According to the [Devlight 2025](https://devlight.io/loyalty-research-2025/) study, expiring bonuses are the single most irritating thing for 56% of Ukrainians. A guest whose 150 🪙 'burned' is not just disappointed: they feel cheated and will likely tell others.\n\nSo the bonus lifetime must be long and honest: 6–12 months or more. And before expiration, send a mandatory reminder. In Rimbo this is handled by [push notifications](/en/push-notifications) sent straight to the Wallet card: 'You have 120 🪙, use them before they expire'. Each push costs €0 versus a per-message charge for SMS, so you can remind guests regularly with zero messaging budget.",
         },
         {
           heading: "How to Launch a Bonus Program for a Coffee Shop: Step by Step",
@@ -3054,7 +3061,7 @@ export const dictionaries = {
         {
           heading: "Try a Cashback Program Free",
           content:
-            `Rimbo is a Ukrainian digital loyalty platform: bonuses 🪙, cashback, stamp cards, tiers, gift certificates and 0 ₴ push notifications, all inside an Apple Wallet / Google Wallet card, no app required. Plans from ${FROM_PRICE} ₴/month.\n\nLaunch your bonus program in one day, 14 days free: [leave a request](#contact). Questions go to support@rimbo.id; we will help you pick a cashback rate that fits your margin.`,
+            `Rimbo is a Ukrainian digital loyalty platform: bonuses 🪙, cashback, stamp cards, tiers, gift certificates and €0 push notifications, all inside an Apple Wallet / Google Wallet card, no app required. Plans from €${FROM_PRICE_EUR}/month.\n\nLaunch your bonus program in one day, 14 days free: [leave a request](#contact). Questions go to support@rimbo.id; we will help you pick a cashback rate that fits your margin.`,
         },
       ],
     },
@@ -3062,13 +3069,13 @@ export const dictionaries = {
       title:
         "Loyalty Tiers: How to Offer Cumulative Discounts Without Eating Your Margin",
       metaDescription:
-        "Loyalty tiers instead of a lifetime discount: set spending thresholds like 5,000 ₴ → 5%, keep discounts in the Wallet card, and protect your margin.",
+        "Loyalty tiers instead of a lifetime discount: set spending thresholds like €250 → 5%, keep discounts in the Wallet card, and protect your margin.",
       lastUpdated: "Published: August 17, 2026",
       sections: [
         {
           heading: "What Loyalty Tiers Are and Why Your Business Needs Them",
           content:
-            "Loyalty tiers are a cumulative system where a customer's discount and privileges grow with their spending or visit count: for example, 'Regular' from 5,000 ₴ → 5%, 'VIP' from 15,000 ₴ → 10%. The discount goes not to 'anyone holding a card' but to a specific person who actually brings you revenue, and the tier itself motivates them to spend more to reach the next threshold.\n\nThis solves the core flaw of classic discount systems: there, the discount is granted once and forever, quickly maxes out, and then simply eats your margin on every receipt while stimulating nothing.",
+            "Loyalty tiers are a cumulative system where a customer's discount and privileges grow with their spending or visit count: for example, 'Regular' from €250 → 5%, 'VIP' from €750 → 10%. The discount goes not to 'anyone holding a card' but to a specific person who actually brings you revenue, and the tier itself motivates them to spend more to reach the next threshold.\n\nThis solves the core flaw of classic discount systems: there, the discount is granted once and forever, quickly maxes out, and then simply eats your margin on every receipt while stimulating nothing.",
         },
         {
           heading: "The Pains of Old Discount Card Systems",
@@ -3078,12 +3085,12 @@ export const dictionaries = {
         {
           heading: "Plastic Card vs Tiered Wallet Card: A Comparison",
           content:
-            "• Identification. Plastic: anonymous, bearer-based. Wallet card: personal, tied to a specific guest.\n• Discount. Plastic: fixed forever. Tiers: earned through spending, motivating further growth.\n• Tier updates. Plastic: reissuing the card or a note in a ledger. Wallet: the tier and percentage update in the card automatically.\n• Customer communication. Plastic: none. Wallet: [push notifications](/en/push-notifications) at 0 ₴ each (vs about 1.30–1.40 ₴ per SMS).\n• Data. Plastic: Excel at best. Wallet: automatic purchase history and RFM analytics.\n• Card cost. Plastic: printing and reissuing is a recurring expense. Wallet: a [digital loyalty card](/en/digital-loyalty-cards) is issued instantly and free.\n\nA guest adds the card to Apple Wallet or Google Wallet via QR code in 30 seconds, with no app and no forms. That matters: per [Devlight 2025](https://devlight.io/loyalty-research-2025/), 51% of Ukrainians have refused a sign-up at least once, and 51.9% blame a long form.",
+            "• Identification. Plastic: anonymous, bearer-based. Wallet card: personal, tied to a specific guest.\n• Discount. Plastic: fixed forever. Tiers: earned through spending, motivating further growth.\n• Tier updates. Plastic: reissuing the card or a note in a ledger. Wallet: the tier and percentage update in the card automatically.\n• Customer communication. Plastic: none. Wallet: [push notifications](/en/push-notifications) at €0 each (versus a per-message charge for SMS).\n• Data. Plastic: Excel at best. Wallet: automatic purchase history and RFM analytics.\n• Card cost. Plastic: printing and reissuing is a recurring expense. Wallet: a [digital loyalty card](/en/digital-loyalty-cards) is issued instantly and free.\n\nA guest adds the card to Apple Wallet or Google Wallet via QR code in 30 seconds, with no app and no forms. That matters: per [Devlight 2025](https://devlight.io/loyalty-research-2025/), 51% of Ukrainians have refused a sign-up at least once, and 51.9% blame a long form.",
         },
         {
           heading: "How to Design Tiers: Thresholds and Percentages",
           content:
-            "A working scheme for a salon or restaurant is 3 tiers based on total spending:\n\n• 'Guest', from the first visit: 0% discount, but 🪙 bonuses on every receipt so the benefit is instant (71.7% of customers join for it, per [Devlight 2025](https://devlight.io/loyalty-research-2025/)).\n• 'Regular', from 5,000 ₴ accumulated spend: 5%.\n• 'VIP', from 15,000 ₴: 10% plus privileges that cost no margin: priority booking, early access to new items.\n\nSafe-design rules: the maximum discount should not exceed a third of your margin; set thresholds so a customer reaches the second tier within 3–5 visits (a quick first 'win') and VIP within 6–12 months. For coffee shops, visit-count tiers are an alternative, and for one-off mechanics like 'the 10th coffee is free', [stamp cards](/en/stamp-cards) fit better.",
+            "A working scheme for a salon or restaurant is 3 tiers based on total spending:\n\n• 'Guest', from the first visit: 0% discount, but 🪙 bonuses on every receipt so the benefit is instant (71.7% of customers join for it, per [Devlight 2025](https://devlight.io/loyalty-research-2025/)).\n• 'Regular', from €250 accumulated spend: 5%.\n• 'VIP', from €750: 10% plus privileges that cost no margin: priority booking, early access to new items.\n\nSafe-design rules: the maximum discount should not exceed a third of your margin; set thresholds so a customer reaches the second tier within 3–5 visits (a quick first 'win') and VIP within 6–12 months. For coffee shops, visit-count tiers are an alternative, and for one-off mechanics like 'the 10th coffee is free', [stamp cards](/en/stamp-cards) fit better.",
         },
         {
           heading: "Tier Discount + Bonuses 🪙: The Combination That Protects Margin",
@@ -3093,7 +3100,7 @@ export const dictionaries = {
         {
           heading: "Analytics: Who Your VIPs Really Are",
           content:
-            "When tiers live in a digital card, you finally see the real picture: how many customers sit at each tier, their average check and visit frequency, who is close to the next threshold and who has stalled. [RFM analytics](/en/customer-analytics) in Rimbo automatically segments your base by recency, frequency and monetary value.\n\nThis turns tiers into a controllable tool. A customer who is 800 ₴ away from VIP can get a push: 'One more visit, and a 10% discount is yours for good'. And those inactive for 30+ days get a separate reactivation offer. Remember that 30–40% of first-time visitors never return within a month if nothing pulls them back.",
+            "When tiers live in a digital card, you finally see the real picture: how many customers sit at each tier, their average check and visit frequency, who is close to the next threshold and who has stalled. [RFM analytics](/en/customer-analytics) in Rimbo automatically segments your base by recency, frequency and monetary value.\n\nThis turns tiers into a controllable tool. A customer who is €50 away from VIP can get a push: 'One more visit, and a 10% discount is yours for good'. And those inactive for 30+ days get a separate reactivation offer. Remember that 30–40% of first-time visitors never return within a month if nothing pulls them back.",
         },
         {
           heading: "How to Launch a Tier System: Step by Step",
@@ -3108,7 +3115,7 @@ export const dictionaries = {
         {
           heading: "Launch Loyalty Tiers in One Day",
           content:
-            `In Rimbo, tiers, bonuses 🪙, stamp cards and gift certificates all work inside one Apple Wallet / Google Wallet card: no app, automatic tier updates, 0 ₴ push notifications and built-in analytics. Plans from ${FROM_PRICE} ₴/month, integrations with Poster POS and Altegio, multi-location support.\n\nTry it free for 14 days: [leave a request](#contact), or write to support@rimbo.id and we will help you calculate tier thresholds that fit your margin.`,
+            `In Rimbo, tiers, bonuses 🪙, stamp cards and gift certificates all work inside one Apple Wallet / Google Wallet card: no app, automatic tier updates, €0 push notifications and built-in analytics. Plans from €${FROM_PRICE_EUR}/month, integrations with Poster POS and Altegio, multi-location support.\n\nTry it free for 14 days: [leave a request](#contact), or write to support@rimbo.id and we will help you calculate tier thresholds that fit your margin.`,
         },
       ],
     },
@@ -3132,7 +3139,7 @@ export const dictionaries = {
         {
           heading: "Paper vs Digital Certificate: A Comparison",
           content:
-            "• Sales. Paper: on-site during working hours only. Digital: online 24/7, paid by card from any city.\n• Delivery. Paper: physically handed over. Digital: a link or QR code shared in one tap via messenger.\n• Balance. Paper: impossible to verify. Digital: partial redemption with the current balance always shown in the Wallet card.\n• Loss. Paper: gone forever plus a checkout conflict. Digital: the card lives in the phone and is restorable via link.\n• Forgery. Paper: a real risk. Digital: every certificate has a unique code verified on scan.\n• Accounting. Paper: a notebook or Excel. Digital: automatic reporting on sold, redeemed and outstanding liability.\n• Contact with the recipient. Paper: none. Digital: [push notifications](/en/push-notifications) at 0 ₴, for example a reminder about an unused balance.\n\nThe practical takeaway: a digital certificate sells more often (it can be bought anytime), is redeemed faster, and generates no disputes.",
+            "• Sales. Paper: on-site during working hours only. Digital: online 24/7, paid by card from any city.\n• Delivery. Paper: physically handed over. Digital: a link or QR code shared in one tap via messenger.\n• Balance. Paper: impossible to verify. Digital: partial redemption with the current balance always shown in the Wallet card.\n• Loss. Paper: gone forever plus a checkout conflict. Digital: the card lives in the phone and is restorable via link.\n• Forgery. Paper: a real risk. Digital: every certificate has a unique code verified on scan.\n• Accounting. Paper: a notebook or Excel. Digital: automatic reporting on sold, redeemed and outstanding liability.\n• Contact with the recipient. Paper: none. Digital: [push notifications](/en/push-notifications) at €0, for example a reminder about an unused balance.\n\nThe practical takeaway: a digital certificate sells more often (it can be bought anytime), is redeemed faster, and generates no disputes.",
         },
         {
           heading: "A Certificate Is a New Client Who Arrives Already Paid",
@@ -3142,27 +3149,27 @@ export const dictionaries = {
         {
           heading: "Partial Redemption and the Balance in the Wallet Card",
           content:
-            "A typical salon scenario: a 1,500 ₴ certificate and a 900 ₴ procedure. With paper, the pen marks begin; with a digital certificate, the administrator scans the QR, redeems 900 ₴, and the recipient's card instantly shows a 600 ₴ balance.\n\nThat balance works toward a repeat visit on its own: the person sees '600 ₴ remaining' in their Wallet and has a concrete reason to come back. If they don't, send a push reminder at 0 ₴ (an SMS would cost about 1.30–1.40 ₴). And remember the trust rule: expiring balances and bonuses are the top irritant for 56% of Ukrainians ([Devlight 2025](https://devlight.io/loyalty-research-2025/)), so keep the certificate validity long and honest, and warn before it ends.",
+            "A typical salon scenario: a €150 certificate and a €90 procedure. With paper, the pen marks begin; with a digital certificate, the administrator scans the QR, redeems €90, and the recipient's card instantly shows a €60 balance.\n\nThat balance works toward a repeat visit on its own: the person sees '€60 remaining' in their Wallet and has a concrete reason to come back. If they don't, send a push reminder at €0 (an SMS would be billed per message). And remember the trust rule: expiring balances and bonuses are the top irritant for 56% of Ukrainians ([Devlight 2025](https://devlight.io/loyalty-research-2025/)), so keep the certificate validity long and honest, and warn before it ends.",
         },
         {
           heading: "Who It Fits: Salons, Spas, Coffee Shops, Grooming",
           content:
-            "Certificates work wherever a service makes a pleasant gift:\n\n• Beauty salons and massage: the classic gift, certificates for an amount or a specific procedure, with sales peaking before holidays.\n• Spas: an 'experience' gift with a high average ticket; partial redemption is essential.\n• Coffee shops: small 300–500 ₴ values as a gift for a colleague, plus a new regular, retained afterwards with [stamp cards](/en/stamp-cards) or cashback.\n• Pet grooming: a certificate from one dog owner to another is the shortest path to a new client in a niche business.\n\nFor salons and studios, Rimbo certificates work alongside booking via [Altegio](/en/integrations/altegio); for restaurants and cafes, with Poster POS: the value is redeemed right inside the checkout flow.",
+            "Certificates work wherever a service makes a pleasant gift:\n\n• Beauty salons and massage: the classic gift, certificates for an amount or a specific procedure, with sales peaking before holidays.\n• Spas: an 'experience' gift with a high average ticket; partial redemption is essential.\n• Coffee shops: small €15–25 values as a gift for a colleague, plus a new regular, retained afterwards with [stamp cards](/en/stamp-cards) or cashback.\n• Pet grooming: a certificate from one dog owner to another is the shortest path to a new client in a niche business.\n\nFor salons and studios, Rimbo certificates work alongside booking via [Altegio](/en/integrations/altegio); for restaurants and cafes, with Poster POS: the value is redeemed right inside the checkout flow.",
         },
         {
           heading: "How to Start Selling Certificates: Step by Step",
           content:
-            "• Step 1. Define the values: 2–3 fixed amounts (e.g. 500 / 1,000 / 2,000 ₴) plus a custom amount. Fixed values sell better, because choosing is easier.\n• Step 2. Create the digital certificate in Rimbo: your brand design, validity period (we recommend 6–12 months), and partial redemption rules.\n• Step 3. Put the purchase link everywhere: Instagram profile, website, Google Business Profile, a QR code at the counter and in the price list.\n• Step 4. Train the team: scanning the QR at redemption and deducting a full or partial amount takes seconds at checkout.\n• Step 5. Start holiday promos early: launch 2–3 weeks before the holidays when people are hunting for gifts. A digital certificate sells online even at 11 pm the night before.\n• Step 6. Reconcile monthly in analytics: sold, redeemed and outstanding liabilities, numbers you finally have.\n\nOne rule of thumb: the buying flow should take under two minutes on a phone. Every extra step costs you a sale.",
+            "• Step 1. Define the values: 2–3 fixed amounts (e.g. €25 / €50 / €100) plus a custom amount. Fixed values sell better, because choosing is easier.\n• Step 2. Create the digital certificate in Rimbo: your brand design, validity period (we recommend 6–12 months), and partial redemption rules.\n• Step 3. Put the purchase link everywhere: Instagram profile, website, Google Business Profile, a QR code at the counter and in the price list.\n• Step 4. Train the team: scanning the QR at redemption and deducting a full or partial amount takes seconds at checkout.\n• Step 5. Start holiday promos early: launch 2–3 weeks before the holidays when people are hunting for gifts. A digital certificate sells online even at 11 pm the night before.\n• Step 6. Reconcile monthly in analytics: sold, redeemed and outstanding liabilities, numbers you finally have.\n\nOne rule of thumb: the buying flow should take under two minutes on a phone. Every extra step costs you a sale.",
         },
         {
           heading: "What It Costs and How Fast It Pays Off",
           content:
-            `In Rimbo, gift certificates are included in the loyalty platform with plans from ${FROM_PRICE} ₴/month, with no per-certificate fee and no printing. A single sold 1,000 ₴ certificate already covers a full month of the subscription.\n\nDo the math: if a salon sells just 10 certificates a month at an average of 1,000 ₴, that is 10,000 ₴ of prepaid cash flow and up to 10 new clients, each then retained by a loyalty program with 🪙 bonuses and [loyalty tiers](/en/loyalty-tiers). No ad channel delivers new clients who pay upfront themselves.`,
+            `In Rimbo, gift certificates are included in the loyalty platform with plans from €${FROM_PRICE_EUR}/month, with no per-certificate fee and no printing. A single sold €50 certificate already covers a full month of the subscription.\n\nDo the math: if a salon sells just 10 certificates a month at an average of €50, that is €500 of prepaid cash flow and up to 10 new clients, each then retained by a loyalty program with 🪙 bonuses and [loyalty tiers](/en/loyalty-tiers). No ad channel delivers new clients who pay upfront themselves.`,
         },
         {
           heading: "Start Selling Certificates Today",
           content:
-            `Rimbo is a Ukrainian digital loyalty platform: gift certificates, bonuses 🪙, stamp cards, tiers and 0 ₴ push notifications in one Apple Wallet / Google Wallet card, with no app to install. Integrations with Poster POS and Altegio, multi-location support, plans from ${FROM_PRICE} ₴/month.\n\nTry it free for 14 days: [leave a request](#contact), and your first certificate can be live in 15 minutes. Questions go to support@rimbo.id.`,
+            `Rimbo is a Ukrainian digital loyalty platform: gift certificates, bonuses 🪙, stamp cards, tiers and €0 push notifications in one Apple Wallet / Google Wallet card, with no app to install. Integrations with Poster POS and Altegio, multi-location support, plans from €${FROM_PRICE_EUR}/month.\n\nTry it free for 14 days: [leave a request](#contact), and your first certificate can be live in 15 minutes. Questions go to support@rimbo.id.`,
         },
       ],
     },
@@ -3170,13 +3177,13 @@ export const dictionaries = {
       title:
         "Loyalty program for coffee shops: a stamp card in Apple Wallet, no app needed",
       metaDescription:
-        "Loyalty program for coffee shops: a 6+1 stamp card in Apple Wallet and Google Wallet, 🪙 cashback and 0 ₴ push. Works with Poster, Syrve, SkyService. 14 days free.",
+        "Loyalty program for coffee shops: a 6+1 stamp card in Apple Wallet and Google Wallet, 🪙 cashback and €0 push. Works with Poster, Syrve, SkyService. 14 days free.",
       lastUpdated: "Published: August 17, 2026",
       sections: [
         {
           heading: "What loyalty program a coffee shop actually needs",
           content:
-            `For a coffee shop, the best fit is a digital stamp card that lives in Apple Wallet or Google Wallet. The guest scans a QR code at the counter, adds the card to their phone in half a minute and collects a stamp for every coffee. The sixth, seventh or tenth one is on the house: you set the rule.\n\nNo app install is required, and that matters. According to [Devlight 2025](https://devlight.io/loyalty-research-2025/), 51% of Ukrainians have refused loyalty sign-ups that demand extra steps, while 71.7% join for an instant benefit. A Wallet card removes both barriers: one tap, and the value is visible right away.\n\nIf your till runs on [Poster](/en/integrations/poster), Syrve, SkyService or Checkbox, accruals can be tied to receipts. Rimbo also works with no integration at all: the barista simply scans the QR on the guest's card. Plans start at ${FROM_PRICE} ₴/month, the first 14 days are free.`,
+            `For a coffee shop, the best fit is a digital stamp card that lives in Apple Wallet or Google Wallet. The guest scans a QR code at the counter, adds the card to their phone in half a minute and collects a stamp for every coffee. The sixth, seventh or tenth one is on the house: you set the rule.\n\nNo app install is required, and that matters. According to [Devlight 2025](https://devlight.io/loyalty-research-2025/), 51% of Ukrainians have refused loyalty sign-ups that demand extra steps, while 71.7% join for an instant benefit. A Wallet card removes both barriers: one tap, and the value is visible right away.\n\nIf your till runs on [Poster](/en/integrations/poster), Syrve, SkyService or Checkbox, accruals can be tied to receipts. Rimbo also works with no integration at all: the barista simply scans the QR on the guest's card. Plans start at €${FROM_PRICE_EUR}/month, the first 14 days are free.`,
         },
         {
           heading: "How to keep coffee shop guests when traffic is falling",
@@ -3186,7 +3193,7 @@ export const dictionaries = {
         {
           heading: "Bonus program for a coffee shop: which mechanics to pick",
           content:
-            "The base is a digital [stamp card](/en/stamp-cards), 6+1 or 9+1. A stamp is added on scan, progress is visible on the phone, and when one coffee remains before the reward, the guest gets a push reminder.\n\n[Cashback 🪙](/en/cashback-loyalty) on desserts and beans layers nicely on top. Bonuses are earned today and spent on the next visit, so the guest always has a concrete reason to return.\n\nFor quiet hours, create a [coupon](/en/smart-coupons) like 20% off the second coffee, weekdays 3 to 5 pm. It activates itself in the right window and reaches guests as a push that costs 0 ₴, against 1.30–1.40 ₴ per SMS.",
+            "The base is a digital [stamp card](/en/stamp-cards), 6+1 or 9+1. A stamp is added on scan, progress is visible on the phone, and when one coffee remains before the reward, the guest gets a push reminder.\n\n[Cashback 🪙](/en/cashback-loyalty) on desserts and beans layers nicely on top. Bonuses are earned today and spent on the next visit, so the guest always has a concrete reason to return.\n\nFor quiet hours, create a [coupon](/en/smart-coupons) like 20% off the second coffee, weekdays 3 to 5 pm. It activates itself in the right window and reaches guests as a push that costs €0, against a per-message charge for SMS.",
         },
         {
           heading: "What it looks like for the guest",
@@ -3206,7 +3213,7 @@ export const dictionaries = {
         {
           heading: "Try it free",
           content:
-            `Rimbo is a Ukrainian digital loyalty platform: stamp cards, 🪙 cashback, coupons and 0 ₴ push in a single Wallet card. Plans start at ${FROM_PRICE} ₴/month.\n\n[Leave a request](#contact) and we will launch the program for your coffee shop in one day. Or call us: +380 (68) 009 60 60. Questions by email: support@rimbo.id.`,
+            `Rimbo is a Ukrainian digital loyalty platform: stamp cards, 🪙 cashback, coupons and €0 push in a single Wallet card. Plans start at €${FROM_PRICE_EUR}/month.\n\n[Leave a request](#contact) and we will launch the program for your coffee shop in one day. Or call us: +380 (68) 009 60 60. Questions by email: support@rimbo.id.`,
         },
       ],
     },
@@ -3220,7 +3227,7 @@ export const dictionaries = {
         {
           heading: "What loyalty program a bakery or pastry shop needs",
           content:
-            `A bakery needs a digital loyalty card in Apple Wallet or Google Wallet that works at the counter in seconds and is valid across all your locations. Rimbo does exactly that: a customer scans a QR code by the till, adds the card to their phone with no app and no registration, then collects stamps for everyday purchases (bread, coffee, pastries) and 🪙 bonuses for big orders like custom cakes. Bakeries enjoy the highest visit frequency in retail: people buy bread daily or every other day, so even a small reward for regularity quickly builds the habit of buying from you. The cashier adds stamps with one scan, and you see every customer in analytics. This matters: 51% of people have refused a loyalty sign-up at least once, while 71.7% join programs for an instant benefit ([Devlight 2025](https://devlight.io/loyalty-research-2025/)). Pricing starts at ${FROM_PRICE} ₴/mo, with 14 days free.`,
+            `A bakery needs a digital loyalty card in Apple Wallet or Google Wallet that works at the counter in seconds and is valid across all your locations. Rimbo does exactly that: a customer scans a QR code by the till, adds the card to their phone with no app and no registration, then collects stamps for everyday purchases (bread, coffee, pastries) and 🪙 bonuses for big orders like custom cakes. Bakeries enjoy the highest visit frequency in retail: people buy bread daily or every other day, so even a small reward for regularity quickly builds the habit of buying from you. The cashier adds stamps with one scan, and you see every customer in analytics. This matters: 51% of people have refused a loyalty sign-up at least once, while 71.7% join programs for an instant benefit ([Devlight 2025](https://devlight.io/loyalty-research-2025/)). Pricing starts at €${FROM_PRICE_EUR}/mo, with 14 days free.`,
         },
         {
           heading: "Why bakeries lose their regular customers",
@@ -3230,12 +3237,12 @@ export const dictionaries = {
         {
           heading: "Bonus card for a pastry shop: Rimbo mechanics",
           content:
-            "Rimbo covers all three bakery scenarios. For everyday purchases, a [digital stamp card](/en/stamp-cards): every sixth coffee or tenth loaf free, with progress visible right on the Wallet card. For cakes and large orders, [🪙 bonus cashback](/en/cashback-loyalty): a percentage of the receipt returns as bonuses, and before the next celebration you send a push saying there are 180 🪙 waiting to be spent on a cake. That is how you bring back the once-a-year customer. For gifting, [digital gift certificates](/en/gift-certificates): people buy them for friends and family, bringing you brand-new customers. Everything works across all your locations at once: one card, one shared balance, one analytics dashboard. Push notifications are free, 0 ₴ versus 1.30–1.40 ₴ per SMS, so reminders about fresh pastry or pre-holiday cake orders cost you nothing.",
+            "Rimbo covers all three bakery scenarios. For everyday purchases, a [digital stamp card](/en/stamp-cards): every sixth coffee or tenth loaf free, with progress visible right on the Wallet card. For cakes and large orders, [🪙 bonus cashback](/en/cashback-loyalty): a percentage of the receipt returns as bonuses, and before the next celebration you send a push saying there are 180 🪙 waiting to be spent on a cake. That is how you bring back the once-a-year customer. For gifting, [digital gift certificates](/en/gift-certificates): people buy them for friends and family, bringing you brand-new customers. Everything works across all your locations at once: one card, one shared balance, one analytics dashboard. Push notifications are free, €0 versus a per-message charge for SMS, so reminders about fresh pastry or pre-holiday cake orders cost you nothing.",
         },
         {
           heading: "How it looks for your bakery customer",
           content:
-            "A morning scene, in an owner's words. A regular picks up a baguette and a cappuccino; the cashier mentions the card: tenth coffee free, and cake orders earn bonuses. The guest scans the QR by the till and the card lands in her Google Wallet, with no form and no phone number. The cashier scans the QR from her screen, and the stamp is added. Two weeks later the card is full and she gets her free coffee, smiling, because now she chooses us over the bakery closer to her home. In November she orders a 1,200 ₴ cake, and 🪙 cashback lands on her card. Next October we send her a push: birthday coming up, your bonuses are waiting. She hadn't thought about us for a year, but the push remembered for her. For the customer it's one card in a phone; for us it's a base of regulars instead of an anonymous flow.",
+            "A morning scene, in an owner's words. A regular picks up a baguette and a cappuccino; the cashier mentions the card: tenth coffee free, and cake orders earn bonuses. The guest scans the QR by the till and the card lands in her Google Wallet, with no form and no phone number. The cashier scans the QR from her screen, and the stamp is added. Two weeks later the card is full and she gets her free coffee, smiling, because now she chooses us over the bakery closer to her home. In November she orders a €60 cake, and 🪙 cashback lands on her card. Next October we send her a push: birthday coming up, your bonuses are waiting. She hadn't thought about us for a year, but the push remembered for her. For the customer it's one card in a phone; for us it's a base of regulars instead of an anonymous flow.",
         },
         {
           heading: "Launch a bakery loyalty program in 1 day",
@@ -3250,7 +3257,7 @@ export const dictionaries = {
         {
           heading: "Try Rimbo in your bakery for free",
           content:
-            `A bakery is the perfect business for loyalty: high visit frequency means you see results within the first weeks, not months. Rimbo gives you 14 days of full access free: create the card, put QR codes on every till and watch how many customers join and come back. After that it's from ${FROM_PRICE} ₴/mo, and stamp cards, 🪙 cashback, gift certificates, unlimited push at 0 ₴, multi-location support and RFM analytics are all included. For comparison: one SMS blast costs 1.30–1.40 ₴ per message, while a Rimbo push costs nothing. [Leave a request](#contact) in a few minutes, and for help tailoring mechanics to your bakery or pastry shop write to support@rimbo.id, we'll answer and help you launch in a single day.`,
+            `A bakery is the perfect business for loyalty: high visit frequency means you see results within the first weeks, not months. Rimbo gives you 14 days of full access free: create the card, put QR codes on every till and watch how many customers join and come back. After that it's from €${FROM_PRICE_EUR}/mo, and stamp cards, 🪙 cashback, gift certificates, unlimited push at €0, multi-location support and RFM analytics are all included. For comparison: an SMS blast is billed per message, while a Rimbo push costs nothing. [Leave a request](#contact) in a few minutes, and for help tailoring mechanics to your bakery or pastry shop write to support@rimbo.id, we'll answer and help you launch in a single day.`,
         },
       ],
     },
@@ -3264,7 +3271,7 @@ export const dictionaries = {
         {
           heading: "What loyalty program a restaurant needs",
           content:
-            `A restaurant needs a bonus system that brings guests back without handing out flat discounts and works without an app: a loyalty card in Apple Wallet or Google Wallet, 🪙 bonus cashback from every receipt, tiers for your most valuable guests and coupons for quiet hours. Rimbo is a Ukrainian platform that combines these mechanics in one dashboard and integrates with Poster POS via receipt webhooks: bonuses accrue automatically, and waiters don't calculate anything. A guest joins in 30 seconds by scanning a QR code on a table tent, with no forms and no phone number. That's essential: 51% of people have refused a loyalty sign-up at least once, while 71.7% join programs for an instant benefit ([Devlight 2025](https://devlight.io/loyalty-research-2025/)). Per Poster 2025 data, the market-wide average check grew 17% while venue traffic fell 8%. Rimbo starts at ${FROM_PRICE} ₴/mo, with the first 14 days free, so you can test the mechanics on your own guests risk-free.`,
+            `A restaurant needs a bonus system that brings guests back without handing out flat discounts and works without an app: a loyalty card in Apple Wallet or Google Wallet, 🪙 bonus cashback from every receipt, tiers for your most valuable guests and coupons for quiet hours. Rimbo is a Ukrainian platform that combines these mechanics in one dashboard and integrates with Poster POS via receipt webhooks: bonuses accrue automatically, and waiters don't calculate anything. A guest joins in 30 seconds by scanning a QR code on a table tent, with no forms and no phone number. That's essential: 51% of people have refused a loyalty sign-up at least once, while 71.7% join programs for an instant benefit ([Devlight 2025](https://devlight.io/loyalty-research-2025/)). Per Poster 2025 data, the market-wide average check grew 17% while venue traffic fell 8%. Rimbo starts at €${FROM_PRICE_EUR}/mo, with the first 14 days free, so you can test the mechanics on your own guests risk-free.`,
         },
         {
           heading: "How to bring guests back to a restaurant: three core pains",
@@ -3274,17 +3281,17 @@ export const dictionaries = {
         {
           heading: "Bonus system for a restaurant: Rimbo mechanics",
           content:
-            "The foundation is [bonuses instead of discounts](/en/cashback-loyalty): a percentage of every receipt returns to the guest as 🪙 bonuses they can only spend at your venue on the next visit. The difference is fundamental: a discount is margin lost today, a bonus is a return visit booked for tomorrow. Next, [loyalty tiers](/en/loyalty-tiers): a guest whose lifetime checks pass 5,000 ₴ gets a Gourmet status with boosted cashback, so your top 20% of guests feel the privilege and stop drifting to competitors. The third mechanic is [smart coupons](/en/smart-coupons) for quiet hours: a weekday business lunch coupon or a chef's compliment on Tuesday evening fills the empty room. With the Poster integration via receipt webhooks everything accrues automatically, and push notifications about coupons and bonuses cost 0 ₴ versus 1.30–1.40 ₴ per SMS.",
+            "The foundation is [bonuses instead of discounts](/en/cashback-loyalty): a percentage of every receipt returns to the guest as 🪙 bonuses they can only spend at your venue on the next visit. The difference is fundamental: a discount is margin lost today, a bonus is a return visit booked for tomorrow. Next, [loyalty tiers](/en/loyalty-tiers): a guest whose lifetime checks pass €750 gets a Gourmet status with boosted cashback, so your top 20% of guests feel the privilege and stop drifting to competitors. The third mechanic is [smart coupons](/en/smart-coupons) for quiet hours: a weekday business lunch coupon or a chef's compliment on Tuesday evening fills the empty room. With the Poster integration via receipt webhooks everything accrues automatically, and push notifications about coupons and bonuses cost €0 versus a per-message charge for SMS.",
         },
         {
           heading: "How it looks for your restaurant guest",
           content:
-            "A scene in a restaurateur's words. A couple dines with us for the first time, the check is 1,400 ₴. The waiter brings the bill and suggests scanning the QR to get part of the check back in bonuses. The guest scans the code on the table tent, a card appears in Apple Wallet, and 🪙 cashback lands on it instantly: immediate value, zero forms. Two weeks later we send a push: your 140 🪙 are waiting, valid on the full menu. The couple returns on a Tuesday, exactly when the room is usually empty, because a coupon for a chef's compliment came with the push. A few months later the guest crosses 5,000 ₴ in lifetime checks, and the card upgrades itself to the Gourmet tier with boosted cashback, visibly, right on screen. For the guest it's a game with visible progress; for us it's a way to recover the 30–40% of first-timers we used to lose.",
+            "A scene in a restaurateur's words. A couple dines with us for the first time, the check is €70. The waiter brings the bill and suggests scanning the QR to get part of the check back in bonuses. The guest scans the code on the table tent, a card appears in Apple Wallet, and 🪙 cashback lands on it instantly: immediate value, zero forms. Two weeks later we send a push: your 140 🪙 are waiting, valid on the full menu. The couple returns on a Tuesday, exactly when the room is usually empty, because a coupon for a chef's compliment came with the push. A few months later the guest crosses €750 in lifetime checks, and the card upgrades itself to the Gourmet tier with boosted cashback, visibly, right on screen. For the guest it's a game with visible progress; for us it's a way to recover the 30–40% of first-timers we used to lose.",
         },
         {
           heading: "Launch a restaurant bonus system in 1 day",
           content:
-            "Step 1: [leave a request](#contact), we register your company and hand over access. Then configure the card: branding, cashback percentage, tier rules (for example, Gourmet from 5,000 ₴), up to 30 minutes. Step 2: connect Poster, and receipt webhooks will accrue 🪙 bonuses automatically, with no action from waiters or managers. Step 3: place table tents with the QR code on tables and add the QR to the bill folder; Rimbo generates ready-made layouts. Step 4: brief the floor staff on one phrase at checkout: scan this and part of your check comes back in bonuses. Step 5: set up your first quiet-hours coupon (a weekday business lunch or a Tuesday–Wednesday offer) and a push campaign for it at 0 ₴. That same evening you'll see the first members in your dashboard, and within a few weeks RFM analytics will show who returns, who is about to churn and who deserves the next coupon.",
+            "Step 1: [leave a request](#contact), we register your company and hand over access. Then configure the card: branding, cashback percentage, tier rules (for example, Gourmet from €750), up to 30 minutes. Step 2: connect Poster, and receipt webhooks will accrue 🪙 bonuses automatically, with no action from waiters or managers. Step 3: place table tents with the QR code on tables and add the QR to the bill folder; Rimbo generates ready-made layouts. Step 4: brief the floor staff on one phrase at checkout: scan this and part of your check comes back in bonuses. Step 5: set up your first quiet-hours coupon (a weekday business lunch or a Tuesday–Wednesday offer) and a push campaign for it at €0. That same evening you'll see the first members in your dashboard, and within a few weeks RFM analytics will show who returns, who is about to churn and who deserves the next coupon.",
         },
         {
           heading: "FAQ about loyalty programs for restaurants",
@@ -3294,7 +3301,7 @@ export const dictionaries = {
         {
           heading: "Try Rimbo in your restaurant for free",
           content:
-            `Test the bonus system on real guests: Rimbo gives 14 days of full access free, with 🪙 cashback, tiers, coupons, push notifications at 0 ₴ and the Poster integration via receipt webhooks. Configure the card in the morning, place QR codes on tables before dinner service, and within the first week RFM analytics will show how many first-time guests you managed to hook. After the trial it's from ${FROM_PRICE} ₴/mo, with no per-guest or per-message fees: push is unlimited, while SMS would cost 1.30–1.40 ₴ each. Keep the numbers in mind: 30–40% of new guests never return on their own, and the market-wide average check grew just 17% while traffic fell 8% (Poster 2025), so you'll see the difference in your own report. [Leave a request](#contact); questions go to support@rimbo.id, and we'll help migrate your old discount base and configure tiers.`,
+            `Test the bonus system on real guests: Rimbo gives 14 days of full access free, with 🪙 cashback, tiers, coupons, push notifications at €0 and the Poster integration via receipt webhooks. Configure the card in the morning, place QR codes on tables before dinner service, and within the first week RFM analytics will show how many first-time guests you managed to hook. After the trial it's from €${FROM_PRICE_EUR}/mo, with no per-guest or per-message fees: push is unlimited, while SMS would be billed per message. Keep the numbers in mind: 30–40% of new guests never return on their own, and the market-wide average check grew just 17% while traffic fell 8% (Poster 2025), so you'll see the difference in your own report. [Leave a request](#contact); questions go to support@rimbo.id, and we'll help migrate your old discount base and configure tiers.`,
         },
       ],
     },
@@ -3308,7 +3315,7 @@ export const dictionaries = {
         {
           heading: "What loyalty program a barbershop actually needs",
           content:
-            `A barbershop needs a digital punch-card program that lives in Apple Wallet or Google Wallet. The client earns a stamp for every haircut and sees on their phone how much is left to the reward. You choose the reward: a free beard shave, a discounted shampoo, free styling or the tenth haircut at half price.\n\nNo app install is required, and that matters: per [Devlight 2025](https://devlight.io/loyalty-research-2025/), 23.2% of Ukrainians refuse a program if it makes them install the venue's app. The card is added via QR in half a minute, and front-desk identification is a QR scan too, with no phone number said out loud.\n\nRimbo covers the whole scenario: stamp cards, 🪙 bonuses, welcome bonuses, promo codes and gift certificates with 0 ₴ push notifications. The [Altegio](/en/integrations/altegio) integration is live, EasyWeek is on the way, and without an integration everything works on top of any booking system. Plans start at ${FROM_PRICE} ₴/month, the first 14 days are free.`,
+            `A barbershop needs a digital punch-card program that lives in Apple Wallet or Google Wallet. The client earns a stamp for every haircut and sees on their phone how much is left to the reward. You choose the reward: a free beard shave, a discounted shampoo, free styling or the tenth haircut at half price.\n\nNo app install is required, and that matters: per [Devlight 2025](https://devlight.io/loyalty-research-2025/), 23.2% of Ukrainians refuse a program if it makes them install the venue's app. The card is added via QR in half a minute, and front-desk identification is a QR scan too, with no phone number said out loud.\n\nRimbo covers the whole scenario: stamp cards, 🪙 bonuses, welcome bonuses, promo codes and gift certificates with €0 push notifications. The [Altegio](/en/integrations/altegio) integration is live, EasyWeek is on the way, and without an integration everything works on top of any booking system. Plans start at €${FROM_PRICE_EUR}/month, the first 14 days are free.`,
         },
         {
           heading: "How to retain barbershop clients: the typical problems",
@@ -3318,7 +3325,7 @@ export const dictionaries = {
         {
           heading: "A bonus system for a barbershop: mechanics that work",
           content:
-            "The base is a [digital stamp card](/en/stamp-cards). A rule like ten haircuts, then a free beard shave is counted by the system, not the admin. The client sees progress on their phone and checkout disputes disappear.\n\nFor upsells (beard, care products, wax) add [cashback bonuses](/en/cashback-loyalty): a share of the receipt comes back as 🪙 and is spent on future visits. Per [Devlight 2025](https://devlight.io/loyalty-research-2025/), 71.7% of clients join programs for an instant benefit, and instantly credited bonuses deliver exactly that.\n\nPush reminders cost 0 ₴ against 1.30–1.40 ₴ per SMS. Remind about the haircut cycle, congratulate on birthdays, win back those who haven't shown up for over a month.",
+            "The base is a [digital stamp card](/en/stamp-cards). A rule like ten haircuts, then a free beard shave is counted by the system, not the admin. The client sees progress on their phone and checkout disputes disappear.\n\nFor upsells (beard, care products, wax) add [cashback bonuses](/en/cashback-loyalty): a share of the receipt comes back as 🪙 and is spent on future visits. Per [Devlight 2025](https://devlight.io/loyalty-research-2025/), 71.7% of clients join programs for an instant benefit, and instantly credited bonuses deliver exactly that.\n\nPush reminders cost €0 against a per-message charge for SMS. Remind about the haircut cycle, congratulate on birthdays, win back those who haven't shown up for over a month.",
         },
         {
           heading: "Welcome bonus: so the first haircut isn't the last",
@@ -3353,7 +3360,7 @@ export const dictionaries = {
         {
           heading: "Try Rimbo: 14 days free for your barbershop",
           content:
-            `Launch a digital loyalty program today: 14 days of full functionality free, no bank card attached. After that from ${FROM_PRICE} ₴/month: stamp cards, welcome bonuses, promo codes, gift certificates, push at 0 ₴ instead of 1.30–1.40 ₴ per SMS, RFM analytics and the [Altegio](/en/integrations/altegio) integration.\n\n[Leave a request](#contact) and we will launch the program for your barbershop in one day. Or call us: +380 (68) 009 60 60. Questions by email: support@rimbo.id.`,
+            `Launch a digital loyalty program today: 14 days of full functionality free, no bank card attached. After that from €${FROM_PRICE_EUR}/month: stamp cards, welcome bonuses, promo codes, gift certificates, push at €0 instead of a per-message charge for SMS, RFM analytics and the [Altegio](/en/integrations/altegio) integration.\n\n[Leave a request](#contact) and we will launch the program for your barbershop in one day. Or call us: +380 (68) 009 60 60. Questions by email: support@rimbo.id.`,
         },
       ],
     },
@@ -3367,7 +3374,7 @@ export const dictionaries = {
         {
           heading: "What loyalty program does a beauty salon need",
           content:
-            `A beauty salon, nail studio or brow bar needs a personal digital program with tiers: the more a client spends, the higher her status, and with it the 🪙 cashback or discount she can see herself on a card in Apple Wallet or Google Wallet. No plastic, no paper forms, no app: per [Devlight 2025](https://devlight.io/loyalty-research-2025/), 23.2% of Ukrainians refuse a program that requires installing the venue's app, so the card must be added via QR code in 30 seconds. The key thing in beauty is the cycle: a manicure repeats every 3–4 weeks, so the program should automatically send a push reminder the moment a client falls out of her rhythm. Rimbo is a Ukrainian platform built for this: tiers, bonuses, a welcome bonus for newcomers, gift certificates and free push notifications, with an Altegio integration and the ability to work on top of any booking tool. Plans start at ${FROM_PRICE} ₴/month, the first 14 days are free.`,
+            `A beauty salon, nail studio or brow bar needs a personal digital program with tiers: the more a client spends, the higher her status, and with it the 🪙 cashback or discount she can see herself on a card in Apple Wallet or Google Wallet. No plastic, no paper forms, no app: per [Devlight 2025](https://devlight.io/loyalty-research-2025/), 23.2% of Ukrainians refuse a program that requires installing the venue's app, so the card must be added via QR code in 30 seconds. The key thing in beauty is the cycle: a manicure repeats every 3–4 weeks, so the program should automatically send a push reminder the moment a client falls out of her rhythm. Rimbo is a Ukrainian platform built for this: tiers, bonuses, a welcome bonus for newcomers, gift certificates and free push notifications, with an Altegio integration and the ability to work on top of any booking tool. Plans start at €${FROM_PRICE_EUR}/month, the first 14 days are free.`,
         },
         {
           heading: "Cumulative discounts in a salon: what actually hurts",
@@ -3377,12 +3384,12 @@ export const dictionaries = {
         {
           heading: "A bonus program for a nail salon: Rimbo mechanics",
           content:
-            "Instead of an eternal discount, [loyalty tiers](/en/loyalty-tiers): Silver, Gold, VIP based on total spend. Status has to be maintained with visits, so it motivates rather than just cutting margin; the client sees her level and progress to the next one right on the card. For new clients, a [welcome bonus](/en/welcome-bonus): 🪙 are credited the moment the card is added, and per [Devlight 2025](https://devlight.io/loyalty-research-2025/), 71.7% of customers join precisely for that instant benefit. It is the best hook for a second visit, since 30–40% of first-timers otherwise never return within 30 days. Add [gift certificates](/en/gift-certificates): manicure and care certificates sell well before holidays. If you book via [Altegio](/en/integrations/altegio), there is a direct integration, with EasyWeek on the way, and without an integration everything works on top of any booking system. A cycle-reminder push costs 0 ₴ versus 1.30–1.40 ₴ per SMS.",
+            "Instead of an eternal discount, [loyalty tiers](/en/loyalty-tiers): Silver, Gold, VIP based on total spend. Status has to be maintained with visits, so it motivates rather than just cutting margin; the client sees her level and progress to the next one right on the card. For new clients, a [welcome bonus](/en/welcome-bonus): 🪙 are credited the moment the card is added, and per [Devlight 2025](https://devlight.io/loyalty-research-2025/), 71.7% of customers join precisely for that instant benefit. It is the best hook for a second visit, since 30–40% of first-timers otherwise never return within 30 days. Add [gift certificates](/en/gift-certificates): manicure and care certificates sell well before holidays. If you book via [Altegio](/en/integrations/altegio), there is a direct integration, with EasyWeek on the way, and without an integration everything works on top of any booking system. A cycle-reminder push costs €0 versus a per-message charge for SMS.",
         },
         {
           heading: "What it looks like for the salon client",
           content:
-            "A new client gets a manicure. The admin offers: \"Scan the QR and you'll get welcome bonuses for your next visit.\" The card lands in Apple Wallet in half a minute, already showing 🪙 and Silver status. Three weeks later comes a push: \"Time for a touch-up! You have 150 🪙, that's 150 ₴ off your manicure.\" She books as usual, and at the desk the admin scans her QR: the system shows visit history, current tier and bonus balance, with no notebook and no \"what was your last name again?\". After payment, part of the bill comes back as bonuses, and the card shows \"800 ₴ to Gold.\" No plastic cards forgotten at home, no bearer discounts used by strangers. For you it means every visit is identified, and every client with an overdue cycle appears on the reminder list automatically.",
+            "A new client gets a manicure. The admin offers: \"Scan the QR and you'll get welcome bonuses for your next visit.\" The card lands in Apple Wallet in half a minute, already showing 🪙 and Silver status. Three weeks later comes a push: \"Time for a touch-up! You have 150 🪙, that's €15 off your manicure.\" She books as usual, and at the desk the admin scans her QR: the system shows visit history, current tier and bonus balance, with no notebook and no \"what was your last name again?\". After payment, part of the bill comes back as bonuses, and the card shows \"€40 to Gold.\" No plastic cards forgotten at home, no bearer discounts used by strangers. For you it means every visit is identified, and every client with an overdue cycle appears on the reminder list automatically.",
         },
         {
           heading: "Launching a salon loyalty program in one day",
@@ -3397,7 +3404,7 @@ export const dictionaries = {
         {
           heading: "14 days free for your salon",
           content:
-            `Try Rimbo in your salon: 14 days of full access free, then from ${FROM_PRICE} ₴/month. The plan includes loyalty tiers, 🪙 bonuses, a welcome bonus, gift certificates, push notifications at 0 ₴ (instead of 1.30–1.40 ₴ per SMS), RFM analytics, multiple locations in one dashboard and the Altegio integration. In the first month you will see what matters most: how many clients added the card, whose manicure cycle is overdue, and who came back after a reminder. In a market where venue traffic is falling (Poster 2025: −8% on average, −15% in Lviv) while the average bill grew 17%, the winning strategy is making every existing client return on time and spend more willingly with bonuses. [Leave a request](#contact); launch takes one day. Questions or help configuring tiers go to support@rimbo.id.`,
+            `Try Rimbo in your salon: 14 days of full access free, then from €${FROM_PRICE_EUR}/month. The plan includes loyalty tiers, 🪙 bonuses, a welcome bonus, gift certificates, push notifications at €0 (instead of a per-message charge for SMS), RFM analytics, multiple locations in one dashboard and the Altegio integration. In the first month you will see what matters most: how many clients added the card, whose manicure cycle is overdue, and who came back after a reminder. In a market where venue traffic is falling (Poster 2025: −8% on average, −15% in Lviv) while the average bill grew 17%, the winning strategy is making every existing client return on time and spend more willingly with bonuses. [Leave a request](#contact); launch takes one day. Questions or help configuring tiers go to support@rimbo.id.`,
         },
       ],
     },
@@ -3411,17 +3418,17 @@ export const dictionaries = {
         {
           heading: "What loyalty program does a fitness club need",
           content:
-            `A fitness club, yoga or pilates studio needs a program built around one metric: membership renewal. That means 🪙 bonuses for every visit and for renewing on time, an automatic \"we miss you\" push when a member has not shown up for 14 days, and tenure-based tiers that make the second and third year of membership more rewarding than the first. Everything lives on a card in Apple Wallet or Google Wallet, with no separate app, which, per [Devlight 2025](https://devlight.io/loyalty-research-2025/), 23.2% of Ukrainians refuse to install. Front-desk identification works via QR code, with no last names read aloud. Rimbo is a Ukrainian loyalty platform that covers this scenario: RFM analytics automatically finds \"disappearing\" members, push notifications cost 0 ₴, and several clubs share one client base. Plans start at ${FROM_PRICE} ₴/month, with the first 14 days free.`,
+            `A fitness club, yoga or pilates studio needs a program built around one metric: membership renewal. That means 🪙 bonuses for every visit and for renewing on time, an automatic \"we miss you\" push when a member has not shown up for 14 days, and tenure-based tiers that make the second and third year of membership more rewarding than the first. Everything lives on a card in Apple Wallet or Google Wallet, with no separate app, which, per [Devlight 2025](https://devlight.io/loyalty-research-2025/), 23.2% of Ukrainians refuse to install. Front-desk identification works via QR code, with no last names read aloud. Rimbo is a Ukrainian loyalty platform that covers this scenario: RFM analytics automatically finds \"disappearing\" members, push notifications cost €0, and several clubs share one client base. Plans start at €${FROM_PRICE_EUR}/month, with the first 14 days free.`,
         },
         {
           heading: "How to retain fitness club members: where money is actually lost",
           content:
-            "The core truth of fitness: you earn on renewals, not single visits. A member who bought a pass and vanished is a lost renewal, and you need to notice it long before the expiry date. The pattern is the same everywhere: motivation fades in about two weeks; once a person has skipped 14 days, the odds of renewal drop sharply, yet the front desk finds out only when the membership has already lapsed. Problem two is fragmented databases: in a chain of several clubs the member \"gets lost\" between locations, and nobody sees the full picture of their visits. Problem three is the channel: phone calls are expensive, SMS cost 1.30–1.40 ₴ each and get ignored, and admins simply cannot keep up with manual messenger reminders. You need a system that notices the silence itself and messages the member itself.",
+            "The core truth of fitness: you earn on renewals, not single visits. A member who bought a pass and vanished is a lost renewal, and you need to notice it long before the expiry date. The pattern is the same everywhere: motivation fades in about two weeks; once a person has skipped 14 days, the odds of renewal drop sharply, yet the front desk finds out only when the membership has already lapsed. Problem two is fragmented databases: in a chain of several clubs the member \"gets lost\" between locations, and nobody sees the full picture of their visits. Problem three is the channel: phone calls are expensive, SMS is billed per message and gets ignored, and admins simply cannot keep up with manual messenger reminders. You need a system that notices the silence itself and messages the member itself.",
         },
         {
           heading: "Membership renewals: Rimbo mechanics for fitness",
           content:
-            "First, [cashback bonuses](/en/cashback-loyalty): 🪙 for every visit and double for renewing before the expiry date, so the member builds a discount on the next membership simply by training regularly. Per [Devlight 2025](https://devlight.io/loyalty-research-2025/), 71.7% of customers join for an instant benefit, and a bonus credited right after a workout beats abstract promises. Second, [tenure tiers](/en/loyalty-tiers): one year with the club earns Silver, two years Gold with higher cashback and bonuses on personal training; renewing becomes more rewarding than \"starting from zero\" at the gym next door. Third, [gift certificates](/en/gift-certificates) for memberships: a present that brings in a new member with the first month already paid. And the main engine is RFM segments with an automatic \"we miss you\" push on day 14 of silence: 0 ₴ per message that brings people back before the membership runs out.",
+            "First, [cashback bonuses](/en/cashback-loyalty): 🪙 for every visit and double for renewing before the expiry date, so the member builds a discount on the next membership simply by training regularly. Per [Devlight 2025](https://devlight.io/loyalty-research-2025/), 71.7% of customers join for an instant benefit, and a bonus credited right after a workout beats abstract promises. Second, [tenure tiers](/en/loyalty-tiers): one year with the club earns Silver, two years Gold with higher cashback and bonuses on personal training; renewing becomes more rewarding than \"starting from zero\" at the gym next door. Third, [gift certificates](/en/gift-certificates) for memberships: a present that brings in a new member with the first month already paid. And the main engine is RFM segments with an automatic \"we miss you\" push on day 14 of silence: €0 per message that brings people back before the membership runs out.",
         },
         {
           heading: "What it looks like for the club member",
@@ -3441,7 +3448,7 @@ export const dictionaries = {
         {
           heading: "Try Rimbo in your club: 14 days free",
           content:
-            `Launch a loyalty program that works for renewals: 14 days free, then from ${FROM_PRICE} ₴/month. The plan includes 🪙 bonuses, tenure tiers, gift certificates, RFM analytics with automatic win-back scenarios, push notifications at 0 ₴ instead of 1.30–1.40 ₴ per SMS, and one shared base for all your locations. Within the first month the dashboard will show how many members went quiet after two weeks and how many the \"we miss you\" push brought back. Keep the service-industry baseline in mind: 30–40% of new visitors never return within 30 days unless nudged, and in fitness that translates directly into lost renewals. [Leave a request](#contact) and setup takes one day. Questions about scenarios for your club go to support@rimbo.id.`,
+            `Launch a loyalty program that works for renewals: 14 days free, then from €${FROM_PRICE_EUR}/month. The plan includes 🪙 bonuses, tenure tiers, gift certificates, RFM analytics with automatic win-back scenarios, push notifications at €0 instead of a per-message charge for SMS, and one shared base for all your locations. Within the first month the dashboard will show how many members went quiet after two weeks and how many the \"we miss you\" push brought back. Keep the service-industry baseline in mind: 30–40% of new visitors never return within 30 days unless nudged, and in fitness that translates directly into lost renewals. [Leave a request](#contact) and setup takes one day. Questions about scenarios for your club go to support@rimbo.id.`,
         },
       ],
     },
@@ -3455,7 +3462,7 @@ export const dictionaries = {
         {
           heading: "What loyalty program does a grooming salon, pet store or vet clinic need",
           content:
-            `A pet business needs a program that works with cycles: grooming repeats every 4–6 weeks, food runs out monthly, checkups and vaccinations have fixed dates. The optimal combination is a digital stamp card (\"5th grooming −50%\"), 🪙 bonuses on food purchases, and automatic push reminders when it is time for a repeat visit. The card lives in Apple Wallet or Google Wallet, with no app, which per [Devlight 2025](https://devlight.io/loyalty-research-2025/), 23.2% of Ukrainians refuse to install, and no paper form: the pet owner scans a QR at the counter and is done in 30 seconds. Rimbo is a Ukrainian platform that covers all of it: stamps, cashback, gift certificates, push at 0 ₴, and RFM analytics that notices by itself who has fallen out of their cycle. Plans start at ${FROM_PRICE} ₴/month, with the first 14 days free.`,
+            `A pet business needs a program that works with cycles: grooming repeats every 4–6 weeks, food runs out monthly, checkups and vaccinations have fixed dates. The optimal combination is a digital stamp card (\"5th grooming −50%\"), 🪙 bonuses on food purchases, and automatic push reminders when it is time for a repeat visit. The card lives in Apple Wallet or Google Wallet, with no app, which per [Devlight 2025](https://devlight.io/loyalty-research-2025/), 23.2% of Ukrainians refuse to install, and no paper form: the pet owner scans a QR at the counter and is done in 30 seconds. Rimbo is a Ukrainian platform that covers all of it: stamps, cashback, gift certificates, push at €0, and RFM analytics that notices by itself who has fallen out of their cycle. Plans start at €${FROM_PRICE_EUR}/month, with the first 14 days free.`,
         },
         {
           heading: "A bonus card for a pet store: pains every pet-business owner knows",
@@ -3465,12 +3472,12 @@ export const dictionaries = {
         {
           heading: "A loyalty program for grooming: Rimbo mechanics",
           content:
-            "For a grooming salon, use a [digital stamp card](/en/stamp-cards): \"every 5th grooming −50%\" is counted automatically, the pet owner sees progress on their phone, and that is a direct reason not to switch groomers halfway to the discount. For a pet store, use [cashback bonuses](/en/cashback-loyalty): a percentage of every bill returns as 🪙 and is spent on the next food purchase. Per [Devlight 2025](https://devlight.io/loyalty-research-2025/), 71.7% of customers join precisely for this instant benefit, and it is what ties the monthly food purchase to your counter. The third tool is [gift certificates](/en/gift-certificates): a \"gift for a dog owner,\" grooming or a care kit, sells well before holidays and brings in new clients. And the main repeat-visit engine is cycle-based push reminders: 4–6 weeks after grooming or 30 days after a food purchase, the system messages the client by itself. Each push costs 0 ₴, while an SMS costs 1.30–1.40 ₴.",
+            "For a grooming salon, use a [digital stamp card](/en/stamp-cards): \"every 5th grooming −50%\" is counted automatically, the pet owner sees progress on their phone, and that is a direct reason not to switch groomers halfway to the discount. For a pet store, use [cashback bonuses](/en/cashback-loyalty): a percentage of every bill returns as 🪙 and is spent on the next food purchase. Per [Devlight 2025](https://devlight.io/loyalty-research-2025/), 71.7% of customers join precisely for this instant benefit, and it is what ties the monthly food purchase to your counter. The third tool is [gift certificates](/en/gift-certificates): a \"gift for a dog owner,\" grooming or a care kit, sells well before holidays and brings in new clients. And the main repeat-visit engine is cycle-based push reminders: 4–6 weeks after grooming or 30 days after a food purchase, the system messages the client by itself. Each push costs €0, while an SMS is billed per message.",
         },
         {
           heading: "What it looks like for the pet owner",
           content:
-            "A client brings her poodle for grooming for the first time. At the counter there is a QR code: \"Scan it, and the fifth grooming is half price, plus the reminder will come by itself.\" The card lands in Apple Wallet in 30 seconds, first stamp already on it. Five weeks later a push arrives: \"Time for a trim! You have 2 stamps out of 5.\" She books, comes in, the admin scans the QR, the stamp is added, and the history shows the pet's name, previous visits, food purchased. If you also run a store, every bag of food earns 🪙, and the card shows: \"You have 240 🪙, enough for a toy, or 240 ₴ off food.\" For you it means reminders go out without an admin's involvement, no client drops out of their cycle unnoticed, and food buyers have a concrete reason to return to you instead of the supermarket.",
+            "A client brings her poodle for grooming for the first time. At the counter there is a QR code: \"Scan it, and the fifth grooming is half price, plus the reminder will come by itself.\" The card lands in Apple Wallet in 30 seconds, first stamp already on it. Five weeks later a push arrives: \"Time for a trim! You have 2 stamps out of 5.\" She books, comes in, the admin scans the QR, the stamp is added, and the history shows the pet's name, previous visits, food purchased. If you also run a store, every bag of food earns 🪙, and the card shows: \"You have 240 🪙, enough for a toy, or €24 off food.\" For you it means reminders go out without an admin's involvement, no client drops out of their cycle unnoticed, and food buyers have a concrete reason to return to you instead of the supermarket.",
         },
         {
           heading: "Launch in one day: step by step for a pet business",
@@ -3480,12 +3487,12 @@ export const dictionaries = {
         {
           heading: "Mini-FAQ: loyalty in the pet business",
           content:
-            "**Can one client have several pets?** Yes, the card belongs to the owner, and the visit history shows all their records: grooming two dogs plus food purchases accumulate stamps and 🪙 on one balance, nothing gets mixed up.\n\n**We currently remind clients manually in Viber, what changes?** Reminders will go out automatically on the cycle (4–6 weeks after grooming, 30 days after food) as push at 0 ₴. The admin stops spending an hour a day, and no client is ever forgotten.\n\n**Which works better, stamps or bonuses?** For services with a fixed cycle (grooming), stamps: the visible \"3 of 5\" progress keeps the client. For goods (food, accessories), 🪙 bonuses, since receipt amounts vary. In Rimbo both mechanics run on a single card.",
+            "**Can one client have several pets?** Yes, the card belongs to the owner, and the visit history shows all their records: grooming two dogs plus food purchases accumulate stamps and 🪙 on one balance, nothing gets mixed up.\n\n**We currently remind clients manually in a messenger, what changes?** Reminders will go out automatically on the cycle (4–6 weeks after grooming, 30 days after food) as push at €0. The admin stops spending an hour a day, and no client is ever forgotten.\n\n**Which works better, stamps or bonuses?** For services with a fixed cycle (grooming), stamps: the visible \"3 of 5\" progress keeps the client. For goods (food, accessories), 🪙 bonuses, since receipt amounts vary. In Rimbo both mechanics run on a single card.",
         },
         {
           heading: "14 days free for your grooming salon or pet store",
           content:
-            `Launch a loyalty program for your pet business: 14 days of full functionality free, then from ${FROM_PRICE} ₴/month. The plan includes stamp cards, 🪙 bonuses, gift certificates, automatic cycle-based push reminders at 0 ₴ (instead of 1.30–1.40 ₴ per SMS), RFM analytics and multi-location support with a shared base. In the first month the dashboard will show how many clients added the card, who is approaching a free grooming, and how many were brought back by automatic reminders. This matters because 30–40% of first-time visitors never return within 30 days without a nudge, and in a business with a 4–6 week cycle, every missed reminder is a lost visit. [Leave a request](#contact), launch takes one day. Questions go to support@rimbo.id, we will help tune it to your format.`,
+            `Launch a loyalty program for your pet business: 14 days of full functionality free, then from €${FROM_PRICE_EUR}/month. The plan includes stamp cards, 🪙 bonuses, gift certificates, automatic cycle-based push reminders at €0 (instead of a per-message charge for SMS), RFM analytics and multi-location support with a shared base. In the first month the dashboard will show how many clients added the card, who is approaching a free grooming, and how many were brought back by automatic reminders. This matters because 30–40% of first-time visitors never return within 30 days without a nudge, and in a business with a 4–6 week cycle, every missed reminder is a lost visit. [Leave a request](#contact), launch takes one day. Questions go to support@rimbo.id, we will help tune it to your format.`,
         },
       ],
     },
@@ -3493,13 +3500,13 @@ export const dictionaries = {
       title:
         "Loyalty program for car washes and auto services: a punch card in the phone",
       metaDescription:
-        "Loyalty program for car washes, tire shops and garages: every 10th wash free counted automatically, push before tire season at 0 ₴, no paper cards. 14 days free.",
+        "Loyalty program for car washes, tire shops and garages: every 10th wash free counted automatically, push before tire season at €0, no paper cards. 14 days free.",
       lastUpdated: "Published: August 17, 2026",
       sections: [
         {
           heading: "What loyalty program does a car wash, tire shop or garage need",
           content:
-            `An auto business needs a loyalty program that lives in the driver's phone, not the glovebox: a digital stamp card (\"10th wash free\") in Apple Wallet or Google Wallet, 🪙 bonuses for combined services, and a push campaign before tire season. No app: per [Devlight 2025](https://devlight.io/loyalty-research-2025/), 23.2% of Ukrainians refuse a program that requires installing the venue's app, while a wallet card is added in 30 seconds via a QR code at the counter or the bay. No phone numbers read aloud: the admin scans the QR and sees the client's vehicle history. Rimbo is a Ukrainian platform that covers this scenario for car washes, tire shops, garages and auto detailing: stamps, cashback, coupons, push at 0 ₴, RFM analytics and several locations in one dashboard. Plans start at ${FROM_PRICE} ₴/month, with the first 14 days free.`,
+            `An auto business needs a loyalty program that lives in the driver's phone, not the glovebox: a digital stamp card (\"10th wash free\") in Apple Wallet or Google Wallet, 🪙 bonuses for combined services, and a push campaign before tire season. No app: per [Devlight 2025](https://devlight.io/loyalty-research-2025/), 23.2% of Ukrainians refuse a program that requires installing the venue's app, while a wallet card is added in 30 seconds via a QR code at the counter or the bay. No phone numbers read aloud: the admin scans the QR and sees the client's vehicle history. Rimbo is a Ukrainian platform that covers this scenario for car washes, tire shops, garages and auto detailing: stamps, cashback, coupons, push at €0, RFM analytics and several locations in one dashboard. Plans start at €${FROM_PRICE_EUR}/month, with the first 14 days free.`,
         },
         {
           heading: "A punch card for a car wash: three problems of the auto business",
@@ -3509,7 +3516,7 @@ export const dictionaries = {
         {
           heading: "Bonuses for garages and washes: Rimbo mechanics",
           content:
-            "The foundation is a [digital stamp card](/en/stamp-cards): \"10th wash free\" is counted by the system, the driver sees \"7 of 10\" progress on his phone, and the card neither soaks nor gets lost. For garages and combos, add [cashback bonuses](/en/cashback-loyalty): a percentage of the bill returns as 🪙 and nudges clients toward a package (wash + interior detailing, service + diagnostics) instead of a single service. Per [Devlight 2025](https://devlight.io/loyalty-research-2025/), 71.7% of customers join for an instant benefit, and instantly credited cashback delivers it. For tire season, use [smart coupons](/en/smart-coupons): two weeks before the peak, push the whole base: \"Book your tire change before October 15 and get a −10% coupon.\" Each push costs 0 ₴, while SMS costs 1.30–1.40 ₴: messaging a base of a thousand drivers is free instead of 350 ₴, and you can repeat it every season. Identification is a QR at the counter, with no phone number needed.",
+            "The foundation is a [digital stamp card](/en/stamp-cards): \"10th wash free\" is counted by the system, the driver sees \"7 of 10\" progress on his phone, and the card neither soaks nor gets lost. For garages and combos, add [cashback bonuses](/en/cashback-loyalty): a percentage of the bill returns as 🪙 and nudges clients toward a package (wash + interior detailing, service + diagnostics) instead of a single service. Per [Devlight 2025](https://devlight.io/loyalty-research-2025/), 71.7% of customers join for an instant benefit, and instantly credited cashback delivers it. For tire season, use [smart coupons](/en/smart-coupons): two weeks before the peak, push the whole base: \"Book your tire change before October 15 and get a −10% coupon.\" Each push costs €0, while SMS is billed per message: reaching a base of a thousand drivers is free instead of paying for a thousand messages, and you can repeat it every season. Identification is a QR at the counter, with no phone number needed.",
         },
         {
           heading: "What it looks like for the driver",
@@ -3524,12 +3531,12 @@ export const dictionaries = {
         {
           heading: "Mini-FAQ: loyalty in the auto business",
           content:
-            "**Does this work at a self-service wash?** Yes, and it is the main way to build a base there: a QR code on the bay, the client scans it himself, a stamp or bonus is credited per visit. Anonymous token holders turn into a named base with a 0 ₴ push channel.\n\n**How do we keep a tire-shop client between seasons?** Through the base and push: a client who changed tires in autumn gets a winter reminder about a wash or pressure check, and in spring, a coupon to book before the peak. You stay in his phone all six months.\n\n**We already handed out paper stamp cards, what about them?** Migrate the balances: at the first scan the admin adds the same number of stamps to the digital card. Clients lose nothing, and \"by eye\" arguments end forever.",
+            "**Does this work at a self-service wash?** Yes, and it is the main way to build a base there: a QR code on the bay, the client scans it himself, a stamp or bonus is credited per visit. Anonymous token holders turn into a named base with a €0 push channel.\n\n**How do we keep a tire-shop client between seasons?** Through the base and push: a client who changed tires in autumn gets a winter reminder about a wash or pressure check, and in spring, a coupon to book before the peak. You stay in his phone all six months.\n\n**We already handed out paper stamp cards, what about them?** Migrate the balances: at the first scan the admin adds the same number of stamps to the digital card. Clients lose nothing, and \"by eye\" arguments end forever.",
         },
         {
           heading: "14 days free for your wash or garage",
           content:
-            `Launch a digital loyalty program in your auto business: 14 days of full functionality free, then from ${FROM_PRICE} ₴/month. The plan includes stamp cards, 🪙 bonuses, coupons, seasonal push campaigns at 0 ₴ (instead of 1.30–1.40 ₴ per SMS), RFM analytics and multiple locations with a shared base. In the first month the dashboard will show what a car wash usually never sees: how many regulars you have, how often they come, and who vanished after the first visit, which is 30–40% of newcomers unless a push reminder brings them back. By the next tire season, the base will already be working to fill your booking slots. [Leave a request](#contact), setup takes one day. Questions about launching at a self-service wash or a chain go to support@rimbo.id.`,
+            `Launch a digital loyalty program in your auto business: 14 days of full functionality free, then from €${FROM_PRICE_EUR}/month. The plan includes stamp cards, 🪙 bonuses, coupons, seasonal push campaigns at €0 (instead of a per-message charge for SMS), RFM analytics and multiple locations with a shared base. In the first month the dashboard will show what a car wash usually never sees: how many regulars you have, how often they come, and who vanished after the first visit, which is 30–40% of newcomers unless a push reminder brings them back. By the next tire season, the base will already be working to fill your booking slots. [Leave a request](#contact), setup takes one day. Questions about launching at a self-service wash or a chain go to support@rimbo.id.`,
         },
       ],
     },

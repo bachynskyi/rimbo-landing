@@ -566,6 +566,110 @@ html {
   }
 }
 
+/* Currency picker in the pricing section */
+.currency-select {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+/* The anchor is separate from .currency-select so the dropdown lines up with
+   the trigger rather than with the label sitting next to it. */
+.currency-select-anchor {
+  position: relative;
+}
+
+.currency-select-trigger {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-glass);
+  border-radius: 10px;
+  padding: 0.4rem 0.7rem;
+  font-size: 0.875rem;
+  color: var(--text-primary);
+  transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+  cursor: pointer;
+}
+
+.currency-select-trigger:hover {
+  background: var(--bg-card-hover);
+}
+
+.currency-select-trigger:focus-visible,
+.currency-select-trigger.open {
+  border-color: oklch(0.75 0.15 165);
+  box-shadow: 0 0 0 3px oklch(0.75 0.15 165 / 0.15);
+}
+
+.currency-select-code {
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.currency-select-symbol {
+  color: var(--text-muted);
+}
+
+.currency-select-trigger .chevron {
+  color: var(--text-secondary);
+  transition: transform 0.2s;
+}
+
+.currency-select-trigger.open .chevron {
+  transform: rotate(180deg);
+}
+
+.currency-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 40;
+  min-width: 100%;
+  background: var(--bg-deep);
+  border: 1px solid var(--border-glass);
+  border-radius: 12px;
+  padding: 4px;
+  box-shadow: 0 8px 24px var(--shadow-color);
+  list-style: none;
+  margin: 0;
+}
+
+.currency-dropdown-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  width: 100%;
+  padding: 0.45rem 0.7rem;
+  font-size: 0.875rem;
+  color: var(--text-primary);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.currency-dropdown-item:hover,
+.currency-dropdown-item:focus-visible {
+  background: var(--bg-card-hover);
+  outline: none;
+}
+
+.currency-dropdown-item.active {
+  background: var(--primary-dim);
+  font-weight: 500;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .currency-select-trigger,
+  .currency-select-trigger .chevron {
+    transition: none;
+  }
+}
+
 /* Section subtitle */
 .section-subtitle {
   color: var(--text-secondary);

@@ -1,4 +1,9 @@
 import { SITE_URL, APP_URL, SITE_NAME, SUPPORT_EMAIL, SUPPORT_PHONE } from "@/lib/seo-config";
+import {
+  PLAN_PRICES_BY_CURRENCY,
+  defaultCurrencyFor,
+  type PlanKey,
+} from "@/lib/currency";
 import type { Dictionary } from "@/lib/dictionaries";
 
 const ORG_ID = `${SITE_URL}/#organization`;
@@ -40,10 +45,12 @@ export function OrganizationSchema() {
         slogan: "Все цифрове, все автоматичне, все в телефоні клієнта",
         email: SUPPORT_EMAIL,
         telephone: SUPPORT_PHONE,
-        areaServed: {
-          "@type": "Country",
-          name: "Ukraine",
-        },
+        // Продукт український, але обслуговує всю Європу — звідси мультивалютний
+        // прайс у секції тарифів.
+        areaServed: [
+          { "@type": "Country", name: "Ukraine" },
+          { "@type": "Place", name: "Europe" },
+        ],
         knowsLanguage: ["uk", "en"],
         contactPoint: {
           "@type": "ContactPoint",
@@ -82,8 +89,16 @@ export function SoftwareApplicationSchema({
   dict: Dictionary;
   locale: string;
 }) {
-  const tiers = dict.pricing.tiers;
-  const prices = tiers.map((t) => t.monthlyPrice);
+  // Розмітка статична, а валюта у відвідувача своя — тож у schema.org іде
+  // валюта за замовчуванням для локалі (uk — UAH, en — EUR), та сама, яку
+  // сервер рендерить у картках до автовизначення на клієнті.
+  const currency = defaultCurrencyFor(locale);
+  const priceTable = PLAN_PRICES_BY_CURRENCY[currency];
+  const tiers = dict.pricing.tiers.map((tier) => ({
+    ...tier,
+    ...priceTable[tier.plan as PlanKey],
+  }));
+  const prices = tiers.map((t) => t.monthly);
   const url = locale === "en" ? `${SITE_URL}/en` : SITE_URL;
 
   return (
@@ -117,31 +132,31 @@ export function SoftwareApplicationSchema({
         },
         offers: {
           "@type": "AggregateOffer",
-          priceCurrency: "UAH",
+          priceCurrency: currency,
           lowPrice: Math.min(...prices),
           highPrice: Math.max(...prices),
           offerCount: tiers.length,
           offers: tiers.map((tier) => ({
             "@type": "Offer",
             name: tier.name,
-            price: tier.monthlyPrice,
-            priceCurrency: "UAH",
+            price: tier.monthly,
+            priceCurrency: currency,
             url: `${url}#pricing`,
             category: "SaaS subscription",
             availability: "https://schema.org/InStock",
             priceSpecification: [
               {
                 "@type": "UnitPriceSpecification",
-                price: tier.monthlyPrice,
-                priceCurrency: "UAH",
+                price: tier.monthly,
+                priceCurrency: currency,
                 unitText: locale === "en" ? "month" : "місяць",
                 name:
                   locale === "en" ? "Monthly billing" : "Щомісячна оплата",
               },
               {
                 "@type": "UnitPriceSpecification",
-                price: tier.annualPrice,
-                priceCurrency: "UAH",
+                price: tier.annual,
+                priceCurrency: currency,
                 unitText: locale === "en" ? "month" : "місяць",
                 name:
                   locale === "en"

@@ -1,10 +1,21 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Check } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import { useContactModal } from "@/contexts/contact-modal-context";
 import { ContactLink } from "@/components/contact-link";
+import { CurrencySelect } from "@/components/currency-select";
+import {
+  EXTRA_LOCATION_BY_CURRENCY,
+  PLAN_PRICES_BY_CURRENCY,
+  defaultCurrencyFor,
+  detectCurrency,
+  formatPrice,
+  storeCurrency,
+  type CurrencyCode,
+  type PlanKey,
+} from "@/lib/currency";
 import type { Dictionary } from "@/lib/dictionaries";
 
 function renderFeature(text: string) {
@@ -43,10 +54,21 @@ export function Pricing({
   const [annual, setAnnual] = useState(true);
   const { openModal } = useContactModal();
 
-  // Explicit, or the grouping separator comes from whatever locale the browser
-  // happens to be in — so the Ukrainian page could render "₴1,399" instead of
-  // "₴1 399", and the server and the client could disagree and trip hydration.
-  const priceLocale = locale === "en" ? "en-US" : "uk-UA";
+  // Сервер не знає, звідки прийде відвідувач, тому рендерить валюту за
+  // замовчуванням для локалі, а вже на клієнті ми міняємо її на визначену.
+  // Робити це в useState-ініціалізаторі не можна — розійдеться гідратація.
+  const [currency, setCurrency] = useState<CurrencyCode>(() =>
+    defaultCurrencyFor(locale)
+  );
+
+  useEffect(() => {
+    setCurrency(detectCurrency(defaultCurrencyFor(locale)));
+  }, [locale]);
+
+  function pickCurrency(code: CurrencyCode) {
+    setCurrency(code);
+    storeCurrency(code);
+  }
 
   return (
     <section ref={ref} id="pricing" className="section-padding">
@@ -58,42 +80,55 @@ export function Pricing({
           {dict.pricing.subtitle}
         </p>
 
-        {/* Toggle */}
-        <div className="fade-up mt-10 flex items-center justify-center gap-4">
-          <span className={`text-sm font-medium ${!annual ? "themed-text" : "themed-text-muted"}`}>
-            {dict.pricing.monthly}
-          </span>
-          <button
-            onClick={() => setAnnual(!annual)}
-            aria-label={annual ? dict.pricing.monthly : dict.pricing.annual}
-            className={`cursor-pointer relative h-8 w-14 rounded-full transition-colors ${
-              annual ? "bg-primary" : ""
-            }`}
-            style={{ background: annual ? undefined : "var(--border-glass)" }}
-          >
-            <div
-              className={`absolute top-1 h-6 w-6 rounded-full bg-white shadow-sm transition-transform ${
-                annual ? "translate-x-7" : "translate-x-1"
-              }`}
-            />
-          </button>
-          <span className={`text-sm font-medium ${annual ? "themed-text" : "themed-text-muted"}`}>
-            {dict.pricing.annual}
-          </span>
-          {annual && (
-            <span className="rounded-full bg-secondary-dim px-3 py-1 text-xs font-semibold text-secondary">
-              {dict.pricing.annualSave}
+        {/* Toggle + currency. z-20, бо .fade-up має transform і створює
+            контекст накладання — без цього випадний список валют опиняється
+            під картками тарифів (точніше, під бейджем "Популярний"). */}
+        <div className="fade-up relative z-20 mt-10 flex flex-col items-center gap-5">
+          <div className="flex items-center justify-center gap-4">
+            <span className={`text-sm font-medium ${!annual ? "themed-text" : "themed-text-muted"}`}>
+              {dict.pricing.monthly}
             </span>
-          )}
+            <button
+              onClick={() => setAnnual(!annual)}
+              aria-label={annual ? dict.pricing.monthly : dict.pricing.annual}
+              className={`cursor-pointer relative h-8 w-14 rounded-full transition-colors ${
+                annual ? "bg-primary" : ""
+              }`}
+              style={{ background: annual ? undefined : "var(--border-glass)" }}
+            >
+              <div
+                className={`absolute top-1 h-6 w-6 rounded-full bg-white shadow-sm transition-transform ${
+                  annual ? "translate-x-7" : "translate-x-1"
+                }`}
+              />
+            </button>
+            <span className={`text-sm font-medium ${annual ? "themed-text" : "themed-text-muted"}`}>
+              {dict.pricing.annual}
+            </span>
+            {annual && (
+              <span className="rounded-full bg-secondary-dim px-3 py-1 text-xs font-semibold text-secondary">
+                {dict.pricing.annualSave}
+              </span>
+            )}
+          </div>
+
+          <CurrencySelect
+            value={currency}
+            onChange={pickCurrency}
+            label={dict.pricing.currencyLabel}
+          />
         </div>
 
         {/* Tiers */}
         <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {dict.pricing.tiers.map((tier, i) => {
             const isPopular = "popular" in tier && tier.popular;
+            // Ключ плану в словнику — рядок, звузити до PlanKey може лише каст.
+            const plan = tier.plan as PlanKey;
+            const tierPrices = PLAN_PRICES_BY_CURRENCY[currency][plan];
             const displayPrice = annual
-              ? (tier as { annualPrice: number }).annualPrice
-              : (tier as { monthlyPrice: number }).monthlyPrice;
+              ? tierPrices.annual
+              : tierPrices.monthly;
 
             return (
               <div
@@ -119,7 +154,7 @@ export function Pricing({
                 <div className="mt-5 mb-8">
                   <div className="flex items-baseline gap-1">
                     <span className="text-4xl font-bold text-primary">
-                      ₴{displayPrice.toLocaleString(priceLocale)}
+                      {formatPrice(displayPrice, currency)}
                     </span>
                     <span className="text-sm themed-text-muted">
                       {dict.pricing.perMonth}
@@ -139,9 +174,16 @@ export function Pricing({
                         <Check className="h-4 w-4 shrink-0 text-primary mt-0.5" />
                         <span>{renderFeature(feature)}</span>
                       </div>
-                      {fi === 0 && "extraLocation" in tier && (
+                      {fi === 0 && (
                         <div className="ml-[26px] mt-1 flex flex-col text-xs themed-text-muted">
-                          <span>{(tier as { extraLocation?: string }).extraLocation}</span>
+                          <span>
+                            +
+                            {formatPrice(
+                              EXTRA_LOCATION_BY_CURRENCY[currency][plan],
+                              currency
+                            )}
+                            {tier.extraLocationSuffix}
+                          </span>
                         </div>
                       )}
                     </li>
