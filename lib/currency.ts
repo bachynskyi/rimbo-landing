@@ -200,100 +200,6 @@ export function currencyForCountry(country: string): CurrencyCode {
   return CURRENCY_BY_COUNTRY[country.toUpperCase()] ?? "USD";
 }
 
-// Часовий пояс → країна. Перелічені лише європейські зони: усе, чого тут
-// немає, — не Європа, а отже USD. Включно зі старими назвами (Europe/Kiev,
-// Europe/Uzhgorod), які досі віддає частина систем.
-const COUNTRY_BY_TIMEZONE: Record<string, string> = {
-  "Europe/Amsterdam": "NL",
-  "Europe/Andorra": "AD",
-  "Europe/Athens": "GR",
-  "Europe/Belfast": "GB",
-  "Europe/Belgrade": "RS",
-  "Europe/Berlin": "DE",
-  "Europe/Bratislava": "SK",
-  "Europe/Brussels": "BE",
-  "Europe/Bucharest": "RO",
-  "Europe/Budapest": "HU",
-  "Europe/Busingen": "DE",
-  "Europe/Chisinau": "MD",
-  "Europe/Copenhagen": "DK",
-  "Europe/Dublin": "IE",
-  "Europe/Gibraltar": "GI",
-  "Europe/Guernsey": "GG",
-  "Europe/Helsinki": "FI",
-  "Europe/Isle_of_Man": "IM",
-  "Europe/Istanbul": "TR",
-  "Europe/Jersey": "JE",
-  "Europe/Kiev": "UA",
-  "Europe/Kyiv": "UA",
-  "Europe/Lisbon": "PT",
-  "Europe/Ljubljana": "SI",
-  "Europe/London": "GB",
-  "Europe/Luxembourg": "LU",
-  "Europe/Madrid": "ES",
-  "Europe/Malta": "MT",
-  "Europe/Mariehamn": "AX",
-  "Europe/Monaco": "MC",
-  "Europe/Nicosia": "CY",
-  "Europe/Oslo": "NO",
-  "Europe/Paris": "FR",
-  "Europe/Podgorica": "ME",
-  "Europe/Prague": "CZ",
-  "Europe/Riga": "LV",
-  "Europe/Rome": "IT",
-  "Europe/San_Marino": "SM",
-  "Europe/Sarajevo": "BA",
-  "Europe/Simferopol": "UA",
-  "Europe/Skopje": "MK",
-  "Europe/Sofia": "BG",
-  "Europe/Stockholm": "SE",
-  "Europe/Tallinn": "EE",
-  "Europe/Tirane": "AL",
-  "Europe/Uzhgorod": "UA",
-  "Europe/Vaduz": "LI",
-  "Europe/Vatican": "VA",
-  "Europe/Vienna": "AT",
-  "Europe/Vilnius": "LT",
-  "Europe/Warsaw": "PL",
-  "Europe/Zagreb": "HR",
-  "Europe/Zaporozhye": "UA",
-  "Europe/Zurich": "CH",
-  "Atlantic/Azores": "PT",
-  "Atlantic/Canary": "ES",
-  "Atlantic/Faroe": "FO",
-  "Atlantic/Madeira": "PT",
-  "Atlantic/Reykjavik": "IS",
-  "Arctic/Longyearbyen": "SJ",
-  "Asia/Famagusta": "CY",
-  "Asia/Nicosia": "CY",
-  "Asia/Tbilisi": "GE",
-  "Africa/Ceuta": "ES",
-};
-
-// Часовий пояс, а не IP: працює офлайн, без запиту до стороннього гео-сервісу
-// (а отже без обробки IP як персональних даних) і без затримки на відповідь.
-// У Європі поділ "одна країна — одна зона" майже точний.
-function resolvedTimeZone(): string | null {
-  try {
-    return Intl.DateTimeFormat().resolvedOptions().timeZone || null;
-  } catch {
-    return null;
-  }
-}
-
-// Запасний варіант: регіон з мови браузера ("pl-PL" → PL). Ненадійний — мова
-// інтерфейсу не збігається з країною (українець у США має uk-UA і побачив би
-// гривню), — тому вмикається лише коли часового поясу немає взагалі.
-function countryFromLanguage(): string | null {
-  try {
-    const tag = typeof navigator !== "undefined" ? navigator.language : "";
-    if (!tag) return null;
-    return new Intl.Locale(tag).region ?? null;
-  } catch {
-    return null;
-  }
-}
-
 const STORAGE_KEY = "rimbo-currency";
 
 function readStoredCurrency(): CurrencyCode | null {
@@ -315,23 +221,34 @@ export function storeCurrency(code: CurrencyCode) {
   }
 }
 
-// Вибір користувача важливіший за автовизначення: раз перемкнув — бачить своє.
-export function detectCurrency(fallback: CurrencyCode): CurrencyCode {
+// Країну визначає Vercel за IP запиту й віддає її через /api/geo. Свого
+// визначення (часовий пояс, мова браузера) не тримаємо: воно живе в пристрої,
+// а тому бреше за VPN і проксі — відвідувач із французьким VPN, але київським
+// годинником, побачив би гривню.
+//
+// Вибір користувача головніший: раз перемкнув — бачить своє.
+//
+// Повертає збережений вибір одразу (без мережі), інакше країну від Vercel.
+// null означає "лишити валюту за замовчуванням для локалі": країни немає —
+// локальна розробка або невідомий IP.
+export async function detectCurrency(): Promise<CurrencyCode | null> {
   const stored = readStoredCurrency();
   if (stored) return stored;
 
-  // Часовий пояс віддає відповідь у будь-якому разі: або країну з таблиці, або
-  // (якщо зони в таблиці немає) висновок "це не Європа", тобто USD. Саме тому
-  // тут не можна падати на мову — вона б перебила правильний USD гривнею для
-  // українця в Нью-Йорку.
-  const timeZone = resolvedTimeZone();
-  if (timeZone) {
-    const country = COUNTRY_BY_TIMEZONE[timeZone];
-    return country ? currencyForCountry(country) : "USD";
+  let country: string | null = null;
+  try {
+    const res = await fetch("/api/geo", { cache: "no-store" });
+    if (!res.ok) return null;
+    const data: unknown = await res.json();
+    const value = (data as { country?: unknown }).country;
+    country = typeof value === "string" && value ? value : null;
+  } catch {
+    return null;
   }
+  if (!country) return null;
 
-  // Часового поясу немає — випадок рідкісний, тут уже будь-яка підказка краща
-  // за нічого.
-  const country = countryFromLanguage();
-  return country ? currencyForCountry(country) : fallback;
+  // Поки летів запит, користувач міг обрати валюту вручну — не перебиваємо.
+  if (readStoredCurrency()) return null;
+
+  return currencyForCountry(country);
 }

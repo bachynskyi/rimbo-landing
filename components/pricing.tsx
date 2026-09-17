@@ -54,15 +54,21 @@ export function Pricing({
   const [annual, setAnnual] = useState(true);
   const { openModal } = useContactModal();
 
-  // Сервер не знає, звідки прийде відвідувач, тому рендерить валюту за
-  // замовчуванням для локалі, а вже на клієнті ми міняємо її на визначену.
-  // Робити це в useState-ініціалізаторі не можна — розійдеться гідратація.
+  // Сервер віддає валюту за замовчуванням для локалі — звідки прийде
+  // відвідувач, він не знає. Клієнт замінює її на збережений вибір (одразу)
+  // або на країну від Vercel (щойно відповість /api/geo).
   const [currency, setCurrency] = useState<CurrencyCode>(() =>
     defaultCurrencyFor(locale)
   );
 
   useEffect(() => {
-    setCurrency(detectCurrency(defaultCurrencyFor(locale)));
+    let cancelled = false;
+    detectCurrency().then((detected) => {
+      if (!cancelled && detected) setCurrency(detected);
+    });
+    return () => {
+      cancelled = true;
+    };
   }, [locale]);
 
   function pickCurrency(code: CurrencyCode) {
@@ -80,43 +86,46 @@ export function Pricing({
           {dict.pricing.subtitle}
         </p>
 
-        {/* Toggle + currency. z-20, бо .fade-up має transform і створює
-            контекст накладання — без цього випадний список валют опиняється
-            під картками тарифів (точніше, під бейджем "Популярний"). */}
-        <div className="fade-up relative z-20 mt-10 flex flex-col items-center gap-5">
-          <div className="flex items-center justify-center gap-4">
-            <span className={`text-sm font-medium ${!annual ? "themed-text" : "themed-text-muted"}`}>
-              {dict.pricing.monthly}
-            </span>
-            <button
-              onClick={() => setAnnual(!annual)}
-              aria-label={annual ? dict.pricing.monthly : dict.pricing.annual}
-              className={`cursor-pointer relative h-8 w-14 rounded-full transition-colors ${
-                annual ? "bg-primary" : ""
+        {/* Період оплати і валюта — один ряд, що переноситься на вузькому
+            екрані. z-20, бо .fade-up має transform і створює контекст
+            накладання: без цього випадний список валют опиняється під
+            картками тарифів (точніше, під бейджем "Популярний"). */}
+        <div className="fade-up relative z-20 mt-10 flex flex-wrap items-center justify-center gap-x-4 gap-y-4">
+          <span className={`text-sm font-medium ${!annual ? "themed-text" : "themed-text-muted"}`}>
+            {dict.pricing.monthly}
+          </span>
+          <button
+            onClick={() => setAnnual(!annual)}
+            aria-label={annual ? dict.pricing.monthly : dict.pricing.annual}
+            className={`cursor-pointer relative h-8 w-14 rounded-full transition-colors ${
+              annual ? "bg-primary" : ""
+            }`}
+            style={{ background: annual ? undefined : "var(--border-glass)" }}
+          >
+            <div
+              className={`absolute top-1 h-6 w-6 rounded-full bg-white shadow-sm transition-transform ${
+                annual ? "translate-x-7" : "translate-x-1"
               }`}
-              style={{ background: annual ? undefined : "var(--border-glass)" }}
-            >
-              <div
-                className={`absolute top-1 h-6 w-6 rounded-full bg-white shadow-sm transition-transform ${
-                  annual ? "translate-x-7" : "translate-x-1"
-                }`}
-              />
-            </button>
-            <span className={`text-sm font-medium ${annual ? "themed-text" : "themed-text-muted"}`}>
-              {dict.pricing.annual}
+            />
+          </button>
+          <span className={`text-sm font-medium ${annual ? "themed-text" : "themed-text-muted"}`}>
+            {dict.pricing.annual}
+          </span>
+          {annual && (
+            <span className="rounded-full bg-secondary-dim px-3 py-1 text-xs font-semibold text-secondary">
+              {dict.pricing.annualSave}
             </span>
-            {annual && (
-              <span className="rounded-full bg-secondary-dim px-3 py-1 text-xs font-semibold text-secondary">
-                {dict.pricing.annualSave}
-              </span>
-            )}
-          </div>
+          )}
 
-          <CurrencySelect
-            value={currency}
-            onChange={pickCurrency}
-            label={dict.pricing.currencyLabel}
-          />
+          {/* Відступ відділяє валюту від перемикача періоду, поки вони в
+              одному ряду; після переносу він зайвий. */}
+          <div className="sm:ml-2">
+            <CurrencySelect
+              value={currency}
+              onChange={pickCurrency}
+              label={dict.pricing.currencyLabel}
+            />
+          </div>
         </div>
 
         {/* Tiers */}
