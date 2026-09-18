@@ -117,6 +117,12 @@ export function Header({ dict }: { dict: Dictionary }) {
 
         {/* Mobile controls */}
         <div className="ml-auto flex items-center gap-1 md:hidden">
+          <button
+            onClick={() => openModal()}
+            className="rounded-full bg-primary px-3 py-1.5 text-xs font-semibold text-[#0a1a1a] transition-all hover:-translate-y-0.5 hover:shadow-[0_4px_20px_oklch(0.75_0.15_165/0.35)]"
+          >
+            {dict.header.getStarted}
+          </button>
           <ThemeToggle />
           <button
             onClick={() => setMenuOpen(!menuOpen)}
@@ -155,12 +161,6 @@ export function Header({ dict }: { dict: Dictionary }) {
               {dict.header.login}
             </a>
           )}
-          <button
-            onClick={() => { setMenuOpen(false); openModal(); }}
-            className="mt-1 rounded-full bg-primary px-5 py-2.5 text-center text-sm font-semibold text-[#0a1a1a] transition-all hover:-translate-y-0.5 hover:shadow-[0_4px_20px_oklch(0.75_0.15_165/0.35)]"
-          >
-            {dict.header.getStarted}
-          </button>
         </nav>
       )}
     </header>
