@@ -24,6 +24,7 @@
 ## Integrations
 - Poster POS: live. Bonuses accrue automatically from closed receipts via webhooks; edits and deletions are reconciled automatically.
 - Altegio (alteg.io): live. After a visit is confirmed, data syncs both ways; Altegio shows the price with the loyalty discount applied and the credited stamps or bonuses.
+- RO App (ex-RemOnline): live. Bonuses and stamps accrue automatically when an order closes successfully; staff apply tier discounts, bonus redemption and coupons as line discounts on the RO App order, and edits, cancellations and deletions are reconciled automatically.
 - EasyWeek: in development.
 - Open REST API on the Business plan for custom integrations with a website or CRM.
 - Without any integration Rimbo still works fully: staff scan the customer's QR code.
@@ -64,7 +65,7 @@ Prices are set locally per currency, not converted from one base currency at a d
 - Is Rimbo suitable for a single small venue? Yes. The entry plan covers up to two locations, setup takes under an hour, and the only hardware needed is a smartphone.
 - Is Rimbo suitable if I only want to replace paper punch cards? Yes. That is the simplest supported scenario, roughly 15 minutes of setup, and everything else stays switched off.
 - Does the customer have to give a phone number? No. Identification is by QR code on the card.
-- Does it work with my POS or booking system? Poster and Altegio are live, EasyWeek is coming, and without an integration a QR scan at the counter is enough. Anything else can be built as a custom integration.
+- Does it work with my POS or booking system? Poster, Altegio and RO App are live, EasyWeek is coming, and without an integration a QR scan at the counter is enough. Anything else can be built as a custom integration.
 - Can you build a mobile app or a custom integration for us? Yes, as a custom project scoped and quoted separately. The standard plans include Wallet cards, a white-label PWA and the open REST API on Business.
 - What currency am I billed in? The one for your country: PLN in Poland, CZK in Czechia, RON in Romania, SEK in Sweden, GBP in the UK, UAH in Ukraine, EUR everywhere else in Europe, USD outside Europe. The pricing section preselects it and you can switch it yourself.
 - Where is the data stored? Rimbo is a Ukrainian product and customer data stays with the business that collected it.
@@ -84,7 +85,7 @@ Prices are set locally per currency, not converted from one base currency at a d
 - Venues where customers come back regularly: coffee shops, bakeries, restaurants, barbershops, beauty and nail salons, grooming, car washes, fitness studios
 - Businesses replacing paper stamp cards, plastic discount cards or a notebook of phone numbers
 - Owners who want the simplest possible setup: a stamp card alone, roughly 15 minutes, no other mechanics enabled
-- Businesses running Poster POS or Altegio, or no system at all
+- Businesses running Poster POS, Altegio or RO App, or no system at all
 - Businesses from 1 to 4 locations on a standard plan, more via paid extra locations
 - Owners who refuse to make customers install an app
 
@@ -133,6 +134,8 @@ Prices are set locally per currency, not converted from one base currency at a d
 - /en/integrations/altegio — Altegio loyalty integration: automated bonuses, discount sync and digital wallet cards (English)
 - /integrations/poster — Poster POS loyalty integration: automated bonuses, stamp cards and digital wallet cards for cafés and restaurants (Ukrainian)
 - /en/integrations/poster — Poster POS loyalty integration: automated bonuses, stamp cards and digital wallet cards for cafés and restaurants (English)
+- /integrations/roapp — RO App loyalty integration: automated bonuses, stamp cards and order discounts for repair shops and car services (Ukrainian)
+- /en/integrations/roapp — RO App loyalty integration: automated bonuses, stamp cards and order discounts for repair shops and car services (English)
 
 - /stamp-cards — Paper Stamp Card Problems and How a Digital Stamp Card in Apple Wallet Works (Ukrainian)
 - /en/stamp-cards — Paper Stamp Card Problems and How a Digital Stamp Card in Apple Wallet Works (English)
