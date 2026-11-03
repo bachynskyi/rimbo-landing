@@ -164,6 +164,24 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.rimbo.com.ua/integrations/roapp</loc>
+    <lastmod>2026-10-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://www.rimbo.com.ua/integrations/roapp"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rimbo.com.ua/en/integrations/roapp"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rimbo.com.ua/integrations/roapp"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.rimbo.com.ua/en/integrations/roapp</loc>
+    <lastmod>2026-10-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://www.rimbo.com.ua/integrations/roapp"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rimbo.com.ua/en/integrations/roapp"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rimbo.com.ua/integrations/roapp"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.rimbo.com.ua/stamp-cards</loc>
     <lastmod>2026-08-17</lastmod>
     <xhtml:link rel="alternate" hreflang="uk" href="https://www.rimbo.com.ua/stamp-cards"/>

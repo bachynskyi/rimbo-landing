@@ -269,7 +269,7 @@ export const dictionaries = {
           extraLocationSuffix: "/дод. точка продажу",
           features: [
             "Включено 3 точки продажу, 10 співробітників",
-            "Повна інтеграція з [Poster](/integrations/poster), [Alteg.io](/integrations/altegio)",
+            "Повна інтеграція з [Poster](/integrations/poster), [Alteg.io](/integrations/altegio), [RO App](/integrations/roapp)",
             "Промокоди, сертифікати та ваучери",
             "Персональні знижки з дедлайном (Trigger-маркетинг)",
             "Автоматичні нагадування клієнтам",
@@ -337,7 +337,7 @@ export const dictionaries = {
         {
           question: "Як працює інтеграція з POS?",
           answer:
-            "Rimbo надає API та готові інтеграції з популярними POS-системами: Poster уже працює, Syrve, SkyService і Checkbox на підході. Нарахування бонусів відбувається автоматично при закритті замовлення, а без інтеграції достатньо сканування QR-коду.",
+            "Rimbo надає API та готові інтеграції з популярними POS- і CRM-системами: Poster, Alteg.io і RO App уже працюють, Syrve, SkyService і Checkbox на підході. Нарахування бонусів відбувається автоматично при закритті замовлення, а без інтеграції достатньо сканування QR-коду.",
         },
         {
           question:
@@ -910,6 +910,85 @@ export const dictionaries = {
           heading: "Готові почати? Підключіть Rimbo до Poster безкоштовно",
           content:
             "Спробуйте інтеграцію на безкоштовному 14-денному пробному періоді. Налаштування займає 5 хвилин через маркетплейс Poster, а перші бонуси нараховуються після першого ж закритого чека.\n\nПочніть на https://rimbo.id → «Інтеграції» → Poster. Потрібна допомога з налаштуванням? Напишіть на support@rimbo.id, і ми проведемо вас за руку.",
+        },
+      ],
+    },
+    roappIntegration: {
+      title:
+        "Програма лояльності для RO App: автоматичні бонуси, штамп-картки та знижки для сервісних центрів і СТО",
+      metaDescription:
+        "Rimbo підключається до RO App (RemOnline) за 5 хвилин: бонуси й штампи після кожного закритого замовлення, знижки прямо на замовленні та картки в Apple і Google Wallet.",
+      lastUpdated: "Опубліковано: 23 жовтня 2026 р.",
+      sections: [
+        {
+          heading: "Чому сервісному бізнесу на RO App потрібна окрема програма лояльності",
+          content:
+            "RO App (колишній RemOnline) веде весь цикл сервісного бізнесу: замовлення, статуси ремонту, склад, каса, зарплати майстрів. Ним користуються сервісні центри з ремонту телефонів і техніки, автосервіси, майстерні та інші бізнеси, які працюють із замовленнями.\n\nАле повернення клієнта в RO App не автоматизоване. У нього немає цифрової картки в Apple Wallet чи Google Wallet, немає бонусного гаманця, штамп-карток, купонів, рівнів лояльності чи реферальної програми. Клієнт приніс телефон на заміну екрана, отримав його назад і забув про вас до наступної поломки, а тоді пішов до того сервісу, який першим трапився в пошуку.\n\nRimbo закриває саме цю задачу: дає повноцінну лояльність поверх RO App, без зміни звичної роботи менеджера й без подвійного обліку.",
+        },
+        {
+          heading: "Як працює інтеграція Rimbo з RO App",
+          content:
+            "Rimbo підключається до RO App через офіційний API за ключем, який власник копіює в RO App у розділі Налаштування → API. Далі ви додаєте адресу вебхука Rimbo в розділі Налаштування → API → Вебхуки, і RO App починає повідомляти Rimbo про кожну зміну замовлення.\n\nRimbo не довіряє вмісту повідомлення: на кожну подію він сам перечитує замовлення з API RO App і визначає, що з ним сталося, за групою статусу. Статуси в RO App кожен бізнес називає по-своєму, тому Rimbo орієнтується на групу: «Закриті успішно» нараховують бонуси й штампи, «Закриті неуспішно» повертають нараховане назад.\n\nКлієнта Rimbo знаходить за прив'язкою, збереженою раніше, або за номером телефону з картки клієнта в RO App. Нарахування відбувається без жодних дій менеджера: закрили замовлення, і оновлений баланс уже на картці клієнта в телефоні.",
+        },
+        {
+          heading: "Повний набір механік лояльності Rimbo поверх RO App",
+          content:
+            "Підключення вмикає всі інструменти Rimbo одночасно:\n\n• Бонуси: відсоток від суми кожного закритого замовлення з гнучким терміном дії.\n\n• Кешбек: той самий рушій з інтерфейсом «повернення коштів».\n\n• Штамп-картки: «N замовлень = подарунок» або штамп за кожну конкретну послугу.\n\n• Рівні лояльності: знижка, що зростає разом із сумою витрат або кількістю замовлень.\n\n• Персональні та спеціальні знижки: для постійних клієнтів і акцій з вікнами дії.\n\n• Купони та промокоди: точкові нагороди на конкретні послуги або на все замовлення.\n\n• Реферальна програма: «приведи друга» з автоматичним нарахуванням.\n\nУсі механіки живуть в одному гаманці клієнта, з одним push-каналом і однією карткою Apple/Google Wallet.",
+        },
+        {
+          heading: "Автоматичне нарахування після закриття замовлення",
+          content:
+            "Щойно замовлення переходить у статус з групи «Закриті успішно», Rimbo нараховує бонуси за вашою формулою (наприклад, 5% від суми) і додає штамп. Клієнт отримує оновлення на картці в гаманці телефону за лічені секунди.\n\nЯкщо суму закритого замовлення пізніше змінили, Rimbo перераховує різницю й коригує баланс. Якщо замовлення перевели в «Закриті неуспішно» або видалили, нараховані бонуси та штампи повертаються. Кожна подія обробляється рівно один раз, тому повторна доставка вебхука нічого не задвоїть.\n\nПродажі з каси RO App теж нараховують бонуси, тож клієнт, який купив чохол чи зарядку без ремонту, також отримує свою винагороду.",
+        },
+        {
+          heading: "Послуги, роботи й товари: ви вирішуєте, за що нараховувати",
+          content:
+            "Замовлення в RO App складається з позицій трьох типів: послуги, роботи й товари. У налаштуваннях інтеграції ви окремо обираєте, які з них нараховують бонуси, а на які діють знижки.\n\nНаприклад, сервіс із ремонту техніки може нараховувати бонуси за всі позиції, а знижки й списання бонусів дозволити лише на роботи, щоб не віддавати маржу на запчастинах. Автосервіс може робити навпаки, якщо заробляє на мастилах і фільтрах.\n\nОдин перемикач керує всіма механізмами знижок одразу: списанням бонусів, знижкою рівня лояльності та купонами.",
+        },
+        {
+          heading: "Знижки, бонуси й купони просто на замовленні RO App",
+          content:
+            "Менеджер сканує QR-код з картки клієнта й одразу бачить його відкриті замовлення в RO App. Якщо клієнта на замовленні ще немає, Rimbo прив'яже його, а за потреби сам створить картку клієнта в RO App.\n\nДалі менеджер обирає, що застосувати: знижку рівня, списання бонусів, купони. Rimbo записує знижки прямо на позиції замовлення в RO App, тож сума до сплати в RO App одразу правильна. Знижка лояльності оформлюється як знижка компанії, тому не зменшує відрядну зарплату майстра.\n\nБонуси списуються лише тоді, коли замовлення закривається успішно, і лише в тому обсязі, який реально залишився на замовленні. Якщо замовлення скасують, гаманець клієнта не постраждає. Знижку, яку менеджер поставив на позицію вручну, Rimbo не перезаписує, а враховує.",
+        },
+        {
+          heading: "Автоматична знижка, щойно менеджер призначив клієнта",
+          content:
+            "Для бізнесів, де менеджер працює переважно в RO App, є режим автоматичного застосування. Коли менеджер призначає клієнта замовленню в RO App, Rimbo сам ставить на замовлення персональну знижку цього клієнта.\n\nЗнижка перераховується після кожної зміни позицій: додали запчастину, змінили кількість, видалили роботу. Якщо клієнта прибрати із замовлення або замінити іншим, знижка теж зникає чи переходить на нового клієнта.\n\nСписання бонусів і купони в цьому режимі, як і раніше, додає лише менеджер зі сканера: автоматика підтримує правильність уже застосованого, але нічого не витрачає за клієнта.",
+        },
+        {
+          heading: "Штамп-картки за конкретні послуги",
+          content:
+            "Штамп-картку можна прив'язати до конкретних послуг і товарів з каталогу RO App. Тоді кожна одиниця дає штамп: дві заміни оливи і три фільтри в одному замовленні дають п'ять штампів. Картка без прив'язаних позицій додає один штамп за кожне закрите замовлення.\n\nКарток може бути кілька, наприклад «5-те ТО зі знижкою» і «10-та мийка безкоштовно». Кожне замовлення заповнює одну картку: ту, з якою збіглося найбільше позицій. Менеджер може змінити картку чи кількість штампів під час оформлення.\n\nШтампи додаються лише при успішному закритті, тож скасоване замовлення нічого не нараховує. Коли картку заповнено, клієнт отримує push-сповіщення, а нагороду менеджер застосовує до наступного замовлення.",
+        },
+        {
+          heading: "Що менеджер бачить у картці клієнта в RO App",
+          content:
+            "У RO App немає окремого віджета лояльності, тому Rimbo веде короткий блок у примітках картки клієнта. Там видно:\n\n• баланс бонусів;\n• актуальну персональну знижку і рівень, з якого вона береться;\n• заповнені штамп-картки, які чекають на нагороду;\n• активні купони клієнта.\n\nБлок оновлюється після кожного нарахування та сканування, тож менеджер бачить лояльність клієнта, навіть не відкриваючи Rimbo. Решту приміток Rimbo не чіпає.",
+        },
+        {
+          heading: "Лояльність для сервісного центру й автосервісу: робочі сценарії",
+          content:
+            "Ремонт телефонів і техніки. Клієнт звертається нечасто, тому важливо, щоб він згадав саме про вас. Нарахуйте 5–10% бонусами за ремонт, які можна витратити на наступну роботу чи аксесуар. Картка в гаманці телефону нагадує про ваш сервіс щоразу, коли клієнт відкриває Wallet.\n\nАвтосервіс. Штамп-картка «кожне 5-те ТО зі знижкою 20%», прив'язана до послуги технічного обслуговування, повертає клієнта на наступну заміну оливи. Рівні лояльності за сумою витрат дають постійним клієнтам знижку на роботи, не зачіпаючи маржу на запчастинах.\n\nМайстерні та інші сервіси. Купони на конкретні послуги («безкоштовна діагностика», «−10% на роботи») повертають клієнтів, які давно не заходили, і вирівнюють завантаження у тихі дні.",
+        },
+        {
+          heading: "Кілька філій в одній програмі лояльності",
+          content:
+            "Якщо у вас кілька філій у RO App, кожну можна зв'язати з окремим місцем продажу в Rimbo. Клієнт має один баланс і одну картку в гаманці на всю мережу: заробив бонуси в одній філії, витратив в іншій.\n\nПри скануванні менеджер бачить замовлення клієнта саме своєї філії. Якщо замовлення перемістили в іншу філію, Rimbo перераховує знижку за правилами нової.\n\nАналітика показує і загальну картину, і розріз по філіях: де клієнти заробляють бонуси, де витрачають, як часто повертаються.",
+        },
+        {
+          heading: "Налаштування інтеграції за 5 кроків",
+          content:
+            "1. У RO App відкрийте Налаштування → API і скопіюйте API-ключ. Доступ до API та вебхуків RO App надає на тарифі Business.\n\n2. У Rimbo відкрийте «Інтеграції» → RO App, вставте ключ і натисніть «Підключити». Rimbo перевірить з'єднання.\n\n3. Скопіюйте адресу вебхука, яку покаже Rimbo.\n\n4. У RO App відкрийте Налаштування → API → Вебхуки, додайте вебхук з цією адресою й позначте події зі списку, який показує Rimbo.\n\n5. Оберіть, за які позиції (послуги, роботи, товари) нараховувати бонуси й на які діють знижки, і за бажанням увімкніть автоматичне застосування знижки.\n\nВся процедура займає 5 хвилин. Після цього перше ж закрите замовлення нарахує бонуси автоматично, а журнал подій у Rimbo покаже кожну доставку вебхука.",
+        },
+        {
+          heading: "Безпека та власність клієнтських даних",
+          content:
+            "Rimbo зберігає лише API-ключ RO App і ніколи не бачить вашого пароля. Ключ можна будь-коли відкликати у власному акаунті RO App. Адреса вебхука містить секрет вашої компанії, який можна перевипустити в один клік.\n\nБудь-якої миті інтеграцію можна відключити: Rimbo перестане приймати події й звертатися до RO App.\n\nКлієнтські дані належать вам. Rimbo обробляє їх як виконавець, відповідно до GDPR та українського законодавства про захист персональних даних. Бази клієнтів не змішуються між компаніями, а експорт даних доступний у будь-який момент.",
+        },
+        {
+          heading: "Готові почати? Підключіть Rimbo до RO App безкоштовно",
+          content:
+            "Спробуйте інтеграцію на безкоштовному 14-денному пробному періоді. Налаштування займає 5 хвилин, а перші бонуси нараховуються після першого ж закритого замовлення в RO App.\n\nПочніть на https://rimbo.id → «Інтеграції» → RO App. Потрібна допомога з налаштуванням? Напишіть на support@rimbo.id, і ми проведемо вас за руку.",
         },
       ],
     },
@@ -2028,7 +2107,7 @@ export const dictionaries = {
           extraLocationSuffix: "/extra location",
           features: [
             "3 locations included, 10 staff members",
-            "Full integration with [Poster](/en/integrations/poster), [Alteg.io](/en/integrations/altegio)",
+            "Full integration with [Poster](/en/integrations/poster), [Alteg.io](/en/integrations/altegio), [RO App](/en/integrations/roapp)",
             "Promo codes, gift certificates and vouchers",
             "Personal discounts with deadlines (trigger marketing)",
             "Automatic customer reminders",
@@ -2096,7 +2175,7 @@ export const dictionaries = {
         {
           question: "How does POS integration work?",
           answer:
-            "Rimbo provides an API and ready-made integrations with popular POS systems: Poster is live, with Syrve, SkyService and Checkbox on the way. Bonuses accrue automatically when an order is closed, and without an integration a QR scan is all it takes.",
+            "Rimbo provides an API and ready-made integrations with popular POS and CRM systems: Poster, Alteg.io and RO App are live, with Syrve, SkyService and Checkbox on the way. Bonuses accrue automatically when an order is closed, and without an integration a QR scan is all it takes.",
         },
         {
           question:
@@ -2669,6 +2748,85 @@ export const dictionaries = {
           heading: "Ready to start? Connect Rimbo to Poster for free",
           content:
             "Try the integration on a free 14-day trial. Setup takes 5 minutes through the Poster Marketplace; the first bonuses accrue right after the first closed check.\n\nGet started at https://rimbo.id → Integrations → Poster. Need a hand with setup? Email support@rimbo.id and we'll walk you through it.",
+        },
+      ],
+    },
+    roappIntegration: {
+      title:
+        "RO App Loyalty Integration: Automated Bonuses, Stamp Cards & Discounts for Repair Shops and Car Services",
+      metaDescription:
+        "Connect Rimbo to RO App (RemOnline) in 5 minutes. Bonuses and stamps after every closed order, discounts right on the order, and Apple & Google Wallet cards.",
+      lastUpdated: "Published: October 23, 2026",
+      sections: [
+        {
+          heading: "Why a service business on RO App needs its own loyalty program",
+          content:
+            "RO App (formerly RemOnline) runs the whole cycle of a service business: orders, repair statuses, inventory, the till and technicians' wages. Phone and electronics repair shops, car services, workshops and other order-based businesses rely on it.\n\nBut bringing a customer back is not automated in RO App. There is no digital card in Apple Wallet or Google Wallet, no bonus wallet, no stamp cards, coupons, loyalty tiers or referral program. A customer brings in a phone for a screen replacement, picks it up and forgets about you until the next breakdown, then goes to whichever shop comes up first in search.\n\nRimbo solves exactly that: full loyalty on top of RO App, without changing how your managers work and without double bookkeeping.",
+        },
+        {
+          heading: "How the Rimbo and RO App integration works",
+          content:
+            "Rimbo connects to RO App through the official API with a key the owner copies from Settings → API in RO App. You then add Rimbo's webhook address under Settings → API → Webhooks, and RO App starts notifying Rimbo about every order change.\n\nRimbo does not trust the notification itself: for every event it re-reads the order from the RO App API and decides what happened by the status group. Every business names its RO App statuses differently, so Rimbo goes by the group: \"Closed successfully\" awards bonuses and stamps, \"Closed unsuccessfully\" takes them back.\n\nRimbo finds the customer by a previously saved link or by the phone number on the client's card in RO App. The award needs no action from the manager: close the order, and the updated balance is already on the customer's phone.",
+        },
+        {
+          heading: "The full Rimbo loyalty toolkit on top of RO App",
+          content:
+            "Connecting turns on every Rimbo tool at once:\n\n• Bonuses: a percentage of every closed order, with flexible expiry.\n\n• Cashback: the same engine with a \"money back\" interface.\n\n• Stamp cards: \"N orders = a gift\", or a stamp for each specific service.\n\n• Loyalty tiers: a discount that grows with total spend or number of orders.\n\n• Personal and special discounts: for regulars and for time-boxed promotions.\n\n• Coupons and promo codes: targeted rewards on specific services or the whole order.\n\n• Referral program: \"bring a friend\" with automatic rewards.\n\nAll mechanics live in one customer wallet, with one push channel and one Apple/Google Wallet card.",
+        },
+        {
+          heading: "Automatic awards when an order closes",
+          content:
+            "As soon as an order moves to a status in the \"Closed successfully\" group, Rimbo awards bonuses by your formula (for example, 5% of the total) and adds a stamp. The customer sees the update on the Wallet card within seconds.\n\nIf the total of a closed order changes later, Rimbo recalculates the difference and adjusts the balance. If the order is moved to \"Closed unsuccessfully\" or deleted, the awarded bonuses and stamps are reversed. Each event is processed exactly once, so a repeated webhook delivery never doubles anything.\n\nSales from the RO App till earn bonuses too, so a customer who buys a case or a charger without a repair still gets rewarded.",
+        },
+        {
+          heading: "Services, labor and products: you decide what earns",
+          content:
+            "An RO App order is made of three kinds of lines: services, labor and products. In the integration settings you choose separately which of them earn bonuses and which accept discounts.\n\nFor example, an electronics repair shop can award bonuses on every line but allow discounts and bonus redemption only on labor, so the margin on spare parts stays intact. A car service may do the opposite if it earns on oil and filters.\n\nOne setting governs every discount mechanism at once: bonus redemption, the loyalty tier discount and coupons.",
+        },
+        {
+          heading: "Discounts, bonuses and coupons right on the RO App order",
+          content:
+            "The manager scans the QR code on the customer's card and immediately sees their open orders in RO App. If the order has no client yet, Rimbo attaches the customer and, when needed, creates the client card in RO App itself.\n\nThe manager then picks what to apply: the tier discount, bonus redemption, coupons. Rimbo writes the discounts straight onto the order lines in RO App, so the amount due in RO App is correct right away. A loyalty discount is recorded as a company discount, so it never reduces a technician's piecework wage.\n\nBonuses are deducted only when the order closes successfully, and only for what actually stayed on the order. If the order is cancelled, the customer's wallet is untouched. A discount the manager set on a line by hand is not overwritten; Rimbo takes it into account.",
+        },
+        {
+          heading: "Automatic discount as soon as the manager assigns the client",
+          content:
+            "For businesses where managers work mostly in RO App there is an auto-apply mode. When a manager assigns a client to an order in RO App, Rimbo puts that client's personal discount on the order by itself.\n\nThe discount is recalculated after every line change: a part added, a quantity changed, a labor line removed. If the client is removed from the order or replaced, the discount disappears or moves to the new client.\n\nBonus redemption and coupons are still added only by the manager from the scanner: the automation keeps what was already applied correct, but never spends anything on the customer's behalf.",
+        },
+        {
+          heading: "Stamp cards for specific services",
+          content:
+            "A stamp card can be linked to specific services and products from the RO App catalog. Then every unit earns a stamp: two oil changes and three filters in one order make five stamps. A card with no linked items adds one stamp per closed order.\n\nYou can run several cards, for example \"5th service at 20% off\" and \"10th car wash free\". Each order fills one card: the one that matched the most lines. The manager can change the card or the number of stamps at checkout.\n\nStamps land only on a successful close, so a cancelled order earns nothing. When a card fills up, the customer gets a push notification, and the manager applies the reward to the next order.",
+        },
+        {
+          heading: "What the manager sees on the client card in RO App",
+          content:
+            "RO App has no loyalty widget, so Rimbo keeps a short block in the notes of the client card. It shows:\n\n• the bonus balance;\n• the current personal discount and the tier it comes from;\n• completed stamp cards waiting for their reward;\n• the customer's active coupons.\n\nThe block refreshes after every award and scan, so the manager sees the customer's loyalty status without opening Rimbo. The rest of the notes are left untouched.",
+        },
+        {
+          heading: "Loyalty for repair shops and car services: working scenarios",
+          content:
+            "Phone and electronics repair. Customers come rarely, so it matters that they remember you. Award 5–10% in bonuses on a repair, redeemable on the next job or an accessory. The card in the phone's wallet reminds the customer of your shop every time they open Wallet.\n\nCar service. A stamp card \"every 5th service at 20% off\", linked to the maintenance service, brings the customer back for the next oil change. Loyalty tiers by total spend give regulars a discount on labor without touching the margin on parts.\n\nWorkshops and other services. Coupons on specific services (\"free diagnostics\", \"10% off labor\") bring back customers who have not visited in a while and fill quiet days.",
+        },
+        {
+          heading: "Several branches in one loyalty program",
+          content:
+            "If you run several branches in RO App, each one can be linked to its own location in Rimbo. The customer has one balance and one Wallet card for the whole network: earned bonuses in one branch, spent them in another.\n\nWhen scanning, the manager sees the customer's orders for their own branch. If an order is moved to another branch, Rimbo recalculates the discount by the new branch's rules.\n\nAnalytics show both the overall picture and a per-branch breakdown: where customers earn bonuses, where they spend them, how often they come back.",
+        },
+        {
+          heading: "Set up the integration in 5 steps",
+          content:
+            "1. In RO App, open Settings → API and copy the API key. RO App provides API and webhook access on its Business plan.\n\n2. In Rimbo, open Integrations → RO App, paste the key and click Connect. Rimbo checks the connection.\n\n3. Copy the webhook address Rimbo shows you.\n\n4. In RO App, open Settings → API → Webhooks, add a webhook with that address and tick the events from the list Rimbo shows.\n\n5. Choose which lines (services, labor, products) earn bonuses and which accept discounts, and optionally turn on automatic discount application.\n\nThe whole setup takes 5 minutes. From then on the very first closed order awards bonuses automatically, and the event log in Rimbo shows every webhook delivery.",
+        },
+        {
+          heading: "Security and ownership of customer data",
+          content:
+            "Rimbo stores only the RO App API key and never sees your password. You can revoke the key at any time in your own RO App account. The webhook address carries your company's secret, which you can regenerate in one click.\n\nYou can disconnect the integration at any moment: Rimbo stops accepting events and calling RO App.\n\nCustomer data belongs to you. Rimbo processes it as a processor, in line with GDPR and Ukrainian personal data protection law. Customer bases are never mixed between companies, and data export is available at any time.",
+        },
+        {
+          heading: "Ready to start? Connect Rimbo to RO App for free",
+          content:
+            "Try the integration during the free 14-day trial. Setup takes 5 minutes, and the first bonuses are awarded after the very first closed order in RO App.\n\nStart at https://rimbo.id → Integrations → RO App. Need help with setup? Write to support@rimbo.id and we will walk you through it.",
         },
       ],
     },
