@@ -7,7 +7,6 @@ import { useContactModal } from "@/contexts/contact-modal-context";
 import { ContactLink } from "@/components/contact-link";
 import { CurrencySelect } from "@/components/currency-select";
 import {
-  EXTRA_LOCATION_BY_CURRENCY,
   PLAN_PRICES_BY_CURRENCY,
   defaultCurrencyFor,
   detectCurrency,
@@ -169,6 +168,9 @@ export function Pricing({
                       {dict.pricing.perMonth}
                     </span>
                   </div>
+                  <p className="mt-1 text-xs themed-text-muted">
+                    {dict.pricing.perLocation}
+                  </p>
                 </div>
 
                 <ul className="mb-8 flex flex-col gap-3 text-sm">
@@ -183,18 +185,6 @@ export function Pricing({
                         <Check className="h-4 w-4 shrink-0 text-primary mt-0.5" />
                         <span>{renderFeature(feature)}</span>
                       </div>
-                      {fi === 0 && (
-                        <div className="ml-[26px] mt-1 flex flex-col text-xs themed-text-muted">
-                          <span>
-                            +
-                            {formatPrice(
-                              EXTRA_LOCATION_BY_CURRENCY[currency][plan],
-                              currency
-                            )}
-                            {tier.extraLocationSuffix}
-                          </span>
-                        </div>
-                      )}
                     </li>
                   ))}
                 </ul>

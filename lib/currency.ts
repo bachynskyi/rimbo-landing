@@ -43,8 +43,10 @@ export const CURRENCIES: Record<CurrencyCode, CurrencyMeta> = {
   UAH: { symbol: "₴", symbolBefore: true, groupingLocale: "uk-UA" },
 };
 
-// Ціна тарифу за місяць: monthly — при щомісячній оплаті,
-// annual — за місяць при річній оплаті.
+// Ціна тарифу за місяць за одну точку продажу: monthly — при щомісячній
+// оплаті, annual — за місяць при річній оплаті. Кожна наступна точка коштує
+// стільки ж; окремої ціни додаткової точки немає — мережам на Профі та Бізнес
+// пропонуємо пакетні умови через форму контакту.
 export const PLAN_PRICES_BY_CURRENCY: Record<
   CurrencyCode,
   Record<PlanKey, { monthly: number; annual: number }>
@@ -89,22 +91,6 @@ export const PLAN_PRICES_BY_CURRENCY: Record<
     pro: { monthly: 1399, annual: 1199 },
     business: { monthly: 1999, annual: 1699 },
   },
-};
-
-// Ціна додаткової точки продажу за місяць. Однакова для місячної та річної
-// оплати: річна знижка — поступка на тарифі, а не на додатковій послузі.
-export const EXTRA_LOCATION_BY_CURRENCY: Record<
-  CurrencyCode,
-  Record<PlanKey, number>
-> = {
-  EUR: { growth: 9, pro: 15, business: 19 },
-  PLN: { growth: 39, pro: 59, business: 79 },
-  CZK: { growth: 229, pro: 379, business: 499 },
-  RON: { growth: 45, pro: 69, business: 89 },
-  SEK: { growth: 119, pro: 199, business: 249 },
-  GBP: { growth: 8, pro: 13, business: 17 },
-  USD: { growth: 10, pro: 16, business: 21 },
-  UAH: { growth: 299, pro: 499, business: 699 },
 };
 
 // Валюта, з якою сторінка рендериться на сервері, доки клієнт не визначив
