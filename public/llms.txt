@@ -16,7 +16,7 @@
 
 ## How it works
 - Customer side: scans a QR code at the counter or opens a link, taps once, and the card is in Apple Wallet or Google Wallet in about 30 seconds. No app install, no registration form, no phone number said out loud. From the card the customer can open a personal cabinet with visit history, bonuses and coupons.
-- Staff side: scans the QR code on the customer's card with an ordinary smartphone or tablet. No special hardware. With a POS integration, accrual happens automatically when the receipt is closed.
+- Staff side: the built-in Rimbo checkout (https://www.rimbo.com.ua/built-in-checkout) runs in the browser on an ordinary smartphone or tablet. Staff scan the QR code on the customer's card, add stamps, enter the receipt amount to credit bonuses, redeem bonuses and apply coupons, promo codes and gift certificates. No special hardware and no POS integration required. With a POS integration, accrual happens automatically when the receipt is closed.
 - Communication: push notifications to the Wallet card are free per message, while SMS is billed per message in every market (roughly 1.30-1.40 UAH each in Ukraine). Geo-Push shows the card on the lock screen when the customer is near the venue.
 - Multi-location: one card works across all of a brand's venues. A separate QR code can be printed per venue and even per till, so scan analytics show where customers engage.
 - Analytics: live dashboard, LTV, average check, customer segmentation by activity, and RFM analysis on higher plans.
@@ -27,7 +27,7 @@
 - RO App (ex-RemOnline): live. Bonuses and stamps accrue automatically when an order closes successfully; staff apply tier discounts, bonus redemption and coupons as line discounts on the RO App order, and edits, cancellations and deletions are reconciled automatically.
 - EasyWeek: in development.
 - Open REST API on the Business plan for custom integrations with a website or CRM.
-- Without any integration Rimbo still works fully: staff scan the customer's QR code.
+- Without any integration Rimbo still works fully through the built-in checkout: staff scan the customer's QR code on a smartphone or tablet.
 
 ## Custom solutions
 - Beyond the standard plans Rimbo takes on custom projects, scoped and quoted per project.
@@ -36,20 +36,17 @@
 - Custom loyalty mechanics, and changes that fit an existing process rather than replacing it.
 - Write to support@rimbo.id to scope timeline and cost.
 
-## Pricing (per month, annual price in brackets, 14-day free trial on every plan)
-Prices are set locally per currency, not converted from one base currency at a daily rate. The pricing section preselects the currency matching the visitor's country and lets them switch it.
+## Pricing (per location per month, annual price in brackets, 14-day free trial on every plan)
+Prices are per location: every additional location costs the same as the first one, with no separate extra-location fee. Prices are set locally per currency, not converted from one base currency at a daily rate. The pricing section preselects the currency matching the visitor's country and lets them switch it.
 
-- Growth / Розвиток: up to 2 locations, 5 staff, up to 5 loyalty cards with custom design, no limits on active customers, cashback balance, Geo-Push, customer segmentation, basic analytics.
+- Growth / Розвиток: 5 staff per location, up to 5 loyalty cards with custom design, built-in checkout with no POS integration, RO App integration, SMS provider integrations, loyalty tiers and discounts, no limits on active customers, cashback balance, Geo-Push, customer segmentation, basic analytics.
   EUR 19 (16), PLN 79 (69), CZK 499 (429), RON 89 (79), SEK 249 (209), GBP 16 (14), USD 21 (18), UAH 799 (699).
-  Extra location: EUR 9, PLN 39, CZK 229, RON 45, SEK 119, GBP 8, USD 10, UAH 299.
-- Pro / Профі (most popular): up to 3 locations, 10 staff, no limits on active customers, full Poster and Altegio integration, promo codes, gift certificates and vouchers, personal discounts with deadlines, custom PWA domain, advanced RFM analytics.
+- Pro / Профі (most popular): everything in Growth plus 10 staff per location, full Poster and Altegio integration, RCS provider integrations, promo codes, gift certificates and vouchers, personal discounts with deadlines, automatic customer reminders, configurable sign-up form fields (choose which standard fields the form asks for), advanced RFM analytics. Package deals for chains on request.
   EUR 39 (33), PLN 149 (129), CZK 999 (849), RON 179 (149), SEK 499 (429), GBP 35 (29), USD 45 (39), UAH 1399 (1199).
-  Extra location: EUR 15, PLN 59, CZK 379, RON 69, SEK 199, GBP 13, USD 16, UAH 499.
-- Business / Бізнес: up to 4 locations, 20 staff, no limits on active customers, White Label with no Rimbo branding, custom domain, API access, priority support.
+- Business / Бізнес: everything in Pro plus 20 staff per location, custom sign-up form fields (add your own fields to the form), White Label with no Rimbo branding, API access, priority support. Package deals for chains on request.
   EUR 69 (59), PLN 279 (239), CZK 1799 (1529), RON 329 (279), SEK 899 (769), GBP 59 (49), USD 79 (69), UAH 1999 (1699).
-  Extra location: EUR 19, PLN 79, CZK 499, RON 89, SEK 249, GBP 17, USD 21, UAH 699.
 - Staff accounts are free on all plans; a till is included with every location, with no separate charge for it. Subscription terms are locked in at sign-up and do not change with later pricing updates.
-- Chains with more than 8 locations: custom terms on request.
+- Chains with more than 4 locations: custom terms on request.
 - Two ways to pay: online card subscription on the website (processed via monobank) or invoice to IBAN.
 
 ## Currency by country
@@ -62,10 +59,10 @@ Prices are set locally per currency, not converted from one base currency at a d
 ## Direct answers to common questions
 - Does Rimbo support stamp cards? Yes, fully, and they are a first-class mechanic rather than an add-on. They can be used alone without bonuses, tiers or analytics.
 - Do customers need to install an app? No. The card goes into Apple Wallet or Google Wallet, which are already on every smartphone.
-- Is Rimbo suitable for a single small venue? Yes. The entry plan covers up to two locations, setup takes under an hour, and the only hardware needed is a smartphone.
+- Is Rimbo suitable for a single small venue? Yes. Pricing is per location, so a single venue pays for one, setup takes under an hour, and the only hardware needed is a smartphone.
 - Is Rimbo suitable if I only want to replace paper punch cards? Yes. That is the simplest supported scenario, roughly 15 minutes of setup, and everything else stays switched off.
 - Does the customer have to give a phone number? No. Identification is by QR code on the card.
-- Does it work with my POS or booking system? Poster, Altegio and RO App are live, EasyWeek is coming, and without an integration a QR scan at the counter is enough. Anything else can be built as a custom integration.
+- Does it work with my POS or booking system? Poster, Altegio and RO App are live, EasyWeek is coming, and without an integration the built-in checkout and a QR scan at the counter are enough. Anything else can be built as a custom integration.
 - Can you build a mobile app or a custom integration for us? Yes, as a custom project scoped and quoted separately. The standard plans include Wallet cards, a white-label PWA and the open REST API on Business.
 - What currency am I billed in? The one for your country: PLN in Poland, CZK in Czechia, RON in Romania, SEK in Sweden, GBP in the UK, UAH in Ukraine, EUR everywhere else in Europe, USD outside Europe. The pricing section preselects it and you can switch it yourself.
 - Where is the data stored? Rimbo is a Ukrainian product and customer data stays with the business that collected it.
@@ -136,6 +133,8 @@ Prices are set locally per currency, not converted from one base currency at a d
 - /en/integrations/poster — Poster POS loyalty integration: automated bonuses, stamp cards and digital wallet cards for cafés and restaurants (English)
 - /integrations/roapp — RO App loyalty integration: automated bonuses, stamp cards and order discounts for repair shops and car services (Ukrainian)
 - /en/integrations/roapp — RO App loyalty integration: automated bonuses, stamp cards and order discounts for repair shops and car services (English)
+- /built-in-checkout — Built-in Rimbo checkout: a loyalty program with no POS integration, staff scan QR codes on a smartphone (Ukrainian)
+- /en/built-in-checkout — Built-in Rimbo checkout: a loyalty program with no POS integration, staff scan QR codes on a smartphone (English)
 
 - /stamp-cards — Paper Stamp Card Problems and How a Digital Stamp Card in Apple Wallet Works (Ukrainian)
 - /en/stamp-cards — Paper Stamp Card Problems and How a Digital Stamp Card in Apple Wallet Works (English)

@@ -1,8 +1,5 @@
 import { APP_URL, SITE_URL, SUPPORT_EMAIL } from "./seo-config";
-import {
-  EXTRA_LOCATION_BY_CURRENCY,
-  PLAN_PRICES_BY_CURRENCY,
-} from "./currency";
+import { PLAN_PRICES_BY_CURRENCY } from "./currency";
 
 // Гривневий зріз прайсу. Повна сітка по всіх валютах живе в lib/currency.ts —
 // сюди тягнемо лише UAH, бо українські тексти статей і юридичні розділи
@@ -35,9 +32,6 @@ const FROM_PRICE_EUR = fromPrice([
   PLAN_PRICES_BY_CURRENCY.EUR.pro,
   PLAN_PRICES_BY_CURRENCY.EUR.business,
 ]);
-
-// Додаткова точка продажу на стартовому тарифі — для тексту FAQ "від X/міс".
-const EXTRA_LOCATION_FROM_EUR = EXTRA_LOCATION_BY_CURRENCY.EUR.growth;
 
 export const dictionaries = {
   uk: {
@@ -218,6 +212,7 @@ export const dictionaries = {
       annual: "Щорічно",
       annualSave: "до -15%",
       perMonth: "/міс",
+      perLocation: "за одну точку продажу",
       popular: "Популярний",
       choosePlan: "Почати",
       currencyLabel: "Валюта",
@@ -225,7 +220,7 @@ export const dictionaries = {
       includesSuffix: ", а також:",
       enterpriseNotes: [
         "Без обмежень за кількістю активних клієнтів на всіх тарифах. Умови вашої підписки зафіксовані на момент оформлення й не змінюються при подальших оновленнях тарифів.",
-        "Акаунти для команди безкоштовні на всіх тарифах. Каса входить у точку продажу. Потрібно більше акаунтів або понад 8 точок — {link}, зробимо індивідуальні умови.",
+        "Акаунти для команди безкоштовні на всіх тарифах. Каса входить у точку продажу. Потрібно більше акаунтів або понад 4 точки — {link}, зробимо індивідуальні умови.",
       ],
       enterpriseNoteLink: "напишіть нам",
       customSolutionNote:
@@ -233,8 +228,8 @@ export const dictionaries = {
       customSolutionNoteLink: "Замовте індивідуальне рішення",
       tiers: [
         /* Приховано на запит власника — план тимчасово не продається.
-           Щоб повернути, додайте "start" у PLAN_PRICES_BY_CURRENCY та
-           EXTRA_LOCATION_BY_CURRENCY (lib/currency.ts) по всіх валютах.
+           Щоб повернути, додайте "start" у PLAN_PRICES_BY_CURRENCY
+           (lib/currency.ts) по всіх валютах.
         {
           name: "Старт",
           plan: "start",
@@ -250,10 +245,12 @@ export const dictionaries = {
         {
           name: "Розвиток",
           plan: "growth",
-          extraLocationSuffix: "/дод. точка продажу",
           features: [
-            "Включено 2 точки продажу, 5 співробітників",
+            "5 співробітників на точку продажу",
             "До 5 карток лояльності (штампи) + кастомний дизайн",
+            "[Власна каса](/built-in-checkout): нарахування без інтеграції з POS",
+            "Інтеграція з [RO App](/integrations/roapp)",
+            "Інтеграція SMS-провайдерів",
             "Рівні лояльності та знижки",
             "Без обмежень за кількістю активних клієнтів",
             "Бонусний баланс (кешбек)",
@@ -266,23 +263,25 @@ export const dictionaries = {
           name: "Профі",
           plan: "pro",
           popular: true,
-          extraLocationSuffix: "/дод. точка продажу",
           features: [
-            "Включено 3 точки продажу, 10 співробітників",
-            "Повна інтеграція з [Poster](/integrations/poster), [Alteg.io](/integrations/altegio), [RO App](/integrations/roapp)",
+            "10 співробітників на точку продажу",
+            "Повна інтеграція з [Poster](/integrations/poster), [Alteg.io](/integrations/altegio)",
             "Промокоди, сертифікати та ваучери",
             "Персональні знижки з дедлайном (Trigger-маркетинг)",
             "Автоматичні нагадування клієнтам",
-            "Персональний домен для PWA",
+            "Інтеграція RCS-провайдерів",
+            "Налаштування полів форми реєстрації",
             "Розширена RFM-аналітика",
           ],
         },
         {
           name: "Бізнес",
           plan: "business",
-          extraLocationSuffix: "/дод. точка продажу",
           features: [
-            "Включено 4 точки продажу, 20 співробітників",
+            "20 співробітників на точку продажу",
+            // Приховано до підписання угоди з Syrve: розкоментуйте, щоб показати.
+            // "Інтеграція з Syrve",
+            "Власні поля у формі реєстрації",
             "White Label: повний брендинг без згадок Rimbo",
             "API доступ для зв'язку з сайтом чи CRM",
             "Пріоритетна підтримка та допомога з налаштуванням",
@@ -322,7 +321,7 @@ export const dictionaries = {
         {
           question: "Скільки коштує підключити ще одну точку?",
           answer:
-            "Від 299 ₴ на місяць — залежно від тарифу. Каса входить у точку, окремо платити за неї не потрібно. Акаунти для адміністраторів і працівників безкоштовні на всіх тарифах.",
+            "Стільки ж, скільки перша: ціна тарифу вказана за одну точку продажу, і кожна наступна точка коштує так само. Каса входить у точку, окремо платити за неї не потрібно. Для мереж на тарифах Профі та Бізнес є пакетні пропозиції: напишіть на support@rimbo.id. Акаунти для адміністраторів і працівників безкоштовні на всіх тарифах.",
         },
         {
           question: "Чи є обмеження за кількістю клієнтів у базі?",
@@ -332,7 +331,7 @@ export const dictionaries = {
         {
           question: "У нас мережа з 10 закладів. Скільки це коштує?",
           answer:
-            "Для мереж понад 8 точок ми готуємо індивідуальну пропозицію: узгоджуємо ліміти, рівні доступу для керівників і франчайзі, зведену аналітику по мережі. Напишіть нам — порахуємо під ваш формат.",
+            "Для мереж понад 4 точки ми готуємо індивідуальну пропозицію: узгоджуємо ліміти, рівні доступу для керівників і франчайзі, зведену аналітику по мережі. Напишіть нам — порахуємо під ваш формат.",
         },
         {
           question: "Як працює інтеграція з POS?",
@@ -378,7 +377,7 @@ export const dictionaries = {
           question:
             "Чи підходить Rimbo невеликому закладу з однією точкою?",
           answer:
-            "Так, Rimbo створений саме для малого та середнього бізнесу: кав'ярень, салонів, барбершопів, пекарень, студій. Запуск займає до однієї години, спеціальне обладнання не потрібне, достатньо смартфона, а початковий тариф розрахований на дві точки продажу з можливістю розширення.",
+            "Так, Rimbo створений саме для малого та середнього бізнесу: кав'ярень, салонів, барбершопів, пекарень, студій. Запуск займає до однієї години, спеціальне обладнання не потрібне, достатньо смартфона, а ціна тарифу вказана за одну точку продажу, тож ви платите лише за свій заклад.",
         },
         {
           question:
@@ -446,7 +445,7 @@ export const dictionaries = {
         },
         {
           heading: "5. Тарифні плани та вартість послуг",
-          content: `Вартість послуг визначається обраним Тарифним планом. Актуальні тарифи та ціни розміщуються на Платформі: ${SITE_URL}/#pricing. У разі розбіжностей пріоритет мають ціни, опубліковані на Платформі.\n\n5.1. Точка продажу та акаунти. Точка продажу — окрема фізична адреса ведення діяльності Замовника, підключена до Сервісу. До кожної точки продажу входить одне робоче місце каси (термінал) без додаткової оплати. Акаунт — персональний доступ працівника Замовника до адміністративної панелі або застосунку сканування. Кількість акаунтів, включених до тарифного плану, зазначена в описі відповідного плану на Сайті. Акаунти в межах цієї кількості надаються без додаткової оплати. Підключення точок продажу понад кількість, включену до тарифного плану, здійснюється за окрему плату згідно з прайсом, розміщеним на Сайті.\n\n5.2. Обмеження тарифних планів. Виконавець має право встановлювати кількісні обмеження тарифних планів (зокрема за кількістю активних клієнтів у базі, точок продажу, карток лояльності, акаунтів). Актуальні обмеження зазначаються в описі тарифного плану на Сайті та є доступними Замовнику до моменту оформлення підписки. Обмеження, встановлені після оформлення підписки, не застосовуються до вже активних підписок до моменту їх переоформлення на інший тарифний план за ініціативою Замовника.\n\n5.3. Фіксація умов підписки. Обсяг послуг та кількісні обмеження, що діяли на момент оформлення підписки, зберігаються за Замовником протягом усього періоду її безперервної дії та не змінюються при подальших змінах тарифної політики Виконавця. Зокрема, для підписок, оформлених до 31 жовтня 2026 року, не застосовуються обмеження за кількістю активних клієнтів у базі, запроваджені після цієї дати. Зафіксовані умови припиняють дію в разі переривання підписки на строк понад 60 календарних днів або переходу Замовника на інший тарифний план.\n\n5.4. Зміна тарифів. Виконавець має право змінювати тарифи та склад тарифних планів. Зміни набувають чинності: для нових підписок — з моменту публікації нового прайсу на Сайті; для діючих підписок — не раніше ніж через 30 календарних днів з дати повідомлення Замовника на електронну адресу, зазначену при реєстрації, та не раніше закінчення оплаченого періоду. Оплачений період обслуговування не підлягає перерахунку у зв'язку зі зміною тарифів. У разі незгоди зі зміною тарифів Замовник має право припинити користування Сервісом до дати набуття змінами чинності; невикористаний залишок оплаченого періоду повертається пропорційно.\n\n5.5. Індексація вартості. Вартість послуг визначається в гривні. Оскільки частина витрат Виконавця на надання послуг має валютну складову (інфраструктура, сервіси Apple та Google), Виконавець має право індексувати вартість послуг у порядку, передбаченому пунктом 5.4 цієї Оферти.\n\n5.6. Індивідуальні умови. Для Замовників з кількістю точок продажу понад 8, а також у разі потреби в обсягах послуг, що перевищують обмеження публічних тарифних планів, умови обслуговування визначаються окремою письмовою домовленістю Сторін.`,
+          content: `Вартість послуг визначається обраним Тарифним планом. Актуальні тарифи та ціни розміщуються на Платформі: ${SITE_URL}/#pricing. У разі розбіжностей пріоритет мають ціни, опубліковані на Платформі.\n\n5.1. Точка продажу та акаунти. Точка продажу — окрема фізична адреса ведення діяльності Замовника, підключена до Сервісу. До кожної точки продажу входить одне робоче місце каси (термінал) без додаткової оплати. Акаунт — персональний доступ працівника Замовника до адміністративної панелі або застосунку сканування. Кількість акаунтів, включених до тарифного плану, зазначена в описі відповідного плану на Сайті. Акаунти в межах цієї кількості надаються без додаткової оплати. Вартість Тарифного плану зазначається за одну точку продажу; кожна підключена точка продажу оплачується за ціною обраного Тарифного плану, якщо інше не передбачено індивідуальними умовами згідно з п. 5.6.\n\n5.2. Обмеження тарифних планів. Виконавець має право встановлювати кількісні обмеження тарифних планів (зокрема за кількістю активних клієнтів у базі, точок продажу, карток лояльності, акаунтів). Актуальні обмеження зазначаються в описі тарифного плану на Сайті та є доступними Замовнику до моменту оформлення підписки. Обмеження, встановлені після оформлення підписки, не застосовуються до вже активних підписок до моменту їх переоформлення на інший тарифний план за ініціативою Замовника.\n\n5.3. Фіксація умов підписки. Обсяг послуг та кількісні обмеження, що діяли на момент оформлення підписки, зберігаються за Замовником протягом усього періоду її безперервної дії та не змінюються при подальших змінах тарифної політики Виконавця. Зокрема, для підписок, оформлених до 31 жовтня 2026 року, не застосовуються обмеження за кількістю активних клієнтів у базі, запроваджені після цієї дати. Зафіксовані умови припиняють дію в разі переривання підписки на строк понад 60 календарних днів або переходу Замовника на інший тарифний план.\n\n5.4. Зміна тарифів. Виконавець має право змінювати тарифи та склад тарифних планів. Зміни набувають чинності: для нових підписок — з моменту публікації нового прайсу на Сайті; для діючих підписок — не раніше ніж через 30 календарних днів з дати повідомлення Замовника на електронну адресу, зазначену при реєстрації, та не раніше закінчення оплаченого періоду. Оплачений період обслуговування не підлягає перерахунку у зв'язку зі зміною тарифів. У разі незгоди зі зміною тарифів Замовник має право припинити користування Сервісом до дати набуття змінами чинності; невикористаний залишок оплаченого періоду повертається пропорційно.\n\n5.5. Індексація вартості. Вартість послуг визначається в гривні. Оскільки частина витрат Виконавця на надання послуг має валютну складову (інфраструктура, сервіси Apple та Google), Виконавець має право індексувати вартість послуг у порядку, передбаченому пунктом 5.4 цієї Оферти.\n\n5.6. Індивідуальні умови. Для Замовників з кількістю точок продажу понад 4, а також у разі потреби в обсягах послуг, що перевищують обмеження публічних тарифних планів, умови обслуговування визначаються окремою письмовою домовленістю Сторін.`,
         },
         {
           heading: "6. Порядок розрахунків",
@@ -989,6 +988,55 @@ export const dictionaries = {
           heading: "Готові почати? Підключіть Rimbo до RO App безкоштовно",
           content:
             "Спробуйте інтеграцію на безкоштовному 14-денному пробному періоді. Налаштування займає 5 хвилин, а перші бонуси нараховуються після першого ж закритого замовлення в RO App.\n\nПочніть на https://rimbo.id → «Інтеграції» → RO App. Потрібна допомога з налаштуванням? Напишіть на support@rimbo.id, і ми проведемо вас за руку.",
+        },
+      ],
+    },
+    builtInCheckout: {
+      title:
+        "Власна каса Rimbo: програма лояльності без інтеграції з POS",
+      metaDescription:
+        "Як працює вбудована каса Rimbo: касир сканує QR з картки клієнта смартфоном, нараховує штампи й бонуси, списує бонуси та застосовує купони без жодної інтеграції з POS.",
+      lastUpdated: "Опубліковано: 3 листопада 2026 р.",
+      sections: [
+        {
+          heading: "Що таке власна каса Rimbo і кому вона потрібна",
+          content:
+            "Власна каса Rimbo: це робоче місце касира всередині самого Rimbo. Воно відкривається в браузері на будь-якому смартфоні чи планшеті й уміє все, що потрібно на касі: впізнати клієнта за QR-кодом, додати штамп, нарахувати бонуси за чек, списати бонуси, застосувати купон, промокод чи сертифікат.\n\nВона створена для бізнесів, які не мають POS-системи або працюють на такій, для якої інтеграції ще немає: кав'ярня з простим касовим апаратом, салон із паперовим журналом записів, майстерня, кіоск, острівець у торговому центрі. Програма лояльності в них запускається того ж дня, без заміни обладнання й без очікування інтеграції.\n\nКаса входить у кожну точку продажу на всіх тарифах, окремо за неї платити не потрібно. Акаунти для касирів і адміністраторів теж безкоштовні.",
+        },
+        {
+          heading: "Як це працює на касі: одне сканування",
+          content:
+            "Клієнт відкриває картку Rimbo в Apple Wallet або Google Wallet і показує екран. Касир відкриває касу Rimbo на своєму телефоні чи планшеті та сканує QR-код камерою. Ідентифікація займає секунду: жодних номерів телефону вголос, жодних анкет і пошуку в базі.\n\nНа екрані касира одразу з'являється профіль клієнта: баланс бонусів, поточний рівень і персональна знижка, прогрес штамп-картки, активні купони. Далі касир вибирає дію й підтверджує її. Картка в телефоні клієнта оновлюється за кілька секунд, і він бачить новий штамп або баланс ще біля каси.\n\nЯкщо в клієнта ще немає картки, він сканує ваш QR-код на касі чи тейбл-тенті, додає картку в Wallet за пів хвилини й одразу отримує перший штамп або [вітальний бонус](/welcome-bonus).",
+        },
+        {
+          heading: "Нарахування: штампи та бонуси за суму чека",
+          content:
+            "Штампи. Касир натискає «Додати штамп», і в картці заповнюється ще одне коло. Якщо штамп-карток кілька, наприклад «6-та кава безкоштовно» і «5-та випічка в подарунок», касир обирає потрібну. Коли картка заповнена, каса підсвічує нагороду, касир видає її, і нова картка стартує автоматично. Детальніше про механіку в статті про [цифрові штамп-картки](/stamp-cards).\n\nБонуси й кешбек. Касир вводить суму чека, і Rimbo нараховує бонуси за вашою формулою: відсоток від суми з урахуванням рівня клієнта й терміну дії. Касиру не треба нічого рахувати: правила задано один раз у кабінеті, каса лише застосовує їх.\n\nКожна операція записується в історію клієнта з позначкою точки продажу й працівника, тож в [аналітиці](/customer-analytics) ви бачите ті самі візити, середній чек і LTV, що й з POS-інтеграцією.",
+        },
+        {
+          heading: "Списання бонусів, купони, промокоди й сертифікати",
+          content:
+            "Списання. Після сканування касир бачить баланс і вказує, скільки бонусів клієнт хоче витратити. Rimbo списує їх і показує суму, яку клієнт доплачує.\n\nКупони та персональні знижки. Якщо в клієнта є активний купон, наприклад на день народження або «повернення» після 60 днів тиші, каса показує його одразу після сканування. Касир застосовує купон одним натисканням, і він гасне, щоб не спрацював двічі.\n\nПромокоди. Клієнт називає код, касир вводить його в касі, і Rimbo сам перевіряє термін дії, ліміт використань та умови кампанії. Жодних «а він точно ще діє?».\n\nПодарункові сертифікати. Сертифікат має власний QR-код: касир сканує його й гасить, а Rimbo записує погашення в історію. Промокоди й сертифікати доступні на тарифі Профі й вище.",
+        },
+        {
+          heading: "Обладнання не потрібне: достатньо смартфона або планшета",
+          content:
+            "Касі Rimbo не потрібні сканери, термінали чи окремий комп'ютер. Вона працює в браузері на будь-якому телефоні з камерою: на особистому смартфоні бариста, на планшеті біля каси або на старому телефоні, який лежить у шухляді. Для салону чи кав'ярні це нуль витрат на обладнання на старті.\n\nКасу можна додати на головний екран, і тоді вона відкривається одним натисканням, як звичайний застосунок. Кожен працівник заходить під власним акаунтом із тим рівнем доступу, який ви йому дали: касир нараховує й списує, адміністратор додатково бачить статистику й налаштування.",
+        },
+        {
+          heading: "Кілька точок продажу й кілька кас",
+          content:
+            "У мережі кожна точка продажу має власну касу Rimbo, а клієнт має одну картку на всю мережу: заробив бонуси в одній точці, витратив в іншій. Це та сама логіка, що й в інтеграціях із POS, лише без POS.\n\nВ одній точці кас може бути скільки завгодно: достатньо, щоб кожен касир зайшов зі свого пристрою. Статистика збирається в один кабінет і показує, де сканують найчастіше та які точки повертають клієнтів краще.",
+        },
+        {
+          heading: "Власна каса чи інтеграція з POS: що обрати",
+          content:
+            "Власна каса підходить, коли чеків небагато або POS-системи немає взагалі: кав'ярня на один апарат, салон, барбершоп, майстерня, студія. Касир витрачає на операцію дві-три секунди, і це не гальмує чергу.\n\nІнтеграція доречна, коли чеків багато й ви хочете, щоб бонуси нараховувалися з чека автоматично, без жодних дій касира. Для цього є готові інтеграції з [Poster](/integrations/poster), [Alteg.io](/integrations/altegio), [RO App](/integrations/roapp). Власна каса не зникає після підключення інтеграції: нею й далі зручно списувати бонуси, застосовувати купони й гасити сертифікати.\n\nПочинати можна з власної каси вже сьогодні, а інтеграцію підключити пізніше: клієнти, картки, баланси й історія залишаться на місці.",
+        },
+        {
+          heading: "Запуск за 10 хвилин",
+          content:
+            "1. [Залиште заявку](#contact): ми зареєструємо вашу компанію, передамо доступ і допоможемо створити картку лояльності з вашим логотипом і кольорами.\n\n2. Задайте правила: штампи, відсоток бонусів, рівні, купони.\n\n3. Додайте працівників: кожен отримає власний акаунт і доступ до каси.\n\n4. Відкрийте касу на смартфоні чи планшеті й додайте її на головний екран.\n\n5. Роздрукуйте QR-код для додавання картки й поставте його на касу та столи.\n\nПерші 14 днів безкоштовні, без картки для оплати. Якщо потрібна допомога з налаштуванням, напишіть на support@rimbo.id, і ми проведемо вас за руку.",
         },
       ],
     },
@@ -2056,6 +2104,7 @@ export const dictionaries = {
       annual: "Annual",
       annualSave: "up to -15%",
       perMonth: "/mo",
+      perLocation: "per location",
       popular: "Popular",
       choosePlan: "Get Started",
       currencyLabel: "Currency",
@@ -2063,7 +2112,7 @@ export const dictionaries = {
       includesSuffix: " features, plus:",
       enterpriseNotes: [
         "No limits on the number of active customers on any plan. Your subscription terms are locked in at sign-up and do not change with future pricing updates.",
-        "Team accounts are free on all plans. A till is included with every location. Need more accounts or more than 8 locations — {link} and we will put together custom terms.",
+        "Team accounts are free on all plans. A till is included with every location. Need more accounts or more than 4 locations — {link} and we will put together custom terms.",
       ],
       enterpriseNoteLink: "contact us",
       customSolutionNote:
@@ -2071,8 +2120,8 @@ export const dictionaries = {
       customSolutionNoteLink: "Ask for a custom solution",
       tiers: [
         /* Hidden at the owner's request, this plan is temporarily not sold.
-           To bring it back, add "start" to PLAN_PRICES_BY_CURRENCY and
-           EXTRA_LOCATION_BY_CURRENCY (lib/currency.ts) for every currency.
+           To bring it back, add "start" to PLAN_PRICES_BY_CURRENCY
+           (lib/currency.ts) for every currency.
         {
           name: "Start",
           plan: "start",
@@ -2088,10 +2137,12 @@ export const dictionaries = {
         {
           name: "Growth",
           plan: "growth",
-          extraLocationSuffix: "/extra location",
           features: [
-            "2 locations included, 5 staff members",
+            "5 staff members per location",
             "Up to 5 loyalty cards (stamps) + custom design",
+            "[Built-in checkout](/en/built-in-checkout): accrual with no POS integration",
+            "[RO App](/en/integrations/roapp) integration",
+            "SMS provider integrations",
             "Loyalty tiers and discounts",
             "No limits on active customers",
             "Bonus balance (cashback)",
@@ -2104,23 +2155,25 @@ export const dictionaries = {
           name: "Pro",
           plan: "pro",
           popular: true,
-          extraLocationSuffix: "/extra location",
           features: [
-            "3 locations included, 10 staff members",
-            "Full integration with [Poster](/en/integrations/poster), [Alteg.io](/en/integrations/altegio), [RO App](/en/integrations/roapp)",
+            "10 staff members per location",
+            "Full integration with [Poster](/en/integrations/poster), [Alteg.io](/en/integrations/altegio)",
             "Promo codes, gift certificates and vouchers",
             "Personal discounts with deadlines (trigger marketing)",
             "Automatic customer reminders",
-            "Custom domain for PWA",
+            "RCS provider integrations",
+            "Configurable sign-up form fields",
             "Advanced RFM analytics",
           ],
         },
         {
           name: "Business",
           plan: "business",
-          extraLocationSuffix: "/extra location",
           features: [
-            "4 locations included, 20 staff members",
+            "20 staff members per location",
+            // Hidden until the Syrve agreement is signed: uncomment to show.
+            // "Syrve integration",
+            "Custom sign-up form fields",
             "White Label: full branding with no Rimbo mentions",
             "API access to connect your site or CRM",
             "Priority support and setup assistance",
@@ -2160,7 +2213,7 @@ export const dictionaries = {
         {
           question: "How much does it cost to connect another location?",
           answer:
-            `From €${EXTRA_LOCATION_FROM_EUR} per month, depending on your plan. A till is included with each location, so there is no separate charge for it. Accounts for admins and staff are free on all plans.`,
+            "The same as the first one: plan prices are per location, so every additional location costs the same. A till is included with each location, so there is no separate charge for it. Chains on the Pro and Business plans can get a package deal: write to support@rimbo.id. Accounts for admins and staff are free on all plans.",
         },
         {
           question: "Is there a limit on the number of customers in the database?",
@@ -2170,7 +2223,7 @@ export const dictionaries = {
         {
           question: "We run a chain of 10 venues. How much does it cost?",
           answer:
-            "For chains with more than 8 locations we prepare an individual offer: we agree on limits, access levels for managers and franchisees, and network-wide analytics. Contact us and we will price it for your format.",
+            "For chains with more than 4 locations we prepare an individual offer: we agree on limits, access levels for managers and franchisees, and network-wide analytics. Contact us and we will price it for your format.",
         },
         {
           question: "How does POS integration work?",
@@ -2216,7 +2269,7 @@ export const dictionaries = {
           question:
             "Is Rimbo a good fit for a small single-location business?",
           answer:
-            "Yes. Rimbo is built for small and medium businesses: coffee shops, salons, barbershops, bakeries, studios. Launch takes under an hour, no special hardware is needed beyond a smartphone, and the entry plan covers two locations with room to grow.",
+            "Yes. Rimbo is built for small and medium businesses: coffee shops, salons, barbershops, bakeries, studios. Launch takes under an hour, no special hardware is needed beyond a smartphone, and pricing is per location, so a single venue pays for just one.",
         },
         {
           question:
@@ -2284,7 +2337,7 @@ export const dictionaries = {
         },
         {
           heading: "5. Tariff Plans and Pricing",
-          content: `The cost of services is determined by the selected Tariff Plan. Current tariffs and prices are published on the Platform: ${SITE_URL}/en#pricing. In case of discrepancies, prices published on the Platform shall prevail.\n\n5.1. Points of Sale and Accounts. A Point of Sale is a separate physical address where the Customer conducts business, connected to the Service. Each Point of Sale includes one till (terminal) workstation at no additional charge. An Account is a personal access granted to the Customer's employee to the administrative panel or the scanning application. The number of Accounts included in a Tariff Plan is specified in the description of the respective plan on the Site. Accounts within this number are provided at no additional charge. Connecting Points of Sale beyond the number included in the Tariff Plan is subject to a separate fee according to the price list published on the Site.\n\n5.2. Tariff Plan Limits. The Executor has the right to set quantitative limits for Tariff Plans (including limits on the number of active clients in the database, points of sale, loyalty cards, and accounts). Current limits are specified in the Tariff Plan description on the Site and are available to the Customer before the subscription is placed. Limits introduced after a subscription is placed do not apply to already active subscriptions until the Customer switches to another Tariff Plan on their own initiative.\n\n5.3. Locking of Subscription Terms. The scope of services and the quantitative limits in effect at the moment the subscription was placed remain with the Customer for the entire period of its uninterrupted validity and do not change with subsequent changes to the Executor's pricing policy. In particular, for subscriptions placed before October 31, 2026, no limits on the number of active clients in the database introduced after that date shall apply. The locked terms cease to apply if the subscription is interrupted for more than 60 calendar days or if the Customer switches to another Tariff Plan.\n\n5.4. Tariff Changes. The Executor has the right to change tariffs and the composition of Tariff Plans. Changes take effect: for new subscriptions — from the moment the new price list is published on the Site; for existing subscriptions — no earlier than 30 calendar days from the date the Customer is notified at the email address provided at registration, and no earlier than the end of the paid period. The paid service period is not subject to recalculation due to tariff changes. If the Customer disagrees with a tariff change, they have the right to stop using the Service before the change takes effect; the unused remainder of the paid period is refunded proportionally.\n\n5.5. Price Indexation. The cost of services is set in hryvnia (UAH). Since part of the Executor's costs of providing the services has a foreign-currency component (infrastructure, Apple and Google services), the Executor has the right to index the cost of services in the manner provided by clause 5.4 of this Offer.\n\n5.6. Individual Terms. For Customers with more than 8 points of sale, as well as where the required volume of services exceeds the limits of the public Tariff Plans, the terms of service are determined by a separate written agreement between the Parties.`,
+          content: `The cost of services is determined by the selected Tariff Plan. Current tariffs and prices are published on the Platform: ${SITE_URL}/en#pricing. In case of discrepancies, prices published on the Platform shall prevail.\n\n5.1. Points of Sale and Accounts. A Point of Sale is a separate physical address where the Customer conducts business, connected to the Service. Each Point of Sale includes one till (terminal) workstation at no additional charge. An Account is a personal access granted to the Customer's employee to the administrative panel or the scanning application. The number of Accounts included in a Tariff Plan is specified in the description of the respective plan on the Site. Accounts within this number are provided at no additional charge. The price of a Tariff Plan is stated per Point of Sale; each connected Point of Sale is charged at the price of the selected Tariff Plan, unless individual terms under clause 5.6 provide otherwise.\n\n5.2. Tariff Plan Limits. The Executor has the right to set quantitative limits for Tariff Plans (including limits on the number of active clients in the database, points of sale, loyalty cards, and accounts). Current limits are specified in the Tariff Plan description on the Site and are available to the Customer before the subscription is placed. Limits introduced after a subscription is placed do not apply to already active subscriptions until the Customer switches to another Tariff Plan on their own initiative.\n\n5.3. Locking of Subscription Terms. The scope of services and the quantitative limits in effect at the moment the subscription was placed remain with the Customer for the entire period of its uninterrupted validity and do not change with subsequent changes to the Executor's pricing policy. In particular, for subscriptions placed before October 31, 2026, no limits on the number of active clients in the database introduced after that date shall apply. The locked terms cease to apply if the subscription is interrupted for more than 60 calendar days or if the Customer switches to another Tariff Plan.\n\n5.4. Tariff Changes. The Executor has the right to change tariffs and the composition of Tariff Plans. Changes take effect: for new subscriptions — from the moment the new price list is published on the Site; for existing subscriptions — no earlier than 30 calendar days from the date the Customer is notified at the email address provided at registration, and no earlier than the end of the paid period. The paid service period is not subject to recalculation due to tariff changes. If the Customer disagrees with a tariff change, they have the right to stop using the Service before the change takes effect; the unused remainder of the paid period is refunded proportionally.\n\n5.5. Price Indexation. The cost of services is set in hryvnia (UAH). Since part of the Executor's costs of providing the services has a foreign-currency component (infrastructure, Apple and Google services), the Executor has the right to index the cost of services in the manner provided by clause 5.4 of this Offer.\n\n5.6. Individual Terms. For Customers with more than 4 points of sale, as well as where the required volume of services exceeds the limits of the public Tariff Plans, the terms of service are determined by a separate written agreement between the Parties.`,
         },
         {
           heading: "6. Payment Terms",
@@ -2827,6 +2880,55 @@ export const dictionaries = {
           heading: "Ready to start? Connect Rimbo to RO App for free",
           content:
             "Try the integration during the free 14-day trial. Setup takes 5 minutes, and the first bonuses are awarded after the very first closed order in RO App.\n\nStart at https://rimbo.id → Integrations → RO App. Need help with setup? Write to support@rimbo.id and we will walk you through it.",
+        },
+      ],
+    },
+    builtInCheckout: {
+      title:
+        "Rimbo Built-in Checkout: A Loyalty Program With No POS Integration",
+      metaDescription:
+        "How the built-in Rimbo checkout works: staff scan the QR code on the customer's card with a smartphone, add stamps and bonuses, redeem bonuses and apply coupons, with no POS integration at all.",
+      lastUpdated: "Published: November 3, 2026",
+      sections: [
+        {
+          heading: "What the built-in checkout is and who it is for",
+          content:
+            "The built-in checkout is a cashier workstation inside Rimbo itself. It opens in the browser on any smartphone or tablet and does everything a till needs: recognise the customer by QR code, add a stamp, credit bonuses for a receipt, redeem bonuses, apply a coupon, a promo code or a gift certificate.\n\nIt is built for businesses that have no POS system, or run one that has no integration yet: a coffee shop with a basic cash register, a salon with a paper appointment book, a workshop, a kiosk, an island in a shopping mall. Their loyalty program goes live the same day, with no new hardware and no waiting for an integration.\n\nA till is included with every location on every plan, with no separate charge. Accounts for cashiers and admins are free as well.",
+        },
+        {
+          heading: "How it works at the counter: one scan",
+          content:
+            "The customer opens their Rimbo card in Apple Wallet or Google Wallet and shows the screen. The cashier opens the Rimbo checkout on their phone or tablet and scans the QR code with the camera. Identification takes a second: no phone numbers said out loud, no forms, no searching the database.\n\nThe customer's profile appears on the cashier's screen right away: bonus balance, current tier and personal discount, stamp card progress, active coupons. The cashier picks an action and confirms it. The card on the customer's phone updates within seconds, so they see the new stamp or balance while still at the counter.\n\nIf the customer has no card yet, they scan your QR code at the counter or on a table tent, add the card to Wallet in half a minute and immediately get their first stamp or a [welcome bonus](/en/welcome-bonus).",
+        },
+        {
+          heading: "Accrual: stamps and bonuses from the receipt amount",
+          content:
+            "Stamps. The cashier taps \"Add stamp\" and one more circle fills in on the card. If several stamp cards are running, say \"6th coffee free\" and \"5th pastry as a gift\", the cashier picks the right one. When a card is full, the checkout highlights the reward, the cashier hands it over and a new card starts automatically. The mechanics are covered in the article on [digital stamp cards](/en/stamp-cards).\n\nBonuses and cashback. The cashier enters the receipt amount and Rimbo credits bonuses by your formula: a percentage of the amount, taking the customer's tier and the expiry rules into account. The cashier calculates nothing: the rules are set once in the dashboard and the checkout simply applies them.\n\nEvery operation is written to the customer's history tagged with the location and the staff member, so [analytics](/en/customer-analytics) show the same visits, average check and LTV as with a POS integration.",
+        },
+        {
+          heading: "Redemption, coupons, promo codes and gift certificates",
+          content:
+            "Redemption. After the scan the cashier sees the balance and enters how many bonuses the customer wants to spend. Rimbo deducts them and shows the amount left to pay.\n\nCoupons and personal discounts. If the customer has an active coupon, say a birthday one or a win-back coupon after 60 quiet days, the checkout shows it right after the scan. The cashier applies it with one tap and it is marked used, so it cannot fire twice.\n\nPromo codes. The customer says the code, the cashier types it into the checkout and Rimbo checks the expiry, the usage limit and the campaign conditions itself. No more \"is it still valid?\".\n\nGift certificates. A certificate has its own QR code: the cashier scans it and redeems it, and Rimbo records the redemption in the history. Promo codes and certificates are available on the Pro plan and above.",
+        },
+        {
+          heading: "No hardware needed: a smartphone or tablet is enough",
+          content:
+            "The Rimbo checkout needs no scanners, terminals or a separate computer. It runs in the browser on any phone with a camera: the barista's own smartphone, a tablet by the till or an old phone from the drawer. For a salon or a coffee shop that means zero hardware cost at launch.\n\nThe checkout can be added to the home screen, so it opens with one tap like a regular app. Every staff member signs in with their own account and the access level you gave them: a cashier credits and redeems, an admin also sees statistics and settings.",
+        },
+        {
+          heading: "Several locations and several tills",
+          content:
+            "In a chain every location has its own Rimbo checkout, while the customer has one card for the whole chain: bonuses earned in one venue are spent in another. It is the same logic as with POS integrations, just without the POS.\n\nOne location can run as many tills as you like: each cashier simply signs in from their own device. Statistics gather in one dashboard and show where scans happen most and which locations bring customers back best.",
+        },
+        {
+          heading: "Built-in checkout or POS integration: which to choose",
+          content:
+            "The built-in checkout fits when receipts are few or there is no POS at all: a one-register coffee shop, a salon, a barbershop, a workshop, a studio. The cashier spends two to three seconds per operation, which does not slow the queue.\n\nAn integration makes sense when receipts are many and you want bonuses credited from the receipt automatically, with no cashier action. Ready-made integrations exist for [Poster](/en/integrations/poster), [Alteg.io](/en/integrations/altegio), [RO App](/en/integrations/roapp). The built-in checkout does not go away once an integration is connected: it stays handy for redeeming bonuses, applying coupons and redeeming certificates.\n\nYou can start with the built-in checkout today and connect an integration later: customers, cards, balances and history all stay in place.",
+        },
+        {
+          heading: "Live in 10 minutes",
+          content:
+            "1. [Leave a request](#contact): we will register your company, hand over access and help you create a loyalty card with your logo and colours.\n\n2. Set the rules: stamps, bonus percentage, tiers, coupons.\n\n3. Add your staff: each gets their own account and access to the checkout.\n\n4. Open the checkout on a smartphone or tablet and add it to the home screen.\n\n5. Print the QR code for adding the card and place it at the counter and on the tables.\n\nThe first 14 days are free, no payment card required. Need help with setup? Write to support@rimbo.id and we will walk you through it.",
         },
       ],
     },
